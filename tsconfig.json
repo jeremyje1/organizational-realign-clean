@@ -1,0 +1,92 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "compilerOptions": {
+    /* -------------------------------------------------- */
+    /*  language                                           */
+    /* -------------------------------------------------- */
+    "target": "ES2022",
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "jsx": "preserve",
+    "strict": false,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "noEmit": true,
+    "noImplicitAny": false,
+    "strictNullChecks": false,
+    "incremental": true,
+    "tsBuildInfoFile": ".tsbuildinfo",
+    /* -------------------------------------------------- */
+    /*  Performance optimizations                         */
+    /* -------------------------------------------------- */
+    "assumeChangesOnlyAffectDirectDependencies": true,
+    "disableSourceOfProjectReferenceRedirect": true,
+    "disableSolutionSearching": true,
+    "disableReferencedProjectLoad": true,
+    /* -------------------------------------------------- */
+    /*  paths / aliases                                   */
+    /* -------------------------------------------------- */
+    "baseUrl": ".",
+    "paths": {
+      "@/*":            ["./*"],
+      "@/lib/*":        ["lib/*"],
+      "@/types/*":      ["types/*"],
+      "@/components/*": ["components/*"],
+      "@/app/*":        ["app/*"],
+      "@/hooks/*":      ["hooks/*"],
+      "@/data/*":       ["data/*"]
+    },
+    /* -------------------------------------------------- */
+    /*  libs / types                                      */
+    /* -------------------------------------------------- */
+    "lib": [
+      "DOM",
+      "DOM.Iterable",
+      "ES2022"
+    ],
+    "types": [
+      "node"
+    ],
+    "typeRoots": [
+      "./types",
+      "./node_modules/@types"
+    ],
+    "allowJs": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ]
+  },
+  "include": [
+    "next-env.d.ts",
+    ".next/types/**/*.ts",
+    "types/**/*.ts",
+    "**/*.ts",
+    "**/*.tsx"
+  ],
+  "exclude": [
+    "node_modules",
+    "cypress/**/*",
+    "cypress.config.ts",
+    "**/*.test.ts",
+    "**/*.test.tsx",
+    "**/*.spec.ts",
+    "**/*.spec.tsx",
+    "**/__tests__/**",
+    "jest.config.js",
+    "jest.setup.ts",
+    "**/coverage/**",
+    "**/.next/**",
+    "**/dist/**",
+    "**/*.config.js",
+    "**/*.config.ts",
+    "**/build/**",
+    "**/temp/**",
+    "**/.cache/**",
+    "**/.vercel/**"
+  ]
+}

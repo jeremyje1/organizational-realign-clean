@@ -1,0 +1,98 @@
+/**
+ * Print stylesheet for SEO and accessibility
+ * 
+ * This stylesheet provides optimized formatting for content when printed,
+ * improving readability and ensuring important content is visible.
+ */
+
+@media print {
+  /* General print formatting */
+  body {
+    font-size: 12pt;
+    line-height: 1.4;
+    color: #000;
+    background: #fff;
+    font-family: serif;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  /* Hide navigation, buttons, ads, and other non-essential content */
+  nav,
+  header,
+  footer,
+  aside,
+  button,
+  .print-hide,
+  [role="banner"],
+  [role="navigation"],
+  [role="complementary"] {
+    display: none !important;
+  }
+
+  /* Ensure main content is full-width */
+  main,
+  article,
+  section,
+  .print-visible,
+  [role="main"] {
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: transparent !important;
+    color: #000 !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+    float: none !important;
+    display: block !important;
+  }
+
+  /* Ensure links show URL and are not cut off */
+  a {
+    color: #000 !important;
+    text-decoration: underline;
+    word-wrap: break-word;
+  }
+
+  a[href^="http"]:after {
+    content: " (" attr(href) ")";
+    font-size: 80%;
+  }
+
+  /* Fix images and figures */
+  img, figure {
+    max-width: 100% !important;
+    page-break-inside: avoid;
+  }
+
+  /* Page break handling */
+  h1, h2, h3, h4, h5, h6 {
+    page-break-after: avoid;
+    page-break-inside: avoid;
+  }
+
+  p, blockquote, ul, ol, dl, tr, img {
+    page-break-inside: avoid;
+  }
+
+  table, figure, img {
+    page-break-inside: avoid;
+  }
+
+  ul, ol, dl {
+    page-break-before: avoid;
+  }
+
+  /* Accessibility improvements */
+  .visually-hidden,
+  .sr-only {
+    position: static !important;
+    width: auto !important;
+    height: auto !important;
+    margin: 0 !important;
+    overflow: visible !important;
+    clip: auto !important;
+    white-space: normal !important;
+  }
+}

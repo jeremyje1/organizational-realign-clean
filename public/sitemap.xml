@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+        http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+  <!-- Homepage -->
+  <url>
+    <loc>https://app.northpathstrategies.org/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <lastmod>2025-07-07</lastmod>
+  </url>
+  
+  <!-- Main pages -->
+  <url>
+    <loc>https://app.northpathstrategies.org/services</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <lastmod>2025-07-07</lastmod>
+  </url>
+  <url>
+    <loc>https://app.northpathstrategies.org/pricing</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <lastmod>2025-07-07</lastmod>
+  </url>
+  <url>
+    <loc>https://app.northpathstrategies.org/survey</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <lastmod>2025-07-07</lastmod>
+  </url>
+  
+  <!-- Sample Reports -->
+  <url>
+    <loc>https://app.northpathstrategies.org/sample-reports</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <lastmod>2025-07-07</lastmod>
+  </url>
+  <url>
+    <loc>https://app.northpathstrategies.org/sample-reports/university</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <lastmod>2025-07-07</lastmod>
+  </url>
+  <url>
+    <loc>https://app.northpathstrategies.org/sample-reports/hospital</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <lastmod>2025-07-07</lastmod>
+  </url>
+  <url>
+    <loc>https://app.northpathstrategies.org/sample-reports/community-college</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <lastmod>2025-07-07</lastmod>
+  </url>
+  
+  <!-- Demo pages (lower priority) -->
+  <url>
+    <loc>https://app.northpathstrategies.org/demos/form-gallery</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
+    <lastmod>2025-07-07</lastmod>
+  </url>
+  <url>
+    <loc>https://app.northpathstrategies.org/demos/accessibility-demo</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
+    <lastmod>2025-07-07</lastmod>
+  </url>
+  <url>
+    <loc>https://app.northpathstrategies.org/demos/loading-states</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
+    <lastmod>2025-07-07</lastmod>
+  </url>
+  <url>
+    <loc>https://app.northpathstrategies.org/demos/enhanced-form</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
+    <lastmod>2025-07-07</lastmod>
+  </url>
+</urlset>

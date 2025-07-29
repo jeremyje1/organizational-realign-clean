@@ -1,0 +1,13 @@
+# robots.txt file for NorthPath Strategies
+
+User-agent: *
+Allow: /
+
+# Block access to admin and sensitive routes
+Disallow: /admin/
+Disallow: /api/internal/
+Disallow: /private/
+Disallow: /_next/
+
+# Sitemap location
+Sitemap: https://app.northpathstrategies.org/sitemap.xml

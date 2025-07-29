@@ -1,0 +1,21 @@
+System Name,Vendor,Category,Annual License Cost,Users Licensed,Users Active,Last Usage Date,Contract End Date,Integration Status,Business Owner,Technical Owner,Criticality Level,Redundancy Risk,Notes
+Banner ERP,Ellucian,Student Information System,125000,500,450,2024-07-12,2025-06-30,Production,Registrar,IT Director,Critical,Low,Core student records system
+Blackboard Learn,Blackboard,Learning Management System,75000,2500,1800,2024-07-12,2024-12-31,Production,Provost,IT Director,Critical,Medium,Primary LMS - contract up for renewal
+PeopleSoft HCM,Oracle,Human Resources,95000,150,120,2024-07-10,2026-03-15,Production,HR Director,IT Director,Critical,Low,Core HR system
+Office 365,Microsoft,Productivity Suite,45000,2000,1750,2024-07-12,2025-01-31,Production,IT Director,IT Director,Critical,Low,Email and collaboration platform
+Zoom,Zoom,Video Conferencing,25000,500,350,2024-07-12,2024-10-15,Production,IT Director,IT Director,High,Medium,Video conferencing and webinars
+Adobe Creative Cloud,Adobe,Creative Software,18000,75,45,2024-07-08,2025-03-30,Production,Marketing Director,IT Director,Medium,Medium,Design and multimedia production
+Salesforce,Salesforce,CRM,32000,50,35,2024-07-11,2025-08-15,Production,Development VP,IT Director,High,Low,Alumni and donor management
+QuickBooks Enterprise,Intuit,Accounting,8000,25,20,2024-07-09,2024-11-30,Production,Finance VP,Finance Director,High,High,Financial accounting - considering replacement
+SharePoint,Microsoft,Document Management,15000,300,180,2024-07-05,2025-01-31,Production,IT Director,IT Director,Medium,Medium,Document storage and collaboration
+Tableau,Tableau,Business Intelligence,22000,40,25,2024-07-01,2025-05-20,Production,Institutional Research,IT Director,Medium,High,Data visualization and reporting
+Symantec Endpoint Protection,Symantec,Security,12000,2000,2000,2024-07-12,2024-09-30,Production,IT Director,IT Security Manager,Critical,Medium,Endpoint security - contract renewal needed
+VMware vSphere,VMware,Virtualization,28000,N/A,N/A,2024-07-12,2025-12-31,Production,IT Director,System Administrator,Critical,Low,Server virtualization platform
+Moodle,Moodle,Learning Management System,5000,1000,200,2024-06-15,Open Source,Staging,Academic Affairs,IT Director,Low,High,Backup LMS - considering retirement
+SPSS,IBM,Statistical Software,15000,100,30,2024-06-20,2025-04-10,Production,Research Office,IT Director,Medium,Medium,Statistical analysis software
+AutoCAD,Autodesk,Design Software,8500,25,15,2024-07-02,2025-02-28,Production,Facilities Director,IT Director,Medium,High,Engineering and facilities design
+Cisco WebEx,Cisco,Video Conferencing,12000,200,50,2024-05-30,2024-08-31,Production,IT Director,IT Director,Low,High,Secondary video conferencing - redundant with Zoom
+Dropbox Business,Dropbox,Cloud Storage,6000,100,75,2024-07-11,2025-06-15,Production,Various Departments,IT Director,Low,High,File sharing and storage - redundant with SharePoint
+Kaspersky Security,Kaspersky,Security,8000,500,500,2024-07-12,2024-12-15,Production,IT Director,IT Security Manager,Medium,High,Secondary endpoint protection - redundant
+LogMeIn,LogMeIn,Remote Access,4500,50,25,2024-07-10,2024-10-30,Production,IT Director,System Administrator,Low,High,Remote access - functionality overlap with other tools
+Concur,SAP,Expense Management,18000,200,150,2024-07-09,2025-07-31,Production,Finance VP,Finance Director,Medium,Medium,Travel and expense reporting

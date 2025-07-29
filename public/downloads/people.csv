@@ -1,0 +1,32 @@
+employee_id,position_id,employee_name,hire_date,direct_reports,span_of_control,supervisory_level,time_in_role_months,performance_rating
+E001,101,Dr. Sarah Johnson,2018-07-01,5,45,4,78,exceeds_expectations
+E002,201,Dr. Michael Chen,2019-08-15,8,125,3,64,meets_expectations
+E003,301,Maria Rodriguez,2020-01-10,6,85,3,48,exceeds_expectations
+E004,401,James Thompson,2017-03-22,7,95,3,94,meets_expectations
+E005,501,Lisa Parker,2021-02-05,4,25,2,34,meets_expectations
+E006,601,David Kim,2019-11-12,6,18,2,50,exceeds_expectations
+E007,701,Dr. Jennifer Walsh,2016-09-01,12,45,2,102,exceeds_expectations
+E008,801,Dr. Robert Foster,2018-01-15,15,52,2,72,meets_expectations
+E009,901,Dr. Amanda Clark,2020-06-30,8,35,2,42,meets_expectations
+E010,1001,Karen Miller,2015-04-18,8,22,2,116,meets_expectations
+E011,1101,Thomas Brown,2019-03-08,5,15,2,58,meets_expectations
+E012,1201,Jessica Davis,2020-09-14,7,20,2,40,exceeds_expectations
+E013,1301,Mark Wilson,2018-12-03,4,12,2,62,meets_expectations
+E014,1401,Patricia Garcia,2021-07-19,3,8,2,24,meets_expectations
+E015,1501,Christopher Lee,2019-05-27,5,35,2,54,meets_expectations
+E016,1601,Richard Taylor,2017-10-11,12,28,2,86,meets_expectations
+E017,1701,Nancy Anderson,2020-03-16,8,15,2,46,meets_expectations
+E018,1801,Steven Martinez,2018-08-22,4,12,2,68,exceeds_expectations
+E019,1901,Barbara White,2016-12-05,6,25,2,98,exceeds_expectations
+E020,2001,Kevin Harris,2019-07-30,2,5,2,52,meets_expectations
+E021,2101,Dr. Catherine Moore,2014-08-25,0,0,0,122,exceeds_expectations
+E022,2102,,,,0,0,0,,vacant_position
+E023,2103,Dr. Daniel Young,2022-01-10,0,0,0,18,meets_expectations
+E024,2201,Dr. Susan Allen,2013-09-02,0,0,0,134,exceeds_expectations
+E025,2202,Dr. Paul King,2017-01-20,0,0,0,84,meets_expectations
+E026,2203,,,,0,0,0,,vacant_position
+E027,2301,Rachel Green,2020-11-09,0,0,0,38,meets_expectations
+E028,2302,Michelle Adams,2021-04-12,0,0,0,32,meets_expectations
+E029,2303,Andrew Nelson,2019-09-16,0,0,0,52,meets_expectations
+E030,2304,Carlos Rivera,2020-02-28,0,0,0,46,meets_expectations
+E031,2305,Emily Carter,2021-08-23,0,0,0,22,meets_expectations

@@ -1,0 +1,32 @@
+position_id,position_title,org_unit_id,position_level,reports_to,fte,annual_salary,benefits_percent,is_vacant,job_family,essential_functions
+101,President,1,executive,,1.0,250000,35,false,executive,Strategic leadership and institutional governance
+201,Provost and Vice President for Academic Affairs,2,senior_admin,101,1.0,180000,35,false,academic_admin,Academic program oversight and faculty development
+301,Vice President for Student Affairs,3,senior_admin,101,1.0,140000,35,false,student_services,Student life and support services
+401,Vice President for Finance and Administration,4,senior_admin,101,1.0,160000,35,false,finance_admin,Financial management and operations
+501,Director of Human Resources,5,director,401,1.0,95000,30,false,hr_admin,Personnel management and employee relations
+601,Chief Information Officer,6,director,401,1.0,120000,30,false,technology,Technology infrastructure and digital services
+701,Dean of Liberal Arts,7,dean,201,1.0,130000,30,false,academic_admin,Liberal arts education and research
+801,Dean of Sciences,8,dean,201,1.0,135000,30,false,academic_admin,STEM education and research
+901,Dean of Graduate School,9,dean,201,1.0,125000,30,false,academic_admin,Graduate program administration
+1001,Director of Library Services,10,director,201,1.0,85000,30,false,library,Information resources and research support
+1101,Registrar,11,director,201,1.0,75000,30,false,academic_support,Student records and registration
+1201,Director of Admissions,12,director,201,1.0,80000,30,false,enrollment,Student recruitment and enrollment
+1301,Director of Financial Aid,13,director,301,1.0,70000,30,false,student_services,Student financial assistance
+1401,Director of Career Services,14,director,301,1.0,65000,30,false,student_services,Career development and placement
+1501,Director of Residence Life,15,director,301,1.0,68000,30,false,student_services,Campus housing and residential programs
+1601,Director of Facilities Management,16,director,401,1.0,90000,30,false,facilities,Campus facilities and maintenance
+1701,Director of Security,17,director,401,1.0,75000,30,false,security,Campus safety and security
+1801,Director of Marketing and Communications,18,director,101,1.0,85000,30,false,communications,Institutional marketing and public relations
+1901,Vice President for Development,19,senior_admin,101,1.0,150000,35,false,development,Fundraising and alumni engagement
+2001,General Counsel,20,director,101,1.0,140000,30,false,legal,Legal counsel and compliance
+2101,Professor of English,7,faculty,701,1.0,75000,25,false,faculty,Teaching and research in English literature
+2102,Associate Professor of History,7,faculty,701,1.0,68000,25,true,faculty,Teaching and research in historical studies
+2103,Assistant Professor of Philosophy,7,faculty,701,1.0,58000,25,false,faculty,Teaching and research in philosophy
+2201,Professor of Biology,8,faculty,801,1.0,82000,25,false,faculty,Teaching and research in biological sciences
+2202,Associate Professor of Chemistry,8,faculty,801,1.0,72000,25,false,faculty,Teaching and research in chemistry
+2203,Assistant Professor of Physics,8,faculty,801,1.0,65000,25,true,faculty,Teaching and research in physics
+2301,Academic Advisor,2,staff,201,1.0,45000,25,false,academic_support,Student academic advising
+2302,Administrative Assistant,1,staff,101,1.0,35000,25,false,administrative,Administrative support
+2303,IT Support Specialist,6,staff,601,1.0,55000,25,false,technology,Technical support and maintenance
+2304,Facilities Technician,16,staff,1601,0.75,28000,20,false,facilities,Building maintenance and repairs
+2305,Student Affairs Coordinator,3,staff,301,1.0,42000,25,false,student_services,Student program coordination

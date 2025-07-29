@@ -1,0 +1,21 @@
+org_unit_id,org_unit_name,parent_unit_id,unit_type,head_position_id,budget_code,cost_center,location,mission_statement
+1,Office of the President,,executive,101,PRES,CC001,Main Campus - Admin Building,Strategic leadership and institutional governance
+2,Academic Affairs,1,academic,201,ACAD,CC002,Main Campus - Academic Hall,Academic program oversight and faculty development
+3,Student Affairs,1,student_services,301,STUD,CC003,Main Campus - Student Center,Student life and support services
+4,Finance and Administration,1,administrative,401,FINC,CC004,Main Campus - Admin Building,Financial management and operations
+5,Human Resources,4,administrative,501,HR,CC005,Main Campus - Admin Building,Personnel management and employee relations
+6,Information Technology,4,support,601,IT,CC006,Main Campus - IT Center,Technology infrastructure and digital services
+7,College of Liberal Arts,2,academic,701,COLA,CC007,Main Campus - Liberal Arts Building,Liberal arts education and research
+8,College of Sciences,2,academic,801,COSCI,CC008,Main Campus - Science Complex,STEM education and research
+9,Graduate School,2,academic,901,GRAD,CC009,Main Campus - Graduate Hall,Graduate program administration
+10,Library Services,2,support,1001,LIB,CC010,Main Campus - Library,Information resources and research support
+11,Registrar,2,academic,1101,REG,CC011,Main Campus - Academic Hall,Student records and registration
+12,Admissions,2,academic,1201,ADM,CC012,Main Campus - Admissions Center,Student recruitment and enrollment
+13,Financial Aid,3,student_services,1301,FINAID,CC013,Main Campus - Student Center,Student financial assistance
+14,Career Services,3,student_services,1401,CAREER,CC014,Main Campus - Student Center,Career development and placement
+15,Residence Life,3,student_services,1501,RESLIFE,CC015,Campus Housing,Campus housing and residential programs
+16,Facilities Management,4,support,1601,FAC,CC016,Facilities Building,Campus facilities and maintenance
+17,Security,4,support,1701,SEC,CC017,Security Office,Campus safety and security
+18,Marketing and Communications,1,administrative,1801,COMM,CC018,Main Campus - Admin Building,Institutional marketing and public relations
+19,Development and Alumni Relations,1,fundraising,1901,DEV,CC019,Main Campus - Development Office,Fundraising and alumni engagement
+20,Legal Affairs,1,administrative,2001,LEGAL,CC020,Main Campus - Admin Building,Legal counsel and compliance

@@ -1,0 +1,52 @@
+BPMN Diagram Guide for Organizational Assessment
+===============================================
+
+What are BPMN Diagrams?
+-----------------------
+Business Process Model and Notation (BPMN) diagrams are standardized visual representations of business processes that help organizations understand, document, and improve their workflows.
+
+Why We Need Your BPMN Diagrams:
+-------------------------------
+- Process complexity analysis
+- Workflow efficiency assessment
+- Redundancy identification
+- Automation opportunity detection
+- Resource allocation optimization
+
+What to Include:
+---------------
+1. Core Business Processes:
+   - Customer onboarding
+   - Financial approvals
+   - HR processes (hiring, performance reviews)
+   - IT service delivery
+   - Compliance workflows
+
+2. Supporting Processes:
+   - Communication flows
+   - Decision-making processes
+   - Escalation procedures
+   - Quality assurance workflows
+
+File Format Requirements:
+------------------------
+- Export as .bpmn, .xml, or image files (.png, .jpg, .svg)
+- Include process descriptions/annotations
+- Package all files in a single .zip archive
+
+Tools We Support:
+----------------
+- Lucidchart
+- Microsoft Visio
+- Bizagi Modeler
+- Camunda Modeler
+- Draw.io (now diagrams.net)
+- Any tool that exports standard BPMN 2.0
+
+Don't Have BPMN Diagrams?
+------------------------
+No problem! Our assessment can still provide valuable insights. However, if you have informal process documentation, flowcharts, or procedure manuals, please include those instead.
+
+Questions?
+----------
+Contact: support@northpathstrategies.org
