@@ -15,7 +15,7 @@ export const ASSESSMENT_PRODUCTS = [
     ],
     price: 2495,
     recommended: true,
-    stripeUrl: 'https://organizational-realign-app.vercel.app/api/stripe/create-tier-checkout?tier=express-diagnostic'
+    stripeUrl: 'https://organizational-realign-clean-bst3e3k3d.vercel.app/api/stripe/create-tier-checkout?tier=express-diagnostic'
   },
   {
     id: 'one-time-diagnostic',
@@ -31,7 +31,7 @@ export const ASSESSMENT_PRODUCTS = [
     ],
     price: 4995,
     recommended: false,
-    stripeUrl: 'https://organizational-realign-app.vercel.app/api/stripe/create-tier-checkout?tier=one-time-diagnostic'
+    stripeUrl: 'https://organizational-realign-clean-bst3e3k3d.vercel.app/api/stripe/create-tier-checkout?tier=one-time-diagnostic'
   },
   {
     id: 'monthly-subscription',
@@ -48,7 +48,7 @@ export const ASSESSMENT_PRODUCTS = [
     price: 2995,
     isMonthly: true,
     recommended: false,
-    stripeUrl: 'https://organizational-realign-app.vercel.app/api/stripe/create-tier-checkout?tier=monthly-subscription'
+    stripeUrl: 'https://organizational-realign-clean-bst3e3k3d.vercel.app/api/stripe/create-tier-checkout?tier=monthly-subscription'
   },
   {
     id: 'comprehensive-package',
@@ -63,7 +63,7 @@ export const ASSESSMENT_PRODUCTS = [
     ],
     price: 9900,
     recommended: false,
-    stripeUrl: 'https://organizational-realign-app.vercel.app/api/stripe/create-tier-checkout?tier=comprehensive-package'
+    stripeUrl: 'https://organizational-realign-clean-bst3e3k3d.vercel.app/api/stripe/create-tier-checkout?tier=comprehensive-package'
   },
   {
     id: 'enterprise-transformation',

@@ -1,0 +1,666 @@
+<!-- ================================================== -->
+<!--  NorthPath Strategies • Team Features Page (v2025-07-20) -->
+<!--  Built-In Team Collaboration & Management          -->
+<!--  Updated with Correct Production URLs              -->
+<!--  Paste into an Elementor HTML widget               -->
+<!-- ================================================== -->
+
+<style>
+  :root {
+    --nps-blue:   #1654A3;
+    --nps-gold:   #D4AF37;
+    --nps-slate:  #2A2E33;
+    --nps-light:  #F6F8FC;
+    --nps-radius: 8px;
+    --nps-shadow: 0 4px 12px rgba(0,0,0,.06);
+  }
+  body { margin:0; font-family:"Inter",sans-serif; }
+
+  .nps-wrap { max-width:1140px; margin:0 auto; padding:4rem 1rem; }
+  .nps-alt  { background: var(--nps-light); }
+  
+  .nps-hero { 
+    text-align:center; 
+    background: url('https://northpathstrategies.org/wp-content/uploads/2025/07/—Pngtree—intriguingly-dark-geometric-backdrop-perfect_11036843.jpg') center center / cover no-repeat, linear-gradient(135deg, var(--nps-blue), #0F4C81);
+    color: white;
+    padding: 5rem 1rem;
+    margin-bottom: 0;
+  }
+  .nps-hero h1 { 
+    font-size:3rem; 
+    color:white; 
+    margin: 0 0 1.5rem;
+    font-weight: 700;
+    line-height: 1.25;
+  }
+  .nps-sub { 
+    font-size:1.15rem; 
+    color:#f0f4fc; 
+    margin:0 auto 2rem; 
+    max-width:740px; 
+  }
+  .expert-callout {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin: 1.5rem auto;
+    max-width: 800px;
+    font-size: 1rem;
+    color: #e8f3ff;
+  }
+
+  .section-title { 
+    text-align:center; 
+    margin-bottom:2rem; 
+    color:var(--nps-blue); 
+    font-weight:700; 
+    font-size: 2rem;
+  }
+  
+  .nps-grid { 
+    display:grid; 
+    gap:2rem; 
+    grid-template-columns: repeat(auto-fit,minmax(300px,1fr)); 
+  }
+  
+  .nps-card {
+    background:#fff;
+    padding:2rem;
+    border-radius:var(--nps-radius);
+    box-shadow:var(--nps-shadow);
+    transition:transform .3s ease, box-shadow .3s ease;
+    position: relative;
+  }
+  .nps-card:hover { 
+    transform:translateY(-6px); 
+    box-shadow:0 8px 24px rgba(0,0,0,.12); 
+  }
+  .nps-card h3 { 
+    margin-top:0; 
+    color:var(--nps-blue); 
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .nps-card p, .nps-card ul { 
+    color:#444; 
+    line-height:1.6; 
+  }
+  .nps-card ul {
+    margin-left: 1rem;
+  }
+
+  .button-group { 
+    display:flex; 
+    flex-wrap:wrap; 
+    gap:1rem; 
+    justify-content:center; 
+    margin: 2rem 0;
+  }
+  
+  .nps-btn {
+    padding:.9rem 2rem;
+    background:var(--nps-blue);
+    color:var(--nps-gold);
+    border:2px solid var(--nps-gold);
+    border-radius:9999px;
+    font-weight:600;
+    text-decoration:none;
+    transition:all .25s ease;
+  }
+  .nps-btn:hover { background:var(--nps-gold); color:var(--nps-blue); }
+  .nps-btn-gold { background:var(--nps-gold); color:var(--nps-blue); border-color:var(--nps-blue); }
+  .nps-btn-gold:hover { background:var(--nps-blue); color:var(--nps-gold); border-color:var(--nps-gold); }
+  
+  .process-flow {
+    background: var(--nps-light);
+    padding: 3rem 2rem;
+    border-radius: var(--nps-radius);
+    margin: 3rem 0;
+  }
+  
+  .process-step {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+    position: relative;
+  }
+  
+  .process-step:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    left: 20px;
+    top: 45px;
+    width: 2px;
+    height: 60px;
+    background: var(--nps-blue);
+    opacity: 0.3;
+  }
+  
+  .step-number {
+    background: var(--nps-blue);
+    color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    flex-shrink: 0;
+  }
+  
+  .step-content h4 {
+    color: var(--nps-blue);
+    margin: 0 0 0.5rem 0;
+  }
+  
+  .step-content p {
+    color: var(--nps-slate);
+    margin: 0;
+  }
+  
+  .role-card {
+    background: linear-gradient(135deg, var(--nps-blue), #1a5bb8);
+    color: white;
+    padding: 2rem;
+    border-radius: var(--nps-radius);
+    margin: 1rem 0;
+  }
+  
+  .role-card h4 {
+    color: var(--nps-gold);
+    margin-top: 0;
+  }
+  
+  .role-card p, .role-card ul {
+    color: #e6f2ff;
+  }
+  
+  .benefit-highlight {
+    background: #dcfce7;
+    border: 2px solid #86efac;
+    padding: 1.5rem;
+    border-radius: var(--nps-radius);
+    margin: 2rem 0;
+  }
+  
+  .benefit-highlight h4 {
+    color: #16a34a;
+    margin-top: 0;
+  }
+  
+  .feature-demo {
+    background: white;
+    border: 2px solid var(--nps-gold);
+    border-radius: var(--nps-radius);
+    padding: 2rem;
+    margin: 2rem 0;
+    text-align: center;
+  }
+  
+  .demo-screenshot {
+    background: var(--nps-light);
+    border: 1px solid #E3E7F1;
+    border-radius: var(--nps-radius);
+    padding: 2rem;
+    margin: 1rem 0;
+    min-height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--nps-slate);
+    font-style: italic;
+  }
+  
+  .security-badge {
+    display: inline-flex;
+    align-items: center;
+    background: #fee2e2;
+    color: #dc2626;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin: 0.25rem;
+  }
+  
+  .comparison-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 2rem 0;
+    font-size: 0.95rem;
+  }
+  
+  .comparison-table th {
+    background: var(--nps-blue);
+    color: white;
+    padding: 1rem;
+    text-align: left;
+    font-weight: 600;
+  }
+  
+  .comparison-table td {
+    padding: 1rem;
+    border-bottom: 1px solid #E2E6EE;
+    background: white;
+  }
+  
+  .comparison-table tr:nth-child(even) td {
+    background: #f9fafb;
+  }
+  
+  @media(max-width:768px) {
+    .nps-hero h1 { font-size:2rem; }
+    .nps-grid { grid-template-columns: 1fr; }
+    .process-step { flex-direction: column; text-align: center; }
+    .process-step::after { display: none; }
+  }
+</style>
+
+<!-- HERO -->
+<section class="nps-hero">
+  <div class="nps-wrap">
+    <h1>Built-In Team Collaboration</h1>
+    <p class="nps-sub">
+      All NorthPath Strategies' assessment packages include comprehensive team collaboration features at no additional cost. Invite colleagues, assign roles, share insights securely, and work together on your organizational transformation—with patent-pending algorithms and expert guidance for every team member.
+    </p>
+    <div class="expert-callout">
+      <strong>🛡️ Team Success Advantage:</strong> Research shows that organizationally diverse teams provide more accurate assessments and achieve better implementation results. Our collaboration features ensure everyone's perspective is captured while maintaining enterprise-grade security.
+    </div>
+    <div class="button-group">
+      <a href="https://organizational-realign-clean-bst3e3k3d.vercel.app/demo/teams" class="nps-btn nps-btn-gold">Access Team Dashboard →</a>
+      <a href="https://organizational-realign-clean-bst3e3k3d.vercel.app/quick-wins" class="nps-btn nps-btn-gold">Try Free Team Assessment →</a>
+    </div>
+  </div>
+</section>
+
+<!-- CORE FEATURES -->
+<section class="nps-wrap">
+  <h2 class="section-title">Complete Team Management Features</h2>
+  
+  <div class="nps-grid">
+    <div class="nps-card">
+      <h3>📧 Secure Email Invitations</h3>
+      <p>Send secure, encrypted invitations to team members with personalized messages. Track invitation status and send reminders as needed.</p>
+      <ul>
+        <li>Personalized invitation messages</li>
+        <li>Secure encrypted links with expiration</li>
+        <li>Automatic reminder system</li>
+        <li>Invitation status tracking</li>
+      </ul>
+    </div>
+    
+    <div class="nps-card">
+      <h3>🔐 Role-Based Access Control</h3>
+      <p>Assign appropriate permissions to team members based on their role and responsibilities. Full granular control over who can see and edit what.</p>
+      <ul>
+        <li>Admin, Editor, and Viewer roles</li>
+        <li>Granular permission settings</li>
+        <li>Easy role modification</li>
+        <li>Access audit trails</li>
+      </ul>
+    </div>
+    
+    <div class="nps-card">
+      <h3>📊 Real-Time Collaboration</h3>
+      <p>Work together in real-time with live updates, progress tracking, and shared insights. See who's contributing and when.</p>
+      <ul>
+        <li>Live progress updates</li>
+        <li>Real-time notifications</li>
+        <li>Collaborative comments system</li>
+        <li>Activity feed and history</li>
+      </ul>
+    </div>
+    
+    <div class="nps-card">
+      <h3>📈 Team Dashboard</h3>
+      <p>Central hub for team management, progress tracking, and collaboration oversight. Monitor completion status and team engagement.</p>
+      <ul>
+        <li>Completion status overview</li>
+        <li>Member activity tracking</li>
+        <li>Progress visualization</li>
+        <li>Team performance metrics</li>
+      </ul>
+    </div>
+    
+    <div class="nps-card">
+      <h3>🔔 Smart Notifications</h3>
+      <p>Stay informed with intelligent notifications about team activity, assessment progress, and important updates.</p>
+      <ul>
+        <li>Customizable notification preferences</li>
+        <li>Email and in-platform alerts</li>
+        <li>Priority-based messaging</li>
+        <li>Digest summaries available</li>
+      </ul>
+    </div>
+    
+    <div class="nps-card">
+      <h3>📁 Secure Document Sharing</h3>
+      <p>Share documents, reports, and insights securely within your team with version control and access logging.</p>
+      <ul>
+        <li>Encrypted document storage</li>
+        <li>Version control system</li>
+        <li>Download and sharing controls</li>
+        <li>Access logging and audit trails</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM INVITATION PROCESS -->
+<section class="nps-wrap nps-alt">
+  <h2 class="section-title">Simple Team Invitation Process</h2>
+  
+  <div class="process-flow">
+    <div class="process-step">
+      <div class="step-number">1</div>
+      <div class="step-content">
+        <h4>Admin Setup</h4>
+        <p>Primary account holder automatically becomes team administrator with full management permissions.</p>
+      </div>
+    </div>
+    
+    <div class="process-step">
+      <div class="step-number">2</div>
+      <div class="step-content">
+        <h4>Send Invitations</h4>
+        <p>Add team members via email with personalized invitation messages. Include role assignments and project context.</p>
+      </div>
+    </div>
+    
+    <div class="process-step">
+      <div class="step-number">3</div>
+      <div class="step-content">
+        <h4>Secure Access</h4>
+        <p>Team members receive encrypted links to join the assessment with appropriate role-based permissions.</p>
+      </div>
+    </div>
+    
+    <div class="process-step">
+      <div class="step-number">4</div>
+      <div class="step-content">
+        <h4>Collaborate</h4>
+        <p>Work together on assessments, share insights, track progress, and access expert guidance as a team.</p>
+      </div>
+    </div>
+    
+    <div class="process-step">
+      <div class="step-number">5</div>
+      <div class="step-content">
+        <h4>Implement Together</h4>
+        <p>Use shared reports, expert consultation, and team coordination to successfully implement recommendations.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ROLE-BASED PERMISSIONS -->
+<section class="nps-wrap">
+  <h2 class="section-title">Role-Based Permission System</h2>
+  
+  <div class="role-card">
+    <h4>👑 Admin Role</h4>
+    <p><strong>Full platform access with team management capabilities:</strong></p>
+    <ul>
+      <li>Complete and modify all assessments</li>
+      <li>Invite and remove team members</li>
+      <li>Assign and modify roles</li>
+      <li>Access all reports and analytics</li>
+      <li>Manage billing and subscription settings</li>
+      <li>Schedule expert consultations for the team</li>
+      <li>Export data and reports</li>
+    </ul>
+  </div>
+  
+  <div class="role-card">
+    <h4>✏️ Editor Role</h4>
+    <p><strong>Assessment participation with collaboration features:</strong></p>
+    <ul>
+      <li>Complete assigned assessment sections</li>
+      <li>View and comment on team progress</li>
+      <li>Access shared reports and insights</li>
+      <li>Invite additional team members</li>
+      <li>Participate in expert consultations</li>
+      <li>Share documents within the team</li>
+      <li>Receive notifications and updates</li>
+    </ul>
+  </div>
+  
+  <div class="role-card">
+    <h4>👁️ Viewer Role</h4>
+    <p><strong>Read-only access with commenting capabilities:</strong></p>
+    <ul>
+      <li>View completed assessments and results</li>
+      <li>Access shared reports and findings</li>
+      <li>Add comments and feedback</li>
+      <li>Participate in team discussions</li>
+      <li>Join expert consultation calls (view only)</li>
+      <li>Receive team notifications</li>
+      <li>View implementation progress</li>
+    </ul>
+  </div>
+</section>
+
+<!-- SECURITY FEATURES -->
+<section class="nps-wrap nps-alt">
+  <h2 class="section-title">Enterprise-Grade Team Security</h2>
+  
+  <div class="benefit-highlight">
+    <h4>🛡️ Security You Can Trust</h4>
+    <p>Our team collaboration features maintain the same enterprise-grade security standards as our algorithmic analysis, ensuring your sensitive organizational data remains protected throughout the collaborative process.</p>
+  </div>
+  
+  <div class="nps-grid">
+    <div class="nps-card">
+      <h3>🔒 Data Encryption</h3>
+      <ul>
+        <li><strong>TLS 1.3:</strong> Encryption in transit</li>
+        <li><strong>AES-256:</strong> Encryption at rest</li>
+        <li><strong>End-to-end:</strong> Secure communications</li>
+        <li><strong>Key management:</strong> Industry-standard practices</li>
+      </ul>
+    </div>
+    
+    <div class="nps-card">
+      <h3>👥 Access Controls</h3>
+      <ul>
+        <li><strong>Multi-factor:</strong> Authentication options</li>
+        <li><strong>Session management:</strong> Automatic timeouts</li>
+        <li><strong>IP restrictions:</strong> Location-based controls</li>
+        <li><strong>Audit logging:</strong> Complete activity tracking</li>
+      </ul>
+    </div>
+    
+    <div class="nps-card">
+      <h3>📋 Compliance Ready</h3>
+      <ul>
+        <li><strong>SOC-2:</strong> Aligned security policies</li>
+        <li><strong>HIPAA:</strong> Healthcare compliance available</li>
+        <li><strong>FERPA:</strong> Education sector compliance</li>
+        <li><strong>GDPR:</strong> Privacy regulation compliance</li>
+      </ul>
+    </div>
+  </div>
+  
+  <div style="text-align: center; margin: 2rem 0;">
+    <span class="security-badge">🔐 SOC-2 Aligned</span>
+    <span class="security-badge">🏥 HIPAA Ready</span>
+    <span class="security-badge">🎓 FERPA Compliant</span>
+    <span class="security-badge">🌍 GDPR Compliant</span>
+  </div>
+</section>
+
+<!-- TEAM BENEFITS -->
+<section class="nps-wrap">
+  <h2 class="section-title">Why Teams Get Better Results</h2>
+  
+  <div class="nps-grid">
+    <div class="nps-card">
+      <h3>🎯 More Accurate Assessments</h3>
+      <p>Multiple perspectives capture organizational complexity that single-person assessments miss. Diverse viewpoints lead to more comprehensive analysis.</p>
+      <ul>
+        <li>Cross-departmental insights</li>
+        <li>Multiple organizational levels represented</li>
+        <li>Balanced perspective on challenges</li>
+        <li>Comprehensive stakeholder input</li>
+      </ul>
+    </div>
+    
+    <div class="nps-card">
+      <h3>🤝 Better Implementation</h3>
+      <p>Teams that assess together implement together. Shared understanding and buy-in from the assessment process leads to smoother change management.</p>
+      <ul>
+        <li>Shared ownership of recommendations</li>
+        <li>Built-in change champions</li>
+        <li>Reduced resistance to changes</li>
+        <li>Coordinated implementation efforts</li>
+      </ul>
+    </div>
+    
+    <div class="nps-card">
+      <h3>💡 Enhanced Expert Guidance</h3>
+      <p>Expert consultations with teams provide richer discussions, better questions, and more tailored implementation strategies.</p>
+      <ul>
+        <li>Diverse questions and perspectives</li>
+        <li>Real-time team alignment</li>
+        <li>Collaborative problem-solving</li>
+        <li>Shared understanding of priorities</li>
+      </ul>
+    </div>
+    
+    <div class="nps-card">
+      <h3>⚡ Faster Results</h3>
+      <p>Parallel work streams and distributed assessment completion accelerate the entire process while maintaining quality.</p>
+      <ul>
+        <li>Parallel assessment completion</li>
+        <li>Distributed workload</li>
+        <li>Faster data gathering</li>
+        <li>Coordinated expert consultation</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- PACKAGE INCLUSION -->
+<section class="nps-wrap nps-alt">
+  <h2 class="section-title">Included in Every Package</h2>
+  
+  <div class="feature-demo">
+    <h3>🎉 No Additional Costs</h3>
+    <p style="font-size: 1.2rem; margin-bottom: 2rem;">Team collaboration features are included in all assessment packages at no extra charge.</p>
+    
+    <table class="comparison-table">
+      <thead>
+        <tr>
+          <th>Team Feature</th>
+          <th>Quick Wins<br>(FREE)</th>
+          <th>Express<br>($2,495)</th>
+          <th>One-Time<br>($4,995)</th>
+          <th>Comprehensive<br>($9,995)</th>
+          <th>Enterprise<br>($24,000)</th>
+          <th>Monthly<br>($2,995/mo)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Team Invitations</strong></td>
+          <td>Individual only</td>
+          <td>✓ Unlimited</td>
+          <td>✓ Unlimited</td>
+          <td>✓ Unlimited</td>
+          <td>✓ Unlimited</td>
+          <td>✓ Unlimited</td>
+        </tr>
+        <tr>
+          <td><strong>Role-Based Access</strong></td>
+          <td>—</td>
+          <td>✓ 3 Roles</td>
+          <td>✓ 3 Roles</td>
+          <td>✓ 3 Roles</td>
+          <td>✓ Custom Roles</td>
+          <td>✓ 3 Roles</td>
+        </tr>
+        <tr>
+          <td><strong>Real-Time Collaboration</strong></td>
+          <td>—</td>
+          <td>✓ Included</td>
+          <td>✓ Included</td>
+          <td>✓ Included</td>
+          <td>✓ Enhanced</td>
+          <td>✓ Included</td>
+        </tr>
+        <tr>
+          <td><strong>Team Dashboard</strong></td>
+          <td>—</td>
+          <td>✓ Basic</td>
+          <td>✓ Standard</td>
+          <td>✓ Advanced</td>
+          <td>✓ Enterprise</td>
+          <td>✓ Standard</td>
+        </tr>
+        <tr>
+          <td><strong>Expert Team Consultation</strong></td>
+          <td>—</td>
+          <td>✓ 30-min</td>
+          <td>✓ 60-min</td>
+          <td>✓ 90-min</td>
+          <td>✓ On-site</td>
+          <td>✓ 60-min monthly</td>
+        </tr>
+        <tr>
+          <td><strong>Document Sharing</strong></td>
+          <td>—</td>
+          <td>✓ Secure</td>
+          <td>✓ Version Control</td>
+          <td>✓ Advanced</td>
+          <td>✓ Enterprise</td>
+          <td>✓ Unlimited</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- GETTING STARTED -->
+<section class="nps-wrap">
+  <h2 class="section-title">Get Started with Team Collaboration</h2>
+  
+  <div class="nps-grid">
+    <div class="nps-card">
+      <h3>🚀 New Teams</h3>
+      <p>Start with our free Quick Wins assessment to experience team collaboration features and see how multiple perspectives improve results.</p>
+      <a href="https://organizational-realign-clean-bst3e3k3d.vercel.app/quick-wins" class="nps-btn nps-btn-gold" style="margin-top: 1rem;">Start Free Assessment →</a>
+    </div>
+    
+    <div class="nps-card">
+      <h3>⚡ Express Team Analysis</h3>
+      <p>Get comprehensive team assessment with expert guidance in just 3-5 days. Perfect for teams ready to act quickly.</p>
+      <a href="https://organizational-realign-clean-bst3e3k3d.vercel.app/api/stripe/create-tier-checkout?tier=express-diagnostic" class="nps-btn" style="margin-top: 1rem;">Try Express Diagnostic →</a>
+    </div>
+    
+    <div class="nps-card">
+      <h3>🎯 Existing Users</h3>
+      <p>Already have an account? Access your team dashboard to invite colleagues and start collaborating on your assessment.</p>
+      <a href="https://organizational-realign-clean-bst3e3k3d.vercel.app/teams" class="nps-btn" style="margin-top: 1rem;">Access Team Dashboard →</a>
+    </div>
+  </div>
+  
+  <div class="benefit-highlight">
+    <h4>💡 Team Success Tip</h4>
+    <p>For optimal results, include representatives from different departments, organizational levels, and functional areas. Diverse teams provide more accurate assessments and achieve better implementation results with our expert guidance.</p>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="nps-wrap" style="text-align: center; padding: 4rem 1rem; background: linear-gradient(135deg, var(--nps-blue), #1a5bb8); color: white; border-radius: var(--nps-radius); margin-bottom: 3rem;">
+  <h2 style="color: var(--nps-gold); margin-bottom: 1rem;">Ready to Transform Your Organization Together?</h2>
+  <p style="color: #e6f2ff; margin-bottom: 2rem; max-width: 700px; margin-left: auto; margin-right: auto;">
+    Combine patent-pending algorithmic precision with expert implementation guidance—now with built-in team collaboration at no additional cost.
+  </p>
+  <div class="button-group">
+    <a href="https://organizational-realign-clean-bst3e3k3d.vercel.app/demo/teams" class="nps-btn nps-btn-gold">Access Team Dashboard Demo→</a>
+    <a href="https://calendly.com/jeremyestrella/30min" class="nps-btn" style="background: transparent; border-color: white; color: white;">Schedule Team Strategy Call →</a>
+  </div>
+</section>

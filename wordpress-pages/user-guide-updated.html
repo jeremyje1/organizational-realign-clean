@@ -1,0 +1,892 @@
+<!-- ================================================== -->
+<!--  NorthPath Strategies • Complete User Manual (v2025-07-20) -->
+<!--  Comprehensive Process Guide & Platform Manual     -->
+<!--  Updated with Correct Production URLs              -->
+<!-- ================================================== -->
+
+<style>
+  :root {
+    --nps-blue:   #1654A3;
+    --nps-gold:   #D4AF37;
+    --nps-slate:  #2A2E33;
+    --nps-light:  #F6F8FC;
+    --nps-radius: 8px;
+    --nps-shadow: 0 4px 12px rgba(0,0,0,.06);
+  }
+  body { margin:0; font-family:"Inter",sans-serif; }
+
+  .nps-wrap { max-width:1200px; margin:0 auto; padding:4rem 1rem; }
+  .nps-alt  { background: var(--nps-light); }
+  
+  .nps-hero { 
+    text-align:center; 
+    background: url('https://northpathstrategies.org/wp-content/uploads/2025/07/—Pngtree—intriguingly-dark-geometric-backdrop-perfect_11036843.jpg') center center / cover no-repeat, linear-gradient(135deg, var(--nps-blue), #0F4C81);
+    color: white;
+    padding: 5rem 1rem;
+    margin-bottom: 0;
+  }
+  .nps-hero h1 { 
+    font-size:3rem; 
+    color:white; 
+    margin: 0 0 1.5rem;
+    font-weight: 700;
+    line-height: 1.25;
+  }
+  .nps-sub { 
+    font-size:1.15rem; 
+    color:#f0f4fc; 
+    margin:0 auto 2rem; 
+    max-width:740px; 
+  }
+  .expert-callout {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin: 1.5rem auto;
+    max-width: 800px;
+    font-size: 1rem;
+    color: #e8f3ff;
+  }
+
+  .section-title { 
+    text-align:center; 
+    margin-bottom:2rem; 
+    color:var(--nps-blue); 
+    font-weight:700; 
+    font-size: 2rem;
+  }
+  
+  h2 { color: var(--nps-blue); font-weight: 700; margin: 3rem 0 1.5rem 0; }
+  h3 { color: var(--nps-blue); font-weight: 600; margin: 2rem 0 1rem 0; }
+  h4 { color: var(--nps-slate); font-weight: 600; margin: 1.5rem 0 0.5rem 0; }
+  
+  p { color: var(--nps-slate); line-height: 1.7; margin-bottom: 1.5rem; font-size: 1.05rem; }
+  ul, ol { color: #444; line-height: 1.6; margin-bottom: 1.5rem; }
+  li { margin-bottom: 0.5rem; }
+  
+  .process-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin: 2rem 0;
+  }
+  
+  .process-card {
+    background: #fff;
+    padding: 2rem;
+    border-radius: var(--nps-radius);
+    box-shadow: var(--nps-shadow);
+    border-left: 4px solid var(--nps-gold);
+    position: relative;
+  }
+  
+  .process-number {
+    position: absolute;
+    top: -10px;
+    left: 20px;
+    background: var(--nps-blue);
+    color: white;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 0.9rem;
+  }
+  
+  .algorithm-card {
+    background: linear-gradient(135deg, var(--nps-blue), #1a5bb8);
+    color: white;
+    padding: 2rem;
+    border-radius: var(--nps-radius);
+    margin: 1rem 0;
+  }
+  
+  .algorithm-card h4 {
+    color: var(--nps-gold);
+    margin-top: 0;
+  }
+  
+  .algorithm-card p {
+    color: #e6f2ff;
+    margin-bottom: 1rem;
+  }
+  
+  .tier-comparison {
+    background: var(--nps-light);
+    padding: 2rem;
+    border-radius: var(--nps-radius);
+    margin: 2rem 0;
+  }
+  
+  .tier-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 0.95rem;
+  }
+  
+  .tier-table th {
+    background: var(--nps-blue);
+    color: white;
+    padding: 1rem;
+    text-align: left;
+    font-weight: 600;
+  }
+  
+  .tier-table td {
+    padding: 1rem;
+    border-bottom: 1px solid #E2E6EE;
+    background: white;
+  }
+  
+  .tier-table tr:nth-child(even) td {
+    background: #f9fafb;
+  }
+  
+  .button-group { 
+    display:flex; 
+    flex-wrap:wrap; 
+    gap:1rem; 
+    justify-content:center; 
+    margin: 2rem 0;
+  }
+  
+  .nps-btn {
+    padding:.9rem 2rem;
+    background:var(--nps-blue);
+    color:var(--nps-gold);
+    border:2px solid var(--nps-gold);
+    border-radius:9999px;
+    font-weight:600;
+    text-decoration:none;
+    transition:all .25s ease;
+  }
+  .nps-btn:hover { background:var(--nps-gold); color:var(--nps-blue); }
+  .nps-btn-gold { background:var(--nps-gold); color:var(--nps-blue); border-color:var(--nps-blue); }
+  .nps-btn-gold:hover { background:var(--nps-blue); color:var(--nps-gold); border-color:var(--nps-gold); }
+  
+  .highlight-box {
+    background: #fef3c7;
+    border: 2px solid var(--nps-gold);
+    border-radius: var(--nps-radius);
+    padding: 1.5rem;
+    margin: 2rem 0;
+  }
+  
+  .highlight-box h4 {
+    color: var(--nps-blue);
+    margin-top: 0;
+  }
+  
+  .toc {
+    background: var(--nps-light);
+    padding: 2rem;
+    border-radius: var(--nps-radius);
+    margin-bottom: 3rem;
+  }
+  
+  .toc h3 {
+    margin-top: 0;
+    text-align: center;
+  }
+  
+  .toc ul {
+    list-style: none;
+    padding-left: 0;
+    columns: 2;
+    column-gap: 3rem;
+  }
+  
+  .toc li {
+    margin-bottom: 0.5rem;
+  }
+  
+  .toc a {
+    color: var(--nps-blue);
+    text-decoration: none;
+    font-weight: 500;
+  }
+  
+  .toc a:hover {
+    color: var(--nps-gold);
+    text-decoration: underline;
+  }
+  
+  @media(max-width:768px) {
+    .nps-hero h1 { font-size:2rem; }
+    .process-grid { grid-template-columns: 1fr; }
+    .toc ul { columns: 1; }
+  }
+</style>
+
+<!-- HERO -->
+<section class="nps-hero">
+  <div class="nps-wrap">
+    <h1>Complete User Manual & Process Guide</h1>
+    <p class="nps-sub">
+      Everything you need to know about NorthPath's patent-pending algorithms, expert guidance process, platform features, and how to maximize your organizational transformation results.
+    </p>
+    <div class="expert-callout">
+      <strong>🛡️ Comprehensive Guide:</strong> From initial assessment to implementation success—this manual covers every aspect of working with NorthPath's proprietary technology and expert guidance.
+    </div>
+  </div>
+</section>
+
+<!-- TABLE OF CONTENTS -->
+<section class="nps-wrap">
+  <div class="toc">
+    <h3>📋 Table of Contents</h3>
+    <ul>
+      <li><a href="#overview">1. Platform Overview</a></li>
+      <li><a href="#algorithms">2. Patent-Pending Algorithms</a></li>
+      <li><a href="#expert-guidance">3. Expert Guidance Process</a></li>
+      <li><a href="#assessment-process">4. Assessment Process</a></li>
+      <li><a href="#tier-comparison">5. Package Comparison</a></li>
+      <li><a href="#team-collaboration">6. Team Collaboration</a></li>
+      <li><a href="#data-security">7. Data & Security</a></li>
+      <li><a href="#reporting">8. Report Generation</a></li>
+      <li><a href="#implementation">9. Implementation Support</a></li>
+      <li><a href="#ai-automation">10. AI Automation Opportunities</a></li>
+      <li><a href="#troubleshooting">11. Troubleshooting</a></li>
+      <li><a href="#getting-started">12. Getting Started</a></li>
+    </ul>
+  </div>
+</section>
+
+<!-- 1. PLATFORM OVERVIEW -->
+<section id="overview" class="nps-wrap">
+  <h2>1. Platform Overview</h2>
+  
+  <h3>What Makes NorthPath Different</h3>
+  <p>
+    NorthPath Strategies combines <strong>patent-pending organizational algorithms</strong> with <strong>expert human guidance</strong> from someone who has led actual large-scale reorganizations. This irreplaceable combination provides:
+  </p>
+  
+  <div class="process-grid">
+    <div class="process-card">
+      <div class="process-number">1</div>
+      <h4>Statistical Precision</h4>
+      <p>6 proprietary algorithms (OCI™, HOCI™, JCI™, DSCH, CRF, LEI) purpose-built for organizational science—not adapted from generic AI.</p>
+    </div>
+    <div class="process-card">
+      <div class="process-number">2</div>
+      <h4>Expert Implementation</h4>
+      <p>Real-world guidance from 20+ years of reorganization experience, including change management and stakeholder navigation.</p>
+    </div>
+    <div class="process-card">
+      <div class="process-number">3</div>
+      <h4>Industry Benchmarking</h4>
+      <p>Statistical peer comparison and industry-specific analysis that generic AI tools cannot provide.</p>
+    </div>
+  </div>
+  
+  <div class="highlight-box">
+    <h4>🛡️ Why Generic AI Can't Replace This</h4>
+    <p>ChatGPT, Claude, and other general-purpose AI tools are language models—they don't have organizational algorithms, statistical benchmarking, or human expertise from actual reorganization experience. NorthPath's patent-pending technology combined with expert guidance is truly irreplaceable.</p>
+  </div>
+</section>
+
+<!-- 2. PATENT-PENDING ALGORITHMS -->
+<section id="algorithms" class="nps-wrap nps-alt">
+  <h2>2. Patent-Pending Algorithm Details</h2>
+  
+  <p>Our 6 proprietary algorithms are mathematical models specifically designed for organizational analysis, developed in-house over thousands of data points and years of R&D.</p>
+  
+  <div class="algorithm-card">
+    <h4>🔬 OCI™ (Organizational Complexity Index)</h4>
+    <p><strong>Purpose:</strong> Quantifies structural friction and measures role clarity vs. strategic alignment</p>
+    <p><strong>How it works:</strong> Analyzes reporting relationships, role definitions, and decision-making pathways to calculate a complexity score from 0-100</p>
+    <p><strong>Expert interpretation:</strong> Scores above 75 indicate high complexity requiring structural intervention with change management support</p>
+  </div>
+  
+  <div class="algorithm-card">
+    <h4>🏥 HOCI™ (Hierarchical Optimization Coefficient Index)</h4>
+    <p><strong>Purpose:</strong> Measures decision-making efficiency and departmental clarity (healthcare-adapted version)</p>
+    <p><strong>How it works:</strong> Evaluates hierarchical layers, spans of control, and decision approval pathways</p>
+    <p><strong>Expert interpretation:</strong> Identifies optimal flattening opportunities while maintaining clinical oversight requirements</p>
+  </div>
+  
+  <div class="algorithm-card">
+    <h4>📋 JCI™ (Job Clarity Index)</h4>
+    <p><strong>Purpose:</strong> Evaluates role definition, accountability, and process transparency</p>
+    <p><strong>How it works:</strong> Analyzes job descriptions, reporting relationships, and process documentation completeness</p>
+    <p><strong>Expert interpretation:</strong> Low scores indicate role confusion requiring organizational redesign with stakeholder engagement</p>
+  </div>
+  
+  <div class="algorithm-card">
+    <h4>⚖️ DSCH (Decisional Span of Control Heuristic)</h4>
+    <p><strong>Purpose:</strong> Optimizes reporting structures and management capacity</p>
+    <p><strong>How it works:</strong> Calculates ideal manager-to-direct-report ratios based on role complexity and industry benchmarks</p>
+    <p><strong>Expert interpretation:</strong> Provides specific rebalancing recommendations with leadership development support</p>
+  </div>
+  
+  <div class="algorithm-card">
+    <h4>📡 CRF (Communication Resource Framework)</h4>
+    <p><strong>Purpose:</strong> Identifies communication bottlenecks and inefficiencies</p>
+    <p><strong>How it works:</strong> Maps information flow pathways and identifies redundant or missing communication channels</p>
+    <p><strong>Expert interpretation:</strong> Recommends communication restructuring with cultural change management strategies</p>
+  </div>
+  
+  <div class="algorithm-card">
+    <h4>👔 LEI (Leadership Effectiveness Index)</h4>
+    <p><strong>Purpose:</strong> Assesses management capacity and organizational effectiveness</p>
+    <p><strong>How it works:</strong> Evaluates leadership spans, decision authority, and team performance metrics</p>
+    <p><strong>Expert interpretation:</strong> Identifies leadership development needs and succession planning opportunities</p>
+  </div>
+</section>
+
+<!-- 3. EXPERT GUIDANCE PROCESS -->
+<section id="expert-guidance" class="nps-wrap">
+  <h2>3. Expert Guidance Process</h2>
+  
+  <h3>What You Get with Every Package</h3>
+  <p>Every NorthPath assessment includes expert human guidance from Jeremy Estrella, who has 20+ years of experience leading multi-campus realignments and organizational transformations.</p>
+  
+  <h4>Expert Background</h4>
+  <ul>
+    <li>Led realignments at Oregon's largest higher-education institution</li>
+    <li>Managed multi-campus reorganizations and student-success initiatives</li>
+    <li>Navigated political challenges and cultural resistance in complex organizations</li>
+    <li>Achieved measurable transformation results in mission-driven environments</li>
+    <li>Coached leadership teams through large-scale structural changes</li>
+  </ul>
+  
+  <h4>Expert Guidance by Tier</h4>
+  <ul>
+    <li><strong>Express Diagnostic:</strong> 30-minute strategist debrief with implementation priorities</li>
+    <li><strong>One-Time Assessment:</strong> 60-minute strategy session plus email support</li>
+    <li><strong>Comprehensive Package:</strong> 90-minute workshop plus quarterly check-ins</li>
+    <li><strong>Enterprise Transformation:</strong> On-site facilitation + dedicated success manager + quarterly audits</li>
+    <li><strong>Monthly Subscription:</strong> 60-minute monthly office hours with ongoing guidance</li>
+  </ul>
+  
+  <div class="highlight-box">
+    <h4>🧠 The Human Element</h4>
+    <p>Algorithms provide precision, but expert guidance ensures successful implementation. You work directly with someone who has navigated the same challenges you're facing—not theoretical consultants or automated responses.</p>
+  </div>
+</section>
+
+<!-- 4. ASSESSMENT PROCESS -->
+<section id="assessment-process" class="nps-wrap nps-alt">
+  <h2>4. Complete Assessment Process</h2>
+  
+  <h3>Step-by-Step Walkthrough</h3>
+  
+  <div class="process-grid">
+    <div class="process-card">
+      <div class="process-number">1</div>
+      <h4>Initial Setup</h4>
+      <p>Create account, select package, and complete payment. Receive welcome email with platform access and next steps.</p>
+    </div>
+    
+    <div class="process-card">
+      <div class="process-number">2</div>
+      <h4>Survey Completion</h4>
+      <p>Complete industry-specific questionnaire (60-155 questions depending on tier) covering governance, processes, structure, and technology.</p>
+    </div>
+    
+    <div class="process-card">
+      <div class="process-number">3</div>
+      <h4>Data Upload</h4>
+      <p>Secure upload of organizational documents (org charts, job descriptions, budget data) through encrypted portal.</p>
+    </div>
+    
+    <div class="process-card">
+      <div class="process-number">4</div>
+      <h4>Algorithm Analysis</h4>
+      <p>Patent-pending algorithms analyze your data, generating diagnostic scores and identifying optimization opportunities.</p>
+    </div>
+    
+    <div class="process-card">
+      <div class="process-number">5</div>
+      <h4>Expert Review</h4>
+      <p>Human expert reviews algorithmic findings, adds implementation context, and develops recommendations.</p>
+    </div>
+    
+    <div class="process-card">
+      <div class="process-number">6</div>
+      <h4>Report Generation</h4>
+      <p>AI-enhanced report creation combining algorithmic insights with expert analysis and implementation guidance.</p>
+    </div>
+    
+    <div class="process-card">
+      <div class="process-number">7</div>
+      <h4>Expert Consultation</h4>
+      <p>Strategy session with reorganization expert to review findings, prioritize recommendations, and plan implementation.</p>
+    </div>
+    
+    <div class="process-card">
+      <div class="process-number">8</div>
+      <h4>Implementation Support</h4>
+      <p>Ongoing guidance through implementation phases, with check-ins and support based on package level.</p>
+    </div>
+  </div>
+  
+  <h3>Timeline by Package</h3>
+  <ul>
+    <li><strong>Quick Wins (Free):</strong> Instant results with expert review within 24 hours</li>
+    <li><strong>Express Diagnostic:</strong> 3-5 business days for complete analysis and expert debrief</li>
+    <li><strong>One-Time Assessment:</strong> 7-10 business days for full analysis and 60-minute strategy session</li>
+    <li><strong>Comprehensive Package:</strong> 7-10 business days for analysis, ongoing quarterly support</li>
+    <li><strong>Enterprise Transformation:</strong> 5 days for preliminary insights, ongoing expert support throughout</li>
+    <li><strong>Monthly Subscription:</strong> Continuous analysis with monthly expert office hours</li>
+  </ul>
+</section>
+
+<!-- 5. TIER COMPARISON -->
+<section id="tier-comparison" class="nps-wrap">
+  <h2>5. Complete Package Comparison</h2>
+  
+  <div class="tier-comparison">
+    <table class="tier-table">
+      <thead>
+        <tr>
+          <th>Feature</th>
+          <th>Quick Wins<br>(FREE)</th>
+          <th>Express<br>($2,495)</th>
+          <th>One-Time<br>($4,995)</th>
+          <th>Comprehensive<br>($9,995)</th>
+          <th>Enterprise<br>(Contact for Quote)</th>
+          <th>Monthly<br>($2,995/mo)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Questions</strong></td>
+          <td>12 targeted</td>
+          <td>60+ enhanced</td>
+          <td>100+ comprehensive</td>
+          <td>135+ detailed</td>
+          <td>155+ enterprise</td>
+          <td>120+ ongoing</td>
+        </tr>
+        <tr>
+          <td><strong>Report Pages</strong></td>
+          <td>Instant results</td>
+          <td>25-page report</td>
+          <td>35-page executive</td>
+          <td>45-page board-ready</td>
+          <td>55-page transformation</td>
+          <td>20-page monthly</td>
+        </tr>
+        <tr>
+          <td><strong>Algorithms</strong></td>
+          <td>Core preview</td>
+          <td>OCI™, HOCI™, JCI™</td>
+          <td>All 6 algorithms</td>
+          <td>All 6 algorithms</td>
+          <td>All 6 algorithms</td>
+          <td>All 6 algorithms</td>
+        </tr>
+        <tr>
+          <td><strong>Expert Guidance</strong></td>
+          <td>Expert review</td>
+          <td>30-min debrief</td>
+          <td>60-min strategy</td>
+          <td>90-min workshop</td>
+          <td>On-site facilitation</td>
+          <td>60-min monthly</td>
+        </tr>
+        <tr>
+          <td><strong>Org Charts</strong></td>
+          <td>Basic preview</td>
+          <td>AI-generated</td>
+          <td>Advanced analysis</td>
+          <td>Multiple scenarios</td>
+          <td>Unlimited scenarios</td>
+          <td>Real-time updates</td>
+        </tr>
+        <tr>
+          <td><strong>Team Collaboration</strong></td>
+          <td>Individual only</td>
+          <td>✓ Included</td>
+          <td>✓ Role-based</td>
+          <td>✓ Full training</td>
+          <td>✓ Management program</td>
+          <td>✓ Unlimited</td>
+        </tr>
+        <tr>
+          <td><strong>Implementation Support</strong></td>
+          <td>Self-guided</td>
+          <td>Basic guidance</td>
+          <td>Implementation roadmap</td>
+          <td>Quarterly check-ins</td>
+          <td>Dedicated manager</td>
+          <td>Ongoing support</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
+  <div class="button-group">
+    <a href="https://organizational-realign-clean-bst3e3k3d.vercel.app/quick-wins" class="nps-btn nps-btn-gold">Start Free Quick Wins →</a>
+    <a href="https://organizational-realign-clean-bst3e3k3d.vercel.app/api/stripe/create-tier-checkout?tier=express-diagnostic" class="nps-btn">Try Express Diagnostic →</a>
+    <a href="https://calendly.com/jeremyestrella/30min" class="nps-btn">Book Strategy Call →</a>
+  </div>
+</section>
+
+<!-- 6. TEAM COLLABORATION -->
+<section id="team-collaboration" class="nps-wrap nps-alt">
+  <h2>6. Team Collaboration Features</h2>
+  
+  <h3>Built-In Team Management</h3>
+  <p>All assessment packages include comprehensive team collaboration features at no additional cost:</p>
+  
+  <h4>Team Invitation Process</h4>
+  <ol>
+    <li><strong>Admin Setup:</strong> Primary account holder becomes team administrator</li>
+    <li><strong>Send Invitations:</strong> Add team members via secure email invitations</li>
+    <li><strong>Role Assignment:</strong> Assign roles (Viewer, Editor, Admin) with appropriate permissions</li>
+    <li><strong>Accept Invitations:</strong> Team members receive secure links to join the assessment</li>
+    <li><strong>Real-Time Collaboration:</strong> All members can view progress, add comments, and share insights</li>
+  </ol>
+  
+  <h4>Role-Based Permissions</h4>
+  <ul>
+    <li><strong>Admin:</strong> Full access to all features, can invite/remove members, manage settings</li>
+    <li><strong>Editor:</strong> Can complete assessments, view reports, add comments, invite others</li>
+    <li><strong>Viewer:</strong> Can view completed assessments and reports, add comments only</li>
+  </ul>
+  
+  <h4>Team Dashboard Features</h4>
+  <ul>
+    <li>Real-time completion status tracking</li>
+    <li>Member activity and contribution visibility</li>
+    <li>Secure document sharing and version control</li>
+    <li>Notification system for team updates</li>
+    <li>Export capabilities for team reports</li>
+  </ul>
+  
+  <div class="highlight-box">
+    <h4>🚀 Team Collaboration Benefits</h4>
+    <p>Research shows that organizationally diverse teams provide more accurate assessments and achieve better implementation results. NorthPath's team features ensure everyone's perspective is captured while maintaining data security.</p>
+  </div>
+</section>
+
+<!-- 7. DATA & SECURITY -->
+<section id="data-security" class="nps-wrap">
+  <h2>7. Data Security & Privacy</h2>
+  
+  <h3>Enterprise-Grade Security</h3>
+  <ul>
+    <li><strong>Encryption in Transit:</strong> TLS 1.3 encryption for all data transmission</li>
+    <li><strong>Encryption at Rest:</strong> AES-256 encryption for stored data</li>
+    <li><strong>Role-Based Access:</strong> Granular permissions and access controls</li>
+    <li><strong>SOC-2 Aligned:</strong> Following industry-standard security policies</li>
+    <li><strong>Regular Audits:</strong> Security assessments and compliance reviews</li>
+  </ul>
+  
+  <h3>Privacy Protection</h3>
+  <ul>
+    <li><strong>Data Ownership:</strong> You own all assessment results and data</li>
+    <li><strong>Anonymized Benchmarks:</strong> Only aggregated, non-identifiable data used for benchmarking (with consent)</li>
+    <li><strong>PII Protection:</strong> Personal identifiers can be masked or removed</li>
+    <li><strong>Compliance Ready:</strong> HIPAA and FERPA addenda available for healthcare and education clients</li>
+    <li><strong>Data Retention:</strong> Clear policies for data storage and deletion</li>
+  </ul>
+  
+  <h3>What Data is Required</h3>
+  <p><strong>Minimum Requirements:</strong></p>
+  <ul>
+    <li>Organizational charts and reporting relationships</li>
+    <li>Role titles and general responsibilities</li>
+    <li>Budget lines and cost center information</li>
+    <li>Aggregated HR data (no personal identifiers needed)</li>
+  </ul>
+  
+  <p><strong>Optional for Enhanced Analysis:</strong></p>
+  <ul>
+    <li>Process documentation and workflows</li>
+    <li>Technology inventory and licensing information</li>
+    <li>Performance metrics and KPIs</li>
+    <li>Strategic planning documents</li>
+  </ul>
+</section>
+
+<!-- 8. REPORT GENERATION -->
+<section id="reporting" class="nps-wrap nps-alt">
+  <h2>8. AI-Enhanced Report Generation</h2>
+  
+  <h3>Report Components</h3>
+  <p>Every NorthPath report combines algorithmic precision with expert analysis:</p>
+  
+  <h4>Executive Summary</h4>
+  <ul>
+    <li>Key findings and algorithmic scores</li>
+    <li>Expert interpretation and context</li>
+    <li>Priority recommendations with timelines</li>
+    <li>Financial impact projections</li>
+  </ul>
+  
+  <h4>Diagnostic Analysis</h4>
+  <ul>
+    <li>Detailed algorithm results (OCI™, HOCI™, JCI™, etc.)</li>
+    <li>Statistical benchmarking against industry peers</li>
+    <li>Complexity mapping and bottleneck identification</li>
+    <li>Expert commentary on each finding</li>
+  </ul>
+  
+  <h4>Organizational Charts</h4>
+  <ul>
+    <li>Current state visualization with cost analysis</li>
+    <li>Proposed optimization scenarios (Baseline/Moderate/Aggressive)</li>
+    <li>Span of control analysis and recommendations</li>
+    <li>Implementation timeline and change management notes</li>
+  </ul>
+  
+  <h4>Recommendations Matrix</h4>
+  <ul>
+    <li>Prioritized action items with ROI calculations</li>
+    <li>Implementation difficulty and timeline estimates</li>
+    <li>Resource requirements and owner assignments</li>
+    <li>Success metrics and tracking methods</li>
+  </ul>
+  
+  <h4>AI Automation Opportunities</h4>
+  <ul>
+    <li>Industry-specific automation possibilities</li>
+    <li>Implementation priorities and dependencies</li>
+    <li>Cost-benefit analysis for each opportunity</li>
+    <li>Change management strategies for technology adoption</li>
+  </ul>
+  
+  <h3>Report Formats</h3>
+  <ul>
+    <li><strong>PDF Reports:</strong> Professional, shareable documents for stakeholders</li>
+    <li><strong>Interactive Dashboards:</strong> Real-time data visualization and exploration</li>
+    <li><strong>CSV Exports:</strong> Raw data for further analysis and integration</li>
+    <li><strong>PowerBI Integration:</strong> Embedded dashboards for Enterprise clients</li>
+  </ul>
+</section>
+
+<!-- 9. IMPLEMENTATION SUPPORT -->
+<section id="implementation" class="nps-wrap">
+  <h2>9. Implementation Support & Change Management</h2>
+  
+  <h3>Expert-Guided Implementation</h3>
+  <p>Implementation success requires more than good recommendations—it requires expert guidance through the human challenges of organizational change.</p>
+  
+  <h4>Change Management Framework</h4>
+  <ol>
+    <li><strong>Stakeholder Mapping:</strong> Identify key influencers, champions, and potential resistance</li>
+    <li><strong>Communication Strategy:</strong> Develop messaging that addresses concerns and builds support</li>
+    <li><strong>Phased Rollout:</strong> Implement changes in manageable phases with quick wins</li>
+    <li><strong>Training and Support:</strong> Provide necessary skills development and ongoing assistance</li>
+    <li><strong>Monitoring and Adjustment:</strong> Track progress and adjust strategies based on results</li>
+  </ol>
+  
+  <h4>Implementation Timeline</h4>
+  <p><strong>Phase 1 (Months 1-3): Foundation</strong></p>
+  <ul>
+    <li>Stakeholder alignment and communication</li>
+    <li>Quick wins implementation</li>
+    <li>Team formation and training</li>
+  </ul>
+  
+  <p><strong>Phase 2 (Months 4-9): Core Changes</strong></p>
+  <ul>
+    <li>Structural modifications and role changes</li>
+    <li>Process improvements and technology updates</li>
+    <li>Performance monitoring and adjustments</li>
+  </ul>
+  
+  <p><strong>Phase 3 (Months 10-12): Optimization</strong></p>
+  <ul>
+    <li>Fine-tuning and culture reinforcement</li>
+    <li>Success measurement and reporting</li>
+    <li>Sustainability planning and knowledge transfer</li>
+  </ul>
+  
+  <h4>Success Factors</h4>
+  <ul>
+    <li><strong>Leadership Commitment:</strong> Visible support from top management</li>
+    <li><strong>Clear Communication:</strong> Consistent messaging about why, what, and when</li>
+    <li><strong>Employee Involvement:</strong> Engaging staff in solution development</li>
+    <li><strong>Adequate Resources:</strong> Providing necessary time, budget, and support</li>
+    <li><strong>Continuous Learning:</strong> Adapting based on feedback and results</li>
+  </ul>
+</section>
+
+<!-- 10. AI AUTOMATION OPPORTUNITIES -->
+<section id="ai-automation" class="nps-wrap nps-alt">
+  <h2>10. AI Automation Opportunities</h2>
+  
+  <h3>Industry-Specific Automation Mapping</h3>
+  <p>Beyond organizational optimization, NorthPath identifies AI automation opportunities tailored to your industry with expert implementation guidance.</p>
+  
+  <h4>Higher Education</h4>
+  <ul>
+    <li><strong>Student Services:</strong> 24/7 AI advising chatbots, automated degree audits, predictive intervention systems</li>
+    <li><strong>Academic Operations:</strong> Automated scheduling, curriculum mapping, assessment analytics</li>
+    <li><strong>Administrative:</strong> Budget forecasting, HR automation, facilities management</li>
+    <li><strong>Expert Guidance:</strong> Faculty adoption strategies, student privacy compliance, change management</li>
+  </ul>
+  
+  <h4>Healthcare</h4>
+  <ul>
+    <li><strong>Patient Care:</strong> Intelligent triage, clinical decision support, automated documentation</li>
+    <li><strong>Operations:</strong> Supply chain optimization, staffing algorithms, quality monitoring</li>
+    <li><strong>Administrative:</strong> Claims processing, scheduling automation, compliance tracking</li>
+    <li><strong>Expert Guidance:</strong> Clinical workflow integration, regulatory compliance, staff training</li>
+  </ul>
+  
+  <h4>Nonprofit</h4>
+  <ul>
+    <li><strong>Fundraising:</strong> Donor segmentation, campaign optimization, grant writing assistance</li>
+    <li><strong>Program Management:</strong> Impact measurement, volunteer coordination, service delivery</li>
+    <li><strong>Operations:</strong> Financial management, marketing automation, stakeholder communication</li>
+    <li><strong>Expert Guidance:</strong> Mission alignment, stakeholder engagement, change management</li>
+  </ul>
+  
+  <h4>Enterprise/Corporate</h4>
+  <ul>
+    <li><strong>Operations:</strong> Process automation, quality control, supply chain optimization</li>
+    <li><strong>Human Resources:</strong> Recruitment automation, performance analytics, training personalization</li>
+    <li><strong>Finance:</strong> Automated reporting, fraud detection, budgeting and forecasting</li>
+    <li><strong>Expert Guidance:</strong> Employee adoption, security considerations, ROI optimization</li>
+  </ul>
+  
+  <h3>Implementation Prioritization</h3>
+  <p>Our expert guidance helps you prioritize AI automation opportunities based on:</p>
+  <ul>
+    <li><strong>ROI Potential:</strong> Cost savings and efficiency gains</li>
+    <li><strong>Implementation Complexity:</strong> Technical and organizational challenges</li>
+    <li><strong>Change Management:</strong> Staff readiness and cultural fit</li>
+    <li><strong>Risk Assessment:</strong> Potential downsides and mitigation strategies</li>
+  </ul>
+</section>
+
+<!-- 11. TROUBLESHOOTING -->
+<section id="troubleshooting" class="nps-wrap">
+  <h2>11. Troubleshooting & Support</h2>
+  
+  <h3>Common Issues and Solutions</h3>
+  
+  <h4>Assessment Questions</h4>
+  <p><strong>Problem:</strong> Unclear how to answer specific questions</p>
+  <p><strong>Solution:</strong> Each question includes help text and examples. Contact support for clarification or schedule expert consultation.</p>
+  
+  <p><strong>Problem:</strong> Questions don't apply to our organization</p>
+  <p><strong>Solution:</strong> Select "Not Applicable" or use comment fields to provide context. Our expert review will adjust analysis accordingly.</p>
+  
+  <h4>Data Upload</h4>
+  <p><strong>Problem:</strong> File upload failures or format issues</p>
+  <p><strong>Solution:</strong> Ensure files are under size limits (50MB per file). Supported formats: PDF, Excel, Word, CSV. Contact support for assistance.</p>
+  
+  <p><strong>Problem:</strong> Sensitive data concerns</p>
+  <p><strong>Solution:</strong> Remove personal identifiers before upload. Our algorithms work with structural data, not individual information.</p>
+  
+  <h4>Team Collaboration</h4>
+  <p><strong>Problem:</strong> Team member can't access invitation</p>
+  <p><strong>Solution:</strong> Check spam/junk folders. Resend invitation or manually add member through team dashboard.</p>
+  
+  <p><strong>Problem:</strong> Permission conflicts or access issues</p>
+  <p><strong>Solution:</strong> Admin can adjust roles and permissions in team settings. Contact support for complex permission scenarios.</p>
+  
+  <h4>Report Generation</h4>
+  <p><strong>Problem:</strong> Report taking longer than expected</p>
+  <p><strong>Solution:</strong> Complex analyses may require additional processing time. You'll receive email notification when complete.</p>
+  
+  <p><strong>Problem:</strong> Results don't match expectations</p>
+  <p><strong>Solution:</strong> Schedule expert consultation to review findings and methodology. Our algorithms may identify issues not immediately apparent.</p>
+  
+  <h3>Getting Help</h3>
+  <ul>
+    <li><strong>Email Support:</strong> support@northpathstrategies.org (receive a response within 24 hours)</li>
+    <li><strong>Expert Consultation:</strong> Schedule strategy call for complex issues</li>
+    <li><strong>Documentation:</strong> Comprehensive help articles in platform</li>
+    <li><strong>Video Tutorials:</strong> Step-by-step guides for key features</li>
+  </ul>
+</section>
+
+<!-- 12. GETTING STARTED -->
+<section id="getting-started" class="nps-wrap nps-alt">
+  <h2>12. Getting Started</h2>
+  
+  <h3>Choose Your Path</h3>
+  
+  <div class="process-grid">
+    <div class="process-card">
+      <div class="process-number">1</div>
+      <h4>New to NorthPath?</h4>
+      <p>Start with our free Quick Wins assessment to experience our methodology and get immediate value.</p>
+      <a href="https://organizational-realign-clean-bst3e3k3d.vercel.app/quick-wins" class="nps-btn nps-btn-gold" style="margin-top: 1rem;">Start Free Assessment →</a>
+    </div>
+    
+    <div class="process-card">
+      <div class="process-number">2</div>
+      <h4>Ready for Full Analysis?</h4>
+      <p>Express Diagnostic provides comprehensive insights with expert guidance in just 3-5 days.</p>
+      <a href="https://organizational-realign-clean-bst3e3k3d.vercel.app/api/stripe/create-tier-checkout?tier=express-diagnostic" class="nps-btn" style="margin-top: 1rem;">Try Express Diagnostic →</a>
+    </div>
+    
+    <div class="process-card">
+      <div class="process-number">3</div>
+      <h4>Need Expert Consultation?</h4>
+      <p>Schedule a strategy call to discuss your specific situation and get personalized recommendations.</p>
+      <a href="https://calendly.com/jeremyestrella/30min" class="nps-btn" style="margin-top: 1rem;">Book Strategy Call →</a>
+    </div>
+  </div>
+  
+  <h3>Preparation Checklist</h3>
+  <p>Before starting your assessment, gather these materials for optimal results:</p>
+  
+  <h4>Required Documents</h4>
+  <ul>
+    <li>Current organizational chart</li>
+    <li>Job descriptions or role summaries</li>
+    <li>Basic budget or cost center information</li>
+    <li>List of key software/systems used</li>
+  </ul>
+  
+  <h4>Helpful (But Optional)</h4>
+  <ul>
+    <li>Strategic planning documents</li>
+    <li>Process flowcharts or documentation</li>
+    <li>Previous assessments or audits</li>
+    <li>Performance metrics or KPIs</li>
+  </ul>
+  
+  <h4>Team Preparation</h4>
+  <ul>
+    <li>Identify key stakeholders to involve</li>
+    <li>Plan for 1-3 hours of team time for comprehensive assessments</li>
+    <li>Consider who should participate in expert consultations</li>
+    <li>Prepare questions about implementation challenges</li>
+  </ul>
+  
+  <div class="highlight-box">
+    <h4>🚀 Success Tip</h4>
+    <p>The most successful assessments involve diverse perspectives from across the organization. Consider including representatives from different departments, levels, and functions for comprehensive insights.</p>
+  </div>
+  
+  <h3>Next Steps</h3>
+  <ol>
+    <li>Choose your assessment package based on needs and timeline</li>
+    <li>Gather required documents and stakeholders</li>
+    <li>Complete the assessment process</li>
+    <li>Engage with expert guidance for implementation planning</li>
+    <li>Begin transformation with ongoing support</li>
+  </ol>
+  
+  <div class="button-group">
+    <a href="https://organizational-realign-clean-bst3e3k3d.vercel.app/quick-wins" class="nps-btn nps-btn-gold">Start Your Journey →</a>
+    <a href="https://calendly.com/jeremyestrella/30min" class="nps-btn">Talk to an Expert →</a>
+  </div>
+</section>
+
+<!-- FOOTER CTA -->
+<section class="nps-wrap" style="text-align: center; padding: 4rem 1rem; background: linear-gradient(135deg, var(--nps-blue), #1a5bb8); color: white; border-radius: var(--nps-radius); margin-bottom: 3rem;">
+  <h2 style="color: var(--nps-gold); margin-bottom: 1rem;">Ready to Transform Your Organization?</h2>
+  <p style="color: #e6f2ff; margin-bottom: 2rem; max-width: 700px; margin-left: auto; margin-right: auto;">
+    Combine patent-pending algorithmic precision with expert implementation guidance from someone who has led successful reorganizations.
+  </p>
+  <div class="button-group">
+    <a href="https://organizational-realign-clean-bst3e3k3d.vercel.app/quick-wins" class="nps-btn nps-btn-gold">Start Free Assessment →</a>
+    <a href="https://northpathstrategies.org/team-collaboration/">Explore Team Features →</a>
+    <a href="https://calendly.com/jeremyestrella/30min" class="nps-btn" style="background: transparent; border-color: white; color: white;">Schedule Expert Call →</a>
+  </div>
+</section>
