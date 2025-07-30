@@ -17,7 +17,7 @@ export function Navbar() {
             <div className="p-2 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg">
               <Building className="w-6 h-6 text-white" />
             </div>
-            <span className="text-xl font-bold text-gray-900">NorthPath</span>
+            <span className="text-xl font-bold text-gray-900">NorthPath Strategies</span>
           </Link>
 
           {/* Desktop Navigation */}
