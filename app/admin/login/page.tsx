@@ -14,73 +14,87 @@ export default function AdminLoginPage() {
     setLoading(true);
     setError('');
 
-    // Simple token-based authentication
-    if (token === 'stardynamics1124*') {
-      // Set admin session
-      localStorage.setItem('admin-token', token);
-      localStorage.setItem('admin-logged-in', 'true');
-      document.cookie = 'admin-token=stardynamics1124*; path=/; secure; samesite=strict';
-      
-      // Redirect to dashboard
-      router.push('/admin/dashboard');
-    } else {
-      setError('Invalid admin token. Please try again.');
+    try {
+      // Simple token-based authentication
+      if (token === 'stardynamics1124*') {
+        // Set admin session
+        if (typeof window !== 'undefined') {
+          localStorage.setItem('admin-token', token);
+          localStorage.setItem('admin-logged-in', 'true');
+          document.cookie = 'admin-token=stardynamics1124*; path=/; secure; samesite=strict';
+        }
+        
+        // Redirect to dashboard
+        router.push('/admin/dashboard');
+      } else {
+        setError('Invalid admin token. Please try again.');
+        setLoading(false);
+      }
+    } catch (err) {
+      console.error('Login error:', err);
+      setError('Authentication failed. Please try again.');
       setLoading(false);
     }
   };
 
+  // Cache buster - use static timestamp to avoid hydration issues
+  const buildTime = "2025-01-30 16:24:31";
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex items-center justify-center">
-      <div className="max-w-md w-full space-y-8">
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900 flex items-center justify-center">
+      <div className="max-w-lg w-full space-y-10 p-6">
         <div className="text-center">
-          <div className="mx-auto h-16 w-16 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-xl flex items-center justify-center shadow-lg">
-            <span className="text-white font-bold text-2xl">NP</span>
+          <div className="mx-auto h-20 w-20 bg-gradient-to-tr from-emerald-500 via-blue-500 to-purple-600 rounded-2xl flex items-center justify-center shadow-2xl transform rotate-6 hover:rotate-12 transition-transform">
+            <span className="text-white font-black text-3xl transform -rotate-6">NP</span>
           </div>
-          <h2 className="mt-6 text-center text-4xl font-extrabold text-gray-900">
-            🔐 Admin Portal
-          </h2>
-          <p className="mt-3 text-center text-base text-gray-600">
-            Secure access to dashboard analytics
+          <h1 className="mt-8 text-center text-6xl font-black bg-gradient-to-r from-white via-blue-100 to-emerald-100 bg-clip-text text-transparent">
+            ✨ ADMIN HUB ✨
+          </h1>
+          <p className="mt-4 text-center text-xl text-white font-bold">
+            🎯 Business Intelligence Dashboard
           </p>
+          <div className="mt-2 text-xs text-blue-200 font-mono">
+            v2.0 • {buildTime}
+          </div>
         </div>
         
-        <form onSubmit={handleSubmit} className="bg-white rounded-xl shadow-xl p-8 space-y-6 border border-gray-200">
+        <form onSubmit={handleSubmit} className="bg-white/95 backdrop-blur-sm rounded-3xl shadow-2xl p-10 space-y-8 border-2 border-white/70">
           <div>
-            <label htmlFor="token" className="block text-sm font-semibold text-gray-700 mb-3">
-              🔑 Authentication Token
+            <label htmlFor="token" className="block text-lg font-black text-slate-800 mb-4">
+              🔒 SECURITY TOKEN
             </label>
             <input
               id="token"
               type="password"
               value={token}
               onChange={(e) => setToken(e.target.value)}
-              className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
-              placeholder="Enter your admin token"
+              className="w-full px-6 py-4 border-3 border-slate-300 rounded-xl shadow-lg focus:outline-none focus:ring-4 focus:ring-blue-500 focus:border-blue-500 transition-all text-lg font-medium bg-slate-50"
+              placeholder="🔑 Enter authentication token..."
               required
             />
           </div>
           
           {error && (
-            <div className="bg-red-50 border-2 border-red-200 rounded-lg p-4">
-              <p className="text-red-700 text-sm font-medium">❌ {error}</p>
+            <div className="bg-red-50 border-3 border-red-300 rounded-xl p-6">
+              <p className="text-red-900 text-lg font-bold">🚨 {error}</p>
             </div>
           )}
           
           <button
             type="submit"
             disabled={loading}
-            className="w-full bg-gradient-to-r from-blue-600 to-indigo-600 text-white py-3 px-6 rounded-lg hover:from-blue-700 hover:to-indigo-700 focus:outline-none focus:ring-4 focus:ring-blue-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed transition-all transform hover:scale-105 font-semibold"
+            className="w-full bg-gradient-to-r from-emerald-600 via-blue-600 to-purple-700 text-white py-4 px-8 rounded-xl hover:from-emerald-700 hover:via-blue-700 hover:to-purple-800 focus:outline-none focus:ring-6 focus:ring-blue-500 focus:ring-offset-3 disabled:opacity-50 disabled:cursor-not-allowed transition-all transform hover:scale-105 font-black text-xl shadow-2xl"
           >
-            {loading ? '🔄 Authenticating...' : '🚀 Access Dashboard'}
+            {loading ? '⏳ AUTHENTICATING...' : '🚀 LAUNCH CONTROL PANEL'}
           </button>
         </form>
         
         <div className="text-center">
           <a 
             href="/"
-            className="text-blue-600 hover:text-blue-500 text-sm"
+            className="text-blue-200 hover:text-white text-lg font-bold hover:underline transition-colors"
           >
-            ← Back to Home
+            ← Return to Main Site
           </a>
         </div>
       </div>

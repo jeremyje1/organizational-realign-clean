@@ -39,10 +39,16 @@ interface LanguageProviderProps {
 
 export function LanguageProvider({ children, initialInstitutionType }: LanguageProviderProps) {
   const [institutionType, setInstitutionTypeState] = useState<InstitutionType | null>(initialInstitutionType || null);
+  const [isClient, setIsClient] = useState(false);
+
+  // Set client flag after mount to avoid hydration mismatch
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
 
   // Load institution type from localStorage on mount
   useEffect(() => {
-    if (typeof window !== 'undefined') {
+    if (isClient && typeof window !== 'undefined') {
       const saved = localStorage.getItem('institutionType');
       if (saved) {
         setInstitutionTypeState(saved as InstitutionType);
@@ -51,12 +57,12 @@ export function LanguageProvider({ children, initialInstitutionType }: LanguageP
         setInstitutionTypeState('community-college');
       }
     }
-  }, [initialInstitutionType]);
+  }, [initialInstitutionType, isClient]);
 
   // Save institution type to localStorage when it changes
   const setInstitutionType = (type: InstitutionType | null) => {
     setInstitutionTypeState(type);
-    if (typeof window !== 'undefined') {
+    if (isClient && typeof window !== 'undefined') {
       if (type) {
         localStorage.setItem('institutionType', type);
       } else {

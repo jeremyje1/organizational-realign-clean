@@ -1,4 +1,5 @@
 import './globals.css'
+import './mobile-enhancements.css'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import { Navbar } from '@/components/Navbar'
@@ -10,6 +11,13 @@ const inter = Inter({ subsets: ['latin'] })
 export const metadata: Metadata = {
   title: 'NorthPath Strategies - Organizational Realignment',
   description: 'Transform your organization with AI-powered insights and proprietary algorithms',
+}
+
+export const viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 1,
+  userScalable: false,
 }
 
 export default function RootLayout({

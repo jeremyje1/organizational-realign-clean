@@ -17,9 +17,11 @@ export default function AdminPortalPage() {
     // Simple token-based authentication
     if (token === 'stardynamics1124*') {
       // Set admin session
-      localStorage.setItem('admin-token', token);
-      localStorage.setItem('admin-logged-in', 'true');
-      document.cookie = 'admin-token=stardynamics1124*; path=/; secure; samesite=strict';
+      if (typeof window !== 'undefined') {
+        localStorage.setItem('admin-token', token);
+        localStorage.setItem('admin-logged-in', 'true');
+        document.cookie = 'admin-token=stardynamics1124*; path=/; secure; samesite=strict';
+      }
       
       // Redirect to dashboard
       router.push('/admin/dashboard');
@@ -36,14 +38,14 @@ export default function AdminPortalPage() {
           <div className="mx-auto h-20 w-20 bg-gradient-to-r from-purple-600 via-blue-600 to-indigo-600 rounded-2xl flex items-center justify-center shadow-2xl transform rotate-3">
             <span className="text-white font-bold text-3xl transform -rotate-3">NP</span>
           </div>
-          <h1 className="mt-8 text-center text-5xl font-extrabold bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
+          <h1 className="mt-8 text-center text-5xl font-extrabold bg-gradient-to-r from-gray-800 to-gray-900 bg-clip-text text-transparent">
             ⚡ ADMIN PORTAL ⚡
           </h1>
-          <p className="mt-4 text-center text-lg text-gray-700 font-medium">
+          <p className="mt-4 text-center text-lg text-gray-900 font-medium">
             🎯 Dashboard Analytics & Management
           </p>
-          <div className="mt-2 text-center text-sm text-gray-500">
-            Build: {new Date().toISOString()}
+          <div className="mt-2 text-center text-sm text-gray-600">
+            Build: 2025-01-30 16:24:31
           </div>
         </div>
         

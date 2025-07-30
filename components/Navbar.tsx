@@ -9,19 +9,19 @@ export function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
 
   return (
-    <nav className="bg-white/95 backdrop-blur-sm border-b border-gray-200 sticky top-0 z-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
+    <nav className="bg-white/95 backdrop-blur-sm border-b border-gray-200 sticky top-0 z-50 safe-top">
+      <div className="max-w-7xl mx-auto px-3 sm:px-4 lg:px-8">
+        <div className="flex justify-between items-center h-14 sm:h-16">
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-2">
-            <div className="p-2 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg">
-              <Building className="w-6 h-6 text-white" />
+            <div className="p-1.5 sm:p-2 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg">
+              <Building className="w-4 h-4 sm:w-6 sm:h-6 text-white" />
             </div>
-            <span className="text-xl font-bold text-gray-900">NorthPath Strategies</span>
+            <span className="text-lg sm:text-xl font-bold text-gray-900 truncate">NorthPath Strategies</span>
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden md:flex items-center space-x-6 lg:space-x-8">
             <Link href="/assessment/tier-based" className="text-gray-700 hover:text-blue-600 font-medium transition-colors">
               Assessment
             </Link>
@@ -38,7 +38,7 @@ export function Navbar() {
               Contact
             </Link>
             <Link href="/assessment/tier-based">
-              <Button className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-6 py-2 rounded-lg shadow-lg">
+              <Button className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-4 lg:px-6 py-2 rounded-lg shadow-lg text-sm">
                 Get Started
               </Button>
             </Link>
@@ -47,33 +47,34 @@ export function Navbar() {
           {/* Mobile menu button */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors"
+            className="md:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors touch-manipulation"
+            aria-label="Toggle menu"
           >
-            {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            {isOpen ? <X className="w-5 h-5 sm:w-6 sm:h-6" /> : <Menu className="w-5 h-5 sm:w-6 sm:h-6" />}
           </button>
         </div>
 
         {/* Mobile Navigation */}
         {isOpen && (
-          <div className="md:hidden py-4 border-t border-gray-200">
-            <div className="flex flex-col space-y-4">
+          <div className="md:hidden py-3 sm:py-4 border-t border-gray-200 animate-slide-down">
+            <div className="flex flex-col space-y-3 sm:space-y-4">
               <Link 
                 href="/assessment/tier-based" 
-                className="text-gray-700 hover:text-blue-600 font-medium py-2 transition-colors"
+                className="text-gray-700 hover:text-blue-600 font-medium py-2 transition-colors touch-manipulation"
                 onClick={() => setIsOpen(false)}
               >
                 Assessment
               </Link>
               <Link 
                 href="/pricing" 
-                className="text-gray-700 hover:text-blue-600 font-medium py-2 transition-colors"
+                className="text-gray-700 hover:text-blue-600 font-medium py-2 transition-colors touch-manipulation"
                 onClick={() => setIsOpen(false)}
               >
                 Pricing
               </Link>
               <Link 
                 href="/demo" 
-                className="text-gray-700 hover:text-blue-600 font-medium py-2 transition-colors"
+                className="text-gray-700 hover:text-blue-600 font-medium py-2 transition-colors touch-manipulation"
                 onClick={() => setIsOpen(false)}
               >
                 Demo

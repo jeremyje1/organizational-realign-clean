@@ -6,6 +6,7 @@
 
 import type { ReactNode } from "react";
 import { LanguageProvider } from "@/hooks/useLanguage";
+import { Suspense } from "react";
 
 interface ProvidersProps {
   children: ReactNode;
@@ -16,8 +17,10 @@ interface ProvidersProps {
  */
 export default function Providers({ children }: ProvidersProps) {
   return (
-    <LanguageProvider>
-      {children}
-    </LanguageProvider>
+    <Suspense fallback={<div>Loading...</div>}>
+      <LanguageProvider>
+        {children}
+      </LanguageProvider>
+    </Suspense>
   );
 }

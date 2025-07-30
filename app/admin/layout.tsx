@@ -1,11 +1,12 @@
 /**
  * Admin Layout
- * Optimized layout for admin pages to reduce CSS preload warnings
+ * Optimized layout for admin pages with error boundary
  */
 
 'use client';
 
 import type { ReactNode } from "react";
+import { AdminErrorBoundary } from "@/components/AdminErrorBoundary";
 
 export default function AdminLayout({
   children,
@@ -13,7 +14,7 @@ export default function AdminLayout({
   children: ReactNode;
 }) {
   return (
-    <>
+    <AdminErrorBoundary>
       {/* Optimize CSS loading specifically for admin pages */}
       <style jsx global>{`
         /* Inline critical CSS for admin to reduce preload warnings */
@@ -29,6 +30,6 @@ export default function AdminLayout({
         }
       `}</style>
       {children}
-    </>
+    </AdminErrorBoundary>
   );
 }

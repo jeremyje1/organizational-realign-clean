@@ -1,6 +1,5 @@
 {
   "framework": "nextjs",
-  "domains": ["assessments.northpathstrategies.org"],
   "redirects": [
     {
       "source": "/admin",

@@ -3,10 +3,16 @@
  */
 
 export const TERM_DEFINITIONS: Record<string, string> = {
-  // Algorithm Terms
-  'DSCH': 'Dynamic Span-of-Control Heuristic - NorthPath\'s proprietary algorithm that analyzes optimal reporting structures and organizational hierarchies',
+  // Patent-Pending Algorithm Terms
+  'OCI': 'Organizational Complexity Index™ - Patent-pending algorithm quantifying structural friction and role clarity vs. strategic alignment',
+  'HOCI': 'Hierarchical Optimization Coefficient Index™ - Healthcare-adapted algorithm measuring decision-making efficiency and departmental clarity',
+  'JCI': 'Job Clarity Index™ - Proprietary model evaluating role definition, accountability, and process transparency',
+  'DSCH': 'Decisional Span of Control Heuristic - Algorithm optimizing reporting structures and management capacity',
+  'CRF': 'Communication Resource Framework - Proprietary model identifying communication bottlenecks and inefficiencies',
+  'LEI': 'Leadership Effectiveness Index - Statistical algorithm assessing management capacity and organizational effectiveness',
+  
+  // Legacy Algorithm Terms
   'SPAN_CONTROL': 'The number of direct reports a manager supervises. Optimal spans vary by role complexity and industry.',
-  'CRF': 'Cultural Resilience Factor - Measures an organization\'s ability to maintain culture and performance during structural changes',
   'ROI': 'Return on Investment - Financial metric measuring efficiency of organizational changes relative to costs',
   'COST_SAVINGS': 'Quantified financial benefits from organizational optimization, typically measured over 3-year periods',
   'RISK_TOLERANCE': 'Organization\'s willingness to accept uncertainty in pursuit of optimization goals',
@@ -82,9 +88,15 @@ export function wrapTermsWithTooltips(text: string): string {
   
   // Common patterns for technical terms
   const patterns = [
+    // Patent-Pending Algorithms
+    /\bOCI\b/g,
+    /\bHOCI\b/g,
+    /\bJCI\b/g,
     /\bDSCH\b/g,
-    /\bspan[- ]of[- ]control\b/gi,
     /\bCRF\b/g,
+    /\bLEI\b/g,
+    // Legacy and General Terms
+    /\bspan[- ]of[- ]control\b/gi,
     /\bROI\b/g,
     /\bKPI\b/g,
     /\bOKR\b/g,

@@ -8,6 +8,7 @@ import { Badge } from '@/components/ui/badge'
 import { CheckCircle, ArrowRight, ArrowLeft, Building, Users, Target, FileText, Upload } from 'lucide-react'
 import Link from 'next/link'
 import { getQuestionsForTier, type Question, type OrganizationType } from '@/lib/enhancedQuestionBankV3'
+import { QuestionInput } from '@/components/QuestionInput'
 
 export default function TierBasedAssessment() {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0)
@@ -182,61 +183,13 @@ export default function TierBasedAssessment() {
               </div>
             </CardHeader>
             <CardContent>
-              {currentQuestion.type === 'likert' && (
-                <div className="space-y-3">
-                  {[1, 2, 3, 4, 5].map((value) => (
-                    <button
-                      key={value}
-                      onClick={() => handleAnswer(value)}
-                      className={`w-full p-3 text-left rounded-lg border-2 transition-all ${
-                        answers[currentQuestion.id] === value
-                          ? 'border-blue-500 bg-blue-50'
-                          : 'border-gray-200 hover:border-gray-300 hover:bg-gray-50'
-                      }`}
-                    >
-                      <div className="flex items-center space-x-3">
-                        <div className={`w-4 h-4 rounded-full border-2 ${
-                          answers[currentQuestion.id] === value
-                            ? 'border-blue-500 bg-blue-500'
-                            : 'border-gray-300'
-                        }`}>
-                          {answers[currentQuestion.id] === value && (
-                            <div className="w-full h-full rounded-full bg-white scale-50"></div>
-                          )}
-                        </div>
-                        <span className="font-medium">{value} - {value === 1 ? 'Strongly Disagree' : value === 2 ? 'Disagree' : value === 3 ? 'Neutral' : value === 4 ? 'Agree' : 'Strongly Agree'}</span>
-                      </div>
-                    </button>
-                  ))}
-                </div>
-              )}
-              
-              {currentQuestion.type === 'numeric' && (
-                <input
-                  type="number"
-                  value={answers[currentQuestion.id] || ''}
-                  onChange={(e) => handleAnswer(parseInt(e.target.value))}
-                  className="w-full p-3 border-2 border-gray-200 rounded-lg focus:border-blue-500 focus:outline-none"
-                  placeholder="Enter a number"
-                />
-              )}
-              
-              {currentQuestion.type === 'text' && (
-                <textarea
-                  value={answers[currentQuestion.id] || ''}
-                  onChange={(e) => handleAnswer(e.target.value)}
-                  className="w-full p-3 border-2 border-gray-200 rounded-lg focus:border-blue-500 focus:outline-none h-24"
-                  placeholder="Enter your response"
-                />
-              )}
-              
-              {currentQuestion.type === 'upload' && (
-                <div className="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center">
-                  <Upload className="mx-auto w-8 h-8 text-gray-400 mb-2" />
-                  <p className="text-gray-600">Upload file functionality</p>
-                  <p className="text-sm text-gray-500 mt-2">Supports CSV, Excel, PDF, DOCX, ZIP</p>
-                </div>
-              )}
+              <QuestionInput
+                question={currentQuestion}
+                value={answers[currentQuestion.id]}
+                onChange={handleAnswer}
+                isFlagged={false}
+                onFlagChange={() => {}}
+              />
             </CardContent>
           </Card>
         )}

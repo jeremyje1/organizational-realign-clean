@@ -78,6 +78,45 @@ body {
   animation: gradientShift 10s ease infinite;
   color: hsl(var(--foreground));
   min-height: 100vh;
+  /* Enhanced mobile experience */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  /* Support for safe areas on mobile devices */
+  padding-top: env(safe-area-inset-top);
+  padding-bottom: env(safe-area-inset-bottom);
+  padding-left: env(safe-area-inset-left);
+  padding-right: env(safe-area-inset-right);
+}
+
+/* Mobile-first responsive text sizing */
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 640px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+/* Touch-friendly button and interactive elements */
+button, input, select, textarea {
+  touch-action: manipulation;
+}
+
+/* Improved mobile scrolling */
+* {
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Mobile-optimized focus states */
+@media (hover: none) and (pointer: coarse) {
+  *:focus {
+    outline: 2px solid #1654A3;
+    outline-offset: 2px;
+  }
 }
 
 /* Firefox-specific optimizations */
