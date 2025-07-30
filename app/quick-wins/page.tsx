@@ -147,8 +147,8 @@ export default function QuickWinsLandingPage() {
             <NpsButton
               onClick={handleStartAssessment}
               size="lg"
-              variant="outline"
-              className="px-12 py-4 text-xl font-semibold !bg-nps-gold !text-nps-blue hover:!bg-nps-gold/90 hover:!text-nps-blue !border-2 !border-nps-gold shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-200"
+              variant="primary"
+              className="px-12 py-4 text-xl font-semibold !bg-nps-gold !text-white hover:!bg-yellow-500 !border-2 !border-nps-gold shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-200 !opacity-100"
             >
               <GiftIcon className="mr-3 h-6 w-6" />
               Start Free Assessment
