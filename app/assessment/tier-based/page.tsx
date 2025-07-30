@@ -13,7 +13,7 @@ export default function TierBasedAssessment() {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0)
   const [answers, setAnswers] = useState<Record<string, any>>({})
   const [isComplete, setIsComplete] = useState(false)
-  const [tier] = useState<'one-time-diagnostic'>('one-time-diagnostic') // Default tier, can be dynamic
+  const [tier, setTier] = useState<'express-diagnostic' | 'one-time-diagnostic' | 'comprehensive-package' | 'enterprise-transformation'>('one-time-diagnostic')
   const [organizationType] = useState<OrganizationType>('higher-education') // Default org type, can be dynamic
   
   // Get the full question set from enhanced question bank (100-200 questions based on tier)
@@ -24,6 +24,20 @@ export default function TierBasedAssessment() {
 
   const currentQuestion = questions[currentQuestionIndex]
   const progress = ((currentQuestionIndex + 1) / totalQuestions) * 100
+
+  // Reset assessment when tier changes
+  useEffect(() => {
+    setCurrentQuestionIndex(0)
+    setAnswers({})
+    setIsComplete(false)
+  }, [tier])
+
+  const tierInfo = {
+    'express-diagnostic': { name: 'Express Diagnostic', expectedQuestions: '60+', color: 'bg-blue-500' },
+    'one-time-diagnostic': { name: 'One-Time Assessment', expectedQuestions: '100+', color: 'bg-green-500' },
+    'comprehensive-package': { name: 'Comprehensive Package', expectedQuestions: '135+', color: 'bg-purple-500' },
+    'enterprise-transformation': { name: 'Enterprise Transformation', expectedQuestions: '155+', color: 'bg-red-500' }
+  }
 
   const handleAnswer = (value: any) => {
     setAnswers(prev => ({
@@ -130,10 +144,36 @@ export default function TierBasedAssessment() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 py-12 px-4">
       <div className="max-w-4xl mx-auto">
+        {/* Tier Selector */}
+        <div className="mb-8 bg-white rounded-lg shadow-md p-6">
+          <h2 className="text-xl font-semibold text-gray-900 mb-4">Select Assessment Tier</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+            {Object.entries(tierInfo).map(([tierKey, info]) => (
+              <button
+                key={tierKey}
+                onClick={() => setTier(tierKey as any)}
+                className={`p-4 rounded-lg border-2 transition-all ${
+                  tier === tierKey
+                    ? `border-blue-500 ${info.color} text-white`
+                    : 'border-gray-200 bg-white text-gray-700 hover:border-blue-300'
+                }`}
+              >
+                <div className="text-sm font-medium">{info.name}</div>
+                <div className="text-xs mt-1 opacity-90">{info.expectedQuestions} questions</div>
+                {tier === tierKey && (
+                  <div className="text-xs mt-1 font-semibold">
+                    ✓ {totalQuestions} loaded
+                  </div>
+                )}
+              </button>
+            ))}
+          </div>
+        </div>
+
         {/* Header */}
         <div className="text-center mb-8">
           <h1 className="text-4xl font-bold text-gray-900 mb-4">
-            Comprehensive Organizational Assessment
+            {tierInfo[tier].name}
           </h1>
           <p className="text-lg text-gray-600 mb-6">
             Using all 6 patent-pending algorithms • Powered by AI • {totalQuestions} questions
