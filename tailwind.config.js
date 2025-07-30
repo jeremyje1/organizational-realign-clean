@@ -16,6 +16,9 @@ module.exports = {
           500: '#3b82f6',
           600: '#2563eb',
         }
+      },
+      ringColor: {
+        'blue-500': '#3b82f6',
       }
     }
   },
