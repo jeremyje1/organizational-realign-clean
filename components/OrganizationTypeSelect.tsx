@@ -148,20 +148,20 @@ export default function OrganizationTypeSelect({ onSelect, selectedType }: Organ
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
       >
-        <h1 className="text-3xl font-bold mb-4 text-white" tabIndex={0} aria-label="Select Your Organization Type">
+        <h1 className="text-3xl font-bold mb-4 text-slate-800" tabIndex={0} aria-label="Select Your Organization Type">
           {tUI('Select Your Organization Type')}
         </h1>
-        <p className="text-lg text-gray-100 max-w-3xl mx-auto">
+        <p className="text-lg text-slate-600 max-w-3xl mx-auto">
           Choose the category that best describes your organization to receive 
           tailored questions and analysis specific to your sector.
         </p>
         <motion.div 
-          className="mt-4 inline-block px-4 py-2 bg-blue-500/20 rounded-lg border border-blue-400/30"
+          className="mt-4 inline-block px-4 py-2 bg-emerald-500/20 rounded-lg border border-emerald-400/30"
           initial={{ scale: 0 }}
           animate={{ scale: 1 }}
           transition={{ delay: 0.3, type: "spring" }}
         >
-          <span className="text-sm text-blue-300 font-medium">
+          <span className="text-sm text-emerald-600 font-medium">
             🔒 All data processed using SOC 2 compliant, AES-256 encrypted systems
           </span>
         </motion.div>
@@ -180,10 +180,10 @@ export default function OrganizationTypeSelect({ onSelect, selectedType }: Organ
               transition={{ delay: index * 0.1, duration: 0.5 }}
             >
               <Card 
-                className={`cursor-pointer transition-all duration-300 transform hover:scale-105 hover:shadow-xl border-2 focus-visible:ring-2 focus-visible:ring-purple-400/80 focus-visible:outline-none ${
+                className={`cursor-pointer transition-all duration-300 transform hover:scale-105 hover:shadow-xl border-2 focus-visible:ring-2 focus-visible:ring-emerald-400/80 focus-visible:outline-none ${
                   isSelected 
-                    ? 'border-purple-400 bg-purple-500/15 ring-2 ring-purple-400/60 shadow-lg shadow-purple-500/25'
-                    : 'border-gray-500/60 bg-gray-800/40 hover:border-gray-400/80 hover:bg-gray-700/50'
+                    ? 'border-emerald-400 bg-gradient-to-br from-emerald-50 to-teal-50 ring-2 ring-emerald-400/60 shadow-lg shadow-emerald-500/25'
+                    : 'border-slate-200 bg-gradient-to-br from-blue-50 to-indigo-50 hover:border-blue-300 hover:bg-gradient-to-br hover:from-blue-100 hover:to-indigo-100'
                 }`}
                 onMouseEnter={() => setHoveredType(orgType.id)}
                 onMouseLeave={() => setHoveredType(null)}
@@ -205,21 +205,21 @@ export default function OrganizationTypeSelect({ onSelect, selectedType }: Organ
                   >
                     <div className={`p-3 rounded-full ${
                       isSelected 
-                        ? 'bg-purple-400/25 text-purple-300' 
-                        : 'bg-gray-600/60 text-gray-200'
+                        ? 'bg-emerald-500/20 text-emerald-600' 
+                        : 'bg-blue-500/20 text-blue-600'
                     }`}>
                       <Icon className="h-8 w-8" />
                     </div>
                   </motion.div>
-                  <CardTitle className={`text-lg ${isSelected ? 'text-white' : 'text-gray-100'}`}>
+                  <CardTitle className={`text-lg font-semibold ${isSelected ? 'text-emerald-700' : 'text-slate-700'}`}>
                     {orgType.title}
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="pt-0">
-                  <CardDescription className={`text-center mb-3 ${isSelected ? 'text-gray-100' : 'text-gray-200'}`}>
+                  <CardDescription className={`text-center mb-3 ${isSelected ? 'text-emerald-600' : 'text-slate-600'}`}>
                     {orgType.description}
                   </CardDescription>
-                  <div className="text-xs text-gray-300 text-center">
+                  <div className={`text-xs text-center ${isSelected ? 'text-emerald-600' : 'text-slate-500'}`}>
                     <strong>Examples:</strong> {orgType.examples}
                   </div>
                   <AnimatePresence>
@@ -231,7 +231,7 @@ export default function OrganizationTypeSelect({ onSelect, selectedType }: Organ
                         exit={{ opacity: 0, scale: 0 }}
                         transition={{ type: "spring", duration: 0.5 }}
                       >
-                        <div className="inline-flex items-center space-x-2 px-3 py-1 bg-purple-500/20 text-purple-300 rounded-full text-xs font-medium border border-purple-500/30">
+                        <div className="inline-flex items-center space-x-2 px-3 py-1 bg-emerald-500/20 text-emerald-600 rounded-full text-xs font-medium border border-emerald-500/30">
                           <CheckCircle className="h-3 w-3" />
                           <span>Selected</span>
                         </div>
@@ -264,7 +264,7 @@ export default function OrganizationTypeSelect({ onSelect, selectedType }: Organ
                   // Navigate to the assessment with selected type
                   window.location.href = `/assessment/start?type=${selectedType}`;
                 }}
-                className="px-8 py-3 bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white shadow-lg group"
+                className="px-8 py-3 bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 text-white shadow-lg group"
               >
                 {tUI('Continue with')} {organizationTypes.find(t => t.id === selectedType)?.title}
                 <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
@@ -275,13 +275,13 @@ export default function OrganizationTypeSelect({ onSelect, selectedType }: Organ
       </AnimatePresence>
 
       <motion.div 
-        className="mt-12 bg-gray-800/50 rounded-lg p-6 border border-gray-500/40"
+        className="mt-12 bg-gradient-to-br from-blue-50 to-indigo-50 rounded-lg p-6 border border-blue-200"
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.8, duration: 0.6 }}
       >
-        <h3 className="text-lg font-semibold mb-4 text-center text-white">{tUI('What happens next?')}</h3>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm text-gray-200">
+        <h3 className="text-lg font-semibold mb-4 text-center text-slate-700">{tUI('What happens next?')}</h3>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm text-slate-600">
           {[
             {
               step: "1",
@@ -307,14 +307,14 @@ export default function OrganizationTypeSelect({ onSelect, selectedType }: Organ
               transition={{ delay: 1.0 + index * 0.2, duration: 0.5 }}
             >
               <motion.div 
-                className="bg-purple-500/20 rounded-full w-8 h-8 flex items-center justify-center mx-auto mb-2 border border-purple-500/30"
+                className="bg-emerald-500/20 rounded-full w-8 h-8 flex items-center justify-center mx-auto mb-2 border border-emerald-500/30"
                 whileHover={{ scale: 1.1 }}
                 transition={{ type: "spring", stiffness: 400 }}
               >
-                <span className="text-purple-300 font-semibold">{item.step}</span>
+                <span className="text-emerald-600 font-semibold">{item.step}</span>
               </motion.div>
-              <p className="text-gray-100">
-                <strong>{item.title}:</strong> <span className="text-gray-200">{item.desc}</span>
+              <p className="text-slate-700">
+                <strong>{item.title}:</strong> <span className="text-slate-600">{item.desc}</span>
               </p>
             </motion.div>
           ))}
