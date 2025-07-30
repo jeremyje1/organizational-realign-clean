@@ -1,8 +1,8 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { motion, HTMLMotionProps } from 'framer-motion';
 import { cn } from '@/lib/utils';
 
-interface NpsButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+interface NpsButtonProps extends Omit<HTMLMotionProps<"button">, "children"> {
   children: React.ReactNode;
   variant?: 'primary' | 'secondary' | 'outline';
   size?: 'sm' | 'md' | 'lg';

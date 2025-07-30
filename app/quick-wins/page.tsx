@@ -6,10 +6,10 @@ import Image from 'next/image';
 import { 
   Sparkles, 
   Clock, 
-  DollarSign as Dollar, 
+  Target as Dollar, 
   CheckCircle2, 
   ArrowRight,
-  Gift as GiftIcon
+  Star as GiftIcon
 } from 'lucide-react';
 import { PageContainer } from '@/components/ui/page-container';
 import { PageHero } from '@/components/ui/page-hero';
