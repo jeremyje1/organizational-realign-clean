@@ -19,9 +19,9 @@ export function NpsButton({
   const baseClasses = "inline-flex items-center justify-center rounded-xl font-semibold transition-all duration-200 focus:outline-none focus:ring-4 focus:ring-nps-blue-500/30 disabled:opacity-50 disabled:cursor-not-allowed relative overflow-hidden";
   
   const variants = {
-    primary: "bg-nps-blue text-white hover:bg-nps-blue-600 active:bg-nps-blue-700 shadow-lg shadow-nps-blue-500/25 hover:shadow-xl hover:shadow-nps-blue-500/40",
-    secondary: "bg-nps-slate-100 text-nps-slate hover:bg-nps-slate-200 active:bg-nps-slate-300",
-    outline: "border-2 border-nps-blue text-nps-blue hover:bg-nps-blue hover:text-white active:bg-nps-blue-600"
+    primary: "bg-nps-blue text-white hover:bg-nps-blue-600 active:bg-nps-blue-700 shadow-lg shadow-nps-blue/25 hover:shadow-xl hover:shadow-nps-blue/40 border-2 border-nps-blue hover:border-nps-blue-600",
+    secondary: "bg-nps-slate-100 text-nps-slate hover:bg-nps-slate-200 active:bg-nps-slate-200 border-2 border-nps-slate-200 hover:border-nps-slate",
+    outline: "border-2 border-nps-blue text-nps-blue hover:bg-nps-blue hover:text-white active:bg-nps-blue-600 bg-white"
   };
   
   const sizes = {

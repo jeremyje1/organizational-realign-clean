@@ -6,10 +6,10 @@ import Image from 'next/image';
 import { 
   Sparkles, 
   Clock, 
-  DollarSign, 
+  DollarSign as Dollar, 
   CheckCircle2, 
   ArrowRight,
-  Gift
+  Gift as GiftIcon
 } from 'lucide-react';
 import { PageContainer } from '@/components/ui/page-container';
 import { PageHero } from '@/components/ui/page-hero';
@@ -57,7 +57,7 @@ export default function QuickWinsLandingPage() {
             <NpsCard>
               <CardContent className="p-8">
                 <div className="text-center mb-6">
-                  <Gift className="h-12 w-12 text-nps-gold mx-auto mb-4" />
+                  <GiftIcon className="h-12 w-12 text-nps-gold mx-auto mb-4" />
                   <h2 className="text-2xl font-bold mb-2">Get Your Free Report</h2>
                   <p className="text-nps-slate">Enter your details to receive your personalized quick wins assessment results.</p>
                 </div>
@@ -96,7 +96,7 @@ export default function QuickWinsLandingPage() {
                   <NpsButton
                     type="submit"
                     size="lg"
-                    className="w-full"
+                    className="w-full bg-nps-blue text-white hover:bg-nps-blue-600 border-2 border-nps-blue shadow-lg hover:shadow-xl"
                   >
                     Continue to Assessment
                     <ArrowRight className="ml-2 h-4 w-4" />
@@ -147,9 +147,9 @@ export default function QuickWinsLandingPage() {
             <NpsButton
               onClick={handleStartAssessment}
               size="lg"
-              className="px-12 py-4 text-xl font-semibold"
+              className="px-12 py-4 text-xl font-semibold bg-nps-gold text-nps-blue hover:bg-nps-gold/90 hover:text-nps-blue border-2 border-nps-gold shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-200"
             >
-              <Gift className="mr-3 h-6 w-6" />
+              <GiftIcon className="mr-3 h-6 w-6" />
               Start Free Assessment
               <ArrowRight className="ml-3 h-6 w-6" />
             </NpsButton>
@@ -164,7 +164,7 @@ export default function QuickWinsLandingPage() {
                 <span>Free assessment</span>
               </div>
               <div className="flex items-center gap-2">
-                <DollarSign className="h-4 w-4" />
+                <Dollar className="h-4 w-4" />
                 <span>Instant results</span>
               </div>
             </div>
@@ -264,7 +264,7 @@ export default function QuickWinsLandingPage() {
             <NpsCard className="border-2 border-green-200 bg-gradient-to-r from-green-50 to-emerald-50">
               <div className="flex items-center gap-3 mb-4">
                 <div className="w-10 h-10 bg-green-500 rounded-full flex items-center justify-center">
-                  <DollarSign className="h-5 w-5 text-white" />
+                  <Dollar className="h-5 w-5 text-white" />
                 </div>
                 <h4 className="text-lg font-semibold text-nps-slate">Average Savings Identified</h4>
               </div>
