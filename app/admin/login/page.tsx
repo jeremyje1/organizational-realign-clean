@@ -37,7 +37,7 @@ export default function AdminLoginPage() {
             <span className="text-white font-bold text-xl">NP</span>
           </div>
           <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
-            Admin Access
+            Admin Access Portal
           </h2>
           <p className="mt-2 text-center text-sm text-gray-600">
             Enter your admin token to access the dashboard
