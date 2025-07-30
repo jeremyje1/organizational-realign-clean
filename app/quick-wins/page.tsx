@@ -96,7 +96,13 @@ export default function QuickWinsLandingPage() {
                   <NpsButton
                     type="submit"
                     size="lg"
-                    className="w-full bg-nps-blue text-white hover:bg-nps-blue-600 border-2 border-nps-blue shadow-lg hover:shadow-xl"
+                    className="w-full shadow-lg hover:shadow-xl"
+                    style={{
+                      backgroundColor: '#1654A3',
+                      color: '#ffffff',
+                      border: '2px solid #1654A3',
+                      opacity: 1
+                    }}
                   >
                     Continue to Assessment
                     <ArrowRight className="ml-2 h-4 w-4" />
@@ -148,7 +154,13 @@ export default function QuickWinsLandingPage() {
               onClick={handleStartAssessment}
               size="lg"
               variant="primary"
-              className="px-12 py-4 text-xl font-semibold !bg-nps-gold !text-white hover:!bg-yellow-500 !border-2 !border-nps-gold shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-200 !opacity-100"
+              className="px-12 py-4 text-xl font-semibold shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-200"
+              style={{ 
+                backgroundColor: '#D4AF37',
+                color: '#ffffff',
+                border: '2px solid #D4AF37',
+                opacity: 1
+              }}
             >
               <GiftIcon className="mr-3 h-6 w-6" />
               Start Free Assessment
@@ -296,7 +308,13 @@ export default function QuickWinsLandingPage() {
             <NpsButton
               onClick={handleStartAssessment}
               size="lg"
-              className="bg-white text-nps-blue hover:bg-blue-50 px-12 py-4 text-xl font-semibold"
+              className="px-12 py-4 text-xl font-semibold"
+              style={{
+                backgroundColor: '#ffffff',
+                color: '#1654A3',
+                border: '2px solid #ffffff',
+                opacity: 1
+              }}
             >
               <Sparkles className="mr-3 h-6 w-6" />
               Start Your Free Assessment
