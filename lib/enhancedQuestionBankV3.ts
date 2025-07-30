@@ -1232,6 +1232,296 @@ export const ENTERPRISE_QUESTIONS: Question[] = [
     contextPrompt: "If certain areas of your organization are further along in digital transformation or if specific technologies have been more successful, please provide additional context about your transformation journey and key learnings.",
     tierMinimum: "enterprise-transformation",
     tags: ["digital-transformation", "ai-strategy"]
+  },
+  
+  // Additional Enterprise Questions to reach 155+ requirement
+  {
+    id: "ET_21",
+    section: "Enterprise Architecture & Systems",
+    prompt: "Our organization has a formally documented enterprise architecture that aligns technology with business strategy.",
+    type: "likert",
+    tierMinimum: "enterprise-transformation",
+    tags: ["enterprise-architecture"]
+  },
+  {
+    id: "ET_22",
+    section: "Enterprise Architecture & Systems",
+    prompt: "We have established enterprise-wide data governance policies and data quality standards.",
+    type: "likert",
+    tierMinimum: "enterprise-transformation",
+    tags: ["data-governance"]
+  },
+  {
+    id: "ET_23",
+    section: "Enterprise Architecture & Systems",
+    prompt: "Our API management strategy includes enterprise-level security, monitoring, and lifecycle management.",
+    type: "likert",
+    tierMinimum: "enterprise-transformation",
+    tags: ["api-management", "security"]
+  },
+  {
+    id: "ET_24",
+    section: "Enterprise Architecture & Systems",
+    prompt: "How many different business-critical systems or platforms does your organization currently maintain?",
+    type: "numeric",
+    validationRules: { min: 1, max: 200 },
+    tierMinimum: "enterprise-transformation"
+  },
+  {
+    id: "ET_25",
+    section: "Change Management & Culture",
+    prompt: "We have enterprise-wide change management processes that include stakeholder impact assessment.",
+    type: "likert",
+    tierMinimum: "enterprise-transformation",
+    tags: ["change-management"]
+  },
+  {
+    id: "ET_26",
+    section: "Change Management & Culture",
+    prompt: "Our organization measures and tracks cultural transformation metrics across all business units.",
+    type: "likert",
+    tierMinimum: "enterprise-transformation",
+    tags: ["culture", "metrics"]
+  },
+  {
+    id: "ET_27",
+    section: "Change Management & Culture",
+    prompt: "Leadership development programs are standardized and deployed across the entire enterprise.",
+    type: "likert",
+    tierMinimum: "enterprise-transformation",
+    tags: ["leadership"]
+  },
+  {
+    id: "ET_28",
+    section: "Compliance & Risk Management",
+    prompt: "We have enterprise-wide compliance monitoring systems that provide real-time risk assessment.",
+    type: "likert",
+    tierMinimum: "enterprise-transformation",
+    tags: ["compliance", "risk"]
+  },
+  {
+    id: "ET_29",
+    section: "Compliance & Risk Management",
+    prompt: "Our risk management framework includes AI and automation risk assessment protocols.",
+    type: "likert",
+    tierMinimum: "enterprise-transformation",
+    tags: ["risk", "ai-ethics"]
+  },
+  {
+    id: "ET_30",
+    section: "Compliance & Risk Management",
+    prompt: "How many different regulatory frameworks does your organization need to comply with?",
+    type: "numeric",
+    validationRules: { min: 0, max: 50 },
+    tierMinimum: "enterprise-transformation"
+  },
+  {
+    id: "ET_31",
+    section: "Performance & Analytics",
+    prompt: "We have enterprise-wide performance dashboards that provide real-time business intelligence.",
+    type: "likert",
+    tierMinimum: "enterprise-transformation",
+    tags: ["analytics", "performance"]
+  },
+  {
+    id: "ET_32",
+    section: "Performance & Analytics",
+    prompt: "Our predictive analytics capabilities span multiple business functions and provide strategic insights.",
+    type: "likert",
+    tierMinimum: "enterprise-transformation",
+    tags: ["analytics", "strategy"]
+  },
+  {
+    id: "ET_33",
+    section: "Performance & Analytics",
+    prompt: "Enterprise data is unified in a way that enables cross-functional analysis and decision-making.",
+    type: "likert",
+    tierMinimum: "enterprise-transformation",
+    tags: ["data-integration"]
+  },
+  {
+    id: "ET_34",
+    section: "Vendor & Partnership Management",
+    prompt: "We have enterprise-level vendor management processes that include strategic partnership evaluation.",
+    type: "likert",
+    tierMinimum: "enterprise-transformation",
+    tags: ["vendor-management"]
+  },
+  {
+    id: "ET_35",
+    section: "Vendor & Partnership Management",
+    prompt: "Our technology partnerships are aligned with long-term enterprise strategy and roadmap.",
+    type: "likert",
+    tierMinimum: "enterprise-transformation",
+    tags: ["partnerships", "strategy"]
+  },
+  {
+    id: "ET_36",
+    section: "Security & Privacy",
+    prompt: "Enterprise security architecture includes zero-trust principles and advanced threat detection.",
+    type: "likert",
+    tierMinimum: "enterprise-transformation",
+    tags: ["security", "zero-trust"]
+  },
+  {
+    id: "ET_37",
+    section: "Security & Privacy",
+    prompt: "We have enterprise-wide privacy protection measures that comply with international standards.",
+    type: "likert",
+    tierMinimum: "enterprise-transformation",
+    tags: ["privacy", "compliance"]
+  },
+  {
+    id: "ET_38",
+    section: "Innovation & Research",
+    prompt: "Our organization has dedicated innovation labs or research units that drive enterprise transformation.",
+    type: "likert",
+    tierMinimum: "enterprise-transformation",
+    tags: ["innovation"]
+  },
+  {
+    id: "ET_39",
+    section: "Innovation & Research",
+    prompt: "Enterprise innovation processes include formal idea management and evaluation frameworks.",
+    type: "likert",
+    tierMinimum: "enterprise-transformation",
+    tags: ["innovation", "process"]
+  },
+  {
+    id: "ET_40",
+    section: "Innovation & Research",
+    prompt: "How much of your annual budget is allocated to innovation and research initiatives? (percentage)",
+    type: "numeric",
+    validationRules: { min: 0, max: 100 },
+    tierMinimum: "enterprise-transformation"
+  },
+  {
+    id: "ET_41",
+    section: "Customer Experience & Engagement",
+    prompt: "Enterprise customer experience strategy includes omnichannel integration and personalization.",
+    type: "likert",
+    tierMinimum: "enterprise-transformation",
+    tags: ["customer-experience"]
+  },
+  {
+    id: "ET_42",
+    section: "Customer Experience & Engagement",
+    prompt: "We use enterprise-level customer analytics to drive product and service development decisions.",
+    type: "likert",
+    tierMinimum: "enterprise-transformation",
+    tags: ["customer-analytics"]
+  },
+  {
+    id: "ET_43",
+    section: "Financial Management & ROI",
+    prompt: "Enterprise financial planning includes detailed ROI analysis for all major technology investments.",
+    type: "likert",
+    tierMinimum: "enterprise-transformation",
+    tags: ["financial-planning", "roi"]
+  },
+  {
+    id: "ET_44",
+    section: "Financial Management & ROI",
+    prompt: "We have enterprise-wide cost optimization programs that leverage automation and AI.",
+    type: "likert",
+    tierMinimum: "enterprise-transformation",
+    tags: ["cost-optimization", "automation"]
+  },
+  {
+    id: "ET_45",
+    section: "Sustainability & Corporate Responsibility",
+    prompt: "Our organization has enterprise-wide sustainability initiatives with measurable environmental impact goals.",
+    type: "likert",
+    tierMinimum: "enterprise-transformation",
+    tags: ["sustainability"]
+  },
+  {
+    id: "ET_46",
+    section: "Sustainability & Corporate Responsibility",
+    prompt: "Enterprise social responsibility programs are integrated into business strategy and operations.",
+    type: "likert",
+    tierMinimum: "enterprise-transformation",
+    tags: ["social-responsibility"]
+  },
+  {
+    id: "ET_47",
+    section: "Global Operations & Scaling",
+    prompt: "Our enterprise systems are designed to support global operations across multiple regions and time zones.",
+    type: "likert",
+    tierMinimum: "enterprise-transformation",
+    tags: ["global-operations"]
+  },
+  {
+    id: "ET_48",
+    section: "Global Operations & Scaling",
+    prompt: "Enterprise processes are standardized to enable consistent operations across all locations.",
+    type: "likert",
+    tierMinimum: "enterprise-transformation",
+    tags: ["standardization"]
+  },
+  {
+    id: "ET_49",
+    section: "Digital Transformation Maturity",
+    prompt: "Our organization has achieved enterprise-level digital maturity with fully integrated digital workflows.",
+    type: "likert",
+    tierMinimum: "enterprise-transformation",
+    tags: ["digital-maturity"]
+  },
+  {
+    id: "ET_50",
+    section: "Digital Transformation Maturity",
+    prompt: "Enterprise digital transformation includes comprehensive employee digital literacy programs.",
+    type: "likert",
+    tierMinimum: "enterprise-transformation",
+    tags: ["digital-literacy"]
+  },
+  {
+    id: "ET_51",
+    section: "Strategic Planning & Governance",
+    prompt: "Enterprise strategic planning includes scenario modeling and contingency planning for major disruptions.",
+    type: "likert",
+    tierMinimum: "enterprise-transformation",
+    tags: ["strategic-planning"]
+  },
+  {
+    id: "ET_52",
+    section: "Strategic Planning & Governance",
+    prompt: "Our governance framework includes enterprise-wide oversight of AI and automation implementation.",
+    type: "likert",
+    tierMinimum: "enterprise-transformation",
+    tags: ["governance", "ai-oversight"]
+  },
+  {
+    id: "ET_53",
+    section: "Workforce Development & Talent",
+    prompt: "Enterprise talent management includes skills forecasting and strategic workforce planning.",
+    type: "likert",
+    tierMinimum: "enterprise-transformation",
+    tags: ["talent-management"]
+  },
+  {
+    id: "ET_54",
+    section: "Workforce Development & Talent",
+    prompt: "We have enterprise-wide programs for reskilling and upskilling employees in emerging technologies.",
+    type: "likert",
+    tierMinimum: "enterprise-transformation",
+    tags: ["workforce-development"]
+  },
+  {
+    id: "ET_55",
+    section: "Communication & Collaboration",
+    prompt: "Enterprise communication systems enable seamless collaboration across all organizational levels and functions.",
+    type: "likert",
+    tierMinimum: "enterprise-transformation",
+    tags: ["communication", "collaboration"]
+  },
+  {
+    id: "ET_56",
+    section: "Communication & Collaboration",
+    prompt: "Our knowledge management systems provide enterprise-wide access to institutional knowledge and best practices.",
+    type: "likert",
+    tierMinimum: "enterprise-transformation",
+    tags: ["knowledge-management"]
   }
 ];
 
