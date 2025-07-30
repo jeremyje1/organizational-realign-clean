@@ -101,7 +101,8 @@ export default function QuickWinsLandingPage() {
                       backgroundColor: '#1654A3',
                       color: '#ffffff',
                       border: '2px solid #1654A3',
-                      opacity: 1
+                      opacity: 1,
+                      fontWeight: 'bold'
                     }}
                   >
                     Continue to Assessment
@@ -159,7 +160,8 @@ export default function QuickWinsLandingPage() {
                 backgroundColor: '#D4AF37',
                 color: '#ffffff',
                 border: '2px solid #D4AF37',
-                opacity: 1
+                opacity: 1,
+                fontWeight: 'bold'
               }}
             >
               <GiftIcon className="mr-3 h-6 w-6" />
@@ -313,7 +315,8 @@ export default function QuickWinsLandingPage() {
                 backgroundColor: '#ffffff',
                 color: '#1654A3',
                 border: '2px solid #ffffff',
-                opacity: 1
+                opacity: 1,
+                fontWeight: 'bold'
               }}
             >
               <Sparkles className="mr-3 h-6 w-6" />

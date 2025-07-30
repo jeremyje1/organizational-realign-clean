@@ -40,6 +40,9 @@ export function NpsButton({
         sizes[size],
         className
       )}
+      style={{
+        ...props.style
+      }}
       {...props}
     >
       {/* Ripple effect background */}
