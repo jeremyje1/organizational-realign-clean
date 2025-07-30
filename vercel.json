@@ -1,3 +1,22 @@
 {
-  "framework": "nextjs"
+  "framework": "nextjs",
+  "domains": ["assessments.northpathstrategies.org"],
+  "redirects": [
+    {
+      "source": "/admin",
+      "destination": "/admin/login",
+      "permanent": false
+    }
+  ],
+  "headers": [
+    {
+      "source": "/admin/(.*)",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        }
+      ]
+    }
+  ]
 }
