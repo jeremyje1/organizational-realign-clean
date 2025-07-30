@@ -30,48 +30,48 @@ export default function AdminLoginPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex items-center justify-center">
       <div className="max-w-md w-full space-y-8">
-        <div>
-          <div className="mx-auto h-12 w-12 bg-blue-600 rounded-lg flex items-center justify-center">
-            <span className="text-white font-bold text-xl">NP</span>
+        <div className="text-center">
+          <div className="mx-auto h-16 w-16 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-xl flex items-center justify-center shadow-lg">
+            <span className="text-white font-bold text-2xl">NP</span>
           </div>
-          <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
-            Admin Access Portal
+          <h2 className="mt-6 text-center text-4xl font-extrabold text-gray-900">
+            🔐 Admin Portal
           </h2>
-          <p className="mt-2 text-center text-sm text-gray-600">
-            Enter your admin token to access the dashboard
+          <p className="mt-3 text-center text-base text-gray-600">
+            Secure access to dashboard analytics
           </p>
         </div>
         
-        <form onSubmit={handleSubmit} className="bg-white rounded-lg shadow p-6 space-y-6">
+        <form onSubmit={handleSubmit} className="bg-white rounded-xl shadow-xl p-8 space-y-6 border border-gray-200">
           <div>
-            <label htmlFor="token" className="block text-sm font-medium text-gray-700 mb-2">
-              Admin Token
+            <label htmlFor="token" className="block text-sm font-semibold text-gray-700 mb-3">
+              🔑 Authentication Token
             </label>
             <input
               id="token"
               type="password"
               value={token}
               onChange={(e) => setToken(e.target.value)}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
-              placeholder="Enter admin token"
+              className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
+              placeholder="Enter your admin token"
               required
             />
           </div>
           
           {error && (
-            <div className="bg-red-50 border border-red-200 rounded-md p-3">
-              <p className="text-red-700 text-sm">{error}</p>
+            <div className="bg-red-50 border-2 border-red-200 rounded-lg p-4">
+              <p className="text-red-700 text-sm font-medium">❌ {error}</p>
             </div>
           )}
           
           <button
             type="submit"
             disabled={loading}
-            className="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed"
+            className="w-full bg-gradient-to-r from-blue-600 to-indigo-600 text-white py-3 px-6 rounded-lg hover:from-blue-700 hover:to-indigo-700 focus:outline-none focus:ring-4 focus:ring-blue-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed transition-all transform hover:scale-105 font-semibold"
           >
-            {loading ? 'Authenticating...' : 'Access Dashboard'}
+            {loading ? '🔄 Authenticating...' : '🚀 Access Dashboard'}
           </button>
         </form>
         
