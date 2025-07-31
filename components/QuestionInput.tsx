@@ -35,8 +35,10 @@ function QuestionFileUpload({ onFilesUploaded, disabled, value }: QuestionFileUp
     const fileArray = Array.from(files);
     
     try {
-      // Simulate upload to API
+      // Upload files to API
       const uploadPromises = fileArray.map(async (file) => {
+        console.log(`Uploading file: ${file.name}, type: ${file.type}, size: ${file.size}`);
+        
         const formData = new FormData();
         formData.append('file', file);
         
@@ -45,8 +47,11 @@ function QuestionFileUpload({ onFilesUploaded, disabled, value }: QuestionFileUp
           body: formData,
         });
         
+        const responseData = await response.json();
+        console.log(`Upload response for ${file.name}:`, responseData);
+        
         if (!response.ok) {
-          throw new Error(`Failed to upload ${file.name}`);
+          throw new Error(responseData.error || `Failed to upload ${file.name}`);
         }
         
         return file;
@@ -56,7 +61,7 @@ function QuestionFileUpload({ onFilesUploaded, disabled, value }: QuestionFileUp
       onFilesUploaded(uploadedFiles);
     } catch (error) {
       console.error('Upload error:', error);
-      alert('Failed to upload files. Please try again.');
+      alert(`Upload failed: ${error instanceof Error ? error.message : 'Unknown error'}. Please try again.`);
     } finally {
       setUploading(false);
     }
