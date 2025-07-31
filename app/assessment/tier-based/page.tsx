@@ -8,10 +8,12 @@ import { Badge } from '@/components/ui/badge'
 import { CheckCircle, ArrowRight, ArrowLeft, Building, Users, Target, FileText, Upload } from 'lucide-react'
 import Link from 'next/link'
 import { getQuestionsForTier, type Question, type OrganizationType } from '@/lib/enhancedQuestionBankV3'
+import { QuestionInput } from '@/components/QuestionInput'
 
 export default function TierBasedAssessment() {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0)
   const [answers, setAnswers] = useState<Record<string, any>>({})
+  const [flaggedQuestions, setFlaggedQuestions] = useState<Record<string, boolean>>({})
   const [isComplete, setIsComplete] = useState(false)
   const [tier, setTier] = useState<'express-diagnostic' | 'one-time-diagnostic' | 'comprehensive-package' | 'enterprise-transformation'>('one-time-diagnostic')
   const [organizationType] = useState<OrganizationType>('higher-education') // Default org type, can be dynamic
@@ -29,6 +31,7 @@ export default function TierBasedAssessment() {
   useEffect(() => {
     setCurrentQuestionIndex(0)
     setAnswers({})
+    setFlaggedQuestions({})
     setIsComplete(false)
   }, [tier])
 
@@ -271,11 +274,13 @@ export default function TierBasedAssessment() {
               )}
               
               {currentQuestion.type === 'upload' && (
-                <div className="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center">
-                  <Upload className="mx-auto w-8 h-8 text-gray-400 mb-2" />
-                  <p className="text-gray-600">Upload file functionality</p>
-                  <p className="text-sm text-gray-500 mt-2">Supports CSV, Excel, PDF, DOCX, ZIP</p>
-                </div>
+                <QuestionInput
+                  question={currentQuestion}
+                  value={answers[currentQuestion.id]}
+                  onChange={(value) => setAnswers(prev => ({ ...prev, [currentQuestion.id]: value }))}
+                  isFlagged={flaggedQuestions[currentQuestion.id] || false}
+                  onFlagChange={(flagged) => setFlaggedQuestions(prev => ({ ...prev, [currentQuestion.id]: flagged }))}
+                />
               )}
             </CardContent>
           </Card>
