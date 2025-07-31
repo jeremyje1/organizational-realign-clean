@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { 
   FileText, 
@@ -15,6 +15,130 @@ import { Card, CardContent } from './ui/card';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Label } from './ui/label';
 import { cn } from '@/lib/utils';
+
+// Simple file upload component for questions
+interface QuestionFileUploadProps {
+  onFilesUploaded: (files: File[]) => void;
+  disabled?: boolean;
+  value?: string[];
+}
+
+function QuestionFileUpload({ onFilesUploaded, disabled, value }: QuestionFileUploadProps) {
+  const [uploading, setUploading] = useState(false);
+  const [dragOver, setDragOver] = useState(false);
+  const fileInputRef = useRef<HTMLInputElement>(null);
+
+  const handleFiles = async (files: FileList) => {
+    if (files.length === 0) return;
+    
+    setUploading(true);
+    const fileArray = Array.from(files);
+    
+    try {
+      // Simulate upload to API
+      const uploadPromises = fileArray.map(async (file) => {
+        const formData = new FormData();
+        formData.append('file', file);
+        
+        const response = await fetch('/api/upload', {
+          method: 'POST',
+          body: formData,
+        });
+        
+        if (!response.ok) {
+          throw new Error(`Failed to upload ${file.name}`);
+        }
+        
+        return file;
+      });
+      
+      const uploadedFiles = await Promise.all(uploadPromises);
+      onFilesUploaded(uploadedFiles);
+    } catch (error) {
+      console.error('Upload error:', error);
+      alert('Failed to upload files. Please try again.');
+    } finally {
+      setUploading(false);
+    }
+  };
+
+  const handleDrop = (e: React.DragEvent) => {
+    e.preventDefault();
+    setDragOver(false);
+    if (!disabled && e.dataTransfer.files) {
+      handleFiles(e.dataTransfer.files);
+    }
+  };
+
+  const handleDragOver = (e: React.DragEvent) => {
+    e.preventDefault();
+    if (!disabled) {
+      setDragOver(true);
+    }
+  };
+
+  const handleDragLeave = (e: React.DragEvent) => {
+    e.preventDefault();
+    setDragOver(false);
+  };
+
+  const handleFileSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files) {
+      handleFiles(e.target.files);
+    }
+  };
+
+  return (
+    <div
+      className={cn(
+        "border-2 border-dashed rounded-lg p-8 text-center transition-all duration-200",
+        dragOver && !disabled ? "border-purple-400 bg-purple-400/5" : "border-slate-600",
+        value && value.length > 0 ? "border-emerald-500 bg-emerald-500/5" : "",
+        disabled ? "opacity-50 cursor-not-allowed" : "hover:border-purple-400 hover:bg-purple-400/5 cursor-pointer"
+      )}
+      onDrop={handleDrop}
+      onDragOver={handleDragOver}
+      onDragLeave={handleDragLeave}
+      onClick={() => !disabled && fileInputRef.current?.click()}
+    >
+      <input
+        ref={fileInputRef}
+        type="file"
+        multiple
+        accept=".csv,.xlsx,.xls,.pdf,.docx,.zip"
+        onChange={handleFileSelect}
+        className="hidden"
+        disabled={disabled}
+      />
+      
+      <Upload className={cn(
+        "h-12 w-12 mx-auto mb-4",
+        uploading ? "animate-pulse" : "",
+        dragOver ? "text-purple-400" : "text-slate-400"
+      )} />
+      
+      <p className="text-slate-300 mb-2">
+        {uploading ? "Uploading..." : "Drag & drop files here or click to browse"}
+      </p>
+      <p className="text-slate-500 text-sm">
+        Supported formats: CSV, XLSX, XLS, PDF, DOCX, ZIP
+      </p>
+      
+      <Button
+        disabled={disabled || uploading}
+        className="mt-4"
+        variant="outline"
+        onClick={(e) => {
+          e.stopPropagation();
+          fileInputRef.current?.click();
+        }}
+      >
+        <Upload className="h-4 w-4 mr-2" />
+        {uploading ? "Uploading..." : "Choose Files"}
+      </Button>
+    </div>
+  );
+}
 
 interface Question {
   id: string;
@@ -232,28 +356,14 @@ export function QuestionInput({
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.3 }}
           >
-            <div className={cn(
-              "border-2 border-dashed border-slate-600 rounded-lg p-8 text-center transition-all duration-200",
-              "hover:border-purple-400 hover:bg-purple-400/5",
-              hasInteracted && value && "border-emerald-500 bg-emerald-500/5"
-            )}>
-              <Upload className="h-12 w-12 text-slate-400 mx-auto mb-4" />
-              <p className="text-slate-300 mb-2">Drag & drop files here or click to browse</p>
-              <p className="text-slate-500 text-sm">Supported formats: CSV, XLSX, XLS, PDF, DOCX, ZIP</p>
-              
-              <Button
-                onClick={() => {
-                  // File upload logic would go here
-                  handleValueChange(['sample-file.pdf']);
-                }}
-                disabled={disabled}
-                className="mt-4"
-                variant="outline"
-              >
-                <Upload className="h-4 w-4 mr-2" />
-                Choose File
-              </Button>
-            </div>
+            <QuestionFileUpload
+              onFilesUploaded={(files) => {
+                const fileNames = files.map(f => f.name);
+                handleValueChange(fileNames);
+              }}
+              disabled={disabled}
+              value={value}
+            />
             
             {value && Array.isArray(value) && value.length > 0 && (
               <motion.div
