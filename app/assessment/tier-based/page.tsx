@@ -42,6 +42,8 @@ export default function TierBasedAssessment() {
     'enterprise-transformation': { name: 'Enterprise Transformation', expectedQuestions: '155+', color: 'bg-red-500' }
   }
 
+  const [assessmentId, setAssessmentId] = useState<string | null>(null)
+
   const handleAnswer = (value: any) => {
     setAnswers(prev => ({
       ...prev,
@@ -49,11 +51,38 @@ export default function TierBasedAssessment() {
     }))
   }
 
-  const handleNext = () => {
+  const handleNext = async () => {
     if (currentQuestionIndex < totalQuestions - 1) {
       setCurrentQuestionIndex(prev => prev + 1)
     } else {
-      setIsComplete(true)
+      // Assessment complete - save data and generate ID
+      try {
+        console.log('Saving assessment data...', { tier, organizationType, answers })
+        
+        // Generate a simple assessment ID for now
+        const newAssessmentId = `assessment_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`
+        setAssessmentId(newAssessmentId)
+        
+        // Store the assessment data in localStorage for now
+        const assessmentData = {
+          id: newAssessmentId,
+          tier,
+          organizationType,
+          answers,
+          questions: questions.map(q => ({ id: q.id, prompt: q.prompt, type: q.type })),
+          completedAt: new Date().toISOString(),
+          totalQuestions
+        }
+        
+        localStorage.setItem(`assessment_${newAssessmentId}`, JSON.stringify(assessmentData))
+        console.log('Assessment saved with ID:', newAssessmentId)
+        
+        setIsComplete(true)
+      } catch (error) {
+        console.error('Error saving assessment:', error)
+        // Still mark as complete even if save fails
+        setIsComplete(true)
+      }
     }
   }
 
@@ -125,7 +154,7 @@ export default function TierBasedAssessment() {
               </div>
               
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link href="/assessment/results">
+                <Link href={`/assessment/results${assessmentId ? `?assessmentId=${assessmentId}` : ''}`}>
                   <Button className="bg-blue-600 hover:bg-blue-700">
                     View Comprehensive Results
                     <ArrowRight className="ml-2 w-4 h-4" />
