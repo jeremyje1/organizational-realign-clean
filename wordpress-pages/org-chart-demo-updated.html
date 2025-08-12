@@ -1,8 +1,10 @@
 <!-- ======================================================= -->
 <!--  NorthPath • Enhanced Org‑Chart Demo (v2025‑07‑22)      -->
 <!--  Updated with Correct Production URLs                   -->
+<!--  Enhanced: skip link • dark mode • tracking • mini bar  -->
 <!--  Paste into a single Elementor HTML widget              -->
 <!-- ======================================================= -->
+<a href="#demo-main" class="skip-link" style="position:absolute;left:-999px;top:auto;width:1px;height:1px;overflow:hidden;">Skip to main content</a>
 <style>
   :root{
     --nps-blue:#1654A3;
@@ -15,6 +17,7 @@
     --nps-shadow:0 6px 16px rgba(0,0,0,.06);
   }
   body{font-family:"Inter",sans-serif}
+  .skip-link:focus{left:0;width:auto;height:auto;padding:.75rem 1rem;background:#000;color:#fff;z-index:10000}
   
   /* Utility */
   .btn{display:inline-block;padding:.9rem 1.8rem;font-weight:600;border-radius:600px;
@@ -88,10 +91,24 @@
     .heading-xl{font-size:2rem}
     .chart-canvas{min-width:900px;height:450px;}
   }
+  /* Reduced motion */
+  @media (prefers-reduced-motion: reduce){*{animation-duration:.001ms!important;animation-iteration-count:1!important;transition:none!important}}
+  /* Dark mode */
+  @media (prefers-color-scheme: dark){
+    :root{--nps-light:#1e2630;--nps-slate:#d5dae0;--nps-shadow:0 6px 18px rgba(0,0,0,.55)}
+    body{background:#12181f;color:#e6ecf3}
+    .chart-box,.side-box{background:#1f2a34}
+    .tabs label{background:#253242;color:#d5dae0;border-color:#33475a}
+    .tabs label:hover{background:#2b3a4c}
+    .tabs .panel{background:#1f2a34;border-color:#33475a}
+    table.metrics th{background:#253242;color:#e6ecf3}
+    .efficiency-bar{background:#2b3a4c}
+    #mini-convert{background:rgba(15,61,121,.96)}
+  }
 </style>
 
 <!-- ========================= HERO ========================= -->
-<section style="background:var(--nps-light);padding:3.2rem 1rem;text-align:center;">
+<section style="background:var(--nps-light);padding:3.2rem 1rem;text-align:center;" id="demo-main">
   <div class="container" style="padding:0;">
     <h1 class="heading-xl">AI-Powered Org Chart &amp; Scenario Engine</h1>
     <p style="max-width:820px;margin:1rem auto 2rem;color:var(--nps-slate);font-size:1.1rem;line-height:1.6;">
@@ -100,7 +117,7 @@
       <em>Fictitia Community College</em> using real organizational data.
     </p>
     <div class="flex" style="justify-content:center;gap:1rem;">
-      <a href="https://organizational-realign-clean-bst3e3k3d.vercel.app/teams" class="btn">Access Your Dashboard →</a>
+  <a href="https://organizational-realign-clean-bst3e3k3d.vercel.app/teams?utm_source=wp-org-chart-demo&utm_medium=hero-button&utm_campaign=teams-access&utm_content=hero" class="btn" data-cta="hero" data-cta-position="hero-primary" data-cta-destination="teams">Access Your Dashboard →</a>
       <a href="https://northpathstrategies.org/wp-content/uploads/2025/07/NorthPath-Strategies-Enterprise-Organizational-Diagnostic-Fictitia-Community-College-FCC-1.pdf"
          class="btn btn-secondary">Download Sample Report</a>
     </div>
@@ -327,10 +344,10 @@
     </div>
 
     <div style="margin-top:1.5rem;">
-      <a href="https://organizational-realign-clean-bst3e3k3d.vercel.app/teams" class="btn" style="display:block;text-align:center;margin-bottom:.8rem;">
+  <a href="https://assessments.northpathstrategies.org/teams?utm_source=wp-org-chart-demo&utm_medium=aside-button&utm_campaign=teams-access&utm_content=scenario-panel" class="btn" style="display:block;text-align:center;margin-bottom:.8rem;" data-cta="aside" data-cta-position="scenario-primary" data-cta-destination="teams">
         Generate Your Org Chart →
       </a>
-      <a href="https://organizational-realign-clean-bst3e3k3d.vercel.app/quick-wins" class="btn btn-secondary" style="display:block;text-align:center;font-size:.9rem;">
+  <a href="https://assessments.northpathstrategies.org/quick-wins?utm_source=wp-org-chart-demo&utm_medium=aside-button&utm_campaign=quick-wins&utm_content=scenario-panel" class="btn btn-secondary" style="display:block;text-align:center;font-size:.9rem;" data-cta="aside" data-cta-position="scenario-secondary" data-cta-destination="quick-wins">
         Start Quick Assessment
       </a>
     </div>
@@ -350,3 +367,32 @@
   </div>
 </section>
 <!-- ======================= END BLOCK ======================= -->
+
+<!-- Sticky Conversion Mini-Bar -->
+<div id="mini-convert" style="position:fixed;bottom:0;left:0;right:0;background:rgba(22,84,163,.97);color:#fff;padding:.65rem 1rem;display:flex;flex-wrap:wrap;gap:.6rem;align-items:center;justify-content:center;z-index:9999;font-size:.8rem;box-shadow:0 -2px 8px rgba(0,0,0,.15);">
+  <button type="button" aria-label="Close" style="background:transparent;border:none;color:#fff;font-size:1rem;position:absolute;right:.75rem;top:.35rem;cursor:pointer;">✕</button>
+  <strong>Ready to model your own org?</strong>
+  <a href="https://assessments.northpathstrategies.org/quick-wins?utm_source=wp-org-chart-demo&utm_medium=sticky-mini&utm_campaign=quick-wins&utm_content=mini-bar" class="btn btn-secondary" style="padding:.45rem 1rem;font-size:.7rem;background:#fff;color:var(--nps-blue);border-color:#fff;" data-cta="mini" data-cta-position="sticky" data-cta-destination="quick-wins">Free Quick Wins</a>
+  <a href="https://assessments.northpathstrategies.org/pricing?utm_source=wp-org-chart-demo&utm_medium=sticky-mini&utm_campaign=platform-upgrade&utm_content=mini-bar" class="btn" style="padding:.45rem 1rem;font-size:.7rem;" data-cta="mini" data-cta-position="sticky" data-cta-destination="pricing">Platform Pricing →</a>
+</div>
+<div id="cta-feedback" aria-live="polite" style="position:absolute;left:-9999px;height:1px;width:1px;overflow:hidden;"> </div>
+
+<!-- Interaction + Tracking Script -->
+<script>
+(function(){
+  // sticky bar close
+  var bar=document.getElementById('mini-convert');
+  if(bar){
+    if(localStorage.getItem('npsOrgChartMiniDismissed')==='1'){bar.remove();}
+    else {var c=bar.querySelector('button');if(c){c.addEventListener('click',function(){localStorage.setItem('npsOrgChartMiniDismissed','1');bar.remove();});}}
+  }
+  // CTA tracking
+  function trackClick(e){
+    var t=e.target.closest('[data-cta]');
+    if(!t) return;
+    var payload={event:'cta_click',page:'org-chart-demo',cta:t.getAttribute('data-cta'),position:t.getAttribute('data-cta-position')||'',tier:t.getAttribute('data-cta-tier')||'',destination:t.getAttribute('data-cta-destination')||'',href:t.getAttribute('href'),ts:Date.now()};
+    if(window.dataLayer){window.dataLayer.push(payload);} else {console.info('[CTA]',payload);} var live=document.getElementById('cta-feedback');if(live){live.textContent='CTA clicked: '+(payload.cta||'');}
+  }
+  document.addEventListener('click',trackClick);
+})();
+</script>

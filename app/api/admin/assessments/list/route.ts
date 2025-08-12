@@ -1,4 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
+
+export const dynamic = 'force-dynamic';
 import { createClient } from '@supabase/supabase-js';
 
 const supabase = createClient(
@@ -16,10 +18,9 @@ const aiReadinessSupabase = process.env.AI_READINESS_SUPABASE_URL && process.env
 
 export async function GET(request: NextRequest) {
   try {
-    const authHeader = request.headers.get('Authorization');
-    
-    // Simple admin authentication check
-    if (!authHeader || !authHeader.includes('admin-token')) {
+  const authHeader = request.headers.get('Authorization') || '';
+  const isAdmin = authHeader.startsWith('Bearer ') && authHeader.length > 20;
+  if (!isAdmin) {
       return NextResponse.json(
         { error: 'Unauthorized - Admin access required' },
         { status: 401 }

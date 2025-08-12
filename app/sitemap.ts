@@ -1,11 +1,13 @@
-import { MetadataRoute } from 'next'
+export const dynamic = 'force-dynamic';
 import { createClient } from '@/lib/supabase/server'
 
-export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+type SiteEntry = { url: string; lastModified: Date; changeFrequency: string; priority: number };
+
+export default async function sitemap(): Promise<SiteEntry[]> {
   const baseUrl = 'https://northpathstrategies.org'
   
   // Static routes
-  const staticRoutes: MetadataRoute.Sitemap = [
+  const staticRoutes: SiteEntry[] = [
     {
       url: baseUrl,
       lastModified: new Date(),
@@ -97,7 +99,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       .order('updated_at', { ascending: false })
       .limit(100)
 
-    const assessmentRoutes: MetadataRoute.Sitemap = assessments?.map(assessment => ({
+  const assessmentRoutes: SiteEntry[] = assessments?.map(assessment => ({
       url: `${baseUrl}/assessment/${assessment.id}`,
       lastModified: new Date(assessment.updated_at),
       changeFrequency: 'monthly' as const,
@@ -112,7 +114,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       .order('updated_at', { ascending: false })
       .limit(50)
 
-    const organizationRoutes: MetadataRoute.Sitemap = organizations?.map(org => ({
+  const organizationRoutes: SiteEntry[] = organizations?.map(org => ({
       url: `${baseUrl}/organization/${org.id}`,
       lastModified: new Date(org.updated_at),
       changeFrequency: 'monthly' as const,

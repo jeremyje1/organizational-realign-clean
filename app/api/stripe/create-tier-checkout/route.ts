@@ -2,42 +2,85 @@ import { NextRequest, NextResponse } from 'next/server';
 import { stripe } from '@/lib/stripe';
 import { getStripeMappingForTier, STRIPE_TIER_MAPPINGS } from '@/lib/stripe-tier-mapping';
 import { PricingTier } from '@/lib/tierConfiguration';
+import { normalizeTier } from '@/lib/tierUtils';
+import { parseAttributionCookie, flattenAttribution } from '@/lib/attribution';
 
 export async function GET(request: NextRequest) {
   try {
     const { searchParams } = new URL(request.url);
-    const tier = searchParams.get('tier') as PricingTier;
+  const requestedTier = searchParams.get('tier') as PricingTier;
     const customerEmail = searchParams.get('customer_email');
     const successUrl = searchParams.get('success_url');
     const cancelUrl = searchParams.get('cancel_url');
 
-    if (!tier || !STRIPE_TIER_MAPPINGS[tier]) {
+  if (!requestedTier || !STRIPE_TIER_MAPPINGS[requestedTier]) {
       return NextResponse.json(
         { error: 'Invalid or missing tier specified' },
         { status: 400 }
       );
     }
-
-    const mapping = getStripeMappingForTier(tier);
+  const norm = normalizeTier(requestedTier);
+  const effectiveTier = norm.normalizedTier;
+  const mapping = getStripeMappingForTier(effectiveTier);
     const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://app.northpathstrategies.org';
 
-    // Create Stripe checkout session with tier-specific configuration
+  // Validation: ensure price ID configured
+  if (mapping.stripePriceId.includes('PLACEHOLDER')) {
+      return NextResponse.json({
+        error: 'Stripe price ID not configured for tier',
+        tier: effectiveTier,
+        message: `Configure server env var for ${effectiveTier} (expected STRIPE_PRICE_* e.g. STRIPE_PRICE_EXPRESS_99) before creating checkout.`
+      }, { status: 500 });
+    }
+
+    // Optional price sanity check (one-time payments)
+    let useDynamicPriceData = false;
+    try {
+      if (mapping.stripeMode === 'payment') {
+        const priceObj = await stripe.prices.retrieve(mapping.stripePriceId);
+        const unit = (priceObj.unit_amount || 0) / 100;
+        if (unit !== mapping.tierPrice) {
+          console.warn('[Stripe Price Mismatch]', { tier: effectiveTier, configured: mapping.tierPrice, stripePrice: unit, priceId: mapping.stripePriceId });
+          // Fallback: generate price_data line item to force expected amount (prevents $2,495 legacy price showing for $99 tier)
+          useDynamicPriceData = true;
+        }
+      }
+    } catch (e) {
+      console.warn('Unable to verify Stripe price amount – proceeding with configured price id', e);
+    }
+
+  // Attribution (first-touch) flatten
+  const attribution = flattenAttribution(parseAttributionCookie());
+
+  // Create Stripe checkout session with tier-specific configuration
     const sessionConfig: any = {
       mode: mapping.stripeMode,
       payment_method_types: ['card'],
-      line_items: [
+      line_items: useDynamicPriceData ? [
+        {
+          price_data: {
+            currency: 'usd',
+            product_data: { name: mapping.tierName },
+            unit_amount: mapping.tierPrice * 100
+          },
+          quantity: 1
+        }
+      ] : [
         {
           price: mapping.stripePriceId,
-          quantity: 1,
-        },
+          quantity: 1
+        }
       ],
       success_url: successUrl || `${baseUrl}${mapping.successRedirect}&session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: cancelUrl || `${baseUrl}${mapping.cancelRedirect}`,
       metadata: {
-        tier: tier,
+        tier: effectiveTier,
+        original_tier: norm.isLegacy ? norm.tier : undefined,
         tier_name: mapping.tierName,
         tier_price: mapping.tierPrice.toString(),
         purchased_at: new Date().toISOString(),
+    legacy_normalized: norm.isLegacy ? 'true' : 'false',
+    ...(attribution ? Object.fromEntries(Object.entries(attribution).map(([k,v]) => [`attr_${k}`, String(v)])) : {})
       },
       automatic_tax: {
         enabled: true,
@@ -53,11 +96,14 @@ export async function GET(request: NextRequest) {
     }
 
     // Add subscription-specific configuration
-    if (mapping.stripeMode === 'subscription') {
+  if (mapping.stripeMode === 'subscription') {
       sessionConfig.subscription_data = {
         metadata: {
-          tier: tier,
-          tier_name: mapping.tierName,
+      tier: effectiveTier,
+      original_tier: norm.isLegacy ? norm.tier : undefined,
+      tier_name: mapping.tierName,
+      legacy_normalized: norm.isLegacy ? 'true' : 'false',
+      ...(attribution ? Object.fromEntries(Object.entries(attribution).map(([k,v]) => [`attr_${k}`, String(v)])) : {})
         },
       };
     }
@@ -65,12 +111,14 @@ export async function GET(request: NextRequest) {
     const session = await stripe.checkout.sessions.create(sessionConfig);
 
     // Log the checkout session creation for tracking
-    console.log(`Stripe checkout session created for tier: ${tier}`, {
+    console.log(`Stripe checkout session created for tier: ${effectiveTier}`, {
       sessionId: session.id,
-      tier: tier,
+      tier: effectiveTier,
+      original_tier: norm.isLegacy ? norm.tier : undefined,
       priceId: mapping.stripePriceId,
       mode: mapping.stripeMode,
       amount: mapping.tierPrice,
+      legacy_normalized: norm.isLegacy
     });
 
     // Redirect to Stripe Checkout
@@ -90,35 +138,72 @@ export async function GET(request: NextRequest) {
 
 export async function POST(request: NextRequest) {
   try {
-    const { tier, customerEmail, customerName, successUrl, cancelUrl } = await request.json();
+  const { tier: bodyTier, customerEmail, customerName, successUrl, cancelUrl } = await request.json();
 
-    if (!tier || !STRIPE_TIER_MAPPINGS[tier as PricingTier]) {
+  if (!bodyTier || !STRIPE_TIER_MAPPINGS[bodyTier as PricingTier]) {
       return NextResponse.json(
         { error: 'Invalid or missing tier specified' },
         { status: 400 }
       );
     }
-
-    const mapping = getStripeMappingForTier(tier as PricingTier);
+  const norm = normalizeTier(bodyTier as PricingTier);
+  const effectiveTier = norm.normalizedTier;
+  const mapping = getStripeMappingForTier(effectiveTier as PricingTier);
     const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://app.northpathstrategies.org';
 
-    const sessionConfig: any = {
+  if (mapping.stripePriceId.includes('PLACEHOLDER')) {
+      return NextResponse.json({
+        error: 'Stripe price ID not configured for tier',
+        tier: effectiveTier,
+        message: `Configure server env var for ${effectiveTier} (expected STRIPE_PRICE_* e.g. STRIPE_PRICE_EXPRESS_99) before creating checkout.`
+      }, { status: 500 });
+    }
+
+    let useDynamicPriceData = false;
+    try {
+      if (mapping.stripeMode === 'payment') {
+        const priceObj = await stripe.prices.retrieve(mapping.stripePriceId);
+        const unit = (priceObj.unit_amount || 0) / 100;
+        if (unit !== mapping.tierPrice) {
+          console.warn('[Stripe Price Mismatch]', { tier: effectiveTier, configured: mapping.tierPrice, stripePrice: unit, priceId: mapping.stripePriceId });
+          useDynamicPriceData = true;
+        }
+      }
+    } catch (e) {
+      console.warn('Unable to verify Stripe price amount – proceeding with configured price id', e);
+    }
+
+  const attribution = flattenAttribution(parseAttributionCookie());
+
+  const sessionConfig: any = {
       mode: mapping.stripeMode,
       payment_method_types: ['card'],
-      line_items: [
+      line_items: useDynamicPriceData ? [
+        {
+          price_data: {
+            currency: 'usd',
+            product_data: { name: mapping.tierName },
+            unit_amount: mapping.tierPrice * 100
+          },
+          quantity: 1
+        }
+      ] : [
         {
           price: mapping.stripePriceId,
-          quantity: 1,
-        },
+          quantity: 1
+        }
       ],
       success_url: successUrl || `${baseUrl}${mapping.successRedirect}&session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: cancelUrl || `${baseUrl}${mapping.cancelRedirect}`,
       metadata: {
-        tier: tier,
+        tier: effectiveTier,
+        original_tier: norm.isLegacy ? norm.tier : undefined,
         tier_name: mapping.tierName,
         tier_price: mapping.tierPrice.toString(),
         customer_name: customerName || '',
         purchased_at: new Date().toISOString(),
+    legacy_normalized: norm.isLegacy ? 'true' : 'false',
+    ...(attribution ? Object.fromEntries(Object.entries(attribution).map(([k,v]) => [`attr_${k}`, String(v)])) : {})
       },
       automatic_tax: {
         enabled: true,
@@ -132,12 +217,15 @@ export async function POST(request: NextRequest) {
       sessionConfig.customer_email = customerEmail;
     }
 
-    if (mapping.stripeMode === 'subscription') {
+  if (mapping.stripeMode === 'subscription') {
       sessionConfig.subscription_data = {
         metadata: {
-          tier: tier,
-          tier_name: mapping.tierName,
-          customer_name: customerName || '',
+          tier: effectiveTier,
+          original_tier: norm.isLegacy ? norm.tier : undefined,
+            tier_name: mapping.tierName,
+            customer_name: customerName || '',
+      legacy_normalized: norm.isLegacy ? 'true' : 'false',
+      ...(attribution ? Object.fromEntries(Object.entries(attribution).map(([k,v]) => [`attr_${k}`, String(v)])) : {})
         },
       };
     }
@@ -148,9 +236,11 @@ export async function POST(request: NextRequest) {
       success: true,
       sessionId: session.id,
       url: session.url,
-      tier: tier,
-      tierName: mapping.tierName,
-      tierPrice: mapping.tierPrice,
+  tier: effectiveTier,
+  original_tier: norm.isLegacy ? norm.tier : undefined,
+  tierName: mapping.tierName,
+  tierPrice: mapping.tierPrice,
+  legacy_normalized: norm.isLegacy
     });
 
   } catch (error) {

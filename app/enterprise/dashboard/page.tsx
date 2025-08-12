@@ -3,7 +3,7 @@
 import React, { Suspense } from 'react';
 import PowerBIEmbed from '@/components/PowerBIEmbed';
 import { useSession } from 'next-auth/react';
-import { redirect } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import { PageHero } from '@/components/PageHero';
 
 // Prevent static generation
@@ -11,6 +11,7 @@ export const dynamic = 'force-dynamic';
 
 function DashboardContent() {
   const session = useSession();
+  const router = useRouter();
   
   // Handle loading state and undefined session
   if (!session || session.status === 'loading') {
@@ -24,9 +25,17 @@ function DashboardContent() {
     );
   }
 
-  // Not authenticated
+  // Not authenticated (client-side navigation instead of server redirect to avoid build issues)
   if (session.status === 'unauthenticated' || !session.data) {
-    redirect('/auth');
+    // Use client navigation; render a lightweight message to avoid flashing content
+    if (typeof window !== 'undefined') {
+      router.replace('/auth');
+    }
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <p className="text-gray-600">Redirecting to sign in…</p>
+      </div>
+    );
   }
 
   // Check if user has enterprise tier access (this would be handled by middleware in production)

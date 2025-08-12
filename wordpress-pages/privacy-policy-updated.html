@@ -1,0 +1,269 @@
+<!-- ================================================== -->
+<!--  NorthPath Strategies • Privacy Policy (v2025-08-11) -->
+<!--  Accessible • Dark Mode • Reduced Motion • Tracking  -->
+<!--  APP_BASE_URL: https://assessments.northpathstrategies.org -->
+<!--  Paste into Elementor HTML widget                   -->
+<!-- ================================================== -->
+
+<a href="#privacy-main" class="skip-link" style="position:absolute;left:-999px;top:auto;width:1px;height:1px;overflow:hidden;">Skip to main content</a>
+
+<style>
+  :root {
+    --nps-blue:#15508F; /* darkened slightly for better contrast */
+    --nps-blue-deep:#0a365f;
+    --nps-gold:#C79C1F; /* deepened gold for stronger contrast */
+    --nps-gold-alt:#D4AF37;
+    --nps-surface:#ffffff;
+    --nps-surface-alt:#f2f5f9;
+    --nps-body-bg:#e8edf3;
+    --nps-text:#18222d;
+    --nps-text-light:#1f2a34;
+    --nps-light:#F6F8FC;
+    --nps-radius:12px;
+    --nps-shadow:0 4px 14px rgba(0,0,0,.07);
+    --focus-ring:0 0 0 3px rgba(21,80,143,.35);
+  }
+  body { margin:0; font-family:"Inter",sans-serif; line-height:1.6; background:var(--nps-body-bg); color:var(--nps-text); -webkit-font-smoothing:antialiased; }
+  .skip-link:focus { left:0; width:auto; height:auto; padding:.75rem 1rem; background:#000; color:#fff; z-index:10000; }
+  .nps-wrap { max-width:1100px; margin:0 auto; padding:3.25rem 1.25rem 4rem; }
+  .nps-wrap > .nps-surface { background:var(--nps-surface); border:1px solid #d0d8e2; border-radius:var(--nps-radius); box-shadow:var(--nps-shadow); padding:2.75rem 2rem 3rem; }
+  h1,h2,h3,h4 { font-weight:750; line-height:1.25; color:var(--nps-blue-deep); margin:0 0 1rem; letter-spacing:.25px; }
+  h1 { font-size:2.35rem; margin-top:0; }
+  h2 { margin-top:3rem; font-size:1.55rem; }
+  h3 { margin-top:2.15rem; font-size:1.22rem; }
+  p, li { color:var(--nps-text); font-size:1.02rem; }
+  p { margin:0 0 1.2rem; }
+  ul,ol { margin:0 0 1.5rem 1.25rem; padding:0; }
+  li { margin:0 0 .55rem; }
+  a { color:var(--nps-blue); text-underline-offset:2px; }
+  a:hover, a:focus { color:var(--nps-blue-deep); }
+  a:focus-visible, .nps-btn:focus-visible { outline:2px solid transparent; box-shadow:var(--focus-ring); border-radius:6px; }
+  .meta { font-size:.85rem; color:#46505a; margin:-.6rem 0 2rem; letter-spacing:.2px; }
+  /* Plain Language callout: switched to dark accessible background with white text per request */
+  .callout { background:#15508F; border:1px solid #0a365f; padding:1rem 1.25rem; border-radius:10px; font-size:.92rem; margin:1.5rem 0; color:#ffffff; }
+  .callout strong { color:#ffffff; }
+  .nps-alt { background:var(--nps-surface-alt); }
+  .button-group { display:flex; flex-wrap:wrap; gap:1rem; margin:2.75rem 0 0; }
+  .nps-btn { padding:.85rem 1.75rem; background:var(--nps-blue-deep); color:#fff; border:2px solid var(--nps-blue-deep); border-radius:9999px; font-weight:650; text-decoration:none; transition:background .25s,color .25s,border-color .25s; font-size:.95rem; letter-spacing:.25px; }
+  .nps-btn:hover { background:#083054; border-color:#083054; color:#fff; }
+  .nps-btn-gold { background:var(--nps-gold); color:#0f2438; border-color:var(--nps-gold); }
+  .nps-btn-gold:hover { background:#b48814; border-color:#b48814; color:#fff; }
+  .section { padding:0 0 1rem; }
+  .toc { background:#ffffff; border:1px solid #ccd5df; padding:1.4rem 1.35rem 1.15rem; border-radius:10px; box-shadow:var(--nps-shadow); }
+  .toc h2 { margin-top:0; font-size:1.18rem; color:var(--nps-blue-deep); }
+  .toc ul { list-style:none; margin:0; columns:2; column-gap:2.25rem; }
+  .toc li { margin:0 0 .55rem; break-inside:avoid; }
+  .toc a { text-decoration:none; color:var(--nps-blue-deep); font-weight:600; font-size:.92rem; }
+  .toc a:hover { text-decoration:underline; color:var(--nps-gold); }
+  code { font-family:"Source Code Pro", monospace; font-size:.82rem; background:#eef2f6; padding:.18rem .45rem; border-radius:4px; color:#0a365f; }
+  #mini-convert { backdrop-filter:saturate(140%) blur(4px); }
+  #mini-convert .nps-btn { font-weight:600; }
+  #mini-convert .nps-btn-gold { color:#10263a; }
+  #mini-convert .nps-btn-gold:hover { color:#fff; }
+  @media(max-width:900px){ .nps-wrap > .nps-surface { padding:2.25rem 1.4rem 2.5rem; } }
+  @media(max-width:750px){ h1{font-size:2rem;} .toc ul{columns:1;} }
+  /* Reduced motion */
+  @media (prefers-reduced-motion: reduce){ * { animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition:none !important; } }
+  /* Dark mode */
+  @media (prefers-color-scheme: dark){
+    :root { --nps-body-bg:#10161d; --nps-surface:#1b242d; --nps-surface-alt:#202b36; --nps-text:#d9e1e8; --nps-blue:#4ea3ff; --nps-blue-deep:#8ec9ff; --nps-gold:#D4AF37; }
+    body { background:var(--nps-body-bg); color:var(--nps-text); }
+    h1,h2,h3,h4 { color:#e6f1fa; }
+    p,li { color:#d9e1e8; }
+    .toc, .callout { background:var(--nps-surface-alt); border-color:#324b63; }
+    .toc a { color:#8ec9ff; }
+    .toc a:hover { color:var(--nps-gold); }
+    .nps-btn { background:#1e5c96; border-color:#1e5c96; }
+    .nps-btn:hover { background:#2673bd; border-color:#2673bd; }
+    .nps-btn-gold { background:var(--nps-gold); color:#10263a; }
+    .nps-btn-gold:hover { background:#b9921e; color:#fff; }
+    #mini-convert { background:rgba(18,59,112,.95) !important; }
+  }
+</style>
+
+<main id="privacy-main" class="nps-wrap" aria-labelledby="privacy-title">
+  <div class="nps-surface" role="document">
+  <header>
+    <h1 id="privacy-title">Privacy Policy</h1>
+    <p class="meta" aria-label="Policy meta information">Effective Date: 11 Aug 2025 • Next Review: 11 Nov 2025 • Version 1.0</p>
+    <p>We built NorthPath Strategies ("NorthPath", "we", "us") to combine <strong>patent‑pending organizational algorithms</strong> with <strong>expert human guidance</strong>. Protecting the information you trust us with is core to that mission. This Privacy Policy explains what we collect, why we collect it, how we use and protect it, and the rights you have over your data.</p>
+    <div class="callout" role="note"><strong>Plain Language:</strong> We collect only what we need to deliver assessments, improve accuracy, and support implementation. We never sell customer data and we minimize personal data by design.</div>
+  </header>
+
+  <nav class="toc" aria-label="Privacy Policy Sections">
+    <h2 style="margin-bottom:.75rem;">Contents</h2>
+    <ul>
+      <li><a href="#scope">1. Scope</a></li>
+      <li><a href="#data-we-collect">2. Data We Collect</a></li>
+      <li><a href="#sources">3. Data Sources</a></li>
+      <li><a href="#use">4. How We Use Data</a></li>
+      <li><a href="#legal-bases">5. Legal Bases (GDPR)</a></li>
+      <li><a href="#sharing">6. How We Share</a></li>
+      <li><a href="#retention">7. Retention</a></li>
+      <li><a href="#security">8. Security</a></li>
+      <li><a href="#transfers">9. International Transfers</a></li>
+      <li><a href="#rights">10. Your Rights</a></li>
+      <li><a href="#cookies">11. Cookies & Tracking</a></li>
+      <li><a href="#payments">12. Payments (Stripe)</a></li>
+      <li><a href="#infrastructure">13. Infrastructure & Vendors</a></li>
+      <li><a href="#algorithms">14. Algorithmic & AI Processing</a></li>
+      <li><a href="#children">15. Children</a></li>
+      <li><a href="#dnr">16. Do Not Track</a></li>
+      <li><a href="#changes">17. Policy Changes</a></li>
+      <li><a href="#contact">18. Contact</a></li>
+    </ul>
+  </nav>
+
+  <section id="scope" class="section" aria-labelledby="scope-h"><h2 id="scope-h">1. Scope</h2>
+    <p>This Policy covers data processed through our public website, platform application, assessments (including Quick Wins (free entry), Monthly Platform, and Enterprise Realignment), collaboration features, support channels, and scheduling pages.</p>
+  </section>
+
+  <section id="data-we-collect" class="section" aria-labelledby="collect-h"><h2 id="collect-h">2. Data We Collect</h2>
+    <h3>Account & Identity</h3>
+    <ul><li>Name, email address, organization, role/title (provided by you)</li><li>Authentication identifiers (managed by our auth provider)</li></ul>
+    <h3>Assessment & Organizational Inputs</h3>
+    <ul><li>Survey responses (structural, process, governance questions)</li><li>Uploaded org charts / CSV / role metadata</li><li>Job description or cost center summaries (optional)</li></ul>
+    <h3>Usage & Technical</h3>
+    <ul><li>Log events (pages, feature activations, CTA clicks)</li><li>Approximate region (derived from IP, not stored as raw IP after short‑term security logs)</li><li>Device/browser attributes (for security & compatibility)</li></ul>
+    <h3>Derived & Analytical</h3>
+    <ul><li>Algorithmic indices (OCI™, HOCI™, JCI™, DSCH, CRF, LEI)</li><li>Benchmark normalization values</li><li>Scenario model outputs and savings projections</li></ul>
+    <h3>Support Communications</h3>
+    <ul><li>Emails, form submissions, scheduling notes</li></ul>
+  </section>
+
+  <section id="sources" class="section" aria-labelledby="sources-h"><h2 id="sources-h">3. Data Sources</h2>
+    <p>We obtain data directly from you, authorized teammates you invite, and system instrumentation. We do not purchase third‑party marketing lists.</p>
+  </section>
+
+  <section id="use" class="section" aria-labelledby="use-h"><h2 id="use-h">4. How We Use Data</h2>
+    <ul>
+      <li>Provide and maintain assessments, dashboards, algorithmic outputs</li>
+      <li>Generate benchmarking and scenario modeling</li>
+      <li>Support expert consultations and implementation guidance</li>
+      <li>Improve accuracy and reliability of proprietary algorithms</li>
+      <li>Detect, prevent, and investigate security issues or abuse</li>
+      <li>Comply with legal/regulatory obligations (e.g. accounting, tax)</li>
+      <li>Communicate feature updates, material policy changes, or service notices</li>
+    </ul>
+  </section>
+
+  <section id="legal-bases" class="section" aria-labelledby="legal-h"><h2 id="legal-h">5. Legal Bases (GDPR)</h2>
+    <p>Where GDPR applies: (a) Contract – delivering the service you requested; (b) Legitimate Interests – product improvement, basic analytics, fraud prevention; (c) Consent – optional marketing communications; (d) Legal Obligation – records retention and compliance.</p>
+  </section>
+
+  <section id="sharing" class="section" aria-labelledby="sharing-h"><h2 id="sharing-h">6. How We Share</h2>
+    <p>We do <strong>not</strong> sell or rent personal data. Limited sharing occurs with vetted processors strictly for service enablement:</p>
+    <ul><li>Infrastructure (cloud hosting, database, storage)</li><li>Payment processing (Stripe)</li><li>Email delivery (transactional + some notifications)</li><li>Error monitoring & security tooling</li></ul>
+    <p>Access is role‑restricted and governed by confidentiality obligations.</p>
+  </section>
+
+  <section id="retention" class="section" aria-labelledby="retention-h"><h2 id="retention-h">7. Retention</h2>
+    <p>We retain assessment data for active accounts. On cancellation or written request we (a) queue structured deletion within 30 days, (b) preserve minimal financial / audit records as legally required, and (c) purge encrypted backups on their rolling lifecycle (≤ 90 days).</p>
+  </section>
+
+  <section id="security" class="section" aria-labelledby="security-h"><h2 id="security-h">8. Security</h2>
+    <ul><li>Encryption in transit (TLS 1.3) & at rest (AES‑256)</li><li>Role‑based access controls + optional MFA</li><li>Audit logging of administrative actions</li><li>Least privilege service design</li><li>Periodic dependency & vulnerability reviews</li></ul>
+    <p>No system is perfectly secure; if we discover a breach affecting you we will notify you without undue delay consistent with applicable law.</p>
+  </section>
+
+  <section id="transfers" class="section" aria-labelledby="transfers-h"><h2 id="transfers-h">9. International Transfers</h2>
+    <p>Data may be processed in the United States (primary) and other regions where our subprocessors operate. Where required, we rely on Standard Contractual Clauses or equivalent safeguards for cross‑border transfers.</p>
+  </section>
+
+  <section id="rights" class="section" aria-labelledby="rights-h"><h2 id="rights-h">10. Your Rights</h2>
+    <p>Depending on jurisdiction (e.g., EU/UK GDPR, CCPA/CPRA), you may have rights to access, correct, delete, restrict, port, or object to certain processing. Submit requests via <a href="mailto:privacy@northpathstrategies.org">privacy@northpathstrategies.org</a>. We'll verify identity before fulfilling requests. You will not receive discriminatory treatment for exercising rights.</p>
+  </section>
+
+  <section id="cookies" class="section" aria-labelledby="cookies-h"><h2 id="cookies-h">11. Cookies & Tracking</h2>
+    <p>We use:</p>
+    <ul><li><strong>Essential cookies</strong> – session management & authentication</li><li><strong>Functional</strong> – remembering configuration preferences</li><li><strong>Limited analytics</strong> – aggregate feature usage & CTA performance (non‑intrusive, no cross‑site advertising)</li></ul>
+    <p>You can adjust browser settings to refuse non‑essential cookies. Our CTA tracking stores only anonymized event metadata (e.g., <code>cta_click</code>, timestamp, destination) without persistent personal identifiers.</p>
+  </section>
+
+  <section id="payments" class="section" aria-labelledby="payments-h"><h2 id="payments-h">12. Payments (Stripe)</h2>
+    <p>All card transactions are processed by Stripe. We never store full card numbers. Stripe acts as an independent data controller for payment data—see their privacy documentation for details.</p>
+  </section>
+
+  <section id="infrastructure" class="section" aria-labelledby="infra-h"><h2 id="infra-h">13. Infrastructure & Vendors</h2>
+    <ul><li>Application hosting & compute (cloud platform)</li><li>Database & storage (managed relational + object storage)</li><li>Email delivery (transactional + some user notifications)</li><li>Authentication provider (session + security events)</li></ul>
+    <p>Vendor list may evolve; material changes will be reflected in an updated Policy or direct notice when required.</p>
+  </section>
+
+  <section id="algorithms" class="section" aria-labelledby="algo-h"><h2 id="algo-h">14. Algorithmic & AI Processing</h2>
+    <p>Our proprietary (patent‑pending) algorithms (OCI™, HOCI™, JCI™, DSCH, CRF, LEI) compute organizational structure, clarity, and optimization indicators. We do <strong>not</strong> use uploaded confidential documents to train third‑party foundation models. Limited model outputs may be cached for performance. Human expert review adds interpretation before external sharing.</p>
+  </section>
+
+  <section id="children" class="section" aria-labelledby="children-h"><h2 id="children-h">15. Children</h2>
+    <p>Services are not directed to individuals under 16. We do not knowingly collect personal data from children. If you believe a child has provided data, contact us for removal.</p>
+  </section>
+
+  <section id="dnr" class="section" aria-labelledby="dnr-h"><h2 id="dnr-h">16. Do Not Track</h2>
+    <p>Because no consistent industry standard exists, we presently do not respond to Do Not Track (DNT) browser signals. We limit tracking to essential/aggregate metrics and do not run behavioral advertising.</p>
+  </section>
+
+  <section id="changes" class="section" aria-labelledby="changes-h"><h2 id="changes-h">17. Policy Changes</h2>
+    <p>If we make material changes we will update the "Effective Date" at the top and provide prominent notice (email or in‑app). Continued use after changes indicates acceptance.</p>
+  </section>
+
+  <section id="contact" class="section" aria-labelledby="contact-h"><h2 id="contact-h">18. Contact</h2>
+    <p><strong>Questions / Rights Requests:</strong> <a href="mailto:privacy@northpathstrategies.org">privacy@northpathstrategies.org</a></p>
+    <p><strong>Security Reports:</strong> <a href="mailto:security@northpathstrategies.org">security@northpathstrategies.org</a></p>
+    <p><strong>Mailing Address:</strong> NorthPath Strategies – Privacy, PO Box ####, City, State, Country</p>
+  </section>
+
+  <div class="button-group" aria-label="Primary calls to action">
+  <a href="https://assessments.northpathstrategies.org/quick-wins?utm_source=wp-privacy&utm_medium=cta-button&utm_campaign=quick-wins&utm_content=footer-cta" class="nps-btn nps-btn-gold" data-cta="footer" data-cta-position="footer-primary" data-cta-destination="quick-wins">Start Free Quick Wins →</a>
+    <a href="https://assessments.northpathstrategies.org/pricing?utm_source=wp-privacy&utm_medium=cta-button&utm_campaign=platform-upgrade&utm_content=footer-cta" class="nps-btn" data-cta="footer" data-cta-position="footer-secondary" data-cta-destination="pricing">Platform Pricing →</a>
+    <a href="https://calendly.com/jeremyestrella/30min?utm_source=wp-privacy&utm_medium=cta-button&utm_campaign=strategy-call&utm_content=footer-cta" class="nps-btn" style="background:transparent;border-color:var(--nps-blue);color:var(--nps-blue);" data-cta="footer" data-cta-position="footer-tertiary" data-cta-destination="strategy-call">Strategy Call →</a>
+  </div>
+  </div>
+</main>
+
+<!-- Sticky Conversion Mini-Bar -->
+<div id="mini-convert" style="position:fixed;bottom:0;left:0;right:0;background:rgba(22,84,163,.97);color:#fff;padding:.7rem 1rem;display:flex;flex-wrap:wrap;gap:.65rem;align-items:center;justify-content:center;z-index:9999;font-size:.8rem;box-shadow:0 -2px 8px rgba(0,0,0,.15);">
+  <button type="button" aria-label="Close" style="background:transparent;border:none;color:#fff;font-size:1rem;position:absolute;right:.65rem;top:.35rem;cursor:pointer;">✕</button>
+  <strong style="display:flex;align-items:center;gap:.4rem;">Ready to apply compliant insights?</strong>
+  <a href="https://assessments.northpathstrategies.org/quick-wins?utm_source=wp-privacy&utm_medium=sticky-mini&utm_campaign=quick-wins&utm_content=mini-bar" class="nps-btn nps-btn-gold" style="padding:.45rem 1rem;font-size:.7rem;" data-cta="mini" data-cta-position="sticky" data-cta-destination="quick-wins">Free Quick Wins</a>
+  <a href="https://assessments.northpathstrategies.org/pricing?utm_source=wp-privacy&utm_medium=sticky-mini&utm_campaign=platform-upgrade&utm_content=mini-bar" class="nps-btn" style="padding:.45rem 1rem;font-size:.7rem;background:#fff;color:var(--nps-blue);border-color:#fff;" data-cta="mini" data-cta-position="sticky" data-cta-destination="pricing">Platform Pricing →</a>
+</div>
+<div id="cta-feedback" aria-live="polite" style="position:absolute;left:-9999px;height:1px;width:1px;overflow:hidden;"> </div>
+
+<!-- Structured Data -->
+<script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Privacy Policy",
+  "description": "Privacy Policy outlining data collection, usage, security, retention, rights, and algorithmic processing for NorthPath Strategies' organizational diagnostic platform.",
+  "datePublished": "2025-08-11",
+  "dateModified": "2025-08-11",
+  "inLanguage": "en",
+  "isPartOf": {"@type":"WebSite","name":"NorthPath Strategies","url":"https://northpathstrategies.org/"}
+}</script>
+
+<!-- Interaction + Tracking Script -->
+<script>
+(function(){
+  var bar=document.getElementById('mini-convert');
+  if(bar){
+    if(localStorage.getItem('npsPrivacyMiniDismissed')==='1'){bar.remove();}
+    else { var c=bar.querySelector('button'); if(c){ c.addEventListener('click',function(){localStorage.setItem('npsPrivacyMiniDismissed','1'); bar.remove();}); } }
+  }
+  function trackClick(e){
+    var t=e.target.closest('[data-cta]');
+    if(!t) return;
+    var payload={
+      event:'cta_click',
+      page:'privacy',
+      cta:t.getAttribute('data-cta'),
+      position:t.getAttribute('data-cta-position')||'',
+      tier:t.getAttribute('data-cta-tier')||'',
+      destination:t.getAttribute('data-cta-destination')||'',
+      href:t.getAttribute('href'),
+      ts:Date.now()
+    };
+    if(window.dataLayer){ window.dataLayer.push(payload); } else { console.info('[CTA]',payload); }
+    var live=document.getElementById('cta-feedback'); if(live){ live.textContent='CTA clicked: '+(payload.cta||''); }
+  }
+  document.addEventListener('click',trackClick);
+})();
+</script>

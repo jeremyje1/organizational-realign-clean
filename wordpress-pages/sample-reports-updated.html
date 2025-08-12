@@ -1,10 +1,13 @@
 <!-- ================================================== -->
-<!--  NorthPath Strategies • Sample Reports Page (v2025-07-20) -->
-<!--  Enhanced with Patent-Pending + Expert Messaging   -->
-<!--  Updated with Correct Production URLs              -->
+<!--  NorthPath Strategies • Sample Reports Page (v2025-08-12) -->
+<!--  Updated: Removed Express Diagnostic ($99) references; aligned tiers (One-Time Diagnostic, Monthly Subscription, Comprehensive Package, Enterprise Transformation) -->
+<!--  Enhanced with Patent-Pending + Expert Messaging + Accessibility Contrast Updates -->
+<!--  Updated with Correct Production / Preview URLs              -->
+<!--  APP_BASE_URL: https://assessments.northpathstrategies.org -->
 <!--  Paste into an Elementor HTML widget               -->
 <!-- ================================================== -->
 
+<a href="#what-you-get" class="skip-link" style="position:absolute;left:-999px;top:auto;width:1px;height:1px;overflow:hidden;">Skip to main content</a>
 <style>
   :root {
     --nps-blue:   #1654A3;
@@ -77,7 +80,13 @@
   }
   .nps-card:hover { transform:translateY(-6px); box-shadow:0 8px 24px rgba(0,0,0,.12); }
   .nps-card h3 { margin-top:0; color:var(--nps-blue); }
-  .nps-card ul { margin-left:1rem; line-height:1.5; color:#444; }
+  .nps-card ul { margin-left:1rem; line-height:1.5; color:var(--nps-slate); }
+  .nps-card p, .nps-card li { color: var(--nps-slate); }
+  .faq-item div { color: var(--nps-slate); }
+  /* Focus visibility for keyboard users */
+  .nps-btn:focus-visible, .faq-toggle:focus-visible { outline:3px solid var(--nps-gold); outline-offset:2px; }
+  .faq-toggle { transition: background .2s ease; }
+  .faq-toggle:hover { background: rgba(0,0,0,.03); }
 
   .sample-block { padding:4rem 1rem; }
   .kpi {
@@ -126,6 +135,30 @@
   @media(max-width:767px) {
     .nps-hero h1 { font-size:2rem; }
   }
+  /* Reduced motion preference */
+  @media (prefers-reduced-motion: reduce) {
+    * { animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition:none !important; }
+  }
+  /* Dark mode adjustments */
+  @media (prefers-color-scheme: dark) {
+    :root { --nps-light:#1e2630; --nps-slate:#d5dae0; --nps-shadow:0 4px 12px rgba(0,0,0,.4); }
+    body { background:#12181f; color:#e6ecf3; }
+    .nps-card, .kpi { background:#1f2a34; }
+    .nps-alt { background:#162029; }
+    .nps-card h3, .section-title { color:var(--nps-gold); }
+    .nps-card p, .nps-card li { color:#e6ecf3; }
+    .kpi h3 { color: var(--nps-gold); }
+    .kpi p { color:#ffffff; }
+    .kpi span { color:#d5dae0; }
+    .nps-sub { color:#d0d7e0; }
+    .patent-notice { background: linear-gradient(135deg, #153e77, #0f2c4f); }
+    nav[aria-label="Sample Reports Section Navigation"] { background:#1f2a34; }
+    .nps-cta { background:linear-gradient(135deg,#0f2c4f,#153e77); }
+    #mini-convert { background:rgba(15,44,79,.96); }
+    table.reco tbody tr { background:#1f2a34; }
+    table.reco th, table.reco td { border-bottom:1px solid rgba(255,255,255,.12); }
+  }
+  .skip-link:focus { left:0; width:auto; height:auto; padding:.75rem 1rem; background:#000; color:#fff; z-index:10000; }
 </style>
 
 <!-- HERO -->
@@ -135,28 +168,82 @@
     <p class="nps-sub">
       See how NorthPath Strategies' proprietary algorithms turn data into action: each report includes patent-pending diagnostic scores (OCI™, HOCI™, JCI™, DSCH, CRF, LEI), one-click costed org-charts, three restructuring scenarios, plus expert interpretation and implementation guidance from someone who has led actual reorganizations.
     </p>
+    <p style="margin:0 auto 2rem; font-size:1rem; max-width:680px; color:#e8f6ff;">
+  <strong>Quick Start:</strong> Explore immediate friction hotspots first—run the <a href="https://assessments.northpathstrategies.org/quick-wins?utm_source=wp-sample-reports&utm_medium=inline-link&utm_campaign=quick-wins&utm_content=hero-micro" style="color:var(--nps-gold); text-decoration:underline;" data-cta="hero-inline" data-cta-position="hero-inline" data-cta-destination="quick-wins" title="Start free Quick Wins assessment">Free Quick Wins Assessment →</a> or <a href="https://calendly.com/jeremyestrella/30min?utm_source=wp-sample-reports&utm_medium=inline-link&utm_campaign=diagnostic-call&utm_content=hero-micro" style="color:var(--nps-gold); text-decoration:underline;" data-cta="hero-inline" data-cta-position="hero-inline" data-cta-destination="diagnostic-call" title="Schedule One-Time Diagnostic intro call">Schedule Diagnostic Call →</a>
+    </p>
     <div class="expert-callout">
       <strong>🛡️ Irreplaceable Combination:</strong> These reports showcase statistical precision no generic AI can match, plus expert human guidance for successful implementation—exactly what you get with every NorthPath Strategies' assessment.
     </div>
     <p style="font-size: 0.9rem; color: #d1e7ff; margin-bottom: 2rem;">
       <em>*Reports are simulated examples to protect confidentiality.</em>
     </p>
-    <div class="button-group">
-      <a href="https://northpathstrategies.org/wp-content/uploads/2025/07/Enterprise-Organizational-Diagnostic-Fictitia-Community-College-FCC.pdf"
-         class="nps-btn nps-btn-gold" target="_blank" rel="noopener">Community College PDF</a>
-      <a href="https://northpathstrategies.org/wp-content/uploads/2025/07/NorthPath-Strategies-Enterprise-Organizational-Diagnostic-3-1.pdf"
-         class="nps-btn nps-btn-gold" target="_blank" rel="noopener">Hospital PDF</a>
-      <a href="https://northpathstrategies.org/wp-content/uploads/2025/07/NorthPath-Strategies-Enterprise-Organizational-Diagnostic-State-University-of-Midlands-SUM-1-1.pdf"
-         class="nps-btn nps-btn-gold" target="_blank" rel="noopener">University PDF</a>
-      <a href="https://northpathstrategies.org/wp-content/uploads/2025/07/NorthPath-Strategies-Enterprise-Organizational-Diagnostic-1-1.pdf"
-         class="nps-btn nps-btn-gold" target="_blank" rel="noopener">Company PDF</a>
-      <a href="https://northpathstrategies.org/wp-content/uploads/2025/07/NorthPath-Strategies-Enterprise-Organizational-Diagnostic-3-2.pdf"
-         class="nps-btn nps-btn-gold" target="_blank" rel="noopener">Nonprofit PDF</a>
+    <div class="button-group" data-cta-group="sample-pdfs">
+    <a href="https://northpathstrategies.org/wp-content/uploads/2025/07/Enterprise-Organizational-Diagnostic-Fictitia-Community-College-FCC.pdf"
+      class="nps-btn nps-btn-gold" target="_blank" rel="noopener noreferrer" title="Download Community College Sample Report PDF (opens in new tab)" aria-label="Download Community College sample report PDF (opens in new tab)" data-cta="pdf" data-report-type="community-college" data-cta-position="hero-pdfs">Community College PDF</a>
+    <a href="https://northpathstrategies.org/wp-content/uploads/2025/07/NorthPath-Strategies-Enterprise-Organizational-Diagnostic-3-1.pdf"
+      class="nps-btn nps-btn-gold" target="_blank" rel="noopener noreferrer" title="Download Hospital Sample Report PDF (opens in new tab)" aria-label="Download Hospital sample report PDF (opens in new tab)" data-cta="pdf" data-report-type="hospital" data-cta-position="hero-pdfs">Hospital PDF</a>
+    <a href="https://northpathstrategies.org/wp-content/uploads/2025/07/NorthPath-Strategies-Enterprise-Organizational-Diagnostic-State-University-of-Midlands-SUM-1-1.pdf"
+      class="nps-btn nps-btn-gold" target="_blank" rel="noopener noreferrer" title="Download University Sample Report PDF (opens in new tab)" aria-label="Download University sample report PDF (opens in new tab)" data-cta="pdf" data-report-type="university" data-cta-position="hero-pdfs">University PDF</a>
+    <a href="https://northpathstrategies.org/wp-content/uploads/2025/07/NorthPath-Strategies-Enterprise-Organizational-Diagnostic-1-1.pdf"
+      class="nps-btn nps-btn-gold" target="_blank" rel="noopener noreferrer" title="Download Company Sample Report PDF (opens in new tab)" aria-label="Download Company sample report PDF (opens in new tab)" data-cta="pdf" data-report-type="company" data-cta-position="hero-pdfs">Company PDF</a>
+    <a href="https://northpathstrategies.org/wp-content/uploads/2025/07/NorthPath-Strategies-Enterprise-Organizational-Diagnostic-3-2.pdf"
+      class="nps-btn nps-btn-gold" target="_blank" rel="noopener noreferrer" title="Download Nonprofit Sample Report PDF (opens in new tab)" aria-label="Download Nonprofit sample report PDF (opens in new tab)" data-cta="pdf" data-report-type="nonprofit" data-cta-position="hero-pdfs">Nonprofit PDF</a>
     </div>
   </div>
 </section>
 
+<!-- WHAT YOU'LL GET STRIP -->
+<section class="nps-wrap nps-alt" id="what-you-get" style="padding-top:2.5rem; padding-bottom:2.5rem;">
+  <h2 class="section-title" style="margin-top:0;">What You Get In Every Full Report</h2>
+  <div class="nps-grid" style="grid-template-columns:repeat(auto-fit,minmax(220px,1fr));">
+    <div class="nps-card" style="padding:1.25rem 1rem;">
+      <h3 style="margin:0 0 .5rem; font-size:1rem;">Algorithmic Precision</h3>
+      <p style="margin:0; font-size:.8rem; line-height:1.4;">Six patent-pending models (OCI™, HOCI™, JCI™, DSCH, CRF, LEI) scoring structural & operational friction.</p>
+    </div>
+    <div class="nps-card" style="padding:1.25rem 1rem;">
+      <h3 style="margin:0 0 .5rem; font-size:1rem;">Expert Interpretation</h3>
+      <p style="margin:0; font-size:.8rem; line-height:1.4;">Guidance from a practitioner who has led large-scale reorganizations—context, prioritization, adoption tactics.</p>
+    </div>
+    <div class="nps-card" style="padding:1.25rem 1rem;">
+      <h3 style="margin:0 0 .5rem; font-size:1rem;">Scenario Modeling</h3>
+      <p style="margin:0; font-size:.8rem; line-height:1.4;">Costed baseline / moderate / aggressive redesign options + projected savings & capacity unlock.</p>
+    </div>
+    <div class="nps-card" style="padding:1.25rem 1rem;">
+      <h3 style="margin:0 0 .5rem; font-size:1rem;">Org Chart Generator</h3>
+      <p style="margin:0; font-size:.8rem; line-height:1.4;">One‑click visualizations to align leaders & accelerate decision cycles.</p>
+    </div>
+    <div class="nps-card" style="padding:1.25rem 1rem;">
+      <h3 style="margin:0 0 .5rem; font-size:1rem;">AI Opportunity Map</h3>
+      <p style="margin:0; font-size:.8rem; line-height:1.4;">Targeted automation & efficiency plays sequenced by ROI & readiness.</p>
+    </div>
+    <div class="nps-card" style="padding:1.25rem 1rem;">
+      <h3 style="margin:0 0 .5rem; font-size:1rem;">Implementation Roadmap</h3>
+      <p style="margin:0; font-size:.8rem; line-height:1.4;">90‑day and 12‑month action path with governance & change management anchors.</p>
+    </div>
+  </div>
+  <p style="text-align:center; margin:2rem 0 0; font-size:.85rem; color:var(--nps-slate);">Ready to capture this detail for your org? <a href="https://assessments.northpathstrategies.org/quick-wins?utm_source=wp-sample-reports&utm_medium=inline-link&utm_campaign=quick-wins&utm_content=what-you-get" data-cta="inline" data-cta-position="what-you-get" data-cta-destination="quick-wins" style="color:var(--nps-blue); text-decoration:underline;">Run Free Quick Wins →</a> or <a href="https://calendly.com/jeremyestrella/30min?utm_source=wp-sample-reports&utm_medium=inline-link&utm_campaign=diagnostic-call&utm_content=what-you-get" data-cta="inline" data-cta-position="what-you-get" data-cta-destination="diagnostic-call" style="color:var(--nps-blue); text-decoration:underline;">Book Diagnostic Intro →</a></p>
+</section>
+
 <!-- PATENT-PENDING NOTICE -->
+
+<!-- SECTION NAV -->
+<nav aria-label="Sample Reports Section Navigation" style="background:#fff; border-top:1px solid #e5e9f2; border-bottom:1px solid #e5e9f2; font-size:.8rem;">
+  <div class="nps-wrap" style="padding:0.75rem 1rem; display:flex; flex-wrap:wrap; gap:.75rem; justify-content:center;">
+    <a href="#what-you-get" style="color:var(--nps-blue); text-decoration:none;">What You Get</a>
+    <span aria-hidden="true" style="color:#999;">•</span>
+    <a href="#glossary" style="color:var(--nps-blue); text-decoration:none;">Definitions</a>
+    <span aria-hidden="true" style="color:#999;">•</span>
+    <a href="#industry-ai" style="color:var(--nps-blue); text-decoration:none;">AI Opportunities</a>
+    <span aria-hidden="true" style="color:#999;">•</span>
+    <a href="#sample-cc" style="color:var(--nps-blue); text-decoration:none;">Key Findings</a>
+    <span aria-hidden="true" style="color:#999;">•</span>
+    <a href="#why-generic" style="color:var(--nps-blue); text-decoration:none;">Why Not Generic AI</a>
+    <span aria-hidden="true" style="color:#999;">•</span>
+    <a href="#faq" style="color:var(--nps-blue); text-decoration:none;">FAQ</a>
+    <span aria-hidden="true" style="color:#999;">•</span>
+    <a href="#get-started" style="color:var(--nps-blue); text-decoration:none;">Get Started</a>
+  </div>
+</nav>
 <section class="nps-wrap">
   <div class="patent-notice">
     <h2>🛡️ Proprietary, Patent-Pending Technology</h2>
@@ -167,7 +254,7 @@
 </section>
 
 <!-- GLOSSARY -->
-<section class="nps-wrap">
+<section class="nps-wrap" id="glossary">
   <h2 class="section-title">Patent-Pending Algorithm Definitions</h2>
   <div style="max-width:900px; margin:0 auto;">
     <div class="nps-grid" style="grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));">
@@ -192,7 +279,7 @@
 </section>
 
 <!-- AI AUTOMATION OPPORTUNITIES -->
-<section class="nps-wrap nps-alt">
+<section class="nps-wrap nps-alt" id="industry-ai">
   <h2 class="section-title">AI Automation Opportunities by Industry + Expert Interpretation</h2>
   <p class="nps-sub" style="color: var(--nps-slate);">
     Beyond patent-pending organizational insights, discover AI-driven efficiency and innovation use-cases tailored to your sector—with expert guidance on implementation priorities and change management strategies.
@@ -249,7 +336,7 @@
       <div class="kpi"><h3>14 %</h3><p>Algorithm-Detected License Duplication</p></div>
     </div>
     <h3 style="margin-top:3rem;">🔬 Patent-Pending Algorithm Findings + 👨‍💼 Expert Implementation Guidance</h3>
-    <ul style="list-style:disc; padding-left:1.4rem; color:#444;">
+  <ul style="list-style:disc; padding-left:1.4rem; color:var(--nps-slate);">
       <li><strong>31 %</strong> of staff report through 6+ layers (detected by HOCI™)—expert recommends flattening saves 14 supervisory FTE with proven change management approach.</li>
       <li>Five overlapping LMS platforms (identified by CRF algorithm)—expert analysis shows consolidation saves <strong>$420 k</strong> yearly with 6-month implementation timeline.</li>
       <li>28 supervisors manage ≤ 3 direct reports (flagged by DSCH)—expert guidance: rebalancing boosts avg span 22% with leadership development support.</li>
@@ -257,9 +344,10 @@
     </ul>
     <h3 style="margin-top:2rem;">Sample Recommendations: Algorithm Precision + Expert Implementation Strategy</h3>
     <div style="overflow-x:auto; margin-top:.8rem;">
-      <table class="reco">
+  <table class="reco" aria-describedby="reco-caption">
+        <caption id="reco-caption" style="text-align:left; font-weight:600; padding:.6rem 0; color:var(--nps-slate);">Sample algorithm-detected optimization actions with expert ownership, savings and timelines.</caption>
         <thead>
-          <tr><th>#</th><th>Algorithm-Detected Action</th><th>Expert-Assigned Owner</th><th>Expert-Validated Savings</th><th>Implementation Timeline</th></tr>
+          <tr><th scope="col">#</th><th scope="col">Algorithm-Detected Action</th><th scope="col">Expert-Assigned Owner</th><th scope="col">Expert-Validated Savings</th><th scope="col">Implementation Timeline</th></tr>
         </thead>
         <tbody>
           <tr><td>1</td><td>Merge duplicated roles in Academic Affairs & Workforce Dev.</td><td>Provost</td><td>$740 k</td><td>6-9 months with change mgmt</td></tr>
@@ -273,7 +361,7 @@
 </section>
 
 <!-- COMPETITIVE ADVANTAGE -->
-<section class="nps-wrap nps-alt">
+<section class="nps-wrap nps-alt" id="why-generic">
   <div style="background: var(--nps-light); padding: 3rem 2rem; border-radius: var(--nps-radius); margin-bottom: 2rem;">
     <h2 style="color: var(--nps-blue); text-align: center; margin-bottom: 2rem;">🛡️ Why Generic AI Tools Can't Produce These Results</h2>
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-bottom: 2rem;">
@@ -305,24 +393,138 @@
 </section>
 
 <!-- CALL TO ACTION -->
-<section class="nps-cta">
+<section class="nps-cta" id="get-started">
   <div class="nps-wrap">
     <h2 class="section-title" style="color:#fff;">Imagine These Algorithm Results + Expert Guidance at <em>Your</em> Organization</h2>
     <p class="nps-sub" style="color:#f0f4fc;">
       Launch your own patent-pending assessment with expert support—get algorithmic precision plus implementation guidance from someone who has led actual reorganizations.
     </p>
-    <div class="button-group">
-      <a href="https://organizational-realign-clean-bst3e3k3d.vercel.app/quick-wins" class="nps-btn nps-btn-gold">
-        Start Free Quick Wins Assessment →
-      </a>
-      <a href="https://organizational-realign-clean-bst3e3k3d.vercel.app/api/stripe/create-tier-checkout?tier=express-diagnostic" class="nps-btn"
-         style="background:#fff; color:var(--nps-blue); border-color:#fff;">
-        Try Express Diagnostic $2,495 →
-      </a>
-      <a href="https://calendly.com/jeremyestrella/30min" class="nps-btn"
-         style="background:transparent; color:#fff; border-color:#fff;">
-        Book Strategy Call with Expert →
-      </a>
+    <div class="button-group" data-cta-group="bottom-cta">
+  <a href="https://assessments.northpathstrategies.org/quick-wins?utm_source=wp-sample-reports&utm_medium=cta-button&utm_campaign=quick-wins&utm_content=bottom-cta" class="nps-btn nps-btn-gold" data-cta="bottom" data-cta-position="bottom-primary" data-cta-destination="quick-wins">Start Free Quick Wins Assessment →</a>
+      <a href="https://calendly.com/jeremyestrella/30min?utm_source=wp-sample-reports&utm_medium=cta-button&utm_campaign=diagnostic-call&utm_content=bottom-cta" class="nps-btn" style="background:#fff; color:var(--nps-blue); border-color:#fff;" data-cta="bottom" data-cta-position="bottom-secondary" data-cta-destination="diagnostic-call">Discuss One-Time Diagnostic →</a>
+      <a href="https://calendly.com/jeremyestrella/30min?utm_source=wp-sample-reports&utm_medium=cta-button&utm_campaign=strategy-call&utm_content=bottom-cta" class="nps-btn" style="background:transparent; color:#fff; border-color:#fff;" data-cta="bottom" data-cta-position="bottom-tertiary" data-cta-destination="strategy-call">Book Strategy Call with Expert →</a>
+    </div>
+    <p style="margin-top:1.5rem; font-size:.75rem; color:#d7e9ff;">Your data is encrypted in transit & at rest. No sales call required to start Express.</p>
+  </div>
+</section>
+
+<!-- Structured Data: Products/Services + FAQ (Updated tiers) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {"@type": "Product","name": "One-Time Diagnostic","sku": "one-time-diagnostic","description": "100-item targeted survey, secure document upload, 12-page PDF brief, OCI/HOCI/JCI scores, 30-min Q&A.","offers": {"@type": "Offer","priceCurrency": "USD","price": "4995","availability": "https://schema.org/InStock"}},
+    {"@type": "Product","name": "Monthly Subscription","sku": "monthly-subscription","description": "Unlimited assessments, dashboard refresh, CSV exports, 60-min office hours, adds DSCH algorithm.","offers": {"@type": "Offer","priceCurrency": "USD","price": "2995","priceSpecification":{"@type":"UnitPriceSpecification","priceCurrency":"USD","price":2995,"unitCode":"MON"},"availability": "https://schema.org/InStock"}},
+    {"@type": "Product","name": "Comprehensive Package","sku": "comprehensive-package","description": "25–30 page AI narrative, 90‑min strategy session, cost‑saving ranges. Scenario builder add‑on $5k.","offers": {"@type": "Offer","priceCurrency": "USD","price": "9900","availability": "https://schema.org/InStock"}},
+    {"@type": "Service","name": "Enterprise Transformation","serviceType": "Organizational Transformation","description": "Base includes platform & facilitation. +$5k per module: scenario builder, Power BI embed, integrations, quarterly audits.","offers": {"@type": "Offer","priceCurrency": "USD","price": "24000","availability": "https://schema.org/LimitedAvailability"}},
+    {"@type": "FAQPage","mainEntity": [
+      {"@type":"Question","name":"What is included in the One-Time Diagnostic?","acceptedAnswer":{"@type":"Answer","text":"A focused executive diagnostic: targeted survey, secure document ingest, patent-pending OCI/HOCI/JCI scoring, 12-page PDF brief and a 30‑minute strategist Q&A."}},
+      {"@type":"Question","name":"How does the Monthly Subscription build on the diagnostic?","acceptedAnswer":{"@type":"Answer","text":"Monthly adds unlimited reruns, trend dashboards, CSV exports, DSCH algorithm unlock, and 60‑minute office hours to continuously iterate structure against strategy."}},
+      {"@type":"Question","name":"What does the Comprehensive Package add?","acceptedAnswer":{"@type":"Answer","text":"It layers on a 25–30 page AI-generated executive narrative, 90‑minute strategy session, cost‑saving ranges, optional scenario builder (+$5k), and prioritized roadmap themes."}},
+      {"@type":"Question","name":"How is Enterprise Transformation different?","acceptedAnswer":{"@type":"Answer","text":"Enterprise Transformation extends the platform with facilitation plus modular add‑ons (scenario builder, embedded analytics, integrations, quarterly audits, governance) for large-scale change."}},
+      {"@type":"Question","name":"Is organizational data secure?","acceptedAnswer":{"@type":"Answer","text":"Yes. Data encrypted in transit (TLS 1.3) & at rest (AES-256). Role-based access, audit logging, optional MFA, and least-privilege operational controls."}}
+    ]}
+  ]
+}
+</script>
+
+<!-- FAQ (Visible Section) -->
+<section class="nps-wrap nps-alt" id="faq" aria-labelledby="faq-title">
+  <h2 id="faq-title" class="section-title">Frequently Asked Questions</h2>
+  <div style="max-width:860px; margin:0 auto;">
+    <div class="faq-item" style="margin-bottom:1rem; border:1px solid #d9e2ef; border-radius:var(--nps-radius); background:#fff;">
+      <button aria-expanded="false" aria-controls="faq1" class="faq-toggle" style="width:100%; text-align:left; padding:1rem 1.2rem; background:transparent; border:none; font-weight:600; font-size:1rem; cursor:pointer; display:flex; justify-content:space-between; align-items:center;">
+        <span>What is included in the One-Time Diagnostic?</span><span aria-hidden="true">+</span>
+      </button>
+      <div id="faq1" role="region" aria-hidden="true" style="padding:0 1.2rem 1rem; display:none; font-size:.9rem; line-height:1.5; color:var(--nps-slate);">A focused executive diagnostic: targeted survey, secure document ingest, patent-pending OCI/HOCI/JCI scoring, 12-page PDF brief and a 30‑minute strategist Q&A.</div>
+    </div>
+    <div class="faq-item" style="margin-bottom:1rem; border:1px solid #d9e2ef; border-radius:var(--nps-radius); background:#fff;">
+      <button aria-expanded="false" aria-controls="faq2" class="faq-toggle" style="width:100%; text-align:left; padding:1rem 1.2rem; background:transparent; border:none; font-weight:600; font-size:1rem; cursor:pointer; display:flex; justify-content:space-between; align-items:center;">
+        <span>How does the Monthly Subscription build on the diagnostic?</span><span aria-hidden="true">+</span>
+      </button>
+      <div id="faq2" role="region" aria-hidden="true" style="padding:0 1.2rem 1rem; display:none; font-size:.9rem; line-height:1.5; color:var(--nps-slate);">Monthly adds unlimited reruns, trend dashboards, CSV exports, DSCH algorithm unlock, and 60‑minute office hours to continuously iterate structure against strategy.</div>
+    </div>
+    <div class="faq-item" style="margin-bottom:1rem; border:1px solid #d9e2ef; border-radius:var(--nps-radius); background:#fff;">
+      <button aria-expanded="false" aria-controls="faq3" class="faq-toggle" style="width:100%; text-align:left; padding:1rem 1.2rem; background:transparent; border:none; font-weight:600; font-size:1rem; cursor:pointer; display:flex; justify-content:space-between; align-items:center;">
+        <span>What does the Comprehensive Package add?</span><span aria-hidden="true">+</span>
+      </button>
+      <div id="faq3" role="region" aria-hidden="true" style="padding:0 1.2rem 1rem; display:none; font-size:.9rem; line-height:1.5; color:var(--nps-slate);">It layers on a 25–30 page AI-generated executive narrative, 90‑minute strategy session, cost‑saving ranges, optional scenario builder (+$5k), and prioritized roadmap themes.</div>
+    </div>
+    <div class="faq-item" style="margin-bottom:1rem; border:1px solid #d9e2ef; border-radius:var(--nps-radius); background:#fff;">
+      <button aria-expanded="false" aria-controls="faq4" class="faq-toggle" style="width:100%; text-align:left; padding:1rem 1.2rem; background:transparent; border:none; font-weight:600; font-size:1rem; cursor:pointer; display:flex; justify-content:space-between; align-items:center;">
+        <span>How is Enterprise Transformation different?</span><span aria-hidden="true">+</span>
+      </button>
+      <div id="faq4" role="region" aria-hidden="true" style="padding:0 1.2rem 1rem; display:none; font-size:.9rem; line-height:1.5; color:var(--nps-slate);">Enterprise Transformation extends the platform with facilitation plus modular add‑ons (scenario builder, embedded analytics, integrations, quarterly audits, governance) for large-scale change.</div>
+    </div>
+    <div class="faq-item" style="margin-bottom:1rem; border:1px solid #d9e2ef; border-radius:var(--nps-radius); background:#fff;">
+      <button aria-expanded="false" aria-controls="faq5" class="faq-toggle" style="width:100%; text-align:left; padding:1rem 1.2rem; background:transparent; border:none; font-weight:600; font-size:1rem; cursor:pointer; display:flex; justify-content:space-between; align-items:center;">
+        <span>Is organizational data secure?</span><span aria-hidden="true">+</span>
+      </button>
+      <div id="faq5" role="region" aria-hidden="true" style="padding:0 1.2rem 1rem; display:none; font-size:.9rem; line-height:1.5; color:var(--nps-slate);">Yes. Data encrypted in transit (TLS 1.3) & at rest (AES-256). Role-based access, audit logging, optional MFA, and least-privilege controls.</div>
     </div>
   </div>
 </section>
+
+<!-- Sticky Conversion Mini-Bar -->
+<div id="mini-convert" style="position:fixed; bottom:0; left:0; right:0; background:rgba(22,84,163,.97); color:#fff; padding:.75rem 1rem; display:flex; flex-wrap:wrap; gap:.75rem; align-items:center; justify-content:center; z-index:9999; font-size:.85rem; box-shadow:0 -2px 8px rgba(0,0,0,.15);">
+  <button type="button" aria-label="Close" style="background:transparent; border:none; color:#fff; font-size:1rem; position:absolute; right:.75rem; top:.4rem; cursor:pointer;">✕</button>
+  <strong style="display:flex; align-items:center; gap:.4rem;">Ready to see your own data?</strong>
+  <a href="https://assessments.northpathstrategies.org/quick-wins?utm_source=wp-sample-reports&utm_medium=sticky-mini&utm_campaign=quick-wins&utm_content=mini-bar" class="nps-btn nps-btn-gold" style="padding:.55rem 1.2rem; font-size:.75rem;" data-cta="mini" data-cta-position="sticky" data-cta-destination="quick-wins">Free Quick Wins</a>
+  <a href="https://calendly.com/jeremyestrella/30min?utm_source=wp-sample-reports&utm_medium=sticky-mini&utm_campaign=diagnostic-call&utm_content=mini-bar" class="nps-btn" style="padding:.55rem 1.2rem; font-size:.75rem; background:#fff; color:var(--nps-blue); border-color:#fff;" data-cta="mini" data-cta-position="sticky" data-cta-destination="diagnostic-call">Diagnostic Call →</a>
+</div>
+<div id="cta-feedback" aria-live="polite" style="position:absolute;left:-9999px;height:1px;width:1px;overflow:hidden;"> </div>
+
+<!-- Interaction + Tracking Script -->
+<script>
+(function(){
+  // FAQ accordion
+  var toggles = document.querySelectorAll('.faq-toggle');
+  toggles.forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var expanded = this.getAttribute('aria-expanded') === 'true';
+      var ctrl = this.getAttribute('aria-controls');
+      var panel = document.getElementById(ctrl);
+      this.setAttribute('aria-expanded', String(!expanded));
+      if(panel){
+        panel.style.display = expanded ? 'none' : 'block';
+        panel.setAttribute('aria-hidden', String(expanded));
+        var icon = this.querySelector('span[aria-hidden="true"]');
+        if(icon) icon.textContent = expanded ? '+' : '−';
+      }
+    });
+  });
+  // Sticky bar close
+  var bar = document.getElementById('mini-convert');
+  if(bar){
+    if(localStorage.getItem('npsMiniDismissed')==='1') { bar.parentNode.removeChild(bar); }
+    else {
+      var closeBtn = bar.querySelector('button');
+      if(closeBtn){
+        closeBtn.addEventListener('click', function(){
+          localStorage.setItem('npsMiniDismissed','1');
+          bar.parentNode.removeChild(bar);
+        });
+      }
+    }
+  }
+  // CTA click tracking
+  function trackClick(e){
+    var t = e.target.closest('[data-cta]');
+    if(!t) return;
+    var payload = {
+      event: 'cta_click',
+      cta: t.getAttribute('data-cta'),
+      position: t.getAttribute('data-cta-position') || '',
+  tier: t.getAttribute('data-cta-tier') || '',
+      destination: t.getAttribute('data-cta-destination') || '',
+      href: t.getAttribute('href'),
+      ts: Date.now()
+    };
+  if(window.dataLayer){ window.dataLayer.push(payload); }
+  else { console.info('[CTA]', payload); }
+  var live = document.getElementById('cta-feedback');
+  if(live){ live.textContent = 'CTA clicked: ' + (payload.cta || ''); }
+  }
+  document.addEventListener('click', trackClick);
+})();
+</script>

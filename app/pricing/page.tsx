@@ -50,18 +50,17 @@ export default function PricingPage() {
             transition={{ duration: 0.8 }}
           >
             <h1 className="text-4xl md:text-5xl font-bold mb-6">
-              Start with Our Express Diagnostic – Just $2,495
+              Start Free with Quick Wins – Expand When Ready
             </h1>
             <p className="text-xl text-blue-100 mb-8 max-w-3xl mx-auto">
-              Get rapid organizational insights in 3-5 days. Perfect for teams exploring transformation 
-              or needing quick wins before committing to comprehensive analysis.
+              Run the free Quick Wins diagnostic to surface immediate friction and capacity opportunities. Then unlock continuous tracking and advanced modeling with the Platform or engage Enterprise Realignment for guided transformation.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
-              <Button 
-                onClick={() => window.location.href = '/assessment/tier-based?tier=express-diagnostic&org=higher-education'}
+              <Button
+                onClick={() => window.location.href = '/quick-wins'}
                 className="bg-white text-blue-600 hover:bg-blue-50 font-semibold px-8 py-3 text-lg"
               >
-                Start Express Diagnostic
+                Launch Free Quick Wins
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
               <Button 
@@ -76,7 +75,7 @@ export default function PricingPage() {
               </Button>
             </div>
             <p className="text-sm text-blue-200">
-              ⚡ Quick turnaround • 💡 Immediate action items • 🎯 Perfect for pilots
+              ⚡ Free entry diagnostic • � Continuous improvement • 🧭 Guided transformation when needed
             </p>
           </motion.div>
         </div>

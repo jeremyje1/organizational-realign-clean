@@ -1,4 +1,8 @@
-<!-- ==========================  NorthPath – Services Page (Updated with Correct URLs)  ========================== -->
+<!-- ==========================  NorthPath – Services Page (v2025-08-12 Aligned Tiers)  ========================== -->
+<!-- Updated: Removed Express ($99) & legacy Monthly $149; Added One-Time Diagnostic $4,995, Monthly Subscription $2,995/mo, Comprehensive Package $9,900, Enterprise Transformation $24k base -->
+<!-- APP_BASE_URL: https://assessments.northpathstrategies.org -->
+<!-- Enhanced: skip link • reduced motion • dark mode • tracking • sticky mini bar -->
+<a href="#services-main" class="skip-link" style="position:absolute;left:-999px;top:auto;width:1px;height:1px;overflow:hidden;">Skip to main content</a>
 <style>
   :root {
     --nps-blue:   #1654A3;
@@ -12,6 +16,7 @@
     margin: 0;
     font-family: "Inter", sans-serif;
   }
+  .skip-link:focus{left:0;width:auto;height:auto;padding:.75rem 1rem;background:#000;color:#fff;z-index:10000}
   .nps-wrap {
     max-width: 1140px;
     margin: 0 auto;
@@ -72,9 +77,11 @@
     margin-left: 1rem;
     line-height: 1.6;
     font-size: .95rem;
-    color: #444;
+    color: var(--nps-slate);
     margin-bottom: 1.5rem;
   }
+  .nps-card li { color: var(--nps-slate); }
+  .nps-btn:focus-visible, .wp-block-button__link:focus-visible, .elementor-button:focus-visible { outline:3px solid var(--nps-gold); outline-offset:2px; }
   .nps-badge {
     display: inline-block;
     background: var(--nps-gold);
@@ -159,10 +166,24 @@
     .nps-grid { grid-template-columns: 1fr; }
     .recommended { margin-top: 2rem; }
   }
+  /* Reduced motion */
+  @media (prefers-reduced-motion: reduce){*{animation-duration:.001ms!important;animation-iteration-count:1!important;transition:none!important}}
+  /* Dark mode */
+  @media (prefers-color-scheme: dark){
+    :root{--nps-light:#1e2630;--nps-slate:#d5dae0;--nps-shadow:0 4px 16px rgba(0,0,0,.55)}
+    body{background:#12181f;color:#e6ecf3}
+    .nps-card{background:#1f2a34}
+    .team-highlight{background:linear-gradient(135deg,#123b70,#0b2746)}
+    .nps-hero{background:linear-gradient(135deg,#123b70,#0b2746)}
+    .nps-sub{color:#d0d7e0}
+    .nps-card ul{color:#d5dae0}
+    .nps-card:hover{box-shadow:0 8px 28px rgba(0,0,0,.6)}
+    #mini-convert{background:rgba(18,59,112,.96)}
+  }
 </style>
 
 <!-- HERO -->
-<section class="nps-hero">
+<section class="nps-hero" id="services-main">
   <div class="nps-wrap">
     <h1>Patent-Pending Algorithms + Expert Guidance</h1>
     <p class="nps-sub">
@@ -181,7 +202,7 @@
     <p>
       All assessment packages now include team collaboration features with secure email invitations, role-based access, and real-time sharing capabilities—plus every tier includes both algorithmic precision and expert human guidance.
     </p>
-    <a href="https://northpathstrategies.org/team-collaboration/" class="nps-btn">
+  <a href="https://northpathstrategies.org/team-collaboration/" class="nps-btn" data-cta="team" data-cta-position="team-highlight" data-cta-destination="team-collaboration">
       Explore Team Features →
     </a>
   </div>
@@ -189,156 +210,74 @@
 
 <!-- PACKAGES GRID -->
 <section class="nps-wrap">
-  <div class="nps-grid">
-
-    <!-- EXPRESS DIAGNOSTIC -->
+  <div class="nps-grid" style="grid-template-columns: repeat(auto-fit,minmax(280px,1fr));">
+    <!-- ONE-TIME DIAGNOSTIC -->
     <div class="nps-card recommended">
       <span class="nps-badge">Most Popular</span>
-      <h2 class="nps-heading">Express Diagnostic</h2>
-      <div class="nps-price">$2,495</div>
-      <p style="margin-top:-.4rem;">
-        Patent-pending diagnostic precision + expert insights in 3-5 business days—perfect for organizations ready to act quickly.
-      </p>
+      <h2 class="nps-heading">One‑Time Diagnostic</h2>
+      <div class="nps-price">$4,995 <small style="font-size:1rem;color:#555;">one‑off</small></div>
+      <p style="margin-top:-.4rem;">Focused executive diagnostic to surface friction, duplication, and structural misalignment—fast clarity for leadership.</p>
       <ul>
-        <li>Enhanced 60+ question industry-specific survey</li>
-        <li><strong>25-page AI-enhanced comprehensive report</strong></li>
-        <li><strong>Patent-pending diagnostic scores</strong> (OCI™, HOCI™, JCI™)</li>
-        <li>AI-generated org charts with algorithmic analysis</li>
-        <li>Scenario modeling and ROI projections</li>
-        <li>Team collaboration and secure sharing</li>
-        <li><strong>30-min expert strategist debrief call</strong></li>
-        <li>AI automation opportunity mapping with expert interpretation</li>
+        <li>100‑item targeted survey</li>
+        <li>Secure document upload</li>
+        <li>12‑page PDF executive brief</li>
+        <li>OCI / HOCI / JCI scores</li>
+        <li>30‑min strategist Q&A</li>
+        <li>“Assessment lite” baseline</li>
       </ul>
-      <a href="https://organizational-realign-clean-bst3e3k3d.vercel.app/api/stripe/create-tier-checkout?tier=express-diagnostic"
-         class="nps-btn-primary">
-        Start Express Diagnostic →
-      </a>
-    </div>
-
-    <!-- ONE-TIME ASSESSMENT -->
-    <div class="nps-card">
-      <span class="nps-badge">Comprehensive Analysis</span>
-      <h2 class="nps-heading">One-Time Assessment</h2>
-      <div class="nps-price">$4,995</div>
-      <p style="margin-top:-.4rem;">
-        Full algorithm suite + detailed expert analysis—ideal for strategic planning initiatives with reorganization experience.
-      </p>
-      <ul>
-        <li>100+ item comprehensive survey + secure file upload</li>
-        <li><strong>35-page detailed executive report</strong></li>
-        <li><strong>All 6 patent-pending algorithms</strong> (OCI™, HOCI™, JCI™, DSCH, CRF, LEI)</li>
-        <li>Multi-scenario financial projections with expert interpretation</li>
-        <li>Advanced org chart analysis with compliance checks</li>
-        <li>Team collaboration with role-based permissions</li>
-        <li><strong>60-min strategy session with reorganization expert</strong></li>
-        <li>Industry benchmarking and competitive analysis</li>
-        <li>Comprehensive AI automation roadmap with implementation guidance</li>
-      </ul>
-      <a href="https://organizational-realign-clean-bst3e3k3d.vercel.app/api/stripe/create-tier-checkout?tier=one-time-diagnostic"
-         class="nps-btn">
-        Purchase One-Time Assessment →
-      </a>
-    </div>
-
-    <!-- COMPREHENSIVE PACKAGE -->
-    <div class="nps-card">
-      <span class="nps-badge">Board-Ready</span>
-      <h2 class="nps-heading">Comprehensive Package</h2>
-      <div class="nps-price">$9,995</div>
-      <p style="margin-top:-.4rem;">
-        Executive-level algorithmic insights + strategic workshop—perfect for board presentations and transformation initiatives.
-      </p>
-      <ul>
-        <li>All features of One-Time Assessment</li>
-        <li><strong>45-page executive board-ready report</strong></li>
-        <li>Advanced scenario modeling with 5+ cost projections</li>
-        <li>Custom implementation timeline (12-month roadmap)</li>
-        <li>Team training and collaboration setup</li>
-        <li><strong>90-min expert strategy workshop</strong></li>
-        <li>Quarterly check-ins and progress reviews with expert</li>
-        <li>Priority AI automation implementation plan</li>
-        <li>Custom dashboard and KPI tracking</li>
-      </ul>
-      <a href="https://organizational-realign-clean-bst3e3k3d.vercel.app/api/stripe/create-tier-checkout?tier=comprehensive-package"
-         class="nps-btn">
-        Purchase Comprehensive →
-      </a>
-    </div>
-
-    <!-- ENTERPRISE TRANSFORMATION -->
-    <div class="nps-card">
-      <span class="nps-badge">System-Wide</span>
-      <h2 class="nps-heading">Enterprise Transformation</h2>
-      <div class="nps-price">Contact for Quote</div>
-      <p style="margin-top:-.4rem;">
-        Complete organizational transformation with ongoing expert support—designed for multi-campus systems and large enterprises.
-      </p>
-      <ul>
-        <li>All features of Comprehensive Package</li>
-        <li><strong>55-page comprehensive transformation report</strong></li>
-        <li>Unlimited scenario modeling & API integration</li>
-        <li>Power BI embedded dashboards & connectors</li>
-        <li>Full team management and training program</li>
-        <li>Dedicated success manager and monthly reviews</li>
-        <li><strong>On-site facilitation with reorganization expert</strong></li>
-        <li><strong>Quarterly health audits and strategic reviews</strong></li>
-        <li>Enterprise AI automation strategy & implementation</li>
-        <li>Custom integrations and API development</li>
-        <li>12-month partnership with ongoing expert support</li>
-      </ul>
-      <a href="https://calendly.com/jeremyestrella/30min?month=2025-07"
-         class="nps-btn">
-       Schedule Consultation →
-      </a>
+  <a href="https://calendly.com/jeremyestrella/30min?utm=one-time-diagnostic&utm_source=wp-services&utm_medium=pricing-card&utm_campaign=one-time-diagnostic&utm_content=services-packages" class="nps-btn-primary" data-cta="pricing" data-cta-tier="one-time" data-cta-position="card-one-time" data-cta-destination="diagnostic-call">Schedule Intro Call →</a>
     </div>
 
     <!-- MONTHLY SUBSCRIPTION -->
     <div class="nps-card">
-      <span class="nps-badge">Ongoing Optimization</span>
+      <span class="nps-badge">Continuous Improvement</span>
       <h2 class="nps-heading">Monthly Subscription</h2>
-      <div class="nps-price">$2,995 <small style="font-size:1rem;color:#555;">/month</small></div>
-      <p style="margin-top:-.4rem;">
-        Continuous algorithmic analysis + monthly expert guidance—perfect for ongoing organizational optimization.
-      </p>
+      <div class="nps-price">$2,995 <small style="font-size:1rem;color:#555;">/mo</small></div>
+      <p style="margin-top:-.4rem;">Iterate structure with continuous diagnostics, live dashboards and unlocked algorithm depth.</p>
       <ul>
-        <li><strong>Unlimited</strong> assessments and team collaboration</li>
-        <li>Monthly 20-page progress reports with algorithm insights</li>
-        <li>Real-time dashboard refreshes and updates</li>
-        <li><strong>60-min monthly office hours with expert consultant</strong></li>
-        <li>Ongoing org chart updates and scenario modeling</li>
-        <li>Continuous AI opportunity identification with expert review</li>
-        <li>Team member onboarding and training</li>
-        <li>Cancel or upgrade anytime</li>
+        <li>Unlimited assessments</li>
+        <li>Live dashboard refresh</li>
+        <li>CSV / export pipeline</li>
+        <li>DSCH algorithm unlocked</li>
+        <li>60‑min office hours / month</li>
+        <li>Iterate each term</li>
       </ul>
-      <a href="https://organizational-realign-clean-bst3e3k3d.vercel.app/api/stripe/create-tier-checkout?tier=monthly-subscription"
-         class="nps-btn">
-        Start Monthly Subscription →
-      </a>
+  <a href="https://calendly.com/jeremyestrella/30min?utm=monthly-subscription&utm_source=wp-services&utm_medium=pricing-card&utm_campaign=monthly-subscription&utm_content=services-packages" class="nps-btn" data-cta="pricing" data-cta-tier="monthly" data-cta-position="card-monthly" data-cta-destination="subscription-call">Discuss Subscription →</a>
     </div>
 
-    <!-- QUICK WINS - FREE -->
+    <!-- COMPREHENSIVE PACKAGE -->
     <div class="nps-card">
-      <span class="nps-badge">Perfect Starting Point</span>
-      <h2 class="nps-heading">Quick Wins Assessment</h2>
-      <div class="nps-price">FREE</div>
-      <p style="margin-top:-.4rem;">
-        Get a taste of our patent-pending diagnostic approach with immediate recommendations and expert review.
-      </p>
+      <span class="nps-badge">Strategic Narrative</span>
+      <h2 class="nps-heading">Comprehensive Package</h2>
+      <div class="nps-price">$9,900 <small style="font-size:1rem;color:#555;">one‑off</small></div>
+      <p style="margin-top:-.4rem;">Deep executive narrative and strategic framing—turn diagnostic insight into board‑ready decisions.</p>
       <ul>
-        <li>12 targeted questions in 4 key organizational areas</li>
-        <li>Immediate recommendations & savings estimates</li>
-        <li>Core algorithmic insights and scoring preview</li>
-        <li><strong>Expert review</strong> of key findings</li>
-        <li>Perfect introduction to our methodology</li>
-        <li>No credit card required</li>
-        <li>Instant results with upgrade options</li>
+        <li>25–30 page AI narrative</li>
+        <li>90‑min strategy session</li>
+        <li>Cost‑saving ranges</li>
+        <li>Scenario builder add‑on (+$5k)</li>
+        <li>Prioritized roadmap themes</li>
+        <li>Executive decision package</li>
       </ul>
-      <a href="https://organizational-realign-clean-bst3e3k3d.vercel.app/quick-wins"
-         class="nps-btn">
-        Start Free Assessment →
-      </a>
+  <a href="https://calendly.com/jeremyestrella/30min?utm=comprehensive-package&utm_source=wp-services&utm_medium=pricing-card&utm_campaign=comprehensive-package&utm_content=services-packages" class="nps-btn" data-cta="pricing" data-cta-tier="comprehensive" data-cta-position="card-comprehensive" data-cta-destination="comprehensive-call">Request Scope →</a>
     </div>
 
+    <!-- ENTERPRISE TRANSFORMATION -->
+    <div class="nps-card">
+      <span class="nps-badge">Guided Transformation</span>
+      <h2 class="nps-heading">Enterprise Transformation</h2>
+      <div class="nps-price">$24,000 <small style="font-size:1rem;color:#555;">base</small></div>
+      <p style="margin-top:-.4rem;">High‑touch platform + facilitation with modular scalability for complex, multi‑unit organizations.</p>
+      <ul>
+        <li>Unlimited scenario builder</li>
+        <li>Power BI embedded analytics</li>
+        <li>API / flat‑file connectors</li>
+        <li>Quarterly audit & guidance</li>
+        <li>Modular add‑ons (+$5k ea.)</li>
+        <li>Scalable governance model</li>
+      </ul>
+  <a href="https://calendly.com/jeremyestrella/30min?utm=enterprise-transformation&utm_source=wp-services&utm_medium=pricing-card&utm_campaign=enterprise-transformation&utm_content=services-packages" class="nps-btn" data-cta="pricing" data-cta-tier="enterprise" data-cta-position="card-enterprise" data-cta-destination="enterprise-call">Book Executive Briefing →</a>
+    </div>
   </div>
 </section>
 
@@ -391,23 +330,49 @@
 <section class="nps-wrap text-center" style="padding-top:0;">
   <h2 style="color: var(--nps-blue); margin-bottom: 2rem;">Not Sure Where to Start?</h2>
   <div style="display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; margin-bottom: 2rem;">
-    <a href="https://organizational-realign-clean-bst3e3k3d.vercel.app/quick-wins" class="nps-btn">
+  <a href="https://assessments.northpathstrategies.org/quick-wins?utm_source=wp-services&utm_medium=cta-button&utm_campaign=quick-wins&utm_content=quick-access" class="nps-btn" data-cta="quick-access" data-cta-position="quick-wins" data-cta-destination="quick-wins">
       Try Free Quick Wins Assessment →
     </a>
-    <a href="https://northpathstrategies.org/team-collaboration/" class="nps-btn">
+    <a href="https://northpathstrategies.org/team-collaboration/" class="nps-btn" data-cta="quick-access" data-cta-position="team-features" data-cta-destination="team-collaboration">
       Explore Team Features →
     </a>
-    <a href="https://calendly.com/jeremyestrella/30min" class="nps-btn">
+  <a href="https://calendly.com/jeremyestrella/30min?utm_source=wp-services&utm_medium=cta-button&utm_campaign=strategy-call&utm_content=quick-access" class="nps-btn" data-cta="quick-access" data-cta-position="strategy-call" data-cta-destination="strategy-call">
       Schedule Strategy Call →
     </a>
   </div>
 </section>
 
+<!-- Sticky Conversion Mini-Bar -->
+<div id="mini-convert" style="position:fixed;bottom:0;left:0;right:0;background:rgba(22,84,163,.97);color:#fff;padding:.7rem 1rem;display:flex;flex-wrap:wrap;gap:.65rem;align-items:center;justify-content:center;z-index:9999;font-size:.8rem;box-shadow:0 -2px 8px rgba(0,0,0,.15);">
+  <button type="button" aria-label="Close" style="background:transparent;border:none;color:#fff;font-size:1rem;position:absolute;right:.75rem;top:.35rem;cursor:pointer;">✕</button>
+  <strong>Need help choosing?</strong>
+  <a href="https://assessments.northpathstrategies.org/quick-wins?utm_source=wp-services&utm_medium=sticky-mini&utm_campaign=quick-wins&utm_content=mini-bar" class="nps-btn" style="padding:.45rem 1rem;font-size:.7rem;background:#fff;color:var(--nps-blue);border-color:#fff;" data-cta="mini" data-cta-position="sticky" data-cta-destination="quick-wins">Free Quick Wins</a>
+  <a href="https://calendly.com/jeremyestrella/30min?utm_source=wp-services&utm_medium=sticky-mini&utm_campaign=diagnostic-call&utm_content=mini-bar" class="nps-btn" style="padding:.45rem 1rem;font-size:.7rem;" data-cta="mini" data-cta-position="sticky" data-cta-destination="diagnostic-call">Diagnostic Call →</a>
+</div>
+<div id="cta-feedback" aria-live="polite" style="position:absolute;left:-9999px;height:1px;width:1px;overflow:hidden;"> </div>
+
+<!-- Interaction + Tracking Script -->
+<script>
+(function(){
+  var bar=document.getElementById('mini-convert');
+  if(bar){
+    if(localStorage.getItem('npsServicesMiniDismissed')==='1'){bar.remove();}
+    else {var c=bar.querySelector('button');if(c){c.addEventListener('click',function(){localStorage.setItem('npsServicesMiniDismissed','1');bar.remove();});}}
+  }
+  function trackClick(e){
+    var t=e.target.closest('[data-cta]');
+    if(!t) return;var payload={event:'cta_click',page:'services',cta:t.getAttribute('data-cta'),position:t.getAttribute('data-cta-position')||'',tier:t.getAttribute('data-cta-tier')||'',destination:t.getAttribute('data-cta-destination')||'',href:t.getAttribute('href'),ts:Date.now()};
+    if(window.dataLayer){window.dataLayer.push(payload);} else {console.info('[CTA]',payload);} var live=document.getElementById('cta-feedback');if(live){live.textContent='CTA clicked: '+(payload.cta||'');}
+  }
+  document.addEventListener('click',trackClick);
+})();
+</script>
+
 <!-- FOOTNOTE -->
 <section class="nps-wrap text-center" style="padding-top:0">
   <p style="font-size:.9rem; color:#555; max-width:640px; margin:0 auto;">
-    * All prices USD. Taxes (if applicable) calculated at checkout.<br>
-    All packages include patent-pending algorithms, expert human guidance, team collaboration features, and scenario modeling.<br>
-    Enterprise customizations and integrations available upon request.
+  * Pricing in USD. Scenario builder add‑on billed at +$5,000 when selected (included in Enterprise base).<br>
+  Comprehensive & Enterprise modules may include: integration suite, advanced benchmarking, extended governance, custom analytics (each +$5k).<br>
+  One‑Time & Comprehensive are one‑off; Monthly billed per month; Enterprise base plus selected modules. Taxes (if applicable) at checkout.
   </p>
 </section>

@@ -1,10 +1,13 @@
 <!-- ================================================== -->
-<!--  NorthPath Strategies • About Page (v2025-07-20)   -->
+<!--  NorthPath Strategies • About Page (v2025-08-12)   -->
+<!--  Updated: Removed Express Diagnostic ($99) references; aligned CTAs (Quick Wins, Strategy Call, Diagnostic Call) -->
 <!--  Enhanced with Patent-Pending + Expert Messaging   -->
 <!--  Updated with Correct Production URLs              -->
+<!--  APP_BASE_URL: https://assessments.northpathstrategies.org -->
 <!--  Paste into an Elementor HTML widget               -->
 <!-- ================================================== -->
 
+<a href="#founder-bio" class="skip-link" style="position:absolute;left:-999px;top:auto;width:1px;height:1px;overflow:hidden;">Skip to main content</a>
 <style>
   :root {
     --nps-blue:   #1654A3;
@@ -21,22 +24,39 @@
   .section-title { text-align:center; margin-bottom:2rem; color:var(--nps-blue); font-weight:700; }
   h1, h2, h3 { margin:0 0 1rem; color: var(--nps-blue); line-height:1.25; }
   p { color: var(--nps-slate); margin-bottom:2rem; font-size:1.15rem; }
-  ul { margin-left:1rem; line-height:1.6; color:#444; }
+  ul { margin-left:1rem; line-height:1.6; color:var(--nps-slate); }
   .button-group { display:flex; flex-wrap:wrap; gap:1rem; justify-content:center; margin-bottom:2rem; }
+  /* Founder bio contrast enhancements */
+  #founder-bio { position:relative; }
+  #founder-bio .founder-bio-text {
+    background:#ffffff;
+    padding:1.75rem 1.75rem 2rem;
+    border-radius:var(--nps-radius);
+    box-shadow:var(--nps-shadow);
+  }
+  #founder-bio .founder-bio-text p { color:#1e2328; }
+  #founder-bio .founder-bio-text h2.section-title { color:#123d78; }
+  @media (prefers-color-scheme: dark) {
+    #founder-bio .founder-bio-text { background:#1f2a34; box-shadow:0 4px 18px rgba(0,0,0,.55); }
+    #founder-bio .founder-bio-text p { color:#d5dae0; }
+    #founder-bio .founder-bio-text h2.section-title { color:var(--nps-gold); }
+  }
+  /* Accessible Buttons (improved contrast) */
   .nps-btn {
     padding:.9rem 2rem;
-    border:2px solid var(--nps-gold);
+    border:2px solid var(--nps-blue);
     border-radius:9999px;
     font-weight:600;
     text-decoration:none;
     display:inline-block;
     transition:0.25s;
     background:var(--nps-blue);
-    color:var(--nps-gold);
+    color:#fff; /* improved contrast vs gold */
   }
-  .nps-btn:hover { background:var(--nps-gold); color:var(--nps-blue); }
-  .nps-btn-gold { background:var(--nps-gold); color:var(--nps-blue); border-color:var(--nps-blue); }
-  .nps-btn-gold:hover { background:var(--nps-blue); color:var(--nps-gold); border-color:var(--nps-gold); }
+  .nps-btn:hover { background:#0d3c74; color:#fff; }
+  .nps-btn:focus-visible { outline:3px solid var(--nps-gold); outline-offset:3px; }
+  .nps-btn-gold { background:var(--nps-gold); color:#0d2a4f; border-color:var(--nps-gold); }
+  .nps-btn-gold:hover { background:#b89328; color:#0b203c; }
   .proprietary {
     background: linear-gradient(135deg, var(--nps-blue), #1a5bb8);
     color: white;
@@ -46,15 +66,15 @@
     margin-bottom:3rem;
   }
   .proprietary h2 { color: var(--nps-gold); margin-bottom: 1.5rem; }
-  .proprietary p { max-width:800px; margin:0 auto 2rem; color:#e6f2ff; font-size:1.1rem; line-height:1.6; }
+  .proprietary p { max-width:800px; margin:0 auto 2rem; color:#ffffff; font-size:1.1rem; line-height:1.6; }
   .expert-callout {
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.12);
     padding: 1.5rem;
     border-radius: 8px;
     margin: 1.5rem auto;
     max-width: 800px;
     font-size: 1rem;
-    color: #e8f3ff;
+    color: #ffffff; /* stronger contrast */
   }
   .competitive-advantage {
     background: var(--nps-light);
@@ -74,18 +94,19 @@
     border-radius: var(--nps-radius);
     text-align: center;
   }
+  /* Comparison boxes (improved contrast) */
   .generic-ai {
-    background: #fee2e2;
-    border: 2px solid #fca5a5;
+    background: #fbd6d6; /* slightly deeper for text legibility */
+    border: 2px solid #b91c1c;
   }
-  .generic-ai h4 { color: #dc2626; margin-bottom: 1rem; }
-  .generic-ai ul { color: #991b1b; }
+  .generic-ai h4 { color: #7a0c0c; margin-bottom: 1rem; }
+  .generic-ai ul { color: #5a0f0f; }
   .northpath {
-    background: #dcfce7;
-    border: 2px solid #86efac;
+    background: #c9f7df; /* slightly deeper */
+    border: 2px solid #0f5130;
   }
-  .northpath h4 { color: #16a34a; margin-bottom: 1rem; }
-  .northpath ul { color: #166534; }
+  .northpath h4 { color: #0b3d1d; margin-bottom: 1rem; }
+  .northpath ul { color: #0a3218; }
   .hero {
     text-align: center;
     background: url('https://northpathstrategies.org/wp-content/uploads/2025/07/—Pngtree—intriguingly-dark-geometric-backdrop-perfect_11036843.jpg') center center / cover no-repeat, linear-gradient(135deg, var(--nps-blue), #0F4C81);
@@ -113,6 +134,22 @@
     .hero h1 { font-size: 2rem; }
     .comparison-grid { grid-template-columns: 1fr; }
   }
+  /* Reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    * { animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition:none !important; }
+  }
+  /* Dark mode */
+  @media (prefers-color-scheme: dark) {
+    :root { --nps-light:#1e2630; --nps-slate:#d5dae0; --nps-shadow:0 4px 14px rgba(0,0,0,.4); }
+    body { background:#12181f; color:#e6ecf3; }
+    .nps-alt, .competitive-advantage, .northpath { background:#1f2a34 !important; }
+    .proprietary { background: linear-gradient(135deg,#153e77,#0f2c4f); }
+    .nps-btn { background:#0d3c74; color:#fff; border-color:#0d3c74; }
+    .nps-btn:hover { background:#1654A3; color:#fff; }
+    .nps-btn-gold { background:var(--nps-gold); color:#0b203c; }
+    .nps-btn-gold:hover { background:#b89328; color:#061425; }
+  }
+  .skip-link:focus { left:0; width:auto; height:auto; padding:.75rem 1rem; background:#000; color:#fff; z-index:10000; }
 </style>
 
 <!-- HERO -->
@@ -127,14 +164,14 @@
 </section>
 
 <!-- FOUNDER BIO -->
-<section class="nps-wrap">
+<section class="nps-wrap" id="founder-bio" aria-labelledby="founder-bio-heading">
   <div class="nps-grid">
     <div>
       <img src="https://northpathstrategies.org/wp-content/uploads/2025/07/jeremy-estrella-2.jpg" 
            alt="Jeremy Estrella" style="width:100%; border-radius:var(--nps-radius); box-shadow:var(--nps-shadow);">
     </div>
-    <div>
-      <h2 class="section-title">Jeremy Estrella, Founder & CEO</h2>
+    <div class="founder-bio-text">
+      <h2 class="section-title" id="founder-bio-heading">Jeremy Estrella, Founder & CEO</h2>
       <p>
         When Jeremy first led a realignment at Oregon's largest higher-ed institution, he discovered the irreplaceable value of combining data-driven precision with human-centered implementation. Over <strong>20+ years leading multi-campus realignments</strong> and student-success initiatives, he saw how crucial expert guidance truly is.
       </p>
@@ -244,7 +281,7 @@
     <p style="color: #e6f2ff; margin-bottom: 2rem;">
       All assessment packages now include team collaboration features with secure email invitations, role-based access, and real-time sharing capabilities—plus every tier includes both algorithmic precision and expert human guidance.
     </p>
-    <a href="https://northpathstrategies.org/team-collaboration/" class="nps-btn nps-btn-gold">
+    <a href="https://northpathstrategies.org/team-collaboration/" class="nps-btn nps-btn-gold" data-cta="team" data-cta-position="team-collab" data-cta-destination="team-features">
       Explore Team Features →
     </a>
   </div>
@@ -257,8 +294,55 @@
     See how NorthPath's patent-pending algorithms + expert guidance can realign your organization for clarity, capacity, and impact—with implementation support from someone who has actually led successful transformations.
   </p>
   <div class="button-group">
-    <a href="https://organizational-realign-clean-bst3e3k3d.vercel.app/quick-wins" class="nps-btn nps-btn-gold">Start Free Quick Wins Assessment →</a>
-    <a href="https://calendly.com/jeremyestrella/30min" class="nps-btn">Book Strategy Call with Expert →</a>
-    <a href="https://organizational-realign-clean-bst3e3k3d.vercel.app/api/stripe/create-tier-checkout?tier=express-diagnostic" class="nps-btn">Try Express Diagnostic $2,495 →</a>
+  <a href="https://assessments.northpathstrategies.org/quick-wins?utm_source=wp-about&utm_medium=cta-button&utm_campaign=quick-wins&utm_content=final-cta" class="nps-btn nps-btn-gold" data-cta="final" data-cta-position="final-primary" data-cta-destination="quick-wins">Start Free Quick Wins Assessment →</a>
+    <a href="https://calendly.com/jeremyestrella/30min?utm_source=wp-about&utm_medium=cta-button&utm_campaign=strategy-call&utm_content=final-cta" class="nps-btn" data-cta="final" data-cta-position="final-secondary" data-cta-destination="strategy-call">Book Strategy Call with Expert →</a>
+    <a href="https://calendly.com/jeremyestrella/30min?utm_source=wp-about&utm_medium=cta-button&utm_campaign=diagnostic-call&utm_content=final-cta" class="nps-btn" data-cta="final" data-cta-position="final-tertiary" data-cta-destination="diagnostic-call">Schedule Diagnostic Intro →</a>
   </div>
 </section>
+
+<!-- Sticky Conversion Mini-Bar -->
+<div id="mini-convert" style="position:fixed; bottom:0; left:0; right:0; background:rgba(22,84,163,.97); color:#fff; padding:.75rem 1rem; display:flex; flex-wrap:wrap; gap:.75rem; align-items:center; justify-content:center; z-index:9999; font-size:.85rem; box-shadow:0 -2px 8px rgba(0,0,0,.15);">
+  <button type="button" aria-label="Close" style="background:transparent; border:none; color:#fff; font-size:1rem; position:absolute; right:.75rem; top:.4rem; cursor:pointer;">✕</button>
+  <strong style="display:flex; align-items:center; gap:.4rem;">Ready to see your own data?</strong>
+  <a href="https://assessments.northpathstrategies.org/quick-wins?utm_source=wp-about&utm_medium=sticky-mini&utm_campaign=quick-wins&utm_content=mini-bar" class="nps-btn nps-btn-gold" style="padding:.55rem 1.2rem; font-size:.75rem;" data-cta="mini" data-cta-position="sticky" data-cta-destination="quick-wins">Free Quick Wins</a>
+  <a href="https://calendly.com/jeremyestrella/30min?utm_source=wp-about&utm_medium=sticky-mini&utm_campaign=diagnostic-call&utm_content=mini-bar" class="nps-btn" style="padding:.55rem 1.2rem; font-size:.75rem; background:#fff; color:var(--nps-blue); border-color:#fff;" data-cta="mini" data-cta-position="sticky" data-cta-destination="diagnostic-call">Diagnostic Call →</a>
+</div>
+<div id="cta-feedback" aria-live="polite" style="position:absolute;left:-9999px;height:1px;width:1px;overflow:hidden;"> </div>
+
+<!-- Interaction + Tracking Script -->
+<script>
+(function(){
+  // Sticky bar close
+  var bar = document.getElementById('mini-convert');
+  if(bar){
+    if(localStorage.getItem('npsMiniDismissed')==='1') { bar.parentNode && bar.parentNode.removeChild(bar); }
+    else {
+      var closeBtn = bar.querySelector('button');
+      if(closeBtn){
+        closeBtn.addEventListener('click', function(){
+          localStorage.setItem('npsMiniDismissed','1');
+          bar.parentNode && bar.parentNode.removeChild(bar);
+        });
+      }
+    }
+  }
+  // CTA click tracking
+  function trackClick(e){
+    var t = e.target.closest('[data-cta]');
+    if(!t) return;
+    var payload = {
+      event: 'cta_click',
+      cta: t.getAttribute('data-cta'),
+      position: t.getAttribute('data-cta-position') || '',
+      tier: t.getAttribute('data-cta-tier') || '',
+      destination: t.getAttribute('data-cta-destination') || '',
+      href: t.getAttribute('href'),
+      ts: Date.now()
+    };
+    if(window.dataLayer){ window.dataLayer.push(payload); } else { console.info('[CTA]', payload); }
+    var live = document.getElementById('cta-feedback');
+    if(live){ live.textContent = 'CTA clicked: ' + (payload.cta || ''); }
+  }
+  document.addEventListener('click', trackClick);
+})();
+</script>

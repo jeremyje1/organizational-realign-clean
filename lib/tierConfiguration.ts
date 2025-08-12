@@ -6,13 +6,14 @@
  * @author NorthPath Strategies
  */
 
+// PricingTier retains legacy literals for backward compatibility with stored records.
 export type PricingTier = 
-  // Organizational Assessment Tiers (AI Blueprint has separate type)
-  | 'express-diagnostic'
+  | 'monthly-subscription'
+  | 'enterprise-transformation'
+  // Legacy (deprecated) tiers retained so historical data & old sessions don't break
   | 'one-time-diagnostic'
-  | 'monthly-subscription' 
   | 'comprehensive-package'
-  | 'enterprise-transformation';
+  | 'express-diagnostic'; // moved to legacy
 
 export interface TierConfiguration {
   name: string;
@@ -50,197 +51,35 @@ export interface TierConfiguration {
 }
 
 export const PRICING_TIERS: Record<PricingTier, TierConfiguration> = {
-  // Organizational Assessment Tiers (All Industries)
-  'one-time-diagnostic': {
-    name: 'One-Time Diagnostic',
-    price: 4995,
-    targetCustomer: 'Organizations seeking comprehensive assessment with foundational analysis',
+  // Active Tiers
+  'monthly-subscription': {
+    name: 'Monthly Platform Access',
+    price: 149,
+    targetCustomer: 'Teams iterating and tracking structural improvements over time.',
     coreDeliverables: [
-      '100-question organizational assessment',
-      'DSCH, CRF, LEI analysis',
-      'Comprehensive PDF report',
-      'Organizational chart generation',
-      'Basic AI opportunity assessment',
-      'Single assessment access',
-      'Up to 2 users',
-      'Email support'
+      'Unlimited diagnostic runs',
+      'Trend & comparison dashboards',
+      'Scenario & capacity modeling',
+      'Org chart refresh & export',
+      'Priority support'
     ],
     assessmentScope: {
-      questionCount: 100,
+      questionCount: 120,
       sections: [
         'Leadership & Strategy',
         'Operations & Processes',
         'Human Capital',
         'Technology & Infrastructure',
-        'Culture & Change Management',
-        'Performance Management'
+        'Change & Performance'
       ],
-      algorithms: ['DSCH', 'CRF', 'LEI'],
-      reportPages: 15,
-      followUpSupport: 'Email support for 30 days'
-    },
-    features: {
-      uploadSupport: true,
-      dashboardRefresh: false,
-      customReporting: false,
-      powerBIEmbedded: false,
-      apiConnectors: false,
-      onSiteFacilitation: false,
-      progressAudits: false,
-      orgChartGenerator: true,
-      scenarioBuilder: false,
-      monteCarloSimulation: false,
-      realTimeCollaboration: false,
-      aiOpportunityAssessment: true,
-      aiReadinessScore: false,
-      automationRecommendations: true
-    },
-    guardrails: {
-      maxAssessments: 1,
-      maxUsers: 2,
-      dataRetentionMonths: 6
-    }
-  },
-
-  'express-diagnostic': {
-    name: 'Express Diagnostic',
-    price: 2495,
-    targetCustomer: 'Organizations seeking quick, focused assessment with essential insights',
-    coreDeliverables: [
-      '75-question focused assessment',
-      'DSCH, CRF analysis',
-      'Essential PDF report',
-      'Basic organizational chart',
-      'Quick AI opportunity assessment',
-      'Single assessment access',
-      'Up to 2 users',
-      'Email support'
-    ],
-    assessmentScope: {
-      questionCount: 75,
-      sections: [
-        'Leadership & Strategy',
-        'Operations & Processes',
-        'Human Capital',
-        'Technology & Infrastructure'
-      ],
-      algorithms: ['DSCH', 'CRF'],
-      reportPages: 10,
-      followUpSupport: 'Email support for 15 days'
-    },
-    features: {
-      uploadSupport: true,
-      dashboardRefresh: false,
-      customReporting: false,
-      powerBIEmbedded: false,
-      apiConnectors: false,
-      onSiteFacilitation: false,
-      progressAudits: false,
-      orgChartGenerator: true,
-      scenarioBuilder: false,
-      monteCarloSimulation: false,
-      realTimeCollaboration: false,
-      aiOpportunityAssessment: true,
-      aiReadinessScore: false,
-      automationRecommendations: false
-    },
-    guardrails: {
-      maxAssessments: 1,
-      maxUsers: 2,
-      dataRetentionMonths: 3
-    }
-  },
-
-  'monthly-subscription': {
-    name: 'Monthly Subscription',
-    price: 2995,
-    targetCustomer: 'Organizations needing ongoing assessment capabilities with advanced features',
-    coreDeliverables: [
-      '120-question comprehensive assessment',
-      'DSCH, CRF, LEI, OCI, HOCI analysis',
-      'Advanced AI-powered analytics',
-      'Dashboard refresh capabilities',
-      'CSV data exports',
-      'Unlimited assessments (monthly)',
-      'Up to 5 users',
-      'Priority email support'
-    ],
-    assessmentScope: {
-      questionCount: 120,
-      sections: [
-        'Strategic Leadership',
-        'Operational Excellence',
-        'Human Capital Development',
-        'Technology Integration',
-        'Cultural Transformation',
-        'Performance Analytics',
-        'Change Management',
-        'Innovation Capacity'
-      ],
-      algorithms: ['DSCH', 'CRF', 'LEI', 'OCI', 'HOCI'],
-      reportPages: 20,
-      followUpSupport: 'Priority email support + monthly check-ins'
+      algorithms: ['OCI', 'HOCI', 'JCI', 'DSCH', 'CRF'],
+      reportPages: 12,
+      followUpSupport: 'Priority email support'
     },
     features: {
       uploadSupport: true,
       dashboardRefresh: true,
-      customReporting: true,
-      powerBIEmbedded: false,
-      apiConnectors: false,
-      onSiteFacilitation: false,
-      progressAudits: false,
-      orgChartGenerator: true,
-      scenarioBuilder: false,
-      monteCarloSimulation: false,
-      realTimeCollaboration: false,
-      aiOpportunityAssessment: true,
-      aiReadinessScore: false,
-      automationRecommendations: true
-    },
-    guardrails: {
-      maxAssessments: null, // Unlimited monthly
-      maxUsers: 5,
-      dataRetentionMonths: 12
-    }
-  },
-
-  'comprehensive-package': {
-    name: 'Comprehensive Package',
-    price: 9900,
-    targetCustomer: 'Organizations seeking complete transformation analysis with scenario planning',
-    coreDeliverables: [
-      '150-question in-depth assessment',
-      'Full algorithm suite analysis',
-      '30-page comprehensive report',
-      'Advanced scenario builder',
-      '60-minute strategy consultation',
-      'Team collaboration features',
-      'Cost-savings analysis',
-      'Up to 10 users',
-      'Priority support'
-    ],
-    assessmentScope: {
-      questionCount: 150,
-      sections: [
-        'Strategic Leadership',
-        'Operational Excellence',
-        'Human Capital Development',
-        'Technology Integration',
-        'Cultural Transformation',
-        'Performance Analytics',
-        'Change Management',
-        'Innovation Capacity',
-        'Financial Performance',
-        'Risk Management'
-      ],
-      algorithms: ['DSCH', 'CRF', 'LEI', 'OCI', 'HOCI', 'Cost-Savings Analysis'],
-      reportPages: 30,
-      followUpSupport: '60-minute strategy session + email support for 90 days'
-    },
-    features: {
-      uploadSupport: true,
-      dashboardRefresh: true,
-      customReporting: true,
+      customReporting: false,
       powerBIEmbedded: false,
       apiConnectors: false,
       onSiteFacilitation: false,
@@ -249,52 +88,41 @@ export const PRICING_TIERS: Record<PricingTier, TierConfiguration> = {
       scenarioBuilder: true,
       monteCarloSimulation: false,
       realTimeCollaboration: true,
-      aiOpportunityAssessment: true,
-      aiReadinessScore: false,
-      automationRecommendations: true
+  aiOpportunityAssessment: true,
+  automationRecommendations: true
     },
     guardrails: {
-      maxAssessments: 1,
-      maxUsers: 10,
-      maxScenarios: 5,
-      dataRetentionMonths: 18
+      maxAssessments: null,
+      maxUsers: 25,
+      maxScenarios: 10,
+      dataRetentionMonths: 12
     }
   },
-
   'enterprise-transformation': {
-    name: 'Enterprise Transformation',
-    price: 24000,
-    targetCustomer: 'Large enterprises seeking comprehensive transformation with predictive analytics',
+    name: 'Enterprise Realignment (Custom)',
+    price: 0,
+    targetCustomer: 'Organizations pursuing guided transformation with facilitation & audits.',
     coreDeliverables: [
-      '200-question enterprise assessment',
-      'Full algorithm suite + Monte Carlo analysis',
-      'Power BI dashboard integration',
-      'API connectors for data integration',
-      'Real-time collaboration platform',
+      'Executive discovery & risk audit',
+      'Full algorithm suite + benchmarking',
+      '12‑month transformation roadmap',
+      'Scenario & savings workshops',
       'Quarterly progress audits',
-      'Custom scenario modeling',
-      'Unlimited users and assessments',
-      'Dedicated support channel'
+      'On-demand strategist access'
     ],
     assessmentScope: {
-      questionCount: 200,
+      questionCount: 160,
       sections: [
         'Executive Leadership',
         'Strategic Planning',
-        'Operational Excellence',
+        'Operations & Capacity',
         'Human Capital Strategy',
-        'Technology Architecture',
-        'Digital Transformation',
-        'Cultural Evolution',
-        'Performance Management',
-        'Financial Optimization',
-        'Risk & Compliance',
-        'Innovation Management',
-        'Stakeholder Engagement'
+        'Technology & Infrastructure',
+        'Change & Performance'
       ],
-      algorithms: ['DSCH', 'CRF', 'LEI', 'OCI', 'HOCI', 'Monte Carlo', 'Predictive Analytics', 'ROI Modeling'],
-      reportPages: 50,
-      followUpSupport: 'Dedicated account manager + quarterly strategy sessions'
+      algorithms: ['OCI', 'HOCI', 'JCI', 'DSCH', 'CRF', 'LEI'],
+      reportPages: 30,
+      followUpSupport: 'Dedicated strategist + quarterly audits'
     },
     features: {
       uploadSupport: true,
@@ -306,18 +134,38 @@ export const PRICING_TIERS: Record<PricingTier, TierConfiguration> = {
       progressAudits: true,
       orgChartGenerator: true,
       scenarioBuilder: true,
-      monteCarloSimulation: true,
+      monteCarloSimulation: false,
       realTimeCollaboration: true,
-      aiOpportunityAssessment: true,
-      aiReadinessScore: false,
-      automationRecommendations: true
+  aiOpportunityAssessment: true,
+  automationRecommendations: true
     },
     guardrails: {
-      maxAssessments: null, // Unlimited
-      maxUsers: null, // Unlimited
-      maxScenarios: null, // Unlimited
-      dataRetentionMonths: null // Permanent retention
+      maxAssessments: null,
+      maxUsers: null,
+      maxScenarios: null,
+      dataRetentionMonths: null
     }
+  },
+  // Legacy (hidden) tiers preserved for historical data access
+  'one-time-diagnostic': {
+    ...({} as TierConfiguration),
+    name: 'One-Time Diagnostic (Legacy)',
+    price: 4995,
+    targetCustomer: 'Deprecated',
+    coreDeliverables: [],
+    assessmentScope: { questionCount: 0, sections: [], algorithms: [], reportPages: 0, followUpSupport: 'Deprecated' },
+  features: { uploadSupport: false, dashboardRefresh: false, customReporting: false, powerBIEmbedded: false, apiConnectors: false, onSiteFacilitation: false, progressAudits: false, orgChartGenerator: false, scenarioBuilder: false, monteCarloSimulation: false, realTimeCollaboration: false, aiOpportunityAssessment: false, automationRecommendations: false },
+    guardrails: { dataRetentionMonths: 0 }
+  },
+  'comprehensive-package': {
+    ...({} as TierConfiguration),
+    name: 'Comprehensive Package (Legacy)',
+    price: 9900,
+    targetCustomer: 'Deprecated',
+    coreDeliverables: [],
+    assessmentScope: { questionCount: 0, sections: [], algorithms: [], reportPages: 0, followUpSupport: 'Deprecated' },
+  features: { uploadSupport: false, dashboardRefresh: false, customReporting: false, powerBIEmbedded: false, apiConnectors: false, onSiteFacilitation: false, progressAudits: false, orgChartGenerator: false, scenarioBuilder: false, monteCarloSimulation: false, realTimeCollaboration: false, aiOpportunityAssessment: false, automationRecommendations: false },
+    guardrails: { dataRetentionMonths: 0 }
   }
 };
 
@@ -408,27 +256,12 @@ export const INDUSTRY_MODULES = {
  * Algorithm Configuration by Tier
  */
 export const TIER_ALGORITHMS = {
-  // Organizational Assessment Algorithms (AI Blueprint algorithms are separate)
-  'one-time-diagnostic': {
-    primary: ['OCI', 'HOCI', 'JCI'],
-    advanced: [],
-    experimental: []
-  },
-  'monthly-subscription': {
-    primary: ['OCI', 'HOCI', 'JCI', 'DSCH'],
-    advanced: [],
-    experimental: []
-  },
-  'comprehensive-package': {
-    primary: ['OCI', 'HOCI', 'JCI', 'DSCH', 'CRF', 'LEI'],
-    advanced: ['Cost-Savings Analysis'],
-    experimental: []
-  },
-  'enterprise-transformation': {
-    primary: ['OCI', 'HOCI', 'JCI', 'DSCH', 'CRF', 'LEI'],
-    advanced: ['Monte Carlo DSCH', 'Predictive Analytics', 'ROI Modeling'],
-    experimental: ['AI-Powered Recommendations', 'Real-time Benchmarking']
-  }
+  // Active algorithm sets + compact legacy placeholders
+  'express-diagnostic': { primary: ['OCI', 'HOCI', 'JCI'], advanced: [], experimental: [] },
+  'monthly-subscription': { primary: ['OCI', 'HOCI', 'JCI', 'DSCH', 'CRF'], advanced: [], experimental: [] },
+  'enterprise-transformation': { primary: ['OCI', 'HOCI', 'JCI', 'DSCH', 'CRF', 'LEI'], advanced: [], experimental: [] },
+  'one-time-diagnostic': { primary: ['OCI','HOCI','JCI'], advanced: [], experimental: [] },
+  'comprehensive-package': { primary: ['OCI','HOCI','JCI','DSCH','CRF'], advanced: [], experimental: [] }
 };
 
 /**

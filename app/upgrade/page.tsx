@@ -4,7 +4,7 @@ import React, { Suspense, useEffect } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { PageHero } from '@/components/PageHero';
 import { PricingTier, PRICING_TIERS } from '@/lib/tierConfiguration';
-import { generateStripeCheckoutUrl, getMappingVersion } from '@/lib/stripe-tier-mapping';
+import { getMappingVersion } from '@/lib/stripe-tier-mapping';
 
 function UpgradeContent() {
   // Force reload on mapping version change to ensure latest price IDs
@@ -57,17 +57,26 @@ function UpgradeContent() {
 
   const handleUpgrade = async (tierKey: PricingTier) => {
     try {
-      // Redirect to Stripe checkout for the selected tier
-      const checkoutUrl = generateStripeCheckoutUrl(tierKey);
-      window.location.href = checkoutUrl;
+      const res = await fetch('/api/stripe/create-tier-checkout', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ tier: tierKey })
+      });
+      if (!res.ok) throw new Error('Checkout init failed');
+      const data = await res.json();
+      if (data.url) {
+        window.location.href = data.url;
+      } else {
+        throw new Error('No checkout URL returned');
+      }
     } catch (error) {
       console.error('Error initiating upgrade:', error);
       alert('There was an error processing your upgrade. Please try again.');
     }
   };
 
-  const getCurrentTierInfo = () => tierFeatures[currentTier as keyof typeof tierFeatures] || tierFeatures.INDIVIDUAL;
-  const getRequiredTierInfo = () => tierFeatures[requiredTier as keyof typeof tierFeatures] || tierFeatures.ENTERPRISE;
+  const getCurrentTierInfo = () => tierFeatures[currentTier as keyof typeof tierFeatures];
+  const getRequiredTierInfo = () => tierFeatures[requiredTier as keyof typeof tierFeatures];
 
   return (
     <div className="min-h-screen bg-gray-50">

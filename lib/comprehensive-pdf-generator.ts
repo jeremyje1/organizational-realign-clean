@@ -64,12 +64,14 @@ export function generateComprehensivePDFReport(analysis: ComprehensiveAnalysis):
   }
 
   function calculateROIPotential(score: number, tier: string): number {
-    const basePotential = tier === 'express-diagnostic' ? 500 : tier === 'comprehensive' ? 1200 : 2500;
+  const normalizedTier = tier === 'express-diagnostic' ? 'monthly-subscription' : tier;
+  const basePotential = normalizedTier === 'comprehensive' ? 1200 : normalizedTier === 'monthly-subscription' ? 500 : 2500;
     return Math.round(basePotential * (1 - score + 0.3));
   }
 
   function getImplementationTimeline(tier: string, priorityCount: number): number {
-    const baseTimeline = tier === 'express-diagnostic' ? 6 : tier === 'comprehensive' ? 12 : 18;
+  const normalizedTier = tier === 'express-diagnostic' ? 'monthly-subscription' : tier;
+  const baseTimeline = normalizedTier === 'comprehensive' ? 12 : normalizedTier === 'monthly-subscription' ? 6 : 18;
     return baseTimeline + Math.floor(priorityCount / 3);
   }
 
@@ -126,17 +128,20 @@ export function generateComprehensivePDFReport(analysis: ComprehensiveAnalysis):
   }
 
   function calculateCostSavings(score: number, tier: string): number {
-    const base = tier === 'express-diagnostic' ? 300 : tier === 'comprehensive' ? 800 : 1500;
+  const normalizedTier = tier === 'express-diagnostic' ? 'monthly-subscription' : tier;
+  const base = normalizedTier === 'comprehensive' ? 800 : normalizedTier === 'monthly-subscription' ? 300 : 1500;
     return Math.round(base * (1 - score + 0.2));
   }
 
   function calculateRevenueIncrease(score: number, tier: string): number {
-    const base = tier === 'express-diagnostic' ? 400 : tier === 'comprehensive' ? 1000 : 2000;
+  const normalizedTier = tier === 'express-diagnostic' ? 'monthly-subscription' : tier;
+  const base = normalizedTier === 'comprehensive' ? 1000 : normalizedTier === 'monthly-subscription' ? 400 : 2000;
     return Math.round(base * (1 - score + 0.3));
   }
 
   function calculateImplementationCost(tier: string): number {
-    return tier === 'express-diagnostic' ? 200 : tier === 'comprehensive' ? 500 : 1000;
+  const normalizedTier = tier === 'express-diagnostic' ? 'monthly-subscription' : tier;
+  return normalizedTier === 'comprehensive' ? 500 : normalizedTier === 'monthly-subscription' ? 200 : 1000;
   }
 
   function parseAssessmentResponses(responses: Record<string, any>): QuestionData[] {
@@ -514,7 +519,7 @@ export function generateComprehensivePDFReport(analysis: ComprehensiveAnalysis):
   // Data extraction and processing
   const institutionName = analysis.submissionDetails?.institution_name || 'Your Institution';
   const organizationType = analysis.submissionDetails?.organization_type || 'Higher Education Institution';
-  const tier = analysis.tier || 'express-diagnostic';
+  const tier = (analysis.tier === 'express-diagnostic' || !analysis.tier) ? 'monthly-subscription' : analysis.tier;
   const overallScore = analysis.score || 0.75;
   const assessmentDate = new Date(analysis.submissionDetails?.submitted_at || Date.now()).toLocaleDateString();
   const reportDate = new Date().toLocaleDateString();

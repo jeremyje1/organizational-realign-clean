@@ -1,41 +1,39 @@
-'use client';
-
-// Enhanced QuickWinsAssessment Component with Team Collaboration
-import * as React from 'react';
-import { useState } from 'react';
+"use client";
+import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import {
+  AlertTriangle,
+  ArrowLeft,
+  ArrowRight,
+  BarChart3,
+  CheckCircle2,
+  Clock,
+  Download,
+  Eye,
+  FileText,
+  Filter,
+  Lightbulb,
+  Lock,
+  Mail,
+  MessageSquare,
+  PieChart,
+  Settings,
+  Share2,
+  Sparkles,
+  Target,
+  TrendingUp,
+  Upload,
+  Users
+} from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Progress } from '@/components/ui/progress';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Input } from '@/components/ui/input';
 import { Switch } from '@/components/ui/switch';
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { 
-  ArrowRight, 
-  ArrowLeft, 
-  CheckCircle2, 
-  TrendingUp, 
-  Clock, 
-  DollarSign,
-  Lightbulb,
-  Target,
-  Zap,
-  BarChart3,
-  Sparkles,
-  Users,
-  Mail,
-  UserPlus,
-  Eye,
-  PieChart,
-  MessageSquare
-} from 'lucide-react';
-import { 
-  QUICK_WINS_QUESTIONS, 
-  QuickWinsAlgorithm, 
-  QuickWinsResult
-} from '@/data/quickWinsQuestions';
+import { QuickWinsResult, QUICK_WINS_QUESTIONS, QuickWinsAlgorithm } from '@/data/quickWinsQuestions';
 
 interface TeamMember {
   id: string;
@@ -197,10 +195,10 @@ export default function QuickWinsAssessmentEnhanced({ onComplete, onUpgrade }: Q
 
   const getCategoryIcon = (category: string) => {
     const iconMap = {
-      'structure': Target,
-      'efficiency': Zap,
-      'technology': BarChart3,
-      'costs': DollarSign
+  'structure': Target,
+  'efficiency': TrendingUp,
+  'technology': BarChart3,
+  'costs': FileText
     };
     return iconMap[category as keyof typeof iconMap] || Lightbulb;
   };
@@ -248,7 +246,7 @@ export default function QuickWinsAssessmentEnhanced({ onComplete, onUpgrade }: Q
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
                   <div className="flex items-center gap-2 mb-2">
-                    <DollarSign className="h-5 w-5 text-green-600" />
+                    <TrendingUp className="h-5 w-5 text-green-600" />
                     <span className="font-medium text-slate-700">Potential Annual Savings</span>
                   </div>
                   <p className="text-2xl font-bold text-green-600">{insights.totalPotentialSavings}</p>
@@ -299,7 +297,7 @@ export default function QuickWinsAssessmentEnhanced({ onComplete, onUpgrade }: Q
                       <div className="grid grid-cols-2 gap-4 text-sm">
                         <div>
                           <div className="flex items-center gap-1 text-green-600 mb-1">
-                            <DollarSign className="h-4 w-4" />
+                            <TrendingUp className="h-4 w-4" />
                             <span className="font-medium">Annual Savings</span>
                           </div>
                           <p className="text-slate-700">{result.potentialSavings.annual}</p>
@@ -455,18 +453,17 @@ export default function QuickWinsAssessmentEnhanced({ onComplete, onUpgrade }: Q
         >
           <Card className="border-2 border-blue-300 bg-gradient-to-r from-blue-600 to-indigo-600 text-white">
             <CardContent className="p-8">
-              <h3 className="text-2xl font-bold mb-4">Ready for the Complete Analysis?</h3>
+              <h3 className="text-2xl font-bold mb-4">Unlock Continuous Optimization</h3>
               <p className="text-lg text-blue-100 mb-6 max-w-2xl mx-auto">
-                Based on your {Math.round(averageScore)}% organizational efficiency score, our <strong>Express Diagnostic</strong> can 
-                provide detailed analysis and strategic recommendations.
+                Based on your {Math.round(averageScore)}% organizational efficiency score, upgrading to the <strong>Monthly Platform</strong> unlocks full algorithm suite, unlimited reruns, and scenario & capacity modeling.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button
-                  onClick={() => window.location.href = '/api/stripe/create-tier-checkout?tier=express-diagnostic'}
+                  onClick={() => window.location.href = '/pricing?upgrade=platform'}
                   size="lg"
                   className="bg-yellow-400 text-slate-800 hover:bg-yellow-300 px-8 py-3 text-lg font-semibold"
                 >
-                  Get Express Diagnostic - $2,495
+                  Upgrade to Platform
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
                 <Button
@@ -475,7 +472,7 @@ export default function QuickWinsAssessmentEnhanced({ onComplete, onUpgrade }: Q
                   size="lg"
                   className="border-white text-white hover:bg-white/10 px-8 py-3"
                 >
-                  View All Options
+                  View Pricing
                 </Button>
               </div>
             </CardContent>
@@ -545,7 +542,7 @@ export default function QuickWinsAssessmentEnhanced({ onComplete, onUpgrade }: Q
                   <div className="grid md:grid-cols-2 gap-4">
                     <div>
                       <h4 className="font-medium text-slate-800 mb-2 flex items-center gap-2">
-                        <UserPlus className="h-4 w-4" />
+                        <Users className="h-4 w-4" />
                         Invite Team Members
                       </h4>
                       <div className="space-y-2">

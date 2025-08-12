@@ -3,6 +3,7 @@ import { stripe } from '@/lib/stripe';
 import { AssessmentDB, type AssessmentTier } from '@/lib/assessment-db';
 import { createRouteHandlerClient } from '@supabase/auth-helpers-nextjs';
 import { cookies } from 'next/headers';
+import { parseAttributionCookie } from '@/lib/attribution';
 
 export async function POST(request: NextRequest) {
   try {
@@ -68,11 +69,13 @@ export async function POST(request: NextRequest) {
         'enterprise': 'ENTERPRISE'
       };
       
+      const attribution = parseAttributionCookie();
       const assessment = await AssessmentDB.createAssessment({
         userId: user.id,
         tier: tierMapping[plan] || 'INDIVIDUAL',
         stripeSessionId: sessionId,
         stripeCustomerId: session.customer as string,
+        attributionJson: attribution || undefined,
       });
 
       // Create default organization for the user

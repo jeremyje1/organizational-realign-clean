@@ -1,4 +1,10 @@
 <!-- ==========================  NorthPath – Home (Updated with Express Diagnostic)  ========================== -->
+<!-- NOTE: Express Diagnostic price confirmed at $99 (was previously $2,495 in highlight); inconsistency resolved. -->
+<!-- APP_BASE_URL: https://organizational-realign-clean-bst3e3k3d.vercel.app -->
+<!-- DOMAIN TOKENIZATION: All internal platform links use the full preview domain. For production cutover, do a single find/replace of
+  https://organizational-realign-clean-bst3e3k3d.vercel.app with the live app root (e.g., https://app.northpathstrategies.org).
+  Optional enhancement: before import, replace the domain with a shortcode (e.g., [app_base]) if using WP shortcodes. -->
+<a href="#hero" class="skip-link" style="position:absolute;left:-999px;top:auto;width:1px;height:1px;overflow:hidden;">Skip to main content</a>
 <style>
 :root {
   --nps-blue:   #1654A3;
@@ -117,18 +123,25 @@ body {
   z-index: 10;
   white-space: nowrap;
 }
+/* HERO accessibility: add gradient overlay for consistent contrast */
 #hero {
   text-align: center;
-  background: url(https://northpathstrategies.org/wp-content/uploads/2025/07/—Pngtree—intriguingly-dark-geometric-backdrop-perfect_11036843.jpg)
-              center/cover no-repeat;
+  position: relative;
+  background:
+    linear-gradient(rgba(10,22,40,.72), rgba(10,22,40,.72)) ,
+    url(https://northpathstrategies.org/wp-content/uploads/2025/07/—Pngtree—intriguingly-dark-geometric-backdrop-perfect_11036843.jpg) center/cover no-repeat;
   padding: 6rem 1rem 5rem;
+  color: #f5f9ff;
 }
 #hero h1 {
   font-size: 2.8rem;
-  color: #fff;
-  margin: 0;
+  color: #ffffff;
+  margin: 0 0 .75rem;
   line-height: 1.25;
+  text-shadow: 0 2px 4px rgba(0,0,0,.4);
 }
+#hero p { color: #e4ecf7; }
+#hero a.nps-btn, #hero a.nps-btn:visited { color: var(--nps-gold); }
 @media(max-width:768px) {
   #hero h1 { font-size: 2.1rem; }
   .nps-grid {
@@ -180,12 +193,48 @@ body {
   border-radius: var(--nps-radius);
   margin: 2rem 0;
 }
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  * { animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition:none !important; }
+}
+/* Dark mode */
+@media (prefers-color-scheme: dark) {
+  :root { --nps-light:#1e2630; --nps-slate:#d5dae0; --nps-shadow:0 4px 14px rgba(0,0,0,.4); }
+  body { background:#12181f; color:#e6ecf3; }
+  .nps-card { background:#1f2a34; }
+  .nps-alt { background:#162029; }
+  #differentiation { background: linear-gradient(135deg,#153e77,#0f2c4f) !important; }
+  .express-highlight { background: linear-gradient(135deg,#d4af37,#ad912d); }
+  #pricing { background:#121a24; }
+}
+.skip-link:focus { left:0; width:auto; height:auto; padding:.75rem 1rem; background:#000; color:#fff; z-index:10000; }
+/* Accessibility contrast adjustments: force white text where gray was low-contrast on dark backgrounds */
+#hero p, #hero .nps-sub, #final-cta .nps-sub { color:#ffffff !important; }
+#differentiation p, #differentiation li { color:#ffffff !important; }
+#mini-convert strong { color:#ffffff; }
 </style>
 
+<!-- Structured Data: WebPage + Products/Services -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "NorthPath Organizational Realignment & Diagnostics",
+  "description": "Patent-pending organizational diagnostic platform: express assessment, continuous improvement analytics, executive realignment.",
+  "url": "https://northpathstrategies.org/",
+  "mainEntity": [
+  {"@type": "Product","name": "One-Time Diagnostic","sku": "one-time-diagnostic","description": "100-item targeted survey, secure document upload, 12-page PDF brief, OCI/HOCI/JCI scores, 30-min Q&A.","offers": {"@type": "Offer","priceCurrency": "USD","price": "4995","availability": "https://schema.org/InStock"}},
+  {"@type": "Product","name": "Monthly Subscription","sku": "monthly-subscription","description": "Unlimited assessments, dashboard refresh, CSV exports, 60-min office hours, adds DSCH algorithm.","offers": {"@type": "Offer","priceCurrency": "USD","price": "2995","priceSpecification":{"@type":"UnitPriceSpecification","priceCurrency":"USD","price":2995,"unitCode":"MON"},"availability": "https://schema.org/InStock"}},
+  {"@type": "Product","name": "Comprehensive Package","sku": "comprehensive-package","description": "25–30 page AI narrative, 90‑min strategy session, cost‑saving ranges. Scenario builder add‑on $5k.","offers": {"@type": "Offer","priceCurrency": "USD","price": "9900","availability": "https://schema.org/InStock"}},
+  {"@type": "Service","name": "Enterprise Transformation","serviceType": "Organizational Transformation","description": "Base includes platform & facilitation. +$5k per module: scenario builder, Power BI embed, integrations, quarterly audits.","offers": {"@type": "Offer","priceCurrency": "USD","price": "24000","availability": "https://schema.org/LimitedAvailability"}}
+  ]
+}
+</script>
+
 <!-- HERO -->
-<section id="hero">
+<section id="hero" role="banner" aria-labelledby="hero-heading">
   <div class="nps-wrap">
-    <h1>Align Structure with Strategy—<br/>Accelerate Impact.</h1>
+  <h1 id="hero-heading">Align Structure with Strategy—<br/>Accelerate Impact.</h1>
     <p>
       With deep executive realignment experience, NorthPath turns your organization's insights 
       into a data-powered platform that delivers clarity, consensus, and untapped capacity 
@@ -194,55 +243,21 @@ body {
     <div style="background: rgba(255, 255, 255, 0.1); padding: 1rem; border-radius: 8px; margin: 1.5rem auto; max-width: 700px; font-size: 0.95rem; color: #e8f3ff;">
       <strong>🛡️ Patent-Pending Technology:</strong> Our proprietary algorithms (OCI™, HOCI™, JCI™, DSCH, CRF, LEI) analyze organizational complexity across 6 dimensions that no generic AI tool can replicate. Purpose-built for organizational science, not general chatbots.
     </div>
-    <a href="https://organizational-realign-clean-bst3e3k3d.vercel.app/quick-wins" class="nps-btn" style="margin:0 .6rem 1rem;">Free Quick Wins Assessment →</a>
-    <a href="https://calendly.com/jeremyestrella/30min?month=2025-07" class="nps-btn" style="margin:0 .6rem 1rem;">Book a Call →</a>
+  <a href="https://app.northpathstrategies.org/quick-wins?utm_source=wp-home&utm_medium=hero-button&utm_campaign=quick-wins&utm_content=hero" class="nps-btn" aria-label="Start free Quick Wins assessment" style="margin:0 .6rem 1rem;" data-cta="hero" data-cta-position="hero-primary" data-cta-destination="quick-wins">Free Quick Wins Assessment →</a>
+  <a href="https://calendly.com/jeremyestrella/30min?utm_source=wp-home&utm_medium=hero-button&utm_campaign=strategy-call&utm_content=hero" class="nps-btn" aria-label="Book a 30 minute strategy call" style="margin:0 .6rem 1rem;" data-cta="hero" data-cta-position="hero-secondary" data-cta-destination="strategy-call" rel="noopener noreferrer" target="_blank">Book a Call →</a>
   </div>
   <img src="https://northpathstrategies.org/wp-content/uploads/2025/07/Screenshot-2025-07-15-at-4.12.36-PM.png"
        alt="Platform dashboard screenshot">
 </section>
 
-<!-- EXPRESS DIAGNOSTIC HIGHLIGHT -->
-<section class="nps-wrap">
-  <div class="express-highlight text-center">
-    <h2 style="color: var(--nps-blue); margin-bottom: 1rem;">NEW: Express Diagnostic Assessment</h2>
-    <p style="font-size: 1.2rem; margin-bottom: 1.5rem; color: var(--nps-slate);">
-      Get targeted insights in 3-5 business days with our streamlined 60-question assessment—
-      perfect for organizations ready to identify immediate improvement opportunities.
-    </p>
-    <div style="margin-bottom: 1.5rem;">
-      <span style="font-size: 2.2rem; font-weight: 700; color: var(--nps-blue);">$2,495</span>
-      <span style="font-size: 1rem; color: var(--nps-slate); margin-left: 0.5rem;">one-time</span>
-    </div>
-    <div style="max-width: 600px; margin: 0 auto 2rem; text-align: left;">
-      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">
-        <div>✓ 60-question comprehensive survey</div>
-        <div>✓ 6-8 page organizational snapshot</div>
-        <div>✓ <strong>Patent-pending algorithms</strong> (OCI™, HOCI™, JCI™)</div>
-        <div>✓ One-click org chart generator</div>
-        <div>✓ 30-minute strategist debrief call</div>
-        <div>✓ Results in 3-5 business days</div>
-      </div>
-      <div style="background: rgba(59, 130, 246, 0.1); padding: 1rem; border-radius: 8px; font-size: 0.9rem; color: var(--nps-slate); margin-top: 1rem;">
-        <strong>🛡️ Proprietary Technology:</strong> Our patent-pending organizational algorithms analyze 6 complexity dimensions that generic AI tools can't access. This isn't ChatGPT + surveys—it's purpose-built diagnostic science.
-      </div>
-    </div>
-    <a href="https://organizational-realign-clean-bst3e3k3d.vercel.app/api/stripe/create-tier-checkout?tier=express-diagnostic" 
-       class="nps-btn-primary" style="margin-right: 1rem;">
-      Start Express Diagnostic →
-    </a>
-    <a href="https://organizational-realign-clean-bst3e3k3d.vercel.app/quick-wins" 
-       class="nps-btn" style="background: rgba(255,255,255,0.2); border-color: var(--nps-blue);">
-      Try Free Assessment First
-    </a>
-  </div>
-</section>
+<!-- (Removed Express Diagnostic highlight section) -->
 
 <!-- PAIN vs GAIN -->
-<section class="nps-wrap nps-alt">
+<section class="nps-wrap nps-alt" id="pain-gain" aria-labelledby="pain-gain-heading">
   <div class="nps-grid">
     <div class="nps-card">
-      <h2 class="nps-heading">Where Complexity Holds You Back</h2>
-      <ul style="margin-left:1rem;line-height:1.6;color:#444;">
+  <h2 class="nps-heading" id="pain-gain-heading">Where Complexity Holds You Back</h2>
+      <ul style="margin-left:1rem;line-height:1.6;color:var(--nps-slate);">
         <li>Key leaders stuck in red tape instead of driving results</li>
         <li>Shadow systems & duplicate tools draining budgets</li>
         <li>KPI plateaus even as you launch "new" initiatives</li>
@@ -251,7 +266,7 @@ body {
     </div>
     <div class="nps-card">
       <h2 class="nps-heading">How We Unlock Momentum</h2>
-      <ul style="margin-left:1rem;line-height:1.6;color:#444;">
+      <ul style="margin-left:1rem;line-height:1.6;color:var(--nps-slate);">
         <li>Patent-pending diagnostic algorithms reveal <strong>hidden capacity in weeks</strong></li>
         <li>Streamlined layers let leaders coach, not micromanage</li>
         <li>Live dashboards tie every role to strategic goals</li>
@@ -262,11 +277,9 @@ body {
 </section>
 
 <!-- COMPETITIVE DIFFERENTIATION SECTION -->
-<section class="nps-wrap" style="background: linear-gradient(135deg, #1e3a8a, #1e40af); color: white; margin: 3rem 0;">
+<section class="nps-wrap" id="differentiation" style="background: linear-gradient(135deg, #1e3a8a, #1e40af); color: white; margin: 3rem 0;" aria-labelledby="diff-heading">
   <div style="max-width: 1200px; margin: 0 auto; padding: 4rem 2rem;">
-    <h2 class="nps-heading text-center" style="color: var(--nps-gold); margin-bottom: 3rem; font-size: 2.5rem;">
-      Why Generic AI Tools Can't Replace This
-    </h2>
+  <h2 class="nps-heading text-center" id="diff-heading" style="color: var(--nps-gold); margin-bottom: 3rem; font-size: 2.5rem;">Why Generic AI Tools Can't Replace This</h2>
     
     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; margin-bottom: 3rem;">
       <!-- Generic AI Column -->
@@ -319,8 +332,8 @@ body {
 </section>
 
 <!-- METHOD -->
-<section class="nps-wrap">
-  <h2 class="nps-heading section-title">Our 3-Step Executive Method</h2>
+<section class="nps-wrap" id="method" aria-labelledby="method-heading">
+  <h2 class="nps-heading section-title" id="method-heading">Our 3-Step Executive Method</h2>
   <div class="nps-grid">
     <div class="nps-card text-center">
       <h3>Diagnose</h3>
@@ -338,8 +351,8 @@ body {
 </section>
 
 <!-- ORG-CHART FEATURE -->
-<section class="nps-wrap nps-alt">
-  <h2 class="nps-heading section-title">One-Click Org Chart</h2>
+<section class="nps-wrap nps-alt" id="org-chart" aria-labelledby="org-chart-heading">
+  <h2 class="nps-heading section-title" id="org-chart-heading">One-Click Org Chart</h2>
   <div class="nps-grid">
     <div class="nps-card text-center">
       <h3>Instant Org Chart</h3>
@@ -355,13 +368,13 @@ body {
     </div>
   </div>
   <div class="text-center" style="margin-top:2rem;">
-    <a href="https://organizational-realign-clean-bst3e3k3d.vercel.app/demo/org-chart" class="nps-btn">Try Org Chart Demo →</a>
+  <a href="https://app.northpathstrategies.org/demo/org-chart?utm_source=wp-home&utm_medium=feature-button&utm_campaign=org-chart&utm_content=org-section" class="nps-btn" data-cta="org-chart" data-cta-position="feature" data-cta-destination="org-chart-demo">Try Org Chart Demo →</a>
   </div>
 </section>
 
 <!-- AI AUTOMATION OPPORTUNITIES -->
-<section class="nps-wrap">
-  <h2 class="nps-heading section-title">AI Automation Opportunities by Industry</h2>
+<section class="nps-wrap" id="ai-automation" aria-labelledby="ai-automation-heading">
+  <h2 class="nps-heading section-title" id="ai-automation-heading">AI Automation Opportunities by Industry</h2>
   <p class="nps-sub">
     Beyond organizational realignment, we pinpoint AI automation use‐cases tailored to your sector—boosting efficiency, insight, and productivity in weeks.
   </p>
@@ -402,131 +415,146 @@ body {
 </section>
 
 <!-- SAMPLE REPORTS -->
-<section class="nps-wrap nps-alt text-center">
-  <h2 class="nps-heading">See the Output Before You Buy</h2>
+<section class="nps-wrap nps-alt text-center" id="sample-reports" aria-labelledby="sample-reports-heading">
+  <h2 class="nps-heading" id="sample-reports-heading">See the Output Before You Buy</h2>
   <p class="nps-sub">
     Interactive sample reports built on real-world models for community colleges, hospitals,
     universities, and nonprofits.
   </p>
-  <a href="https://northpathstrategies.org/community-college-sample-report/" class="nps-btn">
+  <a href="https://northpathstrategies.org/community-college-sample-report/" class="nps-btn" data-cta="sample-reports" data-cta-position="sample-primary" data-cta-destination="sample-report">
     Explore Sample Reports →
   </a>
 </section>
 
 <!-- PACKAGES -->
-<section class="nps-wrap">
-  <h2 class="nps-heading section-title text-center">Choose Your Assessment Level</h2>
-  <p class="nps-sub text-center">
-    Start with our free Quick Wins assessment, then upgrade to deeper analysis as your needs grow.
+<section class="nps-wrap" id="pricing" aria-labelledby="pricing-heading">
+  <h2 class="nps-heading section-title text-center" id="pricing-heading">Advisory & Platform Options</h2>
+  <p class="nps-sub text-center" style="max-width:860px;">
+    Four tiers. Start with a focused diagnostic or operational subscription. Add depth with a comprehensive narrative or full transformation modules.
   </p>
-  
-  <!-- TOP ROW: Primary Options -->
-  <div class="packages-grid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: 3rem; max-width: 1140px;">
-    <!-- FREE QUICK WINS -->
-    <div class="nps-card">
-      <h3>Quick Wins Assessment</h3>
-      <div class="nps-price">FREE</div>
+
+  <div class="packages-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:2rem;max-width:1140px;margin-top:3rem;">
+    <!-- One-Time Diagnostic -->
+    <div class="nps-card recommended" style="min-height:480px;">
+      <h3 style="margin-top:0;">One‑Time Diagnostic</h3>
+      <div class="nps-price" style="margin-top:.5rem;">$4,995 <span style="font-size:1rem;color:#555;">one‑off</span></div>
       <ul>
-        <li>12 targeted questions in 4 key areas</li>
-        <li>Immediate recommendations & savings estimates</li>
-        <li>Perfect starting point for any organization</li>
+        <li>100‑item targeted survey</li>
+        <li>Secure document upload</li>
+        <li>12‑page PDF executive brief</li>
+        <li>OCI / HOCI / JCI scores</li>
+        <li>30‑min strategist Q&A</li>
+        <li>“Assessment lite” baseline</li>
       </ul>
-      <a href="https://organizational-realign-clean-bst3e3k3d.vercel.app/quick-wins"
-         class="nps-btn">Start Free Assessment →</a>
+      <a href="https://calendly.com/jeremyestrella/30min?utm=one-time-diagnostic&utm_source=wp-home&utm_medium=pricing-card&utm_campaign=one-time-diagnostic&utm_content=pricing-table" class="nps-btn-primary" data-cta="pricing" data-cta-position="pricing-one-time" data-cta-tier="one-time" data-cta-destination="diagnostic-call">Schedule Intro Call →</a>
     </div>
 
-    <!-- EXPRESS DIAGNOSTIC - RECOMMENDED -->
-    <div class="nps-card recommended">
-      <h3>Express Diagnostic</h3>
-      <div class="nps-price">$2,495</div>
+    <!-- Monthly Subscription -->
+    <div class="nps-card" style="min-height:480px;">
+      <h3 style="margin-top:0;">Monthly Subscription</h3>
+      <div class="nps-price" style="margin-top:.5rem;">$2,995 <span style="font-size:1rem;color:#555;">/mo</span></div>
       <ul>
-        <li>60-question comprehensive survey</li>
-        <li>6-8 page organizational snapshot</li>
-        <li>Patent-pending OCI™, HOCI™, JCI™ diagnostic scores</li>
-        <li>One-click org chart generator</li>
-        <li>30-minute strategist debrief call</li>
-        <li>Results in 3-5 business days</li>
+        <li>Unlimited assessments</li>
+        <li>Live dashboard refresh</li>
+        <li>CSV / export pipeline</li>
+        <li>DSCH algorithm unlocked</li>
+        <li>60‑min office hours / month</li>
+        <li>Iterate each term</li>
       </ul>
-      <a href="https://organizational-realign-clean-bst3e3k3d.vercel.app/api/stripe/create-tier-checkout?tier=express-diagnostic"
-         class="nps-btn-primary">Start Express Diagnostic →</a>
+      <a href="https://calendly.com/jeremyestrella/30min?utm=monthly-subscription&utm_source=wp-home&utm_medium=pricing-card&utm_campaign=monthly-subscription&utm_content=pricing-table" class="nps-btn" data-cta="pricing" data-cta-position="pricing-monthly" data-cta-tier="monthly" data-cta-destination="subscription-call">Discuss Subscription →</a>
     </div>
 
-    <!-- ONE-TIME DIAGNOSTIC -->
-    <div class="nps-card">
-      <h3>One-Time Diagnostic</h3>
-      <div class="nps-price">$4,995</div>
+    <!-- Comprehensive Package -->
+    <div class="nps-card" style="min-height:480px;">
+      <h3 style="margin-top:0;">Comprehensive Package</h3>
+      <div class="nps-price" style="margin-top:.5rem;">$9,900 <span style="font-size:1rem;color:#555;">one‑off</span></div>
       <ul>
-        <li>Comprehensive 120+ question survey</li>
-        <li>12-page detailed report + 30-min exec Q&A</li>
-        <li>Advanced scenario modeling</li>
-        <li>Ideal for complex organizations</li>
+        <li>25–30 page AI narrative</li>
+        <li>90‑min strategy session</li>
+        <li>Cost‑saving ranges</li>
+        <li>Scenario builder add‑on (+$5k)</li>
+        <li>Prioritized roadmap themes</li>
+        <li>Executive decision package</li>
       </ul>
-      <a href="https://organizational-realign-clean-bst3e3k3d.vercel.app/api/stripe/create-tier-checkout?tier=one-time-diagnostic"
-         class="nps-btn">Purchase →</a>
+      <a href="https://calendly.com/jeremyestrella/30min?utm=comprehensive-package&utm_source=wp-home&utm_medium=pricing-card&utm_campaign=comprehensive-package&utm_content=pricing-table" class="nps-btn" data-cta="pricing" data-cta-position="pricing-comprehensive" data-cta-tier="comprehensive" data-cta-destination="comprehensive-call">Request Scope →</a>
+    </div>
+
+    <!-- Enterprise Transformation -->
+    <div class="nps-card" style="min-height:480px;">
+      <h3 style="margin-top:0;">Enterprise Transformation</h3>
+      <div class="nps-price" style="margin-top:.5rem;">$24,000 <span style="font-size:1rem;color:#555;">base</span></div>
+      <ul>
+        <li>Unlimited scenario builder</li>
+        <li>Power BI embedded analytics</li>
+        <li>API / flat‑file connectors</li>
+        <li>Quarterly audit & guidance</li>
+        <li>Modular add‑ons (+$5k ea.)</li>
+        <li>Scalable governance model</li>
+      </ul>
+      <a href="https://calendly.com/jeremyestrella/30min?utm=enterprise-transformation&utm_source=wp-home&utm_medium=pricing-card&utm_campaign=enterprise-transformation&utm_content=pricing-table" class="nps-btn" data-cta="pricing" data-cta-position="pricing-enterprise" data-cta-tier="enterprise" data-cta-destination="enterprise-call">Book Executive Briefing →</a>
     </div>
   </div>
-  
-  <!-- BOTTOM ROW: Advanced Options -->
-  <div class="packages-grid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: 2rem; max-width: 1140px;">
-    <!-- MONTHLY SUBSCRIPTION -->
-    <div class="nps-card">
-      <h3>Monthly Subscription</h3>
-      <div class="nps-price">$2,995 <span style="font-size:1rem;color:#555;">/mo</span></div>
-      <ul>
-        <li>Unlimited assessments & CSV refresh</li>
-        <li>Monthly office-hours call</li>
-        <li>Ongoing organizational monitoring</li>
-      </ul>
-      <a href="https://organizational-realign-clean-bst3e3k3d.vercel.app/api/stripe/create-tier-checkout?tier=monthly-subscription"
-         class="nps-btn">Subscribe →</a>
-    </div>
 
-    <!-- COMPREHENSIVE PACKAGE -->
-    <div class="nps-card">
-      <h3>Comprehensive Package</h3>
-      <div class="nps-price">$9,900</div>
-      <ul>
-        <li>Board-ready narrative & scenario builder</li>
-        <li>90-min strategy workshop</li>
-        <li>Implementation roadmap</li>
-      </ul>
-      <a href="https://organizational-realign-clean-bst3e3k3d.vercel.app/api/stripe/create-tier-checkout?tier=comprehensive-package"
-         class="nps-btn">Purchase →</a>
-    </div>
-
-    <!-- ENTERPRISE TRANSFORMATION -->
-    <div class="nps-card">
-      <h3>Enterprise Transformation</h3>
-      <div class="nps-price">$24,000</div>
-      <ul>
-        <li>On-site facilitation & quarterly audits</li>
-        <li>Unlimited scenario builder & API connectors</li>
-        <li>Full transformation support</li>
-      </ul>
-      <a href="https://organizational-realign-clean-bst3e3k3d.vercel.app/api/stripe/create-tier-checkout?tier=enterprise-transformation"
-         class="nps-btn">Purchase →</a>
-    </div>
-  </div>
-  
   <div class="text-center" style="margin-top:2.5rem;">
-    <p style="color: var(--nps-slate); margin-bottom: 1rem;">
-      Not sure which option is right for you?
+    <p style="color: var(--nps-slate); margin-bottom: 1rem; font-size:.95rem;">
+      Just validating value? <a href="https://app.northpathstrategies.org/quick-wins?utm_source=wp-home&utm_medium=inline-link&utm_campaign=quick-wins&utm_content=pricing-footer" style="color:var(--nps-blue);text-decoration:underline;" data-cta="pricing" data-cta-position="pricing-inline" data-cta-destination="quick-wins">Run the free Quick Wins assessment</a> for immediate friction hotspots.
     </p>
-    <a href="https://organizational-realign-clean-bst3e3k3d.vercel.app/quick-wins" class="nps-btn" style="margin-right: 1rem;">Start with Free Assessment</a>
-    <a href="https://northpathstrategies.org/services/" class="nps-btn">Compare All Packages →</a>
+    <p style="color:#555;font-size:.7rem;max-width:860px;margin:0 auto 0;line-height:1.4;">
+      Pricing shown in USD. Comprehensive scenario builder add‑on billed at +$5,000 if selected. Enterprise Transformation modules (+$5,000 each) may include: integration suite, advanced benchmarking, extended governance, custom analytics. Office hours & advisory time do not roll over. Subject to mutually executed services agreement.
+    </p>
   </div>
 </section>
 
 <!-- FINAL CTA -->
-<section class="nps-wrap text-center nps-alt">
-  <h2 class="nps-heading">Unlock Your Hidden Capacity</h2>
+<section class="nps-wrap text-center nps-alt" id="final-cta" aria-labelledby="final-cta-heading">
+  <h2 class="nps-heading" id="final-cta-heading">Unlock Your Hidden Capacity</h2>
   <p class="nps-sub">
-    Start with our free Quick Wins assessment to see immediate opportunities, or jump straight into our Express Diagnostic for comprehensive insights in just 3-5 business days.
+  Start with our free Quick Wins assessment to see immediate opportunities, or schedule a One‑Time Diagnostic for a deep executive brief.
   </p>
-  <a href="https://organizational-realign-clean-bst3e3k3d.vercel.app/quick-wins" class="nps-btn" style="margin-right: 1rem;">
+  <a href="https://app.northpathstrategies.org/quick-wins?utm_source=wp-home&utm_medium=final-cta-button&utm_campaign=quick-wins&utm_content=final-cta" class="nps-btn" style="margin-right: 1rem;" data-cta="final" data-cta-position="final-primary" data-cta-destination="quick-wins">
     Start Free Assessment →
   </a>
-  <a href="https://calendly.com/jeremyestrella/30min?month=2025-07" class="nps-btn">
+  <a href="https://calendly.com/jeremyestrella/30min?month=2025-07&utm_source=wp-home&utm_medium=final-cta-button&utm_campaign=strategy-call&utm_content=final-cta" class="nps-btn" data-cta="final" data-cta-position="final-secondary" data-cta-destination="strategy-call">
     Book Strategy Call →
   </a>
 </section>
+
+<!-- Sticky Conversion Mini-Bar -->
+<div id="mini-convert" style="position:fixed; bottom:0; left:0; right:0; background:rgba(22,84,163,.97); color:#fff; padding:.75rem 1rem; display:flex; flex-wrap:wrap; gap:.75rem; align-items:center; justify-content:center; z-index:9999; font-size:.85rem; box-shadow:0 -2px 8px rgba(0,0,0,.15);">
+  <button type="button" aria-label="Close" style="background:transparent; border:none; color:#fff; font-size:1rem; position:absolute; right:.75rem; top:.4rem; cursor:pointer;">✕</button>
+  <strong style="display:flex; align-items:center; gap:.4rem;">Ready to see your own data?</strong>
+  <a href="https://app.northpathstrategies.org/quick-wins?utm_source=wp-home&utm_medium=sticky-mini&utm_campaign=quick-wins&utm_content=mini-bar" class="nps-btn nps-btn-gold" style="padding:.55rem 1.2rem; font-size:.75rem;" data-cta="mini" data-cta-position="sticky" data-cta-destination="quick-wins">Free Quick Wins</a>
+  <!-- Express button removed -->
+</div>
+<div id="cta-feedback" aria-live="polite" style="position:absolute;left:-9999px;height:1px;width:1px;overflow:hidden;"> </div>
+
+<!-- Interaction + Tracking Script -->
+<script>
+(function(){
+  var bar = document.getElementById('mini-convert');
+  if(bar){
+    if(localStorage.getItem('npsMiniDismissed')==='1') { bar.parentNode && bar.parentNode.removeChild(bar); }
+    else {
+      var closeBtn = bar.querySelector('button');
+      if(closeBtn){ closeBtn.addEventListener('click', function(){ localStorage.setItem('npsMiniDismissed','1'); bar.parentNode && bar.parentNode.removeChild(bar); }); }
+    }
+  }
+  function trackClick(e){
+    var t = e.target.closest('[data-cta]');
+    if(!t) return;
+    var payload = {
+      event:'cta_click',
+      cta:t.getAttribute('data-cta'),
+      position:t.getAttribute('data-cta-position')||'',
+      tier:t.getAttribute('data-cta-tier')||'',
+      destination:t.getAttribute('data-cta-destination')||'',
+      href:t.getAttribute('href'),
+      ts:Date.now()
+    };
+    if(window.dataLayer){ window.dataLayer.push(payload); } else { console.info('[CTA]', payload); }
+    var live=document.getElementById('cta-feedback');
+    if(live){ live.textContent='CTA clicked: '+(payload.cta||''); }
+  }
+  document.addEventListener('click', trackClick);
+})();
+</script>

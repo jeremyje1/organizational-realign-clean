@@ -1,12 +1,13 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { verifyAdmin } from '@/lib/admin-auth';
+
+// Explicitly mark route as dynamic to silence static optimization warnings
+export const dynamic = 'force-dynamic';
 
 export async function GET(request: NextRequest) {
   try {
-    // Verify admin authentication
-    const authHeader = request.headers.get('authorization');
-    if (!authHeader || !authHeader.includes('stardynamics1124*')) {
-      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
-    }
+  const admin = await verifyAdmin();
+  if (!admin) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
 
     const searchParams = request.nextUrl.searchParams;
     const timeframe = searchParams.get('timeframe') || '30d';

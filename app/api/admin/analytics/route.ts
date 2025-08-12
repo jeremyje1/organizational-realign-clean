@@ -1,5 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { verifyAdmin } from '@/lib/admin-auth';
+
+export const dynamic = 'force-dynamic';
 import { createClient } from '@supabase/supabase-js';
+import { rateLimit } from '@/lib/rate-limit';
 
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL!,
@@ -15,26 +19,27 @@ const aiReadinessSupabase = process.env.AI_READINESS_SUPABASE_URL && process.env
   : null;
 
 export async function GET(request: NextRequest) {
-  console.log('Analytics API called');
+  const ip = (request.headers.get('x-forwarded-for') || '').split(',')[0] || 'unknown';
+  const rl = rateLimit('admin-analytics:' + ip, 60, 60_000);
+  if (rl.limited) {
+    return NextResponse.json({ error: 'rate_limited' }, { status: 429 });
+  }
+  // Lightweight telemetry flag (suppressed in production logs)
+  if (process.env.NODE_ENV !== 'production') console.log('Analytics API called');
   
   try {
-    const authHeader = request.headers.get('Authorization');
-    console.log('Authorization header:', authHeader ? 'present' : 'missing');
-    
-    // Simple admin authentication check
-    if (!authHeader || !authHeader.includes('admin-token')) {
-      console.log('Authorization failed');
+    const admin = await verifyAdmin();
+    if (!admin) {
       return NextResponse.json(
         { error: 'Unauthorized - Admin access required' },
         { status: 401 }
       );
     }
-
-    console.log('Authorization successful');
+    
 
     const { searchParams } = new URL(request.url);
     const range = parseInt(searchParams.get('range') || '30');
-    console.log('Date range:', range, 'days');
+  if (process.env.NODE_ENV !== 'production') console.log('Date range:', range, 'days');
     
     // Check environment variables
     if (!process.env.NEXT_PUBLIC_SUPABASE_URL || !process.env.SUPABASE_SERVICE_ROLE_KEY) {
@@ -43,7 +48,7 @@ export async function GET(request: NextRequest) {
       return NextResponse.json(emptyAnalytics);
     }
 
-    console.log('Environment variables present');
+  if (process.env.NODE_ENV !== 'production') console.log('Environment variables present');
     
     // Calculate date range
     const endDate = new Date();
@@ -52,7 +57,7 @@ export async function GET(request: NextRequest) {
     console.log('Date range:', startDate.toISOString(), 'to', endDate.toISOString());
 
     // Fetch organizational assessments with admin privileges (bypassing RLS)
-    console.log('Fetching organizational assessments from Supabase...');
+  if (process.env.NODE_ENV !== 'production') console.log('Fetching organizational assessments...');
     const { data: orgAssessments, error: orgError } = await supabase
       .from('assessments')
       .select(`
@@ -75,7 +80,7 @@ export async function GET(request: NextRequest) {
     }
 
     // Fetch AI readiness assessments
-    console.log('Fetching AI readiness assessments from separate database...');
+  if (process.env.NODE_ENV !== 'production') console.log('Fetching AI readiness assessments...');
     let aiAssessments = null;
     let aiError = null;
     
@@ -136,13 +141,33 @@ export async function GET(request: NextRequest) {
     const allAssessments = [...formattedOrgAssessments, ...formattedAiAssessments]
       .sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime());
 
-    console.log('Fetched', allAssessments.length, 'total assessments (', 
-      formattedOrgAssessments.length, 'organizational,', 
-      formattedAiAssessments.length, 'AI readiness)');
+    if (process.env.NODE_ENV !== 'production') {
+      console.log('Fetched', allAssessments.length, 'assessments');
+    }
 
     // Process analytics data
     const analytics = processAnalyticsData(allAssessments);
-    console.log('Processed analytics successfully');
+    // Augment with attribution summary (utm_source) if present in responses._attr
+    try {
+      const sourceCounts: Record<string, number> = {};
+      (orgAssessments || []).forEach(a => {
+        const attr = (a as any).responses?._attr; // stored in responses jsonb
+        if (attr) {
+          const src = attr.utm_source || attr.utm_source || 'unknown';
+          if (src) sourceCounts[src] = (sourceCounts[src] || 0) + 1;
+        }
+      });
+      analytics.attribution = {
+        sources: sourceCounts,
+        topSources: Object.entries(sourceCounts)
+          .sort((a,b)=>b[1]-a[1])
+          .slice(0,10)
+          .map(([source,count])=>({ source, count }))
+      };
+    } catch (e) {
+      if (process.env.NODE_ENV !== 'production') console.warn('Attribution summary failed', e);
+    }
+  if (process.env.NODE_ENV !== 'production') console.log('Processed analytics');
 
     return NextResponse.json(analytics);
 
@@ -150,7 +175,7 @@ export async function GET(request: NextRequest) {
     console.error('Admin analytics error:', error);
     
     // Return empty analytics data instead of error for testing
-    console.log('Falling back to empty analytics due to unexpected error');
+  if (process.env.NODE_ENV !== 'production') console.log('Falling back to empty analytics');
     const emptyAnalytics = processAnalyticsData([]);
     return NextResponse.json(emptyAnalytics);
   }
@@ -177,7 +202,8 @@ function processAnalyticsData(assessments: any[]) {
       institution: string;
       created_at: string;
       status: string;
-    }>
+  }>,
+  attribution: undefined as any
   };
 
   // Track counts and sums for calculations

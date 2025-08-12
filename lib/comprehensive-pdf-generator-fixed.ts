@@ -131,7 +131,7 @@ export function generateComprehensivePDFReport(analysis: ComprehensiveAnalysis):
   const institutionName = analysis.submissionDetails?.institution_name || 'Organization';
   const organizationType = analysis.submissionDetails?.organization_type || 'Organization';
   const overallScore = Math.round(analysis.score * 100);
-  const tier = analysis.tier || 'express-diagnostic';
+  const tier = (analysis.tier === 'express-diagnostic' || !analysis.tier) ? 'monthly-subscription' : analysis.tier;
   const tierName = tier.replace('-', ' ').replace(/\b\w/g, l => l.toUpperCase());
   
   // Parse responses into structured data

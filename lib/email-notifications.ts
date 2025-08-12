@@ -46,9 +46,11 @@ class EmailNotifications {
     // Initialize SendGrid if API key is available
     if (this.apiKey) {
       sgMail.setApiKey(this.apiKey);
-      console.log('🔧 SendGrid initialized with API key');
-    } else {
-      console.log('⚠️ No SENDGRID_API_KEY found, falling back to console logging');
+      if (process.env.NODE_ENV !== 'production') {
+        console.log('🔧 SendGrid initialized (dev)');
+      }
+    } else if (process.env.NODE_ENV !== 'production') {
+      console.log('⚠️ No SENDGRID_API_KEY found, using console log fallback');
     }
     
     // Initialize nodemailer for development/fallback

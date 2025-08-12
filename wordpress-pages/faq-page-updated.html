@@ -1,8 +1,13 @@
 <!-- ================================================== -->
 <!--  NorthPath Strategies • FAQ Page (v2025-07-29)     -->
+<!--  APP_BASE_URL: https://assessments.northpathstrategies.org -->
 <!--  Updated with Correct Production URLs              -->
+<!--  Enhanced: skip link • dark mode • reduced motion  -->
+<!--            data-cta tracking • sticky mini bar     -->
 <!--  Paste into an Elementor HTML widget               -->
 <!-- ================================================== -->
+
+<a href="#main-content" class="skip-link" style="position:absolute;left:-999px;top:auto;width:1px;height:1px;overflow:hidden;">Skip to main content</a>
 
 <style>
 :root{
@@ -29,7 +34,8 @@ details[open]{background:#fff;}
 details summary{cursor:pointer;padding:1.1rem 1.4rem;font-weight:600;
                 list-style:none;color:var(--nps-blue);}
 details summary::-webkit-details-marker{display:none;}
-details p{padding:0 1.4rem 1.2rem;margin:0;color:#444;line-height:1.6;font-size:.95rem;}
+/* Accessibility: use semantic slate variable instead of hardcoded gray */
+details p{padding:0 1.4rem 1.2rem;margin:0;color:var(--nps-slate);line-height:1.6;font-size:.95rem;}
 /* Founder block */
 .founder{display:flex;flex-wrap:wrap;gap:2rem;align-items:center;padding:3rem 0 0;}
 .founder img{width:220px;border-radius:var(--nps-radius);box-shadow:var(--nps-shadow);}
@@ -67,6 +73,22 @@ details p{padding:0 1.4rem 1.2rem;margin:0;color:#444;line-height:1.6;font-size:
   .heading-lg{font-size:1.55rem}
   .nps-grid{grid-template-columns:1fr}
 }
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce){*{animation-duration:.001ms!important;animation-iteration-count:1!important;transition:none!important}}
+/* Dark mode */
+@media (prefers-color-scheme: dark){
+  :root{--nps-light:#1e2630;--nps-slate:#d5dae0;--nps-shadow:0 4px 14px rgba(0,0,0,.5)}
+  body{background:#12181f;color:#e6ecf3}
+  details{background:#1f2a34;border-color:#304055}
+  details[open]{background:#222f3a}
+  details p{color:#d5dae0}
+  .nps-hero{background:linear-gradient(135deg,#123b70,#0b2746)}
+  .expert-callout{background:rgba(255,255,255,.08)}
+  .btn{background:var(--nps-blue);color:var(--nps-gold);}
+  .btn:hover{background:var(--nps-gold);color:var(--nps-blue)}
+  #mini-convert{background:rgba(18,59,112,.96)}
+}
+.skip-link:focus{left:0;width:auto;height:auto;padding:.75rem 1rem;background:#000;color:#fff;z-index:10000}
 </style>
 
 <!-- ================= HERO ================= -->
@@ -81,14 +103,65 @@ details p{padding:0 1.4rem 1.2rem;margin:0;color:#444;line-height:1.6;font-size:
   <div class="expert-callout">
     <strong>🛡️ Irreplaceable Combination:</strong> Our patent-pending algorithms (OCI™, HOCI™, JCI™, DSCH, CRF, LEI) provide statistical precision, while our expert with firsthand reorganization experience delivers implementation guidance no AI tool can replicate.
   </div>
-  <a href="https://organizational-realign-clean-bst3e3k3d.vercel.app/quick-wins" class="btn btn-gold">Start Free Assessment</a>
+  <a href="https://assessments.northpathstrategies.org/quick-wins?utm_source=wp-faq&utm_medium=hero-button&utm_campaign=quick-wins&utm_content=hero" class="btn btn-gold" data-cta="hero" data-cta-position="hero-primary" data-cta-destination="quick-wins">Get Instant Structural Insights →</a>
 </section>
+
+<!-- Structured Data (FAQ + Organization + Product) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "name": "NorthPath Strategies",
+      "url": "https://northpathstrategies.org",
+      "logo": "https://northpathstrategies.org/wp-content/uploads/2025/07/cropped-northpath-logo.png",
+      "sameAs": [
+        "https://www.linkedin.com/company/northpath-strategies"
+      ]
+    },
+    {
+      "@type": "Service",
+      "name": "Quick Wins Assessment",
+      "description": "Free 12-item friction scan delivering immediate hotspots and savings estimates.",
+      "offers": {"@type":"Offer","price":"0","priceCurrency":"USD"}
+    },
+    {
+      "@type": "Product",
+      "name": "One-Time Diagnostic",
+      "description": "100-item targeted survey, secure document ingest, 12-page executive brief, OCI/HOCI/JCI scores, 30-min strategist Q&A.",
+      "sku": "one-time-diagnostic",
+      "offers": {"@type":"Offer","price":"4995","priceCurrency":"USD","availability":"https://schema.org/InStock"}
+    },
+    {
+      "@type": "Product",
+      "name": "Monthly Subscription",
+      "description": "Unlimited assessments, dashboard refresh, CSV exports, DSCH algorithm, 60-min office hours.",
+      "sku": "monthly-subscription",
+      "offers": {"@type":"Offer","price":"2995","priceCurrency":"USD","priceSpecification":{"@type":"UnitPriceSpecification","price":2995,"priceCurrency":"USD","unitCode":"MON"}}
+    },
+    {
+      "@type": "Product",
+      "name": "Comprehensive Package",
+      "description": "25–30 page AI narrative, 90-min strategy session, cost-saving ranges, scenario builder add-on (+$5k).",
+      "sku": "comprehensive-package",
+      "offers": {"@type":"Offer","price":"9900","priceCurrency":"USD"}
+    },
+    {
+      "@type": "Service",
+      "name": "Enterprise Transformation",
+      "description": "Platform + facilitation base (from $24k). Modules +$5k: scenario builder, integrations, analytics, quarterly audits.",
+      "offers": {"@type":"Offer","price":"24000","priceCurrency":"USD","availability":"https://schema.org/LimitedAvailability"}
+    }
+  ]
+}
+</script>
 
 <!-- ============ GENERAL ============ -->
 <section style="max-width:1040px;margin:0 auto;padding:2rem 1rem;">
   <h2 class="heading-lg">General</h2>
 
-  <details>
+  <details data-faq="differentiation">
     <summary>What makes NorthPath different from generic AI tools and typical consultants?</summary>
     <p>
       <strong>Unlike ChatGPT, Claude, or other general AI:</strong> We use <strong>patent-pending organizational algorithms</strong> (OCI™, HOCI™, JCI™, DSCH, CRF, LEI) specifically designed for organizational science—not generic language models.
@@ -97,18 +170,18 @@ details p{padding:0 1.4rem 1.2rem;margin:0;color:#444;line-height:1.6;font-size:
     </p>
   </details>
 
-  <details>
-    <summary>How long does it take to get our first insights with expert review?</summary>
+  <details data-faq="speed">
+    <summary>How fast do we get our first actionable insights?</summary>
     <p>
-      <strong>Express Diagnostic:</strong> 3-5 business days for your 25-page report plus 30-minute expert strategist debrief.
-      <br><strong>One-Time & Comprehensive:</strong> 7-10 business days for full analysis plus 60-90 minute strategy session.
-      <br><strong>Enterprise:</strong> Preliminary insights in 5 days, with dedicated expert support throughout.
+      <strong>Free Quick Wins Diagnostic:</strong> Immediate run—surface top friction & duplication signals in minutes.
+      <br><strong>Monthly Platform Access:</strong> Unlimited deeper diagnostics & dashboards; optimization insights compound over time.
+      <br><strong>Enterprise Realignment:</strong> Preliminary structural risk snapshot in ~5 days; roadmap + workshops follow.
       <br><br>
-      Every package includes both algorithmic precision <em>and</em> expert human guidance from reorganization experience.
+      Every path blends algorithmic precision <em>and</em> expert human guidance from real-world large-scale reorganizations.
     </p>
   </details>
 
-  <details>
+  <details data-faq="sectors">
     <summary>Which sectors do you specialize in?</summary>
     <p>
       Higher education, healthcare, nonprofits, and complex corporate environments.
@@ -117,7 +190,7 @@ details p{padding:0 1.4rem 1.2rem;margin:0;color:#444;line-height:1.6;font-size:
     </p>
   </details>
 
-  <details>
+  <details data-faq="algorithms">
     <summary>What are your patent-pending algorithms and how do they work?</summary>
     <p>
       Our <strong>6 proprietary algorithms</strong> are purpose-built for organizational analysis:
@@ -137,119 +210,79 @@ details p{padding:0 1.4rem 1.2rem;margin:0;color:#444;line-height:1.6;font-size:
 <section style="max-width:1040px;margin:0 auto;padding:2rem 1rem;">
   <h2 class="heading-lg">Packages &amp; Pricing</h2>
 
-  <details>
-    <summary>What's included in the <em>Express Diagnostic</em>?</summary>
+  <details data-faq="quick-wins">
+    <summary>What's included in the <em>Quick Wins Assessment</em> (Free)?</summary>
     <p>
-      <strong>Enhanced 60+ question survey</strong> with industry-specific targeting, plus:
-      <br>• <strong>25-page AI-enhanced comprehensive report</strong> with patent-pending diagnostic scores
-      <br>• AI-generated org charts with algorithmic analysis
-      <br>• Scenario modeling and ROI projections
-      <br>• Team collaboration and secure sharing
-      <br>• <strong>30-minute expert strategist debrief call</strong> with reorganization experience
-      <br>• AI automation opportunity mapping with expert interpretation
-    </p>
-    <p>
-      <br><a href="https://organizational-realign-clean-bst3e3k3d.vercel.app/api/stripe/create-tier-checkout?tier=express-diagnostic" class="btn">
-        Start Express Diagnostic $2,495
-      </a>
+      <strong>Immediate structural friction snapshot:</strong>
+      <br>• 12 targeted questions across 4 domains
+      <br>• Instant hotspots & savings estimates
+      <br>• Preview algorithm indices
+      <br>• No credit card – rapid validation
+      <br>• Optional expert review summary
+  <br><br><a href="https://assessments.northpathstrategies.org/quick-wins?utm_source=wp-faq&utm_medium=details-link&utm_campaign=quick-wins&utm_content=packages-faq" class="btn btn-gold">Start Free Assessment →</a>
     </p>
   </details>
 
-  <details>
-    <summary>What's included in the <em>One-Time Assessment</em>?</summary>
+  <details data-faq="one-time-diagnostic">
+    <summary>What do I get with the <em>One‑Time Diagnostic</em> ($4,995)?</summary>
     <p>
-      <strong>100+ item comprehensive survey</strong> plus secure file upload, featuring:
-      <br>• <strong>35-page detailed executive report</strong> with all 6 patent-pending algorithms
-      <br>• Multi-scenario financial projections with expert interpretation
-      <br>• Advanced org chart analysis with compliance checks
-      <br>• Team collaboration with role-based permissions
-      <br>• <strong>60-minute strategy session with reorganization expert</strong>
-      <br>• Industry benchmarking and competitive analysis
-      <br>• Comprehensive AI automation roadmap with implementation guidance
-      <br><br><a href="https://organizational-realign-clean-bst3e3k3d.vercel.app/api/stripe/create-tier-checkout?tier=one-time-diagnostic" class="btn">
-        Purchase One-Time Assessment $4,995
-      </a>
+      <strong>Executive-grade diagnostic package:</strong>
+      <br>• 100‑item targeted survey & secure document ingest
+      <br>• OCI / HOCI / JCI scores with friction analysis
+      <br>• 12‑page executive PDF brief
+      <br>• Baseline org chart & structural snapshot
+      <br>• 30‑minute strategist Q&A
+      <br>• “Assessment lite” foundation for future optimization
+  <br><br><a href="https://calendly.com/jeremyestrella/30min?utm=one-time-diagnostic&utm_source=wp-faq&utm_medium=details-link&utm_campaign=one-time-diagnostic&utm_content=packages-faq" class="btn">Schedule Diagnostic →</a>
     </p>
   </details>
 
-  <details>
-    <summary>How does the <em>Monthly Subscription</em> work?</summary>
+  <details data-faq="monthly-subscription">
+    <summary>How does the <em>Monthly Subscription</em> ($2,995/mo) work?</summary>
     <p>
-      <strong>Unlimited assessments</strong> with continuous optimization:
-      <br>• Monthly 20-page progress reports with algorithm insights
-      <br>• Real-time dashboard refreshes and updates
-      <br>• <strong>60-minute monthly office hours with expert consultant</strong>
-      <br>• Ongoing org chart updates and scenario modeling
-      <br>• Continuous AI opportunity identification with expert review
-      <br>• Team member onboarding and training
-      <br>• Cancel or upgrade anytime
-      <br><br><a href="https://organizational-realign-clean-bst3e3k3d.vercel.app/api/stripe/create-tier-checkout?tier=monthly-subscription" class="btn">
-        Start Monthly Subscription $2,995/mo
-      </a>
+      <strong>Continuous organizational optimization:</strong>
+      <br>• Unlimited assessment reruns
+      <br>• Live dashboard refresh & CSV / export pipeline
+      <br>• DSCH algorithm unlocked (adds structural capacity modeling)
+      <br>• 60‑minute office hours each month
+      <br>• Iterate improvements term by term
+  <br><br><a href="https://calendly.com/jeremyestrella/30min?utm=monthly-subscription&utm_source=wp-faq&utm_medium=details-link&utm_campaign=monthly-subscription&utm_content=packages-faq" class="btn">Discuss Subscription →</a>
     </p>
   </details>
 
-  <details>
-    <summary>Who should choose the <em>Comprehensive Package</em>?</summary>
+  <details data-faq="comprehensive-package">
+    <summary>What is the <em>Comprehensive Package</em> ($9,900)?</summary>
     <p>
-      <strong>Executive-level algorithmic insights + strategic workshop</strong> perfect for board presentations:
-      <br>• All features of One-Time Assessment
-      <br>• <strong>45-page executive board-ready report</strong>
-      <br>• Advanced scenario modeling with 5+ cost projections
-      <br>• Custom implementation timeline (12-month roadmap)
-      <br>• Team training and collaboration setup
-      <br>• <strong>90-minute expert strategy workshop</strong>
-      <br>• Quarterly check-ins and progress reviews with expert
-      <br>• Priority AI automation implementation plan
-      <br><br><a href="https://organizational-realign-clean-bst3e3k3d.vercel.app/api/stripe/create-tier-checkout?tier=comprehensive-package" class="btn">
-        Purchase Comprehensive Package $9,995
-      </a>
+      <strong>Deep narrative & strategic synthesis:</strong>
+      <br>• 25–30 page AI-enhanced narrative
+      <br>• 90‑minute strategy session
+      <br>• Cost‑saving ranges & prioritized themes
+      <br>• Scenario builder add‑on available (+$5k)
+      <br>• Executive decision package & roadmap framing
+  <br><br><a href="https://calendly.com/jeremyestrella/30min?utm=comprehensive-package&utm_source=wp-faq&utm_medium=details-link&utm_campaign=comprehensive-package&utm_content=packages-faq" class="btn">Request Scope →</a>
     </p>
   </details>
 
-  <details>
-    <summary>What extra value comes with <em>Enterprise Transformation</em>?</summary>
+  <details data-faq="enterprise-transformation">
+    <summary>What does <em>Enterprise Transformation</em> (from $24k base) include?</summary>
     <p>
-      <strong>Complete organizational transformation with ongoing expert support</strong> for multi-campus systems:
-      <br>• All features of Comprehensive Package
-      <br>• <strong>55-page comprehensive transformation report</strong>
-      <br>• Unlimited scenario modeling & API integration
-      <br>• Power BI embedded dashboards & connectors
-      <br>• Full team management and training program
-      <br>• Dedicated success manager and monthly reviews
-      <br>• <strong>On-site facilitation with reorganization expert</strong>
-      <br>• <strong>Quarterly health audits and strategic reviews</strong>
-      <br>• Enterprise AI automation strategy & implementation
-      <br>• 12-month partnership with ongoing expert support
-      <br><br><a href="https://organizational-realign-clean-bst3e3k3d.vercel.app/api/stripe/create-tier-checkout?tier=enterprise-transformation" class="btn">
-        Purchase Enterprise Transformation $24,000
-      </a>
+      <strong>Full platform + facilitation program:</strong>
+      <br>• Base platform access & facilitation
+      <br>• Unlimited scenario builder & savings modeling
+      <br>• Power BI embedded analytics & integrations
+      <br>• Quarterly audit & guidance cadence
+      <br>• Modular add‑ons (+$5k each): integrations, benchmarking, governance, custom analytics
+  <br><br><a href="https://calendly.com/jeremyestrella/30min?utm=enterprise-transformation&utm_source=wp-faq&utm_medium=details-link&utm_campaign=enterprise-transformation&utm_content=packages-faq" class="btn">Book Executive Briefing →</a>
     </p>
   </details>
-
-  <details>
-    <summary>What's included in the <em>Quick Wins Assessment</em> (FREE)?</summary>
-    <p>
-      <strong>Perfect introduction to our patent-pending methodology:</strong>
-      <br>• 12 targeted questions in 4 key organizational areas
-      <br>• Immediate recommendations & savings estimates
-      <br>• Core algorithmic insights and scoring preview
-      <br>• <strong>Expert review</strong> of key findings
-      <br>• Perfect introduction to our methodology
-      <br>• No credit card required
-      <br>• Instant results with upgrade options
-      <br><br><a href="https://organizational-realign-clean-bst3e3k3d.vercel.app/quick-wins" class="btn btn-gold">
-        Start Free Assessment →
-      </a>
-    </p>
-  </details>
+  <p style="font-size:.7rem;color:var(--nps-slate);margin:1.2rem 0 0;">Pricing in USD. Scenario builder +$5k (Comprehensive). Enterprise modules (+$5k each). Advisory/office hours do not roll over. Subject to services agreement.</p>
 </section>
 
 <!-- ============ COMPETITIVE ADVANTAGE ============ -->
 <section style="max-width:1040px;margin:0 auto;padding:2rem 1rem;">
   <h2 class="heading-lg">Competitive Advantage</h2>
 
-  <details>
+  <details data-faq="generic-ai">
     <summary>How is this different from using ChatGPT or Claude for organizational analysis?</summary>
     <p>
       <strong>Generic AI tools are language models—not organizational science:</strong>
@@ -266,7 +299,7 @@ details p{padding:0 1.4rem 1.2rem;margin:0;color:#444;line-height:1.6;font-size:
     </p>
   </details>
 
-  <details>
+  <details data-faq="patent-pending">
     <summary>What makes your algorithms "patent-pending" and proprietary?</summary>
     <p>
       Our algorithms are purpose-built mathematical models for organizational analysis, not adapted from generic AI:
@@ -281,7 +314,7 @@ details p{padding:0 1.4rem 1.2rem;margin:0;color:#444;line-height:1.6;font-size:
     </p>
   </details>
 
-  <details>
+  <details data-faq="expert-guidance">
     <summary>What kind of expert guidance do you provide?</summary>
     <p>
       Our founder Jeremy Estrella has <strong>20+ years experience and had led multi-campus realignments</strong> and student-success initiatives. This isn't theoretical consulting—it's guidance from someone who has:
@@ -300,7 +333,7 @@ details p{padding:0 1.4rem 1.2rem;margin:0;color:#444;line-height:1.6;font-size:
 <section style="max-width:1040px;margin:0 auto;padding:2rem 1rem;">
   <h2 class="heading-lg">Data &amp; Security</h2>
 
-  <details>
+  <details data-faq="data-security">
     <summary>Is my data secure?</summary>
     <p>
       Yes. All uploads are encrypted in transit (TLS 1.3) and at rest (AES-256).
@@ -311,7 +344,7 @@ details p{padding:0 1.4rem 1.2rem;margin:0;color:#444;line-height:1.6;font-size:
     </p>
   </details>
 
-  <details>
+  <details data-faq="data-ownership">
     <summary>Who owns the assessment results?</summary>
     <p>
       You do. NorthPath retains anonymized, aggregated benchmarks only with your consent—never identifiable data.
@@ -319,7 +352,7 @@ details p{padding:0 1.4rem 1.2rem;margin:0;color:#444;line-height:1.6;font-size:
     </p>
   </details>
 
-  <details>
+  <details data-faq="pii">
     <summary>Can we run the diagnostic without sharing PII?</summary>
     <p>
       Absolutely. Our algorithms only need org charts, role titles, budget lines,
@@ -333,21 +366,20 @@ details p{padding:0 1.4rem 1.2rem;margin:0;color:#444;line-height:1.6;font-size:
 <section style="max-width:1040px;margin:0 auto;padding:2rem 1rem;">
   <h2 class="heading-lg">Implementation &amp; Support</h2>
 
-  <details>
-    <summary>What expert support is included with each package?</summary>
+  <details data-faq="support-included">
+    <summary>What expert support is included with each tier?</summary>
     <p>
-      <strong>Every package includes expert human guidance:</strong>
-      <br>• <strong>Express:</strong> 30-minute strategist debrief with reorganization expert
-      <br>• <strong>One-Time:</strong> 60-minute strategy session plus email support
-      <br>• <strong>Comprehensive:</strong> 90-minute workshop plus quarterly check-ins with expert
-      <br>• <strong>Enterprise:</strong> On-site facilitation + dedicated success manager + quarterly audits
-      <br>• <strong>Monthly:</strong> 60-minute monthly office hours with expert consultant
+      <strong>Expert guidance across tiers:</strong>
+      <br>• <strong>One‑Time Diagnostic:</strong> 30‑minute strategist Q&A
+      <br>• <strong>Monthly Subscription:</strong> 60‑minute office hours each month + async Q&A
+      <br>• <strong>Comprehensive Package:</strong> 90‑minute strategy session + decision package
+      <br>• <strong>Enterprise Transformation:</strong> Quarterly facilitation, audits, on‑demand strategist access
       <br><br>
-      This isn't automated support—it's guidance from someone with firsthand reorganization experience.
+      Precision algorithms + human implementation experience = accelerated adoption.
     </p>
   </details>
 
-  <details>
+  <details data-faq="add-colleagues">
     <summary>How do we add colleagues to the platform?</summary>
     <p>
       <strong>Built-in team collaboration features:</strong>
@@ -359,7 +391,7 @@ details p{padding:0 1.4rem 1.2rem;margin:0;color:#444;line-height:1.6;font-size:
     </p>
   </details>
 
-  <details>
+  <details data-faq="it-resources">
     <summary>Do we need IT resources to implement the recommendations?</summary>
     <p>
       Many quick-wins are process or span-of-control changes requiring no IT lift.
@@ -378,9 +410,9 @@ details p{padding:0 1.4rem 1.2rem;margin:0;color:#444;line-height:1.6;font-size:
     Book a 30-minute discovery call with our reorganization expert or explore a full sample report.
   </p>
   <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:1rem;">
-    <a href="https://calendly.com/jeremyestrella/30min" class="btn">Book Discovery Call</a>
-    <a href="https://northpathstrategies.org/community-college-sample-report/" class="btn" style="background:#fff;color:var(--nps-blue);border-color:var(--nps-blue);">View Sample Reports</a>
-    <a href="https://organizational-realign-clean-bst3e3k3d.vercel.app/quick-wins" class="btn btn-gold">Try Free Assessment</a>
+  <a href="https://calendly.com/jeremyestrella/30min?utm_source=wp-faq&utm_medium=cta-button&utm_campaign=strategy-call&utm_content=bottom-cta" class="btn" data-cta="bottom" data-cta-position="bottom-primary" data-cta-destination="strategy-call">Book Discovery Call</a>
+    <a href="https://northpathstrategies.org/community-college-sample-report/" class="btn" style="background:#fff;color:var(--nps-blue);border-color:var(--nps-blue);" data-cta="bottom" data-cta-position="bottom-secondary" data-cta-destination="sample-reports">View Sample Reports</a>
+  <a href="https://assessments.northpathstrategies.org/quick-wins?utm_source=wp-faq&utm_medium=cta-button&utm_campaign=quick-wins&utm_content=bottom-cta" class="btn btn-gold" data-cta="bottom" data-cta-position="bottom-tertiary" data-cta-destination="quick-wins">Try Free Assessment</a>
   </div>
 </section>
 
@@ -398,7 +430,46 @@ details p{padding:0 1.4rem 1.2rem;margin:0;color:#444;line-height:1.6;font-size:
         "A realignment should free leaders to coach, not drown them in bureaucracy.  
         Our patent-pending algorithms provide the precision, while expert human guidance ensures successful implementation—that's the NorthPath promise."
       </p>
-      <a href="https://www.linkedin.com/in/jeremyestrella" target="_blank" rel="noopener" class="btn" style="font-size:.85rem;padding:.6rem 1.3rem;">Connect on LinkedIn</a>
+      <a href="https://www.linkedin.com/in/jeremyestrella" target="_blank" rel="noopener" class="btn" style="font-size:.85rem;padding:.6rem 1.3rem;" data-cta="social" data-cta-position="founder" data-cta-destination="linkedin">Connect on LinkedIn</a>
     </div>
   </div>
 </section>
+
+<!-- Sticky Conversion Mini-Bar -->
+<div id="mini-convert" style="position:fixed;bottom:0;left:0;right:0;background:rgba(22,84,163,.97);color:#fff;padding:.75rem 1rem;display:flex;flex-wrap:wrap;gap:.75rem;align-items:center;justify-content:center;z-index:9999;font-size:.85rem;box-shadow:0 -2px 8px rgba(0,0,0,.15);">
+  <button type="button" aria-label="Close" style="background:transparent;border:none;color:#fff;font-size:1rem;position:absolute;right:.75rem;top:.4rem;cursor:pointer;">✕</button>
+  <strong style="display:flex;align-items:center;gap:.4rem;">Ready to apply these answers?</strong>
+  <a href="https://assessments.northpathstrategies.org/quick-wins?utm_source=wp-faq&utm_medium=sticky-mini&utm_campaign=quick-wins&utm_content=mini-bar" class="btn btn-gold" style="padding:.55rem 1.2rem;font-size:.75rem;" data-cta="mini" data-cta-position="sticky" data-cta-destination="quick-wins">Free Quick Wins</a>
+  <a href="https://calendly.com/jeremyestrella/30min?utm_source=wp-faq&utm_medium=sticky-mini&utm_campaign=one-time-diagnostic&utm_content=mini-bar" class="btn" style="padding:.55rem 1.2rem;font-size:.75rem;background:#fff;color:var(--nps-blue);border-color:#fff;" data-cta="mini" data-cta-tier="one-time" data-cta-position="sticky" data-cta-destination="diagnostic-call">Schedule Diagnostic →</a>
+</div>
+<div id="cta-feedback" aria-live="polite" style="position:absolute;left:-9999px;height:1px;width:1px;overflow:hidden;"> </div>
+
+<!-- Interaction + Tracking Script -->
+<script>
+(function(){
+  // details toggle tracking
+  document.addEventListener('toggle', function(e){
+    if(e.target && e.target.tagName === 'DETAILS'){
+      var faqId = e.target.getAttribute('data-faq') || '';
+      var payload = {event:'faq_toggle',id:faqId,open:e.target.open,ts:Date.now()};
+      if(window.dataLayer){window.dataLayer.push(payload);} else {console.info('[FAQ]',payload);}    }
+  }, true);
+  // sticky bar close
+  var bar = document.getElementById('mini-convert');
+  if(bar){
+    if(localStorage.getItem('npsFaqMiniDismissed')==='1'){bar.remove();}
+    else {
+      var closeBtn = bar.querySelector('button');
+      if(closeBtn){closeBtn.addEventListener('click', function(){localStorage.setItem('npsFaqMiniDismissed','1');bar.remove();});}
+    }
+  }
+  // CTA click tracking
+  function trackClick(e){
+    var t = e.target.closest('[data-cta]');
+    if(!t) return;
+    var payload = {event:'cta_click',page:'faq',cta:t.getAttribute('data-cta'),position:t.getAttribute('data-cta-position')||'',tier:t.getAttribute('data-cta-tier')||'',destination:t.getAttribute('data-cta-destination')||'',href:t.getAttribute('href'),ts:Date.now()};
+    if(window.dataLayer){window.dataLayer.push(payload);} else {console.info('[CTA]',payload);}    var live=document.getElementById('cta-feedback');if(live){live.textContent='CTA clicked: '+(payload.cta||'');}
+  }
+  document.addEventListener('click', trackClick);
+})();
+</script>

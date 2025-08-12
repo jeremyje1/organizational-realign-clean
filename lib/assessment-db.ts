@@ -66,6 +66,7 @@ export class AssessmentDB {
     tier: AssessmentTier;
     stripeCustomerId?: string;
     stripeSessionId?: string;
+  attributionJson?: any; // optional attribution payload
   }): Promise<Assessment> {
     const id = crypto.randomUUID();
     const now = new Date();
@@ -73,10 +74,10 @@ export class AssessmentDB {
     await prisma.$executeRaw`
       INSERT INTO "public"."assessments" (
         "id", "user_id", "tier", "status", "stripe_customer_id", "stripe_session_id", 
-        "created_at", "updated_at"
+        "created_at", "updated_at", "responses"
       ) VALUES (
         ${id}, ${data.userId}, ${data.tier}, 'PENDING', 
-        ${data.stripeCustomerId}, ${data.stripeSessionId}, ${now}, ${now}
+        ${data.stripeCustomerId}, ${data.stripeSessionId}, ${now}, ${now}, COALESCE(${data.attributionJson ? JSON.stringify({ _attr: data.attributionJson }) : '{}'}, '{}')::jsonb
       )
     `;
 

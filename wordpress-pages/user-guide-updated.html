@@ -2,7 +2,11 @@
 <!--  NorthPath Strategies • Complete User Manual (v2025-07-20) -->
 <!--  Comprehensive Process Guide & Platform Manual     -->
 <!--  Updated with Correct Production URLs              -->
+<!--  Enhanced: skip link • dark mode • reduced motion  -->
+<!--            tracking + sticky conversion mini bar    -->
 <!-- ================================================== -->
+
+<a href="#manual-main" class="skip-link" style="position:absolute;left:-999px;top:auto;width:1px;height:1px;overflow:hidden;">Skip to main content</a>
 
 <style>
   :root {
@@ -14,6 +18,7 @@
     --nps-shadow: 0 4px 12px rgba(0,0,0,.06);
   }
   body { margin:0; font-family:"Inter",sans-serif; }
+  .skip-link:focus{left:0;width:auto;height:auto;padding:.75rem 1rem;background:#000;color:#fff;z-index:10000}
 
   .nps-wrap { max-width:1200px; margin:0 auto; padding:4rem 1rem; }
   .nps-alt  { background: var(--nps-light); }
@@ -61,7 +66,8 @@
   h4 { color: var(--nps-slate); font-weight: 600; margin: 1.5rem 0 0.5rem 0; }
   
   p { color: var(--nps-slate); line-height: 1.7; margin-bottom: 1.5rem; font-size: 1.05rem; }
-  ul, ol { color: #444; line-height: 1.6; margin-bottom: 1.5rem; }
+  /* Accessibility: use semantic slate variable so dark mode inverts properly (replaces hardcoded #444) */
+  ul, ol { color: var(--nps-slate); line-height: 1.6; margin-bottom: 1.5rem; }
   li { margin-bottom: 0.5rem; }
   
   .process-grid {
@@ -220,10 +226,26 @@
     .process-grid { grid-template-columns: 1fr; }
     .toc ul { columns: 1; }
   }
+  /* Reduced motion */
+  @media (prefers-reduced-motion: reduce){*{animation-duration:.001ms!important;animation-iteration-count:1!important;transition:none!important}}
+  /* Dark mode */
+  @media (prefers-color-scheme: dark){
+    :root{--nps-light:#1e2630;--nps-slate:#d5dae0;--nps-shadow:0 4px 14px rgba(0,0,0,.55)}
+    body{background:#12181f;color:#e6ecf3}
+    .process-card{background:#1f2a34;color:#d5dae0}
+    .algorithm-card{background:linear-gradient(135deg,#123b70,#0b2746)}
+    .tier-comparison{background:#1f2a34}
+    .tier-table th{background:#123b70}
+    .tier-table td{background:#1f2a34;color:#d5dae0}
+    .tier-table tr:nth-child(even) td{background:#243242}
+    .toc{background:#1f2a34}
+    .highlight-box{background:#2b3a4c;border-color:#2b3a4c;color:#d5dae0}
+    #mini-convert{background:rgba(18,59,112,.96)}
+  }
 </style>
 
 <!-- HERO -->
-<section class="nps-hero">
+<section class="nps-hero" id="manual-main">
   <div class="nps-wrap">
     <h1>Complete User Manual & Process Guide</h1>
     <p class="nps-sub">
@@ -339,7 +361,7 @@
 </section>
 
 <!-- 3. EXPERT GUIDANCE PROCESS -->
-<section id="expert-guidance" class="nps-wrap">
+<section id="expert-guidance" class="nps-wrap nps-alt">
   <h2>3. Expert Guidance Process</h2>
   
   <h3>What You Get with Every Package</h3>
@@ -356,12 +378,13 @@
   
   <h4>Expert Guidance by Tier</h4>
   <ul>
-    <li><strong>Express Diagnostic:</strong> 30-minute strategist debrief with implementation priorities</li>
-    <li><strong>One-Time Assessment:</strong> 60-minute strategy session plus email support</li>
-    <li><strong>Comprehensive Package:</strong> 90-minute workshop plus quarterly check-ins</li>
-    <li><strong>Enterprise Transformation:</strong> On-site facilitation + dedicated success manager + quarterly audits</li>
-    <li><strong>Monthly Subscription:</strong> 60-minute monthly office hours with ongoing guidance</li>
+    <li><strong>Quick Wins (Free):</strong> Immediate friction hotspot indices + optional expert review summary.</li>
+    <li><strong>One‑Time Diagnostic ($4,995):</strong> 100‑item targeted survey, secure document ingest, 12‑page executive PDF, OCI / HOCI / JCI scores, 30‑minute strategist Q&A.</li>
+    <li><strong>Monthly Subscription ($2,995/mo):</strong> Unlimited assessments, live dashboard refresh, CSV / export pipeline, DSCH algorithm unlocked, 60‑minute office hours per month.</li>
+    <li><strong>Comprehensive Package ($9,900):</strong> 25–30 page AI narrative, 90‑minute strategy session, cost‑saving ranges, scenario builder add‑on (+$5k), prioritized roadmap themes.</li>
+    <li><strong>Enterprise Transformation (from $24k base):</strong> Platform + facilitation, unlimited scenario builder, Power BI embedded analytics, API/connectors, quarterly audit & guidance, modular add‑ons (+$5k ea.).</li>
   </ul>
+  <p style="font-size:.85rem;color:var(--nps-slate);margin-top:-1rem;">Pricing in USD. Add‑ons (e.g., scenario builder, integration suite) billed separately where indicated. Advisory time does not roll over. Subject to services agreement.</p>
   
   <div class="highlight-box">
     <h4>🧠 The Human Element</h4>
@@ -427,198 +450,154 @@
   
   <h3>Timeline by Package</h3>
   <ul>
-    <li><strong>Quick Wins (Free):</strong> Instant results with expert review within 24 hours</li>
-    <li><strong>Express Diagnostic:</strong> 3-5 business days for complete analysis and expert debrief</li>
-    <li><strong>One-Time Assessment:</strong> 7-10 business days for full analysis and 60-minute strategy session</li>
-    <li><strong>Comprehensive Package:</strong> 7-10 business days for analysis, ongoing quarterly support</li>
-    <li><strong>Enterprise Transformation:</strong> 5 days for preliminary insights, ongoing expert support throughout</li>
-    <li><strong>Monthly Subscription:</strong> Continuous analysis with monthly expert office hours</li>
+    <li><strong>Quick Wins (Free):</strong> Instant automated output; optional expert review within 24 hrs.</li>
+    <li><strong>One‑Time Diagnostic:</strong> 5–7 business days from data receipt to executive brief & Q&A.</li>
+    <li><strong>Monthly Subscription:</strong> Continuous; dashboard refreshes as new data/uploads occur; office hours scheduled monthly.</li>
+    <li><strong>Comprehensive Package:</strong> 7–10 business days for narrative + strategy session; follow‑on refinement as needed.</li>
+    <li><strong>Enterprise Transformation:</strong> Preliminary insights inside first 5 days; quarterly audit & facilitation cadence thereafter.</li>
   </ul>
 </section>
 
 <!-- 5. TIER COMPARISON -->
 <section id="tier-comparison" class="nps-wrap">
-  <h2>5. Complete Package Comparison</h2>
-  
+  <h2>5. Package Comparison (Current Tiers)</h2>
   <div class="tier-comparison">
-    <table class="tier-table">
+    <table class="tier-table" aria-label="Comparison of current NorthPath tiers">
       <thead>
         <tr>
           <th>Feature</th>
-          <th>Quick Wins<br>(FREE)</th>
-          <th>Express<br>($2,495)</th>
-          <th>One-Time<br>($4,995)</th>
-          <th>Comprehensive<br>($9,995)</th>
-          <th>Enterprise<br>(Contact for Quote)</th>
-          <th>Monthly<br>($2,995/mo)</th>
+          <th>Quick Wins<br><span style="font-weight:400;">Free</span></th>
+          <th>One‑Time Diagnostic<br><span style="font-weight:400;">$4,995</span></th>
+          <th>Monthly Subscription<br><span style="font-weight:400;">$2,995/mo</span></th>
+          <th>Comprehensive Package<br><span style="font-weight:400;">$9,900</span></th>
+          <th>Enterprise Transformation<br><span style="font-weight:400;">from $24k</span></th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td><strong>Questions</strong></td>
-          <td>12 targeted</td>
-          <td>60+ enhanced</td>
-          <td>100+ comprehensive</td>
-          <td>135+ detailed</td>
-          <td>155+ enterprise</td>
-          <td>120+ ongoing</td>
-        </tr>
-        <tr>
-          <td><strong>Report Pages</strong></td>
-          <td>Instant results</td>
-          <td>25-page report</td>
-          <td>35-page executive</td>
-          <td>45-page board-ready</td>
-          <td>55-page transformation</td>
-          <td>20-page monthly</td>
+          <td><strong>Assessment Depth</strong></td>
+          <td>12‑item friction scan</td>
+          <td>100 targeted items</td>
+          <td>Unlimited reruns</td>
+          <td>Unlimited + narrative synthesis</td>
+          <td>Unlimited + multi‑unit modeling</td>
         </tr>
         <tr>
           <td><strong>Algorithms</strong></td>
-          <td>Core preview</td>
+          <td>Preview indices</td>
           <td>OCI™, HOCI™, JCI™</td>
-          <td>All 6 algorithms</td>
-          <td>All 6 algorithms</td>
-          <td>All 6 algorithms</td>
-          <td>All 6 algorithms</td>
+          <td>All 6 (adds DSCH, CRF, LEI)</td>
+          <td>All 6 + scenario add‑on (+$5k)</td>
+          <td>All 6 + advanced benchmarking</td>
         </tr>
         <tr>
-          <td><strong>Expert Guidance</strong></td>
-          <td>Expert review</td>
-          <td>30-min debrief</td>
-          <td>60-min strategy</td>
-          <td>90-min workshop</td>
-          <td>On-site facilitation</td>
-          <td>60-min monthly</td>
+          <td><strong>Deliverables</strong></td>
+          <td>On‑screen results</td>
+          <td>12‑page executive brief</td>
+          <td>Dashboards & exports</td>
+          <td>25–30 page AI narrative</td>
+          <td>Roadmap, audits, governance</td>
         </tr>
         <tr>
-          <td><strong>Org Charts</strong></td>
-          <td>Basic preview</td>
-          <td>AI-generated</td>
-          <td>Advanced analysis</td>
-          <td>Multiple scenarios</td>
-          <td>Unlimited scenarios</td>
-          <td>Real-time updates</td>
+          <td><strong>Org Chart & Scenarios</strong></td>
+          <td>—</td>
+          <td>Baseline snapshot</td>
+          <td>Live updates & savings views</td>
+          <td>Scenario builder (add‑on)</td>
+          <td>Unlimited scenario modeling</td>
         </tr>
         <tr>
-          <td><strong>Team Collaboration</strong></td>
-          <td>Individual only</td>
-          <td>✓ Included</td>
-          <td>✓ Role-based</td>
-          <td>✓ Full training</td>
-          <td>✓ Management program</td>
-          <td>✓ Unlimited</td>
+          <td><strong>Expert Interaction</strong></td>
+          <td>Optional review</td>
+          <td>30‑min Q&A</td>
+          <td>60‑min monthly office hours</td>
+          <td>90‑min strategy session</td>
+          <td>Quarterly facilitation + on‑demand</td>
         </tr>
         <tr>
-          <td><strong>Implementation Support</strong></td>
-          <td>Self-guided</td>
-          <td>Basic guidance</td>
-          <td>Implementation roadmap</td>
-          <td>Quarterly check-ins</td>
-          <td>Dedicated manager</td>
-          <td>Ongoing support</td>
+          <td><strong>Ideal Use</strong></td>
+          <td>Initial validation</td>
+          <td>Executive snapshot</td>
+          <td>Ongoing optimization</td>
+          <td>Board & investment narrative</td>
+          <td>Enterprise change program</td>
         </tr>
       </tbody>
     </table>
+    <p style="font-size:.75rem;color:var(--nps-slate);margin-top:1rem;">Scenario builder +$5k (Comprehensive). Enterprise modules (+$5k each): integrations, advanced benchmarking, extended governance, custom analytics.</p>
   </div>
   
   <div class="button-group">
-    <a href="https://organizational-realign-clean-bst3e3k3d.vercel.app/quick-wins" class="nps-btn nps-btn-gold">Start Free Quick Wins →</a>
-    <a href="https://organizational-realign-clean-bst3e3k3d.vercel.app/api/stripe/create-tier-checkout?tier=express-diagnostic" class="nps-btn">Try Express Diagnostic →</a>
-    <a href="https://calendly.com/jeremyestrella/30min" class="nps-btn">Book Strategy Call →</a>
+  <a href="https://assessments.northpathstrategies.org/quick-wins?utm_source=wp-user-guide&utm_medium=cta-button&utm_campaign=quick-wins&utm_content=mid-cta-1" class="nps-btn nps-btn-gold" data-cta="mid" data-cta-position="mid-primary" data-cta-destination="quick-wins">Start Free Quick Wins →</a>
+  <a href="https://calendly.com/jeremyestrella/30min?utm_source=wp-user-guide&utm_medium=cta-button&utm_campaign=one-time-diagnostic&utm_content=mid-cta-1" class="nps-btn" data-cta="mid" data-cta-position="mid-secondary" data-cta-tier="one-time" data-cta-destination="diagnostic-call">Schedule Diagnostic →</a>
+  <a href="https://calendly.com/jeremyestrella/30min?utm_source=wp-user-guide&utm_medium=cta-button&utm_campaign=subscription&utm_content=mid-cta-1" class="nps-btn" data-cta="mid" data-cta-position="mid-tertiary" data-cta-destination="subscription-call">Discuss Subscription →</a>
   </div>
 </section>
 
 <!-- 6. TEAM COLLABORATION -->
 <section id="team-collaboration" class="nps-wrap nps-alt">
-  <h2>6. Team Collaboration Features</h2>
-  
-  <h3>Built-In Team Management</h3>
-  <p>All assessment packages include comprehensive team collaboration features at no additional cost:</p>
-  
-  <h4>Team Invitation Process</h4>
-  <ol>
-    <li><strong>Admin Setup:</strong> Primary account holder becomes team administrator</li>
-    <li><strong>Send Invitations:</strong> Add team members via secure email invitations</li>
-    <li><strong>Role Assignment:</strong> Assign roles (Viewer, Editor, Admin) with appropriate permissions</li>
-    <li><strong>Accept Invitations:</strong> Team members receive secure links to join the assessment</li>
-    <li><strong>Real-Time Collaboration:</strong> All members can view progress, add comments, and share insights</li>
-  </ol>
-  
-  <h4>Role-Based Permissions</h4>
-  <ul>
-    <li><strong>Admin:</strong> Full access to all features, can invite/remove members, manage settings</li>
-    <li><strong>Editor:</strong> Can complete assessments, view reports, add comments, invite others</li>
-    <li><strong>Viewer:</strong> Can view completed assessments and reports, add comments only</li>
-  </ul>
-  
-  <h4>Team Dashboard Features</h4>
-  <ul>
-    <li>Real-time completion status tracking</li>
-    <li>Member activity and contribution visibility</li>
-    <li>Secure document sharing and version control</li>
-    <li>Notification system for team updates</li>
-    <li>Export capabilities for team reports</li>
-  </ul>
-  
-  <div class="highlight-box">
-    <h4>🚀 Team Collaboration Benefits</h4>
-    <p>Research shows that organizationally diverse teams provide more accurate assessments and achieve better implementation results. NorthPath's team features ensure everyone's perspective is captured while maintaining data security.</p>
+  <div class="tier-comparison">
+    <table class="tier-table">
+      <thead>
+        <tr>
+          <th>Feature</th>
+          <th>Express<br>($99)</th>
+          <th>Monthly<br>($149/mo)</th>
+          <th>Enterprise<br>(Custom)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Questions</strong></td>
+          <td>60 adaptive</td>
+          <td>Unlimited reruns</td>
+          <td>Custom modules</td>
+        </tr>
+        <tr>
+          <td><strong>Report / Output</strong></td>
+          <td>Summary PDF</td>
+          <td>Trend & comparison dashboards</td>
+          <td>Executive transformation suite</td>
+        </tr>
+        <tr>
+          <td><strong>Algorithms</strong></td>
+          <td>OCI™, HOCI™, JCI™</td>
+          <td>+ DSCH, CRF (as released)</td>
+          <td>Full + advanced modeling</td>
+        </tr>
+        <tr>
+          <td><strong>Org Chart</strong></td>
+          <td>Auto-generate</td>
+          <td>Refresh & export</td>
+          <td>Multi-scenario + benchmarking</td>
+        </tr>
+        <tr>
+          <td><strong>Scenario Modeling</strong></td>
+          <td>—</td>
+          <td>Included</td>
+          <td>Facilitated workshops</td>
+        </tr>
+        <tr>
+          <td><strong>AI Opportunity Mapping</strong></td>
+          <td>Core suggestions</td>
+          <td>Expanded library</td>
+          <td>Custom roadmap</td>
+        </tr>
+        <tr>
+          <td><strong>Team Collaboration</strong></td>
+          <td>Up to 5 users</td>
+          <td>Unlimited users</td>
+          <td>Custom roles & governance</td>
+        </tr>
+        <tr>
+          <td><strong>Expert Guidance</strong></td>
+          <td>Self-directed resources</td>
+          <td>Asynchronous + email</td>
+          <td>On-demand strategist + audits</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
-</section>
-
-<!-- 7. DATA & SECURITY -->
-<section id="data-security" class="nps-wrap">
-  <h2>7. Data Security & Privacy</h2>
-  
-  <h3>Enterprise-Grade Security</h3>
-  <ul>
-    <li><strong>Encryption in Transit:</strong> TLS 1.3 encryption for all data transmission</li>
-    <li><strong>Encryption at Rest:</strong> AES-256 encryption for stored data</li>
-    <li><strong>Role-Based Access:</strong> Granular permissions and access controls</li>
-    <li><strong>SOC-2 Aligned:</strong> Following industry-standard security policies</li>
-    <li><strong>Regular Audits:</strong> Security assessments and compliance reviews</li>
-  </ul>
-  
-  <h3>Privacy Protection</h3>
-  <ul>
-    <li><strong>Data Ownership:</strong> You own all assessment results and data</li>
-    <li><strong>Anonymized Benchmarks:</strong> Only aggregated, non-identifiable data used for benchmarking (with consent)</li>
-    <li><strong>PII Protection:</strong> Personal identifiers can be masked or removed</li>
-    <li><strong>Compliance Ready:</strong> HIPAA and FERPA addenda available for healthcare and education clients</li>
-    <li><strong>Data Retention:</strong> Clear policies for data storage and deletion</li>
-  </ul>
-  
-  <h3>What Data is Required</h3>
-  <p><strong>Minimum Requirements:</strong></p>
-  <ul>
-    <li>Organizational charts and reporting relationships</li>
-    <li>Role titles and general responsibilities</li>
-    <li>Budget lines and cost center information</li>
-    <li>Aggregated HR data (no personal identifiers needed)</li>
-  </ul>
-  
-  <p><strong>Optional for Enhanced Analysis:</strong></p>
-  <ul>
-    <li>Process documentation and workflows</li>
-    <li>Technology inventory and licensing information</li>
-    <li>Performance metrics and KPIs</li>
-    <li>Strategic planning documents</li>
-  </ul>
-</section>
-
-<!-- 8. REPORT GENERATION -->
-<section id="reporting" class="nps-wrap nps-alt">
-  <h2>8. AI-Enhanced Report Generation</h2>
-  
-  <h3>Report Components</h3>
-  <p>Every NorthPath report combines algorithmic precision with expert analysis:</p>
-  
-  <h4>Executive Summary</h4>
-  <ul>
-    <li>Key findings and algorithmic scores</li>
-    <li>Expert interpretation and context</li>
-    <li>Priority recommendations with timelines</li>
-    <li>Financial impact projections</li>
   </ul>
   
   <h4>Diagnostic Analysis</h4>
@@ -813,21 +792,21 @@
       <div class="process-number">1</div>
       <h4>New to NorthPath?</h4>
       <p>Start with our free Quick Wins assessment to experience our methodology and get immediate value.</p>
-      <a href="https://organizational-realign-clean-bst3e3k3d.vercel.app/quick-wins" class="nps-btn nps-btn-gold" style="margin-top: 1rem;">Start Free Assessment →</a>
+  <a href="https://assessments.northpathstrategies.org/quick-wins?utm_source=wp-user-guide&utm_medium=card-button&utm_campaign=quick-wins&utm_content=getting-started" class="nps-btn nps-btn-gold" style="margin-top: 1rem;">Start Free Assessment →</a>
     </div>
     
     <div class="process-card">
       <div class="process-number">2</div>
-      <h4>Ready for Full Analysis?</h4>
-      <p>Express Diagnostic provides comprehensive insights with expert guidance in just 3-5 days.</p>
-      <a href="https://organizational-realign-clean-bst3e3k3d.vercel.app/api/stripe/create-tier-checkout?tier=express-diagnostic" class="nps-btn" style="margin-top: 1rem;">Try Express Diagnostic →</a>
+    <h4>Ready for Full Analysis?</h4>
+    <p>Schedule a One‑Time Diagnostic for a focused executive brief delivered in under a week.</p>
+  <a href="https://calendly.com/jeremyestrella/30min?utm_source=wp-user-guide&utm_medium=card-button&utm_campaign=one-time-diagnostic&utm_content=getting-started" class="nps-btn" style="margin-top: 1rem;">Schedule Diagnostic →</a>
     </div>
     
     <div class="process-card">
       <div class="process-number">3</div>
       <h4>Need Expert Consultation?</h4>
       <p>Schedule a strategy call to discuss your specific situation and get personalized recommendations.</p>
-      <a href="https://calendly.com/jeremyestrella/30min" class="nps-btn" style="margin-top: 1rem;">Book Strategy Call →</a>
+  <a href="https://calendly.com/jeremyestrella/30min?utm_source=wp-user-guide&utm_medium=card-button&utm_campaign=strategy-call&utm_content=getting-started" class="nps-btn" style="margin-top: 1rem;">Book Strategy Call →</a>
     </div>
   </div>
   
@@ -873,8 +852,8 @@
   </ol>
   
   <div class="button-group">
-    <a href="https://organizational-realign-clean-bst3e3k3d.vercel.app/quick-wins" class="nps-btn nps-btn-gold">Start Your Journey →</a>
-    <a href="https://calendly.com/jeremyestrella/30min" class="nps-btn">Talk to an Expert →</a>
+  <a href="https://assessments.northpathstrategies.org/quick-wins?utm_source=wp-user-guide&utm_medium=cta-button&utm_campaign=quick-wins&utm_content=journey-cta" class="nps-btn nps-btn-gold" data-cta="journey" data-cta-position="journey-primary" data-cta-destination="quick-wins">Start Your Journey →</a>
+  <a href="https://calendly.com/jeremyestrella/30min?utm_source=wp-user-guide&utm_medium=cta-button&utm_campaign=strategy-call&utm_content=journey-cta" class="nps-btn" data-cta="journey" data-cta-position="journey-secondary" data-cta-destination="strategy-call">Talk to an Expert →</a>
   </div>
 </section>
 
@@ -885,8 +864,30 @@
     Combine patent-pending algorithmic precision with expert implementation guidance from someone who has led successful reorganizations.
   </p>
   <div class="button-group">
-    <a href="https://organizational-realign-clean-bst3e3k3d.vercel.app/quick-wins" class="nps-btn nps-btn-gold">Start Free Assessment →</a>
-    <a href="https://northpathstrategies.org/team-collaboration/">Explore Team Features →</a>
-    <a href="https://calendly.com/jeremyestrella/30min" class="nps-btn" style="background: transparent; border-color: white; color: white;">Schedule Expert Call →</a>
+  <a href="https://assessments.northpathstrategies.org/quick-wins?utm_source=wp-user-guide&utm_medium=final-cta-button&utm_campaign=quick-wins&utm_content=final-cta" class="nps-btn nps-btn-gold" data-cta="final" data-cta-position="final-primary" data-cta-destination="quick-wins">Start Free Assessment →</a>
+    <a href="https://northpathstrategies.org/team-collaboration/" data-cta="final" data-cta-position="final-secondary" data-cta-destination="team-collaboration">Explore Team Features →</a>
+  <a href="https://calendly.com/jeremyestrella/30min?utm_source=wp-user-guide&utm_medium=final-cta-button&utm_campaign=strategy-call&utm_content=final-cta" class="nps-btn" style="background: transparent; border-color: white; color: white;" data-cta="final" data-cta-position="final-tertiary" data-cta-destination="strategy-call">Book Strategy Call →</a>
   </div>
 </section>
+
+<!-- Sticky Conversion Mini-Bar -->
+<div id="mini-convert" style="position:fixed;bottom:0;left:0;right:0;background:rgba(22,84,163,.97);color:#fff;padding:.75rem 1rem;display:flex;flex-wrap:wrap;gap:.7rem;align-items:center;justify-content:center;z-index:9999;font-size:.8rem;box-shadow:0 -2px 8px rgba(0,0,0,.15);">
+  <button type="button" aria-label="Close" style="background:transparent;border:none;color:#fff;font-size:1rem;position:absolute;right:.75rem;top:.4rem;cursor:pointer;">✕</button>
+  <strong>Ready to apply this manual?</strong>
+  <a href="https://assessments.northpathstrategies.org/quick-wins?utm_source=wp-user-guide&utm_medium=sticky-mini&utm_campaign=quick-wins&utm_content=mini-bar" class="nps-btn nps-btn-gold" style="padding:.5rem 1rem;font-size:.7rem;" data-cta="mini" data-cta-position="sticky" data-cta-destination="quick-wins">Free Quick Wins</a>
+  <a href="https://calendly.com/jeremyestrella/30min?utm_source=wp-user-guide&utm_medium=sticky-mini&utm_campaign=one-time-diagnostic&utm_content=mini-bar" class="nps-btn" style="padding:.5rem 1rem;font-size:.7rem;background:#fff;color:var(--nps-blue);border-color:#fff;" data-cta="mini" data-cta-tier="one-time" data-cta-position="sticky">Schedule Diagnostic →</a>
+</div>
+<div id="cta-feedback" aria-live="polite" style="position:absolute;left:-9999px;height:1px;width:1px;overflow:hidden;"> </div>
+
+<!-- Interaction + Tracking Script -->
+<script>
+(function(){
+  var bar=document.getElementById('mini-convert');
+  if(bar){
+    if(localStorage.getItem('npsUserGuideMiniDismissed')==='1'){bar.remove();}
+    else {var c=bar.querySelector('button');if(c){c.addEventListener('click',function(){localStorage.setItem('npsUserGuideMiniDismissed','1');bar.remove();});}}
+  }
+  function trackClick(e){var t=e.target.closest('[data-cta]');if(!t)return;var payload={event:'cta_click',page:'user-guide',cta:t.getAttribute('data-cta'),position:t.getAttribute('data-cta-position')||'',tier:t.getAttribute('data-cta-tier')||'',destination:t.getAttribute('data-cta-destination')||'',href:t.getAttribute('href'),ts:Date.now()};if(window.dataLayer){window.dataLayer.push(payload);}else{console.info('[CTA]',payload);}var live=document.getElementById('cta-feedback');if(live){live.textContent='CTA clicked: '+(payload.cta||'');}}
+  document.addEventListener('click',trackClick);
+})();
+</script>

@@ -96,9 +96,7 @@ export function generateDataDrivenPDFReport(analysis: ComprehensiveAnalysis): js
   };
 
   const getTierSpecificTitle = (tier: string): string => {
-    switch (tier) {
-      case 'express-diagnostic':
-        return 'Express Diagnostic Assessment Report';
+  switch (tier) {
       case 'one-time-diagnostic':
         return 'Comprehensive Organizational Analysis';
       case 'comprehensive-package':
@@ -111,9 +109,7 @@ export function generateDataDrivenPDFReport(analysis: ComprehensiveAnalysis): js
   };
 
   const getTierAlgorithms = (tier: string): string[] => {
-    switch (tier) {
-      case 'express-diagnostic':
-        return ['OCI™', 'HOCI™', 'JCI™'];
+  switch (tier) {
       case 'one-time-diagnostic':
         return ['DSCH', 'CRF', 'LEI', 'OREA'];
       case 'comprehensive-package':
@@ -267,7 +263,8 @@ export function generateDataDrivenPDFReport(analysis: ComprehensiveAnalysis): js
   const institutionName = analysis.submissionDetails?.institution_name || 'Organization';
   const organizationType = analysis.submissionDetails?.organization_type || 'Organization';
   const overallScore = Math.round(analysis.score * 100);
-  const tier = analysis.tier || 'express-diagnostic';
+  // Normalize deprecated legacy tier to active monthly subscription baseline
+  const tier = (analysis.tier === 'express-diagnostic' || !analysis.tier) ? 'monthly-subscription' : analysis.tier;
   const tierName = tier.replace('-', ' ').replace(/\b\w/g, l => l.toUpperCase());
   const questionResponses = parseDetailedResponses(analysis.responses || {});
 
@@ -447,7 +444,10 @@ export function generateDataDrivenPDFReport(analysis: ComprehensiveAnalysis): js
   });
 
   // SCENARIO MODELING (if tier supports it)
-  if (tier !== 'express-diagnostic') {
+  // Scenario modeling now available only for paid plan (monthly-subscription or higher)
+  if (tier !== 'monthly-subscription' && tier !== 'one-time-diagnostic' && tier !== 'comprehensive-package' && tier !== 'enterprise-transformation') {
+    // Skip scenario modeling for unsupported tiers (e.g., free quick wins)
+  } else {
     doc.addPage();
     yPosition = margin;
     
@@ -484,7 +484,7 @@ export function generateDataDrivenPDFReport(analysis: ComprehensiveAnalysis): js
   }
 
   // Add org chart integration mention
-  if (tier === 'comprehensive-package' || tier === 'enterprise-transformation') {
+  if (tier === 'comprehensive-package' || tier === 'enterprise-transformation' || tier === 'monthly-subscription') {
     checkPageBreak(80);
     addSectionHeader('ONE-CLICK ORGANIZATIONAL CHART ACCESS', colors.accent);
     addText('Your assessment qualifies for our interactive organizational chart builder and scenario modeling tools.');

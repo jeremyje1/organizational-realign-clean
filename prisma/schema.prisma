@@ -376,10 +376,41 @@ model User {
   id            String         @id
   email         String         @unique
   name          String?
+  tier          String         @default("basic") @db.VarChar(64)
+  features      Json?          @default("{}") @db.Json
   createdAt     DateTime       @default(now())
   updatedAt     DateTime
   organizations Organization[] @relation("OrganizationOwner")
 
+  @@schema("public")
+}
+
+/// Tracks Quick Wins Assessment submissions for rate limiting and analytics
+model QuickWinsSubmission {
+  id        String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  email     String   @db.VarChar(255)
+  ipHash    String   @db.Char(64)
+  createdAt DateTime @default(now())
+
+  @@index([email, createdAt])
+  @@index([ipHash, createdAt])
+  @@schema("public")
+}
+
+/// Invite / access tokens to elevate tier or enable feature flags without purchase
+model InviteAccessToken {
+  id           String    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  token        String    @unique @db.VarChar(128)
+  email        String?   @db.VarChar(255)
+  tierGrant    String?   @db.VarChar(64)
+  featureGrants Json?     @default("[]") @db.Json
+  expiresAt    DateTime?
+  usedAt       DateTime?
+  createdAt    DateTime  @default(now())
+  usedByUserId String?   @db.VarChar(255)
+
+  @@index([token])
+  @@index([email])
   @@schema("public")
 }
 

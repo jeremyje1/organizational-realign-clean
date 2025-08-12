@@ -5,7 +5,7 @@
 
 import jsPDF from 'jspdf';
 import { runOpenAI } from './openai';
-import { generateOrgChartImage } from './ai-image-generator';
+// Org chart image generator removed / not present; using internal fallback SVG logic only.
 
 interface ComprehensiveAnalysis {
   assessmentId: string;
@@ -40,16 +40,7 @@ export async function generateFastEnhancedAIPDFReport(analysis: ComprehensiveAna
   
   // Generate org chart image in parallel (non-blocking)
   const orgChartPromise = analysis.orgChart ? 
-    generateOrgChartImage({
-      orgChart: analysis.orgChart,
-      institutionName: analysis.submissionDetails?.institution_name || 'Organization',
-      organizationType: analysis.submissionDetails?.organization_type || 'organization',
-      style: 'professional',
-      theme: 'corporate'
-    }).catch(error => {
-      console.warn('Org chart image generation failed:', error.message);
-      return { success: false, fallbackSVG: createBasicOrgChartSVG(analysis) };
-    }) : 
+    Promise.resolve({ success: false, fallbackSVG: createBasicOrgChartSVG(analysis) }) : 
     Promise.resolve({ success: false, fallbackSVG: null });
 
   // Wait for AI content with timeout
@@ -89,16 +80,6 @@ interface TierContentSettings {
 
 function getTierContentSettings(tier: string): TierContentSettings {
   switch (tier) {
-    case 'express-diagnostic':
-      return {
-        targetPages: 25,
-        maxTokensPerSection: 1500,
-        analysisDepth: 'standard',
-        includeAdvancedAnalysis: true,
-        includeBenchmarking: false,
-        includeFinancialProjections: false,
-        includeChangeManagement: false
-      };
     case 'one-time-diagnostic':
       return {
         targetPages: 35,
@@ -129,8 +110,18 @@ function getTierContentSettings(tier: string): TierContentSettings {
         includeFinancialProjections: true,
         includeChangeManagement: true
       };
+    case 'monthly-subscription':
+      return {
+        targetPages: 30,
+        maxTokensPerSection: 1800,
+        analysisDepth: 'standard',
+        includeAdvancedAnalysis: true,
+        includeBenchmarking: true,
+        includeFinancialProjections: false,
+        includeChangeManagement: false
+      };
     default:
-      return getTierContentSettings('express-diagnostic');
+      return getTierContentSettings('monthly-subscription');
   }
 }
 
@@ -139,7 +130,7 @@ function getTierContentSettings(tier: string): TierContentSettings {
  */
 async function generateAIContentInParallel(analysis: ComprehensiveAnalysis) {
   const institutionName = analysis.submissionDetails?.institution_name || 'Organization';
-  const tier = analysis.tier || 'express-diagnostic';
+  const tier = analysis.tier || 'monthly-subscription';
   const contextData = {
     name: institutionName,
     type: analysis.submissionDetails?.organization_type,
@@ -377,7 +368,7 @@ function createFastPDF(
   let yPosition = margin;
 
   // Get tier settings for content organization
-  const tierSettings = getTierContentSettings(analysis.tier || 'express-diagnostic');
+  const tierSettings = getTierContentSettings(analysis.tier || 'monthly-subscription');
   const institutionName = analysis.submissionDetails?.institution_name || 'Organization';
 
   // Colors

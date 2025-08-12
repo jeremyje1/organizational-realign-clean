@@ -8,6 +8,8 @@ import { Badge } from '@/components/ui/badge'
 import { CheckCircle, ArrowRight, ArrowLeft, Building, Users, Target, FileText, Upload } from 'lucide-react'
 import Link from 'next/link'
 import { getQuestionsForTier, type Question, type OrganizationType } from '@/lib/enhancedQuestionBankV3'
+import UpgradeBanner from '@/components/UpgradeBanner'
+import { normalizeTier } from '@/lib/tierUtils'
 import { QuestionInput } from '@/components/QuestionInput'
 
 export default function TierBasedAssessment() {
@@ -16,6 +18,20 @@ export default function TierBasedAssessment() {
   const [flaggedQuestions, setFlaggedQuestions] = useState<Record<string, boolean>>({})
   const [isComplete, setIsComplete] = useState(false)
   const [tier, setTier] = useState<'express-diagnostic' | 'one-time-diagnostic' | 'comprehensive-package' | 'enterprise-transformation'>('one-time-diagnostic')
+
+  // Normalize legacy tier selection once on mount
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search)
+    const urlTier = params.get('tier') as any
+    if (urlTier) {
+      setTier(urlTier)
+      const norm = normalizeTier(urlTier)
+      if (norm.isLegacy) {
+        // We keep legacy tier for context but banner will prompt upgrade
+        // Optionally could auto-switch: setTier(norm.normalizedTier as any)
+      }
+    }
+  }, [])
   const [organizationType] = useState<OrganizationType>('higher-education') // Default org type, can be dynamic
   
   // Get the full question set from enhanced question bank (100-200 questions based on tier)
@@ -176,7 +192,8 @@ export default function TierBasedAssessment() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 py-12 px-4">
       <div className="max-w-4xl mx-auto">
-        {/* Tier Selector */}
+  <UpgradeBanner tier={tier} />
+  {/* Tier Selector */}
         <div className="mb-8 bg-white rounded-lg shadow-md p-6">
           <h2 className="text-xl font-semibold text-gray-900 mb-4">Select Assessment Tier</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">

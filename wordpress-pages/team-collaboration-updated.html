@@ -1,263 +1,78 @@
 <!-- ================================================== -->
-<!--  NorthPath Strategies • Team Features Page (v2025-07-20) -->
-<!--  Built-In Team Collaboration & Management          -->
-<!--  Updated with Correct Production URLs              -->
-<!--  Paste into an Elementor HTML widget               -->
+<!--  NorthPath Strategies • Team Features Page (v2025-08-12) -->
+<!--  Updated: Removed Express Diagnostic; aligned tiers with site (Quick Wins, One-Time Diagnostic $4,995, Monthly Subscription $2,995/mo, Comprehensive Package $9,900, Enterprise Transformation $24k Base) -->
+<!--  CLEANED for Elementor (removed corrupt CSS fragments)  -->
+<!--  NOTE: Feature availability assumptions documented inline; adjust if internal limits differ. -->
+<!--  Paste into an Elementor HTML widget                   -->
 <!-- ================================================== -->
 
 <style>
-  :root {
-    --nps-blue:   #1654A3;
-    --nps-gold:   #D4AF37;
-    --nps-slate:  #2A2E33;
-    --nps-light:  #F6F8FC;
-    --nps-radius: 8px;
-    --nps-shadow: 0 4px 12px rgba(0,0,0,.06);
-  }
-  body { margin:0; font-family:"Inter",sans-serif; }
-
+  :root { --nps-blue:#1654A3; --nps-gold:#D4AF37; --nps-slate:#2A2E33; --nps-light:#F6F8FC; --nps-radius:8px; --nps-shadow:0 4px 14px rgba(0,0,0,.06); }
+  body { font-family: "Inter", sans-serif; }
   .nps-wrap { max-width:1140px; margin:0 auto; padding:4rem 1rem; }
-  .nps-alt  { background: var(--nps-light); }
-  
-  .nps-hero { 
-    text-align:center; 
-    background: url('https://northpathstrategies.org/wp-content/uploads/2025/07/—Pngtree—intriguingly-dark-geometric-backdrop-perfect_11036843.jpg') center center / cover no-repeat, linear-gradient(135deg, var(--nps-blue), #0F4C81);
-    color: white;
-    padding: 5rem 1rem;
-    margin-bottom: 0;
-  }
-  .nps-hero h1 { 
-    font-size:3rem; 
-    color:white; 
-    margin: 0 0 1.5rem;
-    font-weight: 700;
-    line-height: 1.25;
-  }
-  .nps-sub { 
-    font-size:1.15rem; 
-    color:#f0f4fc; 
-    margin:0 auto 2rem; 
-    max-width:740px; 
-  }
-  .expert-callout {
-    background: rgba(255, 255, 255, 0.1);
-    padding: 1.5rem;
-    border-radius: 8px;
-    margin: 1.5rem auto;
-    max-width: 800px;
-    font-size: 1rem;
-    color: #e8f3ff;
-  }
-
-  .section-title { 
-    text-align:center; 
-    margin-bottom:2rem; 
-    color:var(--nps-blue); 
-    font-weight:700; 
-    font-size: 2rem;
-  }
-  
-  .nps-grid { 
-    display:grid; 
-    gap:2rem; 
-    grid-template-columns: repeat(auto-fit,minmax(300px,1fr)); 
-  }
-  
-  .nps-card {
-    background:#fff;
-    padding:2rem;
-    border-radius:var(--nps-radius);
-    box-shadow:var(--nps-shadow);
-    transition:transform .3s ease, box-shadow .3s ease;
-    position: relative;
-  }
-  .nps-card:hover { 
-    transform:translateY(-6px); 
-    box-shadow:0 8px 24px rgba(0,0,0,.12); 
-  }
-  .nps-card h3 { 
-    margin-top:0; 
-    color:var(--nps-blue); 
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-  }
-  .nps-card p, .nps-card ul { 
-    color:#444; 
-    line-height:1.6; 
-  }
-  .nps-card ul {
-    margin-left: 1rem;
-  }
-
-  .button-group { 
-    display:flex; 
-    flex-wrap:wrap; 
-    gap:1rem; 
-    justify-content:center; 
-    margin: 2rem 0;
-  }
-  
-  .nps-btn {
-    padding:.9rem 2rem;
-    background:var(--nps-blue);
-    color:var(--nps-gold);
-    border:2px solid var(--nps-gold);
-    border-radius:9999px;
-    font-weight:600;
-    text-decoration:none;
-    transition:all .25s ease;
-  }
+  .nps-alt { background: var(--nps-light); }
+  .nps-hero { background: linear-gradient(135deg,var(--nps-blue),#1a5bb8); color:#fff; padding:4rem 1rem 3rem; }
+  .nps-hero h1 { margin:0 0 1.5rem; font-size:2.6rem; line-height:1.15; }
+  .nps-sub { max-width:860px; margin:0 auto 1.5rem; font-size:1.05rem; line-height:1.55; }
+  .button-group { display:flex; flex-wrap:wrap; gap:1rem; justify-content:center; }
+  .nps-grid { display:grid; gap:2rem; grid-template-columns: repeat(auto-fit,minmax(260px,1fr)); }
+  .nps-card { background:#fff; border-radius:var(--nps-radius); box-shadow:var(--nps-shadow); padding:1.75rem 1.5rem; position:relative; }
+  .nps-card h3 { margin:0 0 .75rem; color:var(--nps-blue); font-size:1.1rem; }
+  .nps-card p { margin:0 0 1rem; font-size:.9rem; color:var(--nps-slate); line-height:1.45; }
+  .nps-card ul { margin:0 0 .5rem 1.1rem; padding:0; font-size:.85rem; line-height:1.45; color:var(--nps-slate); }
+  .nps-card li { color: var(--nps-slate); }
+  .nps-btn:focus-visible, .comparison-table a:focus-visible { outline:3px solid var(--nps-gold); outline-offset:2px; }
+  .section-title { text-align:center; margin:0 0 2rem; color:var(--nps-blue); font-weight:700; }
+  .expert-callout { background: rgba(255,255,255,.12); padding:1rem 1.25rem; border-radius:8px; font-size:.85rem; max-width:800px; margin:0 auto 1.25rem; }
+  .process-flow { background: var(--nps-light); padding:2.5rem 1.5rem; border-radius:var(--nps-radius); }
+  .process-step { display:flex; gap:1rem; margin-bottom:1.5rem; position:relative; }
+  .process-step:last-child { margin-bottom:0; }
+  .process-step:not(:last-child)::after { content:""; position:absolute; left:20px; top:44px; width:2px; height:50px; background:var(--nps-blue); opacity:.25; }
+  .step-number { width:40px; height:40px; border-radius:50%; background:var(--nps-blue); color:#fff; display:flex; align-items:center; justify-content:center; font-weight:600; flex-shrink:0; }
+  .role-card { background: linear-gradient(135deg,var(--nps-blue),#1a5bb8); color:#fff; padding:1.75rem 1.5rem; border-radius:var(--nps-radius); margin:1rem 0; }
+  .role-card h4 { margin:.25rem 0 .75rem; color:var(--nps-gold); font-size:1.05rem; }
+  .role-card ul { margin:0 0 .25rem 1rem; font-size:.85rem; line-height:1.5; }
+  .benefit-highlight { background:#dcfce7; border:2px solid #86efac; padding:1.25rem 1.25rem; border-radius:var(--nps-radius); margin:2rem 0 0; }
+  .benefit-highlight h4 { margin:.25rem 0 .5rem; color:#16a34a; }
+  .security-badge { display:inline-flex; align-items:center; background:#fee2e2; color:#dc2626; padding:.45rem .85rem; border-radius:18px; font-size:.75rem; font-weight:600; margin:.25rem; }
+  .comparison-table { width:100%; border-collapse:collapse; font-size:.85rem; margin:1.5rem 0 0; }
+  .comparison-table th { background:var(--nps-blue); color:#fff; padding:.75rem .6rem; font-weight:600; text-align:left; font-size:.75rem; }
+  .comparison-table td { background:#fff; padding:.7rem .6rem; border-bottom:1px solid #E2E6EE; vertical-align:top; }
+  .comparison-table tr:nth-child(even) td { background:#f9fafb; }
+  .feature-demo { background:#fff; border:2px solid var(--nps-gold); border-radius:var(--nps-radius); padding:2rem 1.5rem; margin:2rem 0; text-align:center; }
+  .nps-btn { padding:.8rem 1.6rem; background:var(--nps-blue); color:var(--nps-gold); border:2px solid var(--nps-gold); border-radius:9999px; font-weight:600; text-decoration:none; font-size:.85rem; transition:.25s; display:inline-block; }
   .nps-btn:hover { background:var(--nps-gold); color:var(--nps-blue); }
   .nps-btn-gold { background:var(--nps-gold); color:var(--nps-blue); border-color:var(--nps-blue); }
   .nps-btn-gold:hover { background:var(--nps-blue); color:var(--nps-gold); border-color:var(--nps-gold); }
-  
-  .process-flow {
-    background: var(--nps-light);
-    padding: 3rem 2rem;
-    border-radius: var(--nps-radius);
-    margin: 3rem 0;
-  }
-  
-  .process-step {
-    display: flex;
-    align-items: flex-start;
-    gap: 1.5rem;
-    margin-bottom: 2rem;
-    position: relative;
-  }
-  
-  .process-step:not(:last-child)::after {
-    content: '';
-    position: absolute;
-    left: 20px;
-    top: 45px;
-    width: 2px;
-    height: 60px;
-    background: var(--nps-blue);
-    opacity: 0.3;
-  }
-  
-  .step-number {
-    background: var(--nps-blue);
-    color: white;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: bold;
-    flex-shrink: 0;
-  }
-  
-  .step-content h4 {
-    color: var(--nps-blue);
-    margin: 0 0 0.5rem 0;
-  }
-  
-  .step-content p {
-    color: var(--nps-slate);
-    margin: 0;
-  }
-  
-  .role-card {
-    background: linear-gradient(135deg, var(--nps-blue), #1a5bb8);
-    color: white;
-    padding: 2rem;
-    border-radius: var(--nps-radius);
-    margin: 1rem 0;
-  }
-  
-  .role-card h4 {
-    color: var(--nps-gold);
-    margin-top: 0;
-  }
-  
-  .role-card p, .role-card ul {
-    color: #e6f2ff;
-  }
-  
-  .benefit-highlight {
-    background: #dcfce7;
-    border: 2px solid #86efac;
-    padding: 1.5rem;
-    border-radius: var(--nps-radius);
-    margin: 2rem 0;
-  }
-  
-  .benefit-highlight h4 {
-    color: #16a34a;
-    margin-top: 0;
-  }
-  
-  .feature-demo {
-    background: white;
-    border: 2px solid var(--nps-gold);
-    border-radius: var(--nps-radius);
-    padding: 2rem;
-    margin: 2rem 0;
-    text-align: center;
-  }
-  
-  .demo-screenshot {
-    background: var(--nps-light);
-    border: 1px solid #E3E7F1;
-    border-radius: var(--nps-radius);
-    padding: 2rem;
-    margin: 1rem 0;
-    min-height: 200px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--nps-slate);
-    font-style: italic;
-  }
-  
-  .security-badge {
-    display: inline-flex;
-    align-items: center;
-    background: #fee2e2;
-    color: #dc2626;
-    padding: 0.5rem 1rem;
-    border-radius: 20px;
-    font-size: 0.85rem;
-    font-weight: 600;
-    margin: 0.25rem;
-  }
-  
-  .comparison-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 2rem 0;
-    font-size: 0.95rem;
-  }
-  
-  .comparison-table th {
-    background: var(--nps-blue);
-    color: white;
-    padding: 1rem;
-    text-align: left;
-    font-weight: 600;
-  }
-  
-  .comparison-table td {
-    padding: 1rem;
-    border-bottom: 1px solid #E2E6EE;
-    background: white;
-  }
-  
-  .comparison-table tr:nth-child(even) td {
-    background: #f9fafb;
-  }
-  
-  @media(max-width:768px) {
-    .nps-hero h1 { font-size:2rem; }
-    .nps-grid { grid-template-columns: 1fr; }
-    .process-step { flex-direction: column; text-align: center; }
-    .process-step::after { display: none; }
-  }
+  @media(max-width:768px){ .nps-hero h1{font-size:2rem;} .nps-grid{grid-template-columns:1fr;} .process-step{flex-direction:column; text-align:center;} .process-step:not(:last-child)::after{display:none;} .comparison-table th, .comparison-table td{font-size:.7rem; padding:.55rem .45rem;} }
 </style>
+
+<!-- TOP FEATURE COMPARISON (Aligned Tiers) -->
+<section class="nps-wrap" style="padding-top:2rem; padding-bottom:1rem;">
+  <h2 class="section-title" style="margin-top:0;">Team Collaboration Across Tiers</h2>
+  <table class="comparison-table" aria-label="Team Feature Comparison">
+    <thead>
+      <tr>
+        <th style="min-width:140px;">Team Feature</th>
+        <th>One-Time Diagnostic<br>$4,995</th>
+        <th>Monthly Subscription<br>$2,995/mo</th>
+        <th>Comprehensive Package<br>$9,900</th>
+        <th>Enterprise Transformation<br>$24k Base</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>Team Invitations</strong></td><td>Up to 10</td><td>Unlimited</td><td>Unlimited</td><td>Unlimited + SSO</td></tr>
+      <tr><td><strong>Role-Based Access</strong></td><td>3 Roles</td><td>3 Roles</td><td>3 Roles + Fine-Grain</td><td>Custom / SCIM</td></tr>
+      <tr><td><strong>Real-Time Collaboration</strong></td><td>Included</td><td>Included</td><td>Included</td><td>Enhanced</td></tr>
+      <tr><td><strong>Team Dashboard</strong></td><td>Core</td><td>Adv. Trends</td><td>Narrative Insights</td><td>Benchmark Suite</td></tr>
+      <tr><td><strong>Scenario Modeling</strong></td><td>—</td><td>Included</td><td>Add‑On (+$5k)</td><td>Unlimited / Advanced</td></tr>
+      <tr><td><strong>Org Chart Generator</strong></td><td>Included</td><td>Included</td><td>Included</td><td>Multi-Scenario</td></tr>
+      <tr><td><strong>Progress Tracking</strong></td><td>Baseline</td><td>Trends & Deltas</td><td>Narrative KPIs</td><td>Exec Dashboards</td></tr>
+      <tr><td><strong>AI Opportunity Mapping</strong></td><td>Core Suggestions</td><td>Expanded Library</td><td>Narrative Integration</td><td>Custom Roadmap</td></tr>
+      <tr><td><strong>Expert Guidance</strong></td><td>30‑min Q&A</td><td>60‑min / mo</td><td>90‑min Strategy</td><td>Facilitated / On-Demand</td></tr>
+    </tbody>
+  </table>
+</section>
 
 <!-- HERO -->
 <section class="nps-hero">
@@ -270,8 +85,8 @@
       <strong>🛡️ Team Success Advantage:</strong> Research shows that organizationally diverse teams provide more accurate assessments and achieve better implementation results. Our collaboration features ensure everyone's perspective is captured while maintaining enterprise-grade security.
     </div>
     <div class="button-group">
-      <a href="https://organizational-realign-clean-bst3e3k3d.vercel.app/demo/teams" class="nps-btn nps-btn-gold">Access Team Dashboard →</a>
-      <a href="https://organizational-realign-clean-bst3e3k3d.vercel.app/quick-wins" class="nps-btn nps-btn-gold">Try Free Team Assessment →</a>
+  <a href="https://assessments.northpathstrategies.org/demo/teams?utm_source=wp-team-collaboration&utm_medium=hero-button&utm_campaign=teams-demo&utm_content=hero" class="nps-btn nps-btn-gold">Access Team Dashboard →</a>
+  <a href="https://assessments.northpathstrategies.org/quick-wins?utm_source=wp-team-collaboration&utm_medium=hero-button&utm_campaign=quick-wins&utm_content=hero" class="nps-btn nps-btn-gold">Try Free Team Assessment →</a>
     </div>
   </div>
 </section>
@@ -543,81 +358,33 @@
   </div>
 </section>
 
-<!-- PACKAGE INCLUSION -->
+<!-- PACKAGE INCLUSION (Updated tiers) -->
 <section class="nps-wrap nps-alt">
-  <h2 class="section-title">Included in Every Package</h2>
-  
+  <h2 class="section-title">Included In All Packages</h2>
   <div class="feature-demo">
-    <h3>🎉 No Additional Costs</h3>
-    <p style="font-size: 1.2rem; margin-bottom: 2rem;">Team collaboration features are included in all assessment packages at no extra charge.</p>
-    
-    <table class="comparison-table">
+    <h3 style="margin-top:0;">🎉 Collaboration Is Built-In</h3>
+    <p style="font-size:1rem; margin:0 auto 1.5rem; max-width:640px;">Every paid tier includes full team collaboration. Quick Wins lets you preview individual value before adding your team.</p>
+    <table class="comparison-table" aria-label="Inclusion Comparison">
       <thead>
         <tr>
-          <th>Team Feature</th>
-          <th>Quick Wins<br>(FREE)</th>
-          <th>Express<br>($2,495)</th>
-          <th>One-Time<br>($4,995)</th>
-          <th>Comprehensive<br>($9,995)</th>
-          <th>Enterprise<br>($24,000)</th>
-          <th>Monthly<br>($2,995/mo)</th>
+          <th>Capability</th>
+          <th>Quick Wins<br>Free</th>
+          <th>One-Time Diagnostic<br>$4,995</th>
+          <th>Monthly Subscription<br>$2,995/mo</th>
+          <th>Comprehensive Package<br>$9,900</th>
+          <th>Enterprise Transformation<br>$24k Base</th>
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td><strong>Team Invitations</strong></td>
-          <td>Individual only</td>
-          <td>✓ Unlimited</td>
-          <td>✓ Unlimited</td>
-          <td>✓ Unlimited</td>
-          <td>✓ Unlimited</td>
-          <td>✓ Unlimited</td>
-        </tr>
-        <tr>
-          <td><strong>Role-Based Access</strong></td>
-          <td>—</td>
-          <td>✓ 3 Roles</td>
-          <td>✓ 3 Roles</td>
-          <td>✓ 3 Roles</td>
-          <td>✓ Custom Roles</td>
-          <td>✓ 3 Roles</td>
-        </tr>
-        <tr>
-          <td><strong>Real-Time Collaboration</strong></td>
-          <td>—</td>
-          <td>✓ Included</td>
-          <td>✓ Included</td>
-          <td>✓ Included</td>
-          <td>✓ Enhanced</td>
-          <td>✓ Included</td>
-        </tr>
-        <tr>
-          <td><strong>Team Dashboard</strong></td>
-          <td>—</td>
-          <td>✓ Basic</td>
-          <td>✓ Standard</td>
-          <td>✓ Advanced</td>
-          <td>✓ Enterprise</td>
-          <td>✓ Standard</td>
-        </tr>
-        <tr>
-          <td><strong>Expert Team Consultation</strong></td>
-          <td>—</td>
-          <td>✓ 30-min</td>
-          <td>✓ 60-min</td>
-          <td>✓ 90-min</td>
-          <td>✓ On-site</td>
-          <td>✓ 60-min monthly</td>
-        </tr>
-        <tr>
-          <td><strong>Document Sharing</strong></td>
-          <td>—</td>
-          <td>✓ Secure</td>
-          <td>✓ Version Control</td>
-          <td>✓ Advanced</td>
-          <td>✓ Enterprise</td>
-          <td>✓ Unlimited</td>
-        </tr>
+        <tr><td><strong>Team Invitations</strong></td><td>Single User</td><td>Up to 10</td><td>Unlimited</td><td>Unlimited</td><td>Unlimited + SSO</td></tr>
+        <tr><td><strong>Role-Based Access</strong></td><td>—</td><td>3 Roles</td><td>3 Roles</td><td>3 Roles + Fine-Grain</td><td>Custom / SCIM</td></tr>
+        <tr><td><strong>Real-Time Collaboration</strong></td><td>—</td><td>Included</td><td>Included</td><td>Included</td><td>Enhanced</td></tr>
+        <tr><td><strong>Org Chart Generator</strong></td><td>Limited</td><td>Included</td><td>Included</td><td>Included</td><td>Multi-Scenario</td></tr>
+        <tr><td><strong>Progress Tracking</strong></td><td>Basic</td><td>Baseline</td><td>Trends & Deltas</td><td>Narrative KPIs</td><td>Exec Dashboards</td></tr>
+        <tr><td><strong>Scenario Modeling</strong></td><td>—</td><td>—</td><td>Included</td><td>Add‑On (+$5k)</td><td>Unlimited / Advanced</td></tr>
+        <tr><td><strong>AI Opportunity Mapping</strong></td><td>Starter</td><td>Core</td><td>Expanded Library</td><td>Narrative Integration</td><td>Custom Roadmap</td></tr>
+        <tr><td><strong>Expert Guidance</strong></td><td>Resources</td><td>30‑min Q&A</td><td>60‑min / mo</td><td>90‑min Strategy</td><td>Facilitated + On‑Demand</td></tr>
+        <tr><td><strong>Document Sharing</strong></td><td>—</td><td>Secure</td><td>Version Control</td><td>Version Control</td><td>Enterprise Controls</td></tr>
       </tbody>
     </table>
   </div>
@@ -631,19 +398,19 @@
     <div class="nps-card">
       <h3>🚀 New Teams</h3>
       <p>Start with our free Quick Wins assessment to experience team collaboration features and see how multiple perspectives improve results.</p>
-      <a href="https://organizational-realign-clean-bst3e3k3d.vercel.app/quick-wins" class="nps-btn nps-btn-gold" style="margin-top: 1rem;">Start Free Assessment →</a>
+  <a href="https://assessments.northpathstrategies.org/quick-wins?utm_source=wp-team-collaboration&utm_medium=card-button&utm_campaign=quick-wins&utm_content=getting-started" class="nps-btn nps-btn-gold" style="margin-top: 1rem;">Start Free Assessment →</a>
     </div>
     
     <div class="nps-card">
-      <h3>⚡ Express Team Analysis</h3>
-      <p>Get comprehensive team assessment with expert guidance in just 3-5 days. Perfect for teams ready to act quickly.</p>
-      <a href="https://organizational-realign-clean-bst3e3k3d.vercel.app/api/stripe/create-tier-checkout?tier=express-diagnostic" class="nps-btn" style="margin-top: 1rem;">Try Express Diagnostic →</a>
+      <h3>⚡ One-Time Diagnostic</h3>
+      <p>Focused executive diagnostic with patent‑pending scoring, PDF brief and 30‑min strategist Q&A—foundation for ongoing collaboration.</p>
+  <a href="https://calendly.com/jeremyestrella/30min?utm_source=wp-team-collaboration&utm_medium=card-button&utm_campaign=one-time-diagnostic&utm_content=getting-started" class="nps-btn" style="margin-top: 1rem;">Schedule Intro Call →</a>
     </div>
     
     <div class="nps-card">
       <h3>🎯 Existing Users</h3>
       <p>Already have an account? Access your team dashboard to invite colleagues and start collaborating on your assessment.</p>
-      <a href="https://organizational-realign-clean-bst3e3k3d.vercel.app/teams" class="nps-btn" style="margin-top: 1rem;">Access Team Dashboard →</a>
+  <a href="https://assessments.northpathstrategies.org/teams?utm_source=wp-team-collaboration&utm_medium=card-button&utm_campaign=teams-access&utm_content=getting-started" class="nps-btn" style="margin-top: 1rem;">Access Team Dashboard →</a>
     </div>
   </div>
   
@@ -660,7 +427,7 @@
     Combine patent-pending algorithmic precision with expert implementation guidance—now with built-in team collaboration at no additional cost.
   </p>
   <div class="button-group">
-    <a href="https://organizational-realign-clean-bst3e3k3d.vercel.app/demo/teams" class="nps-btn nps-btn-gold">Access Team Dashboard Demo→</a>
-    <a href="https://calendly.com/jeremyestrella/30min" class="nps-btn" style="background: transparent; border-color: white; color: white;">Schedule Team Strategy Call →</a>
+  <a href="https://assessments.northpathstrategies.org/demo/teams?utm_source=wp-team-collaboration&utm_medium=cta-button&utm_campaign=teams-demo&utm_content=final-cta" class="nps-btn nps-btn-gold">Access Team Dashboard Demo→</a>
+  <a href="https://calendly.com/jeremyestrella/30min?utm_source=wp-team-collaboration&utm_medium=cta-button&utm_campaign=strategy-call&utm_content=final-cta" class="nps-btn" style="background: transparent; border-color: white; color: white;">Schedule Team Strategy Call →</a>
   </div>
 </section>

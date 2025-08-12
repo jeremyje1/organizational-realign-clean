@@ -6,6 +6,8 @@ import { getStripeMappingForTier } from '@/lib/stripe-tier-mapping';
 import { PricingTier } from '@/lib/tierConfiguration';
 import SubscriptionManager from '@/lib/subscription-manager';
 import Stripe from 'stripe';
+import { parseRawAttributionString } from '@/lib/attribution';
+import { sendEmail } from '@/lib/email/postmark';
 
 export async function POST(request: NextRequest) {
   const body = await request.text();
@@ -137,15 +139,42 @@ async function handleSuccessfulPayment(session: Stripe.Checkout.Session) {
 
     console.log(`User ${user.email} updated with tier: ${tier}`);
 
-    // Create assessment record for the purchased tier
+    // Attempt to parse attribution from session metadata (if passed) or ignore
+    let attribution: any = undefined;
+    if (session.metadata && session.metadata.attribution_cookie) {
+      attribution = parseRawAttributionString(session.metadata.attribution_cookie);
+    }
     const assessment = await AssessmentDB.createAssessment({
       userId: user.id,
       tier: tier as AssessmentTier,
       stripeCustomerId: customer as string,
       stripeSessionId: session.id,
+      attributionJson: attribution,
     });
 
     console.log(`Assessment created for user ${user.email}:`, assessment.id);
+
+    // Send onboarding / welcome email (idempotent attempt)
+    try {
+      const appUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://app.northpathstrategies.org';
+      const onboardingUrl = `${appUrl}/assessment/onboarding`;
+      await sendEmail({
+        to: user.email,
+        subject: 'Welcome to NorthPath — Your next steps',
+        html: `
+          <h2 style="font-family:Inter,Arial,sans-serif;">You're all set</h2>
+          <p style="font-family:Inter,Arial,sans-serif;">Start here to complete your onboarding checklist and launch your assessment:</p>
+          <p><a href="${onboardingUrl}" style="display:inline-block;padding:10px 16px;border-radius:6px;background:#2563eb;color:#fff;text-decoration:none;font-weight:600;">Open onboarding</a></p>
+          <hr style="border:none;border-top:1px solid #e5e7eb;margin:24px 0;"/>
+          <p style="font-family:Inter,Arial,sans-serif;font-size:14px;color:#555;">Need help? Reply to this email and we'll jump in.</p>
+        `,
+        text: `You're all set. Open onboarding: ${onboardingUrl}\nNeed help? Reply to this email.`,
+        tag: 'onboarding'
+      });
+      console.log('Onboarding email queued for', user.email);
+    } catch (e) {
+      console.error('Failed to send onboarding email', e);
+    }
 
     // Update subscription expiration for subscription tiers
     if (mode === 'subscription' || tier === 'monthly-subscription') {
@@ -160,8 +189,7 @@ async function handleSuccessfulPayment(session: Stripe.Checkout.Session) {
       console.log(`Subscription expiration set for user ${user.email}, tier ${tier}`);
     }
 
-    // TODO: Send welcome email with tier-specific instructions
-    // TODO: Trigger tier-specific onboarding flow
+  // Onboarding email sent above. Further tier-specific flows can hook here.
     
   } catch (error) {
     console.error('Error handling successful payment:', error);
