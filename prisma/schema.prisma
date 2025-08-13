@@ -373,14 +373,17 @@ model users {
 }
 
 model User {
-  id            String         @id
-  email         String         @unique
-  name          String?
-  tier          String         @default("basic") @db.VarChar(64)
-  features      Json?          @default("{}") @db.Json
-  createdAt     DateTime       @default(now())
-  updatedAt     DateTime
-  organizations Organization[] @relation("OrganizationOwner")
+  id                 String         @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  email              String         @unique
+  name               String?
+  tier               String         @default("basic") @db.VarChar(64)
+  features           Json?          @default("{}") @db.Json
+  stripeCustomerId   String?        @db.VarChar(255) @map("stripe_customer_id")
+  subscriptionStatus String?        @db.VarChar(64) @map("subscription_status")
+  lastPaymentDate    DateTime?      @map("last_payment_date")
+  createdAt          DateTime       @default(now())
+  updatedAt          DateTime       @updatedAt
+  organizations      Organization[] @relation("OrganizationOwner")
 
   @@schema("public")
 }

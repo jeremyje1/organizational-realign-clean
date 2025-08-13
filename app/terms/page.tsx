@@ -17,7 +17,6 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Terms of Service - NorthPath Strategies',
     description: 'Terms and conditions for using NorthPath Strategies organizational realignment services.',
-    url: 'https://app.northpathstrategies.org/terms',
   },
 };
 

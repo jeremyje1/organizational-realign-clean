@@ -117,25 +117,26 @@ async function handleSuccessfulPayment(session: Stripe.Checkout.Session) {
       sessionId: session.id
     });
 
-    // Create or update user with tier assignment
-    const user = await prisma.user.upsert({
-      where: { email: customer_email },
-      update: {
-        tier: tier,
-        name: customerName || customer_email.split('@')[0],
-        stripeCustomerId: customer as string,
-        subscriptionStatus: mode === 'subscription' ? 'active' : null,
-        lastPaymentDate: new Date(),
-      },
-      create: {
-        email: customer_email,
-        name: customerName || customer_email.split('@')[0],
-        tier: tier,
-        stripeCustomerId: customer as string,
-        subscriptionStatus: mode === 'subscription' ? 'active' : null,
-        lastPaymentDate: new Date(),
-      },
-    });
+    // Create or update user with tier assignment (raw SQL to bypass client type drift)
+    const userRows = await prisma.$queryRawUnsafe<any[]>(
+      `INSERT INTO "public"."User" (email, name, tier, stripe_customer_id, subscription_status, last_payment_date)
+       VALUES ($1,$2,$3,$4,$5,$6)
+       ON CONFLICT (email) DO UPDATE SET
+         name = EXCLUDED.name,
+         tier = EXCLUDED.tier,
+         stripe_customer_id = EXCLUDED.stripe_customer_id,
+         subscription_status = EXCLUDED.subscription_status,
+         last_payment_date = EXCLUDED.last_payment_date,
+         "updatedAt" = NOW()
+       RETURNING id, email, name, tier`,
+      customer_email,
+      customerName || customer_email.split('@')[0],
+      tier,
+      customer as string,
+      mode === 'subscription' ? 'active' : null,
+      new Date()
+    );
+    const user = userRows?.[0];
 
     console.log(`User ${user.email} updated with tier: ${tier}`);
 
@@ -156,7 +157,7 @@ async function handleSuccessfulPayment(session: Stripe.Checkout.Session) {
 
     // Send onboarding / welcome email (idempotent attempt)
     try {
-      const appUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://app.northpathstrategies.org';
+  const appUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://assessments.northpathstrategies.org';
       const onboardingUrl = `${appUrl}/assessment/onboarding`;
       await sendEmail({
         to: user.email,
@@ -200,19 +201,19 @@ async function handleSubscriptionCancelled(subscription: Stripe.Subscription) {
   try {
     const customerId = subscription.customer as string;
     
-    // Update user subscription status
-    await prisma.user.updateMany({
-      where: { stripeCustomerId: customerId },
-      data: {
-        subscriptionStatus: 'cancelled',
-        tier: 'one-time-diagnostic', // Downgrade to basic tier
-      },
-    });
+      // Update user subscription status (raw due to field naming differences)
+      await prisma.$executeRawUnsafe(
+        'UPDATE "public"."User" SET subscription_status=$1, tier=$2, updated_at=NOW() WHERE stripe_customer_id=$3',
+        'cancelled',
+        'one-time-diagnostic',
+        customerId
+      );
 
     // Update assessment records
-    const users = await prisma.user.findMany({
-      where: { stripeCustomerId: customerId }
-    });
+    const users = (await prisma.$queryRawUnsafe<any[]>(
+      'SELECT id, email, tier FROM "public"."User" WHERE stripe_customer_id=$1',
+      customerId
+    )) || [];
 
     for (const user of users) {
       await SubscriptionManager.cancelSubscription(user.id, user.tier as PricingTier);
@@ -229,23 +230,24 @@ async function handleSubscriptionUpdated(subscription: Stripe.Subscription) {
     const customerId = subscription.customer as string;
     const status = subscription.status;
     
-    // Update user subscription status
-    await prisma.user.updateMany({
-      where: { stripeCustomerId: customerId },
-      data: {
-        subscriptionStatus: status,
-      },
-    });
+      // Update user subscription status
+      await prisma.$executeRawUnsafe(
+        'UPDATE "public"."User" SET subscription_status=$1, updated_at=NOW() WHERE stripe_customer_id=$2',
+        status,
+        customerId
+      );
 
     // If subscription becomes active again, update expiration
     if (status === 'active') {
-      const users = await prisma.user.findMany({
-        where: { stripeCustomerId: customerId }
-      });
+      const users = (await prisma.$queryRawUnsafe<any[]>(
+        'SELECT id, email, tier FROM "public"."User" WHERE stripe_customer_id=$1',
+        customerId
+      )) || [];
 
       for (const user of users) {
-        const nextBillingDate = subscription.current_period_end 
-          ? new Date(subscription.current_period_end * 1000)
+    const sub: any = subscription as any;
+    const nextBillingDate = sub.current_period_end 
+      ? new Date(sub.current_period_end * 1000)
           : new Date(Date.now() + 30 * 24 * 60 * 60 * 1000);
 
         await SubscriptionManager.updateSubscriptionExpiration(user.id, user.tier as PricingTier, {
@@ -264,20 +266,22 @@ async function handleSubscriptionUpdated(subscription: Stripe.Subscription) {
 async function handleInvoicePaymentSucceeded(invoice: Stripe.Invoice) {
   try {
     const customerId = invoice.customer as string;
-    const subscriptionId = invoice.subscription as string;
+  const subscriptionId = (invoice as any).subscription as string;
 
     if (subscriptionId) {
       // Get subscription details
       const subscription = await stripe.subscriptions.retrieve(subscriptionId);
       
       // Update user subscription expiration
-      const users = await prisma.user.findMany({
-        where: { stripeCustomerId: customerId }
-      });
+      const users = (await prisma.$queryRawUnsafe<any[]>(
+        'SELECT id, email, tier FROM "public"."User" WHERE stripe_customer_id=$1',
+        customerId
+      )) || [];
 
       for (const user of users) {
-        const nextBillingDate = subscription.current_period_end 
-          ? new Date(subscription.current_period_end * 1000)
+    const sub2: any = subscription as any;
+    const nextBillingDate = sub2.current_period_end 
+      ? new Date(sub2.current_period_end * 1000)
           : new Date(Date.now() + 30 * 24 * 60 * 60 * 1000);
 
         await SubscriptionManager.updateSubscriptionExpiration(user.id, user.tier as PricingTier, {
@@ -298,28 +302,23 @@ async function handleInvoicePaymentSucceeded(invoice: Stripe.Invoice) {
 async function handleInvoicePaymentFailed(invoice: Stripe.Invoice) {
   try {
     const customerId = invoice.customer as string;
-    const subscriptionId = invoice.subscription as string;
+  const subscriptionId = (invoice as any).subscription as string;
 
     if (subscriptionId) {
       // Mark subscriptions as past due
-      await prisma.user.updateMany({
-        where: { stripeCustomerId: customerId },
-        data: {
-          subscriptionStatus: 'past_due',
-        },
-      });
+      await prisma.$executeRawUnsafe(
+        'UPDATE "public"."User" SET subscription_status=$1, updated_at=NOW() WHERE stripe_customer_id=$2',
+        'past_due',
+        customerId
+      );
 
-      // Update assessment subscription status
-      const users = await prisma.user.findMany({
-        where: { stripeCustomerId: customerId }
-      });
+        // Update assessment subscription status
+        const users = (await prisma.$queryRawUnsafe<any[]>(
+          'SELECT id, email, tier FROM "public"."User" WHERE stripe_customer_id=$1',
+          customerId
+        )) || [];
 
-      for (const user of users) {
-        await prisma.user.update({
-          where: { id: user.id },
-          data: { subscriptionStatus: 'past_due' }
-        });
-      }
+  // assessments updated separately via other flows; user rows already marked past_due
     }
 
     console.log(`Invoice payment failed for customer: ${customerId}`);
