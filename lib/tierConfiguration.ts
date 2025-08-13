@@ -147,6 +147,16 @@ export const PRICING_TIERS: Record<PricingTier, TierConfiguration> = {
     }
   },
   // Legacy (hidden) tiers preserved for historical data access
+  'express-diagnostic': {
+    ...({} as TierConfiguration),
+    name: 'Express Diagnostic (Legacy)',
+    price: 0,
+    targetCustomer: 'Deprecated',
+    coreDeliverables: [],
+    assessmentScope: { questionCount: 0, sections: [], algorithms: [], reportPages: 0, followUpSupport: 'Deprecated' },
+    features: { uploadSupport: false, dashboardRefresh: false, customReporting: false, powerBIEmbedded: false, apiConnectors: false, onSiteFacilitation: false, progressAudits: false, orgChartGenerator: false, scenarioBuilder: false, monteCarloSimulation: false, realTimeCollaboration: false, aiOpportunityAssessment: false, automationRecommendations: false },
+    guardrails: { dataRetentionMonths: 0 }
+  },
   'one-time-diagnostic': {
     ...({} as TierConfiguration),
     name: 'One-Time Diagnostic (Legacy)',
